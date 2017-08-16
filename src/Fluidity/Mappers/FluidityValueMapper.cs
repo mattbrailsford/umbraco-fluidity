@@ -1,4 +1,4 @@
-﻿namespace Fluidity.Configuration.Mappers
+﻿namespace Fluidity.Mappers
 {
     public abstract class FluidityValueMapper
     {

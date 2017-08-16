@@ -1,8 +1,8 @@
 using System;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
-using Fluidity.Configuration.Mappers;
 using Fluidity.Extensions;
+using Fluidity.Mappers;
 
 namespace Fluidity.Configuration
 {

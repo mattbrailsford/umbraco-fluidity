@@ -1,5 +1,5 @@
 using System.Reflection;
-using Fluidity.Configuration.Mappers;
+using Fluidity.Mappers;
 
 namespace Fluidity.Configuration
 {

@@ -290,7 +290,7 @@
     <Compile Include="Configuration\FluiditySectionConfig.cs" />
     <Compile Include="Configuration\FluidityTabConfig`T.cs" />
     <Compile Include="Configuration\FluidityTabConfig.cs" />
-    <Compile Include="Configuration\Mappers\FluidityValueMapper.cs" />
+    <Compile Include="Mappers\FluidityValueMapper.cs" />
     <Compile Include="Data\DefaultFluidityRepository.cs" />
     <Compile Include="Data\FluidityRepository.cs" />
     <Compile Include="Data\FluidityRepositoryFactory.cs" />
