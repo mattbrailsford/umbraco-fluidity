@@ -9,6 +9,7 @@ using Umbraco.Core;
 
 namespace Fluidity.Web.WebApi.Validation
 {
+    // Base on https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Filters/ContentItemValidationHelper.cs
     internal class FluidityEntityPostValidator
     {
         private UmbracoDataTypeHelper _dataTypeHelper;

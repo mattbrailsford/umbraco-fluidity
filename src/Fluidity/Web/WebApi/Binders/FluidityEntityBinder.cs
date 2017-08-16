@@ -15,6 +15,7 @@ namespace Fluidity.Web.WebApi.Binders
     // Based heavily on the ContentItemBinder in core as we need to mimic the 
     // core pipeline as closely as possible to ensure things get executed 
     // as expected
+    // Based on https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Binders/ContentItemBinder.cs
     internal class FluidityEntityBinder : IModelBinder
     {
         public bool BindModel(HttpActionContext actionContext, ModelBindingContext bindingContext)

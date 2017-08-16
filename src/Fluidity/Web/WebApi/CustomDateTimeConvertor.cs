@@ -7,6 +7,7 @@ namespace Fluidity.Web.WebApi
 {
     /// <summary>
     /// Used to convert the format of a DateTime object when serializing
+    /// Copied from https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/CustomDateTimeConvertor.cs
     /// </summary>
     internal class CustomDateTimeConvertor : IsoDateTimeConverter
     {
