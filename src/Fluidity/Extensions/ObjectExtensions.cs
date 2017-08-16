@@ -1,0 +1,45 @@
+﻿using System;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace Fluidity.Extensions
+{
+    internal static class ObjectExtensions
+    {
+        public static object GetPropertyValue(this object instance, PropertyInfo propertyInfo)
+        {
+            return GetPropertyValue(instance, propertyInfo.Name);
+        }
+
+        public static object GetPropertyValue(this object instance, string propertyName)
+        {
+            return instance.GetType().GetPropertyValue(propertyName, instance);
+        }
+
+        public static void SetPropertyValue(this object instance, PropertyInfo propertyInfo, object value)
+        {
+            SetPropertyValue(instance, propertyInfo.Name, value);
+        }
+
+        public static void SetPropertyValue(this object instance, string propertyName, object value)
+        {
+            var prop = instance.GetType().GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
+            if (prop.CanWrite)
+            {
+                prop.SetValue(instance, value);
+            }
+        }
+
+        public static Guid EncodeAsGuid(this object obj)
+        {
+            Guid result;
+            using (var md5 = MD5.Create())
+            {
+                var hash = md5.ComputeHash(Encoding.Default.GetBytes(obj.ToString()));
+                result = new Guid(hash);
+            }
+            return result;
+        }
+    }
+}
