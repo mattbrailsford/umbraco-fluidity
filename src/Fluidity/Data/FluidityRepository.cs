@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using Fluidity.Events;
 using Fluidity.Models;
+using Umbraco.Core.Models;
 
 namespace Fluidity.Data
 {
@@ -22,6 +23,8 @@ namespace Fluidity.Data
 
         public abstract IEnumerable<TEntity> GetAll();
 
+        public abstract PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, string orderBy = null, string orderDirection = null, string filter = null);
+
         public abstract TEntity Save(TEntity entity);
 
         public abstract void Delete(TId[ ] ids);
@@ -36,6 +39,16 @@ namespace Fluidity.Data
         IEnumerable<object> IFluidityRepository.GetAll()
         {
             return GetAll().Select(x => (object)x);
+        }
+
+        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, string orderBy, string orderDirection, string filter)
+        {
+            var result = GetPaged(pageNumber, pageSize, orderBy, orderDirection, filter);
+
+            return new PagedResult<object>(result.TotalItems, result.PageNumber, result.PageSize)
+            {
+                Items = result.Items.Select(x => (object)x)
+            };
         }
 
         object IFluidityRepository.Save(object entity)

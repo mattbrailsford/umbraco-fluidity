@@ -28,37 +28,37 @@ namespace Fluidity.Web.Models.Mappers
             : this(new UmbracoDataTypeHelper(), ApplicationContext.Current.Services.DataTypeService)
         { }
 
-        public FluidityEntityDisplay ToDisplay(FluiditySectionConfig section, FluidityCollectionConfig config, object entity)
+        public FluidityEntityDisplay ToDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection, object entity)
         {
-            var entityId = entity?.GetPropertyValue(config.IdProperty);
+            var entityId = entity?.GetPropertyValue(collection.IdProperty);
             var entityCompositeId = entityId != null
-                ? config.Alias + "!" + entityId
+                ? collection.Alias + "!" + entityId
                 : null;
 
             var display = new FluidityEntityDisplay
             {
-                Id = entity?.GetPropertyValue(config.IdProperty),
-                Name = entity != null && config.Editor?.NameProperty != null ? entity.GetPropertyValue(config.Editor.NameProperty).ToString() : null,
+                Id = entity?.GetPropertyValue(collection.IdProperty),
+                Name = collection.Editor?.NameProperty != null ? entity?.GetPropertyValue(collection.Editor.NameProperty).ToString() : collection.NameSignular,
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
-                Collection = config.Alias,
-                CollectionNameSingular = config.NameSignular,
-                CollectionNamePlural = config.NamePlural,
-                CollectionIconSingular = config.IconSingular,
-                CollectionIconPlural = config.IconPlural,
-                HasNameProperty = config.Editor?.NameProperty != null,
-                IsChildOfListView = config.TreeMode != FluidityTreeMode.Tree,
-                IsChildOfTreeView = config.TreeMode != FluidityTreeMode.List,
+                Collection = collection.Alias,
+                CollectionNameSingular = collection.NameSignular,
+                CollectionNamePlural = collection.NamePlural,
+                CollectionIconSingular = collection.IconSingular,
+                CollectionIconPlural = collection.IconPlural,
+                HasNameProperty = collection.Editor?.NameProperty != null,
+                IsChildOfListView = collection.ViewMode != FluidityViewMode.Tree,
+                IsChildOfTreeView = collection.ViewMode != FluidityViewMode.List,
                 TreeNodeUrl = "/umbraco/backoffice/fluidity/FluidityTree/GetTreeNode/" + entityCompositeId + "?application=" + section.Alias,
-                CreateDate = entity != null && config.DateCreated != null ? (DateTime)entity.GetPropertyValue(config.DateCreated) : DateTime.Now,
-                UpdateDate = entity != null && config.DateModified != null ? (DateTime)entity.GetPropertyValue(config.DateCreated) : DateTime.Now,
-                Path = config.Path + (entity != null ? FluidityConstants.PATH_SEPERATOR + config.Alias + "!" + entity.GetPropertyValue(config.IdProperty) : string.Empty)
+                CreateDate = entity != null && collection.DateCreated != null ? (DateTime)entity.GetPropertyValue(collection.DateCreated) : DateTime.MinValue,
+                UpdateDate = entity != null && collection.DateModified != null ? (DateTime)entity.GetPropertyValue(collection.DateCreated) : DateTime.MinValue,
+                Path = collection.Path + (entity != null ? FluidityConstants.PATH_SEPERATOR + collection.Alias + "!" + entity.GetPropertyValue(collection.IdProperty) : string.Empty)
             };
 
-            if (config.Editor?.Tabs != null)
+            if (collection.Editor?.Tabs != null)
             {
                 var tabs = new List<Tab<ContentPropertyDisplay>>();
-                foreach (var tab in config.Editor.Tabs)
+                foreach (var tab in collection.Editor.Tabs)
                 {
                     var tabScaffold = new Tab<ContentPropertyDisplay>
                     {
@@ -118,14 +118,14 @@ namespace Fluidity.Web.Models.Mappers
             return display;
         }
 
-        public object FromPost(FluiditySectionConfig section, FluidityCollectionConfig config, FluidityEntityPost postModel, object entity)
+        public object FromPost(FluiditySectionConfig section, FluidityCollectionConfig collection, FluidityEntityPost postModel, object entity)
         {
-            var editorProps = config.Editor.Tabs.SelectMany(x => x.Fields).ToArray();
+            var editorProps = collection.Editor.Tabs.SelectMany(x => x.Fields).ToArray();
 
             // Update the name property
-            if (config.Editor.NameProperty != null)
+            if (collection.Editor.NameProperty != null)
             {
-                entity.SetPropertyValue(config.Editor.NameProperty, postModel.Name);
+                entity.SetPropertyValue(collection.Editor.NameProperty, postModel.Name);
             }
 
             // Update the individual properties
@@ -154,8 +154,8 @@ namespace Fluidity.Web.Models.Mappers
                 // Looking into the core code, these are not actually used for any lookups,
                 // rather they are used to generate a unique path, so we just use the nearest
                 // equivilaants from the fluidity api. 
-                var cuid = $"{section.Alias}_{config.Alias}_{entity.GetPropertyValue(config.IdProperty)}";
-                var puid = $"{section.Alias}_{config.Alias}_{propConfig.Property.Name}";
+                var cuid = $"{section.Alias}_{collection.Alias}_{entity.GetPropertyValue(collection.IdProperty)}";
+                var puid = $"{section.Alias}_{collection.Alias}_{propConfig.Property.Name}";
 
                 additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
                 additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));

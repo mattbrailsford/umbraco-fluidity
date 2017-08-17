@@ -1,1 +1,4 @@
-﻿
+﻿/* Force the grid view name field to be 100% wide */
+.umb-content-grid__item-name {
+    min-width: 100%;
+}

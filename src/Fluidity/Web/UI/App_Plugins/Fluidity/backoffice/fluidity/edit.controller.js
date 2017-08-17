@@ -28,13 +28,6 @@
         $scope.page.isNew = isNew;
         $scope.page.saveButtonState = "init";
 
-        function init(content) {
-            if (!content.hasNameProperty) {
-                content.name = content.collectionNameSingular;
-            }
-            editorState.set($scope.content);
-        }
-
         function syncTree(entity, path, initialLoad) {
             if (entity.isChildOfTreeView) {
                 navigationService.syncTree({ tree: entity.tree, path: path.split(","), forceReload: initialLoad !== true }).then(function (syncArgs) {
@@ -63,7 +56,7 @@
             // Create an empty item
             fluidityResource.getEntityScaffold($scope.currentSection, collectionAlias).then(function(data) {
                 $scope.content = data;
-                init($scope.content);
+                editorState.set($scope.content);
                 $scope.page.loading = false;
             });
 
@@ -79,7 +72,7 @@
                         ? "/" + $scope.currentSection + "/fluidity/collection/" + $scope.content.collection + "?page=" + $routeParams.page
                         : "/" + $scope.currentSection + "/fluidity/collection/" + $scope.content.collection;
                 }
-                init($scope.content);
+                editorState.set($scope.content);
                 syncTree($scope.content, $scope.content.path, true);
                 $scope.page.loading = false;
             });

@@ -268,7 +268,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListViewLayouts\FluidityListViewLayout.cs" />
     <Compile Include="Extensions\FluidityEditorFieldConfigExtensions.cs" />
+    <Compile Include="ListViewLayouts\FluidityGridListViewLayout.cs" />
+    <Compile Include="ListViewLayouts\FluidityTableListViewLayout.cs" />
     <Compile Include="Models\DataTypeInfo.cs" />
     <Compile Include="Helpers\UmbracoDataTypeHelper.cs" />
     <Compile Include="Helpers\UmbracoUiHelper.cs" />
@@ -305,7 +308,7 @@
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="FluidityConstants.cs" />
     <Compile Include="FluidityContext.cs" />
-    <Compile Include="FluidityTreeMode.cs" />
+    <Compile Include="FluidityViewMode.cs" />
     <Compile Include="FluiditySortOrder.cs" />
     <Compile Include="Configuration\FluidityTreeConfig.cs" />
     <Compile Include="Configuration\FluidityTreeItemConfig.cs" />
@@ -317,12 +320,19 @@
     <Compile Include="Fluidity.cs" />
     <Compile Include="Models\BeforeAndAfter`T.cs" />
     <Compile Include="Web\Extensions\ModelStateExtensions.cs" />
+    <Compile Include="Web\Models\FluidityCollectionDisplay.cs" />
     <Compile Include="Web\Models\FluidityEntityBasic.cs" />
+    <Compile Include="Web\Models\FluidityEntityListViewDisplay.cs" />
     <Compile Include="Web\Models\FluidityEntityDisplay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FluidityEntityService.cs" />
     <Compile Include="Web\Api\FluidityApiController.cs" />
     <Compile Include="Web\Models\FluidityEntityPost.cs" />
+    <Compile Include="Web\Models\FluidityListViewDisplay.cs" />
+    <Compile Include="Web\Models\FluidityListViewLayoutDisplay.cs" />
+    <Compile Include="Web\Models\FluidityListViewPropertyDisplay.cs" />
+    <Compile Include="Web\Models\Mappers\FluidityCollectionMapper.cs" />
+    <Compile Include="Web\Models\Mappers\FluidityEntityListViewMapper.cs" />
     <Compile Include="Web\Models\Mappers\FluidityEntityMapper.cs" />
     <Compile Include="Web\ServerVariableInjector.cs" />
     <Compile Include="Web\Trees\FluidityTreeController.cs" />
@@ -351,6 +361,9 @@
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\edit.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\collection.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\css\fluidity.css" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\directives\listview.directive.js" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\directives\listview.html" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\overrides\fluidity.overrides.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\resources\fluidity.resource.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.service.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\services\utility.service.js" />

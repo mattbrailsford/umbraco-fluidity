@@ -15,10 +15,10 @@ namespace Fluidity.Web.Models
             Errors = new Dictionary<string, object>();
         }
 
-        [DataMember(Name = "section")]
+        [DataMember(Name = "section", IsRequired = true)]
         public string Section { get; set; }
 
-        [DataMember(Name = "tree")]
+        [DataMember(Name = "tree", IsRequired = true)]
         public string Tree { get; set; }
 
         [DataMember(Name = "collectionNameSingular")]

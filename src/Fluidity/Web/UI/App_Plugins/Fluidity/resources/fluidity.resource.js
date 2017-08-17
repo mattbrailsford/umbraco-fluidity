@@ -2,9 +2,23 @@
 
     'use strict';
 
-    function fluidityResource($http, umbRequestHelper, fluidityUtilityService) {
+    function fluidityResource($http, umbRequestHelper) {
 
         var api = {
+
+            getCollectionByAlias: function (section, collectionAlias) {
+                return umbRequestHelper.resourcePromise(
+                    $http.get(Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getcollectionbyalias?section=" + section + "&collectionAlias=" + collectionAlias),
+                    'Failed to get collection by alias'
+                );
+            },
+
+            getListViewEntities: function (section, collectionAlias, options) {
+                return umbRequestHelper.resourcePromise(
+                    $http.get(Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getlistviewentities?section=" + section + "&collectionAlias=" + collectionAlias + "&options=" + options),
+                    'Failed to get list view entities'
+                );
+            },
 
             saveEntity: function(entity, isNew, files) {
                 return umbRequestHelper.postSaveContent({

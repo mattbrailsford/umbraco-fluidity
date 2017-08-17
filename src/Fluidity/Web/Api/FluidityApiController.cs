@@ -8,6 +8,7 @@ using Fluidity.Web.Models.Mappers;
 using Fluidity.Web.WebApi.Binders;
 using Fluidity.Web.WebApi.Filters;
 using Fluidity.Web.WebApi.Validation;
+using Umbraco.Core.Deploy;
 using Umbraco.Web.Editors;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
@@ -31,7 +32,7 @@ namespace Fluidity.Web.Api
         {
             var sectionConfig = Context.Config.Sections[section];
             var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
-            return Context.Services.EntityService.Scaffold(sectionConfig, collectionConfig);
+            return Context.Services.EntityService.GetEntityDisplay(sectionConfig, collectionConfig);
         }
 
         [HttpGet]
@@ -39,7 +40,15 @@ namespace Fluidity.Web.Api
         {
             var sectionConfig = Context.Config.Sections[section];
             var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
-            return Context.Services.EntityService.Scaffold(sectionConfig, collectionConfig, id);
+            return Context.Services.EntityService.GetEntityDisplay(sectionConfig, collectionConfig, id);
+        }
+
+        [HttpGet]
+        public object GetListViewEntities(string section, string collectionAlias, int pageNumber = 1, int pageSize = 100, string orderBy = "", string orderDirection = "", string filter = "")
+        {
+            var sectionConfig = Context.Config.Sections[section];
+            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            return Context.Services.EntityService.GetListViewEntitiesDisplay(sectionConfig, collectionConfig, pageNumber, pageSize, orderBy, orderDirection, filter);
         }
 
         [HttpPost]
@@ -52,8 +61,8 @@ namespace Fluidity.Web.Api
             var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[postModel.Collection] as FluidityCollectionConfig;
 
             var entity = postModel.Id != null
-                ? Context.Services.EntityService.Get(collectionConfig, postModel.Id)
-                : Context.Services.EntityService.New(collectionConfig);
+                ? Context.Services.EntityService.GetEntity(collectionConfig, postModel.Id)
+                : Context.Services.EntityService.NewEntity(collectionConfig);
 
             // Map property values
             var mapper = new FluidityEntityMapper();
@@ -66,14 +75,14 @@ namespace Fluidity.Web.Api
             // Check to see if model is valid
             if (!ModelState.IsValid)
             {
-                display = Context.Services.EntityService.Scaffold(sectionConfig, collectionConfig, entity);
+                display = Context.Services.EntityService.GetEntityDisplay(sectionConfig, collectionConfig, entity);
                 display.Errors = ModelState.ToErrorDictionary();
                 throw new HttpResponseException(Request.CreateValidationErrorResponse(display));
             }
 
             // Do the save
-            entity = Context.Services.EntityService.Save(collectionConfig, entity);
-            display = Context.Services.EntityService.Scaffold(sectionConfig, collectionConfig, entity);
+            entity = Context.Services.EntityService.SaveEntity(collectionConfig, entity);
+            display = Context.Services.EntityService.GetEntityDisplay(sectionConfig, collectionConfig, entity);
 
             // Return the updated model
             return display;
@@ -87,7 +96,16 @@ namespace Fluidity.Web.Api
             var sectionConfig = Context.Config.Sections[section];
             var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
 
-            Context.Services.EntityService.Delete(collectionConfig, idsArray);
+            Context.Services.EntityService.DeleteEntity(collectionConfig, idsArray);
+        }
+
+        [HttpGet]
+        public object GetCollectionByAlias(string section, string collectionAlias)
+        {
+            var sectionConfig = Context.Config.Sections[section];
+            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+
+            return Context.Services.EntityService.GetsCollectionDisplay(sectionConfig, collectionConfig);
         }
     }
 }

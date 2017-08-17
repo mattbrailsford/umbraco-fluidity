@@ -8,13 +8,13 @@ namespace Fluidity.Data
         internal FluidityRepositoryFactory()
         { }
 
-        public IFluidityRepository GetRepository(FluidityCollectionConfig config)
+        public IFluidityRepository GetRepository(FluidityCollectionConfig collection)
         {
             var defaultRepoType = typeof(DefaultFluidityRepository);
-            var repoType = config.RepositoryType ?? defaultRepoType;
+            var repoType = collection.RepositoryType ?? defaultRepoType;
 
             return defaultRepoType.IsAssignableFrom(repoType)
-               ? (IFluidityRepository)Activator.CreateInstance(repoType, config)
+               ? (IFluidityRepository)Activator.CreateInstance(repoType, collection)
                : (IFluidityRepository)Activator.CreateInstance(repoType);
         }
     }

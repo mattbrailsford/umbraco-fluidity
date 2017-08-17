@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Umbraco.Core.Models;
 
 namespace Fluidity.Data
 {
@@ -7,6 +8,8 @@ namespace Fluidity.Data
         object Get(object id);
 
         IEnumerable<object> GetAll();
+
+        PagedResult<object> GetPaged(int pageNumber, int pageSize, string orderBy, string orderDirection, string filter);
 
         object Save(object entity);
 

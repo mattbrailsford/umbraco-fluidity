@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
 {
@@ -13,8 +16,15 @@ namespace Fluidity.Configuration
         protected List<IFluidityBulkAction> _bulkActions;
         internal IEnumerable<IFluidityBulkAction> BulkActions => _bulkActions;
 
+        protected Func<object, string> _nameFormat;
+        internal Func<object, string> NameFormat => _nameFormat;
+
         protected List<FluidityListViewFieldConfig> _fields;
         internal IEnumerable<FluidityListViewFieldConfig> Fields => _fields;
+
+        protected List<FluidityListViewLayout> _defaultLayouts;
+        protected List<FluidityListViewLayout> _layouts;
+        internal IEnumerable<FluidityListViewLayout> Layouts => _layouts.Any() ? _layouts : _defaultLayouts;
 
         protected FluidityListViewConfig()
         {
@@ -22,6 +32,8 @@ namespace Fluidity.Configuration
             _filters = new List<IFluidityFilter>();
             _bulkActions = new List<IFluidityBulkAction>();
             _fields = new List<FluidityListViewFieldConfig>();
+            _defaultLayouts = new List<FluidityListViewLayout>(new [] { new FluidityTableListViewLayout() } );
+            _layouts = new List<FluidityListViewLayout>();
         }
     }
 }

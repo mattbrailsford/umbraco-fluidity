@@ -4,8 +4,8 @@ namespace Fluidity.Configuration
 {
     public class FluidityFolderConfig : FluidityContainerTreeItemConfig
     {
-        protected FluidityTreeMode _treeMode;
-        internal FluidityTreeMode TreeMode => _treeMode;
+        protected FluidityViewMode _viewMode;
+        internal FluidityViewMode ViewMode => _viewMode;
 
         public FluidityFolderConfig(string name, string icon = null, Action<FluidityFolderConfig> config = null)
             : base(name, icon)
@@ -19,9 +19,9 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityFolderConfig SetTreeMode(FluidityTreeMode treeMode)
+        public FluidityFolderConfig SetViewMode(FluidityViewMode viewMode)
         {
-            _treeMode = treeMode;
+            _viewMode = viewMode;
             return this;
         }
     }

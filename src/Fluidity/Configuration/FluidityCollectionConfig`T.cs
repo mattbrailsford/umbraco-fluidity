@@ -73,9 +73,9 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityCollectionConfig<TEntityType> SetTreeMode(FluidityTreeMode treeMode)
+        public FluidityCollectionConfig<TEntityType> SetViewMode(FluidityViewMode viewMode)
         {
-            _treeMode = treeMode;
+            _viewMode = viewMode;
             return this;
         }
 
@@ -91,26 +91,32 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityListViewConfig<TEntityType> ListViewConfig(Action<FluidityListViewConfig<TEntityType>> listViewConfig = null)
+        public new FluidityListViewConfig<TEntityType> ListView(Action<FluidityListViewConfig<TEntityType>> listViewConfig = null)
         {
-            return ListViewConfig(new FluidityListViewConfig<TEntityType>(listViewConfig));
+            return ListView(new FluidityListViewConfig<TEntityType>(listViewConfig));
         }
 
-        public FluidityListViewConfig<TEntityType> ListViewConfig(FluidityListViewConfig<TEntityType> listViewConfig)
+        public new FluidityListViewConfig<TEntityType> ListView(FluidityListViewConfig<TEntityType> listViewConfig)
         {
             _listView = listViewConfig;
-            return (FluidityListViewConfig<TEntityType>)ListView;
+            return listViewConfig;
         }
 
-        public FluidityEditorConfig<TEntityType> EditorConfig(Action<FluidityEditorConfig<TEntityType>> editorConfig = null)
+        public new FluidityEditorConfig<TEntityType> Editor(Action<FluidityEditorConfig<TEntityType>> editorConfig = null)
         {
-            return EditorConfig(new FluidityEditorConfig<TEntityType>(editorConfig));
+            return Editor(new FluidityEditorConfig<TEntityType>(editorConfig));
         }
 
-        public FluidityEditorConfig<TEntityType> EditorConfig(FluidityEditorConfig<TEntityType> editorConfig)
+        public new FluidityEditorConfig<TEntityType> Editor(FluidityEditorConfig<TEntityType> editorConfig)
         {
             _editor = editorConfig;
-            return (FluidityEditorConfig<TEntityType>)Editor;
+            return editorConfig;
+        }
+
+        public FluidityCollectionConfig<TEntityType> SetNameFormat(Func<TEntityType, string> format)
+        {
+            _nameFormat = (entity) => format((TEntityType)entity);
+            return this;
         }
     }
 }

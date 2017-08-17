@@ -1,6 +1,6 @@
 namespace Fluidity
 {
-    public enum FluidityTreeMode
+    public enum FluidityViewMode
     {
         Tree,
         List,

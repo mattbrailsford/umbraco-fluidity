@@ -60,7 +60,7 @@ namespace Fluidity.Web.Trees
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            var entity = Context.Services.EntityService.Get(collectionConfig, entityId);
+            var entity = Context.Services.EntityService.GetEntity(collectionConfig, entityId);
             if (entity == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -98,13 +98,13 @@ namespace Fluidity.Web.Trees
                             folderTreeItem.Name,
                             folderTreeItem.Icon,
                             true,
-                            folderTreeItem.TreeMode == FluidityTreeMode.Tree
+                            folderTreeItem.ViewMode == FluidityViewMode.Tree
                                 ? SectionAlias // Tree mode so just show the default dashboard
                                 : SectionAlias + "/fluidity/folder/" + folderTreeItem.Alias);
 
                         node.Path = folderTreeItem.Path;
 
-                        if (folderTreeItem.TreeMode == FluidityTreeMode.List)
+                        if (folderTreeItem.ViewMode == FluidityViewMode.List)
                         {
                             node.SetContainerStyle();
                         }
@@ -122,14 +122,14 @@ namespace Fluidity.Web.Trees
                             queryStrings,
                             collectionTreeItem.NamePlural,
                             collectionTreeItem.IconPlural,
-                            collectionTreeItem.TreeMode != FluidityTreeMode.List,
-                            collectionTreeItem.TreeMode == FluidityTreeMode.Tree 
+                            collectionTreeItem.ViewMode != FluidityViewMode.List,
+                            collectionTreeItem.ViewMode == FluidityViewMode.Tree 
                                 ? SectionAlias // Tree mode so just show the default dashboard
                                 : SectionAlias + "/fluidity/collection/" + collectionTreeItem.Alias);
 
                         node.Path = collectionTreeItem.Path;
 
-                        if (collectionTreeItem.TreeMode == FluidityTreeMode.List)
+                        if (collectionTreeItem.ViewMode == FluidityViewMode.List)
                         {
                             node.SetContainerStyle();
                         }
@@ -140,10 +140,10 @@ namespace Fluidity.Web.Trees
             }
 
             var currentCollectionConfig = currentItemConfig as FluidityCollectionConfig;
-            if (currentCollectionConfig != null && currentCollectionConfig.VisibleInTree && currentCollectionConfig.TreeMode != FluidityTreeMode.List)
+            if (currentCollectionConfig != null && currentCollectionConfig.VisibleInTree && currentCollectionConfig.ViewMode != FluidityViewMode.List)
             {
                 // Render collection items
-                var items = Context.Services.EntityService.GetAll(currentCollectionConfig);
+                var items = Context.Services.EntityService.GetAllEntities(currentCollectionConfig);
                 nodes.AddRange(items.Select(item => CreateEntityTreeNode(currentCollectionConfig, item, queryStrings)));
             }
 
@@ -174,7 +174,7 @@ namespace Fluidity.Web.Trees
             var currentFolderConfig = currentItemConfig as FluidityFolderConfig;
             if (currentFolderConfig != null)
             {
-                if (currentFolderConfig.TreeMode != FluidityTreeMode.List)
+                if (currentFolderConfig.ViewMode != FluidityViewMode.List)
                 {
                     menu.Items.Add<RefreshNode, ActionRefresh>(refreshText, true);
                 }
@@ -205,7 +205,7 @@ namespace Fluidity.Web.Trees
                         menu.Items.Add(menuItem);
                     }
 
-                    if (currentCollectionConfig.TreeMode != FluidityTreeMode.List)
+                    if (currentCollectionConfig.ViewMode != FluidityViewMode.List)
                     {
                         menu.Items.Add<RefreshNode, ActionRefresh>(refreshText, true);
                     }
@@ -215,21 +215,21 @@ namespace Fluidity.Web.Trees
             return menu;
         }
 
-        protected TreeNode CreateEntityTreeNode(FluidityCollectionConfig collectionConfig, object entity, FormDataCollection queryStrings)
+        protected TreeNode CreateEntityTreeNode(FluidityCollectionConfig collection, object entity, FormDataCollection queryStrings)
         {
-            var itemId = entity.GetPropertyValue(collectionConfig.IdProperty);
-            var compositeId = collectionConfig.Alias + "!" + itemId;
+            var itemId = entity.GetPropertyValue(collection.IdProperty);
+            var compositeId = collection.Alias + "!" + itemId;
 
             var node = CreateTreeNode(
                 compositeId,
-                collectionConfig.Alias,
+                collection.Alias,
                 queryStrings,
-                entity.ToString(),
-                collectionConfig.IconSingular,
+                collection.NameFormat != null ? collection.NameFormat(entity) : entity.ToString(),
+                collection.IconSingular,
                 false,
                 SectionAlias + "/fluidity/edit/" + compositeId);
 
-            node.Path = collectionConfig.Path + FluidityConstants.PATH_SEPERATOR + compositeId;
+            node.Path = collection.Path + FluidityConstants.PATH_SEPERATOR + compositeId;
             node.AdditionalData.AddOrUpdate("entityId", itemId);
 
             return node;

@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
 {
@@ -31,6 +32,12 @@ namespace Fluidity.Configuration
             return this;
         }
 
+        public FluidityListViewConfig<TEntityType> SetNameFormat(Func<TEntityType, string> format)
+        {
+            _nameFormat = (entity) => format((TEntityType)entity);
+            return this;
+        }
+
         public FluidityListViewFieldConfig<TEntityType, TValueType> AddField<TValueType>(Expression<Func<TEntityType, TValueType>> fieldExpression, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> fieldConfig = null)
         {
             return AddField(new FluidityListViewFieldConfig<TEntityType, TValueType>(fieldExpression, fieldConfig));
@@ -42,5 +49,14 @@ namespace Fluidity.Configuration
             _fields.Add(field);
             return field;
         }
+
+        public FluidityListViewConfig<TEntityType> AddLayout<TListViewLayoutType>()
+            where TListViewLayoutType : FluidityListViewLayout, new()
+        {
+            _layouts.Add(new TListViewLayoutType());
+            return this;
+        }
+
+
     }
 }

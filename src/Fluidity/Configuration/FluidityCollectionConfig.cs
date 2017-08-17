@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Umbraco.Core;
 
@@ -36,8 +37,8 @@ namespace Fluidity.Configuration
         protected bool _readOnly;
         internal bool ReadOnly => _readOnly;
 
-        protected FluidityTreeMode _treeMode;
-        internal FluidityTreeMode TreeMode => _treeMode;
+        protected FluidityViewMode _viewMode;
+        internal FluidityViewMode ViewMode => _viewMode;
 
         protected FluiditySortOrder _sortOrder;
         internal FluiditySortOrder SortOrder => _sortOrder;
@@ -59,6 +60,9 @@ namespace Fluidity.Configuration
 
         protected FluidityEditorConfig _editor;
         internal FluidityEditorConfig Editor => _editor;
+
+        protected Func<object, string> _nameFormat;
+        internal Func<object, string> NameFormat => _nameFormat;
 
         protected FluidityCollectionConfig(Type entityType, PropertyInfo idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null)
         {

@@ -1,6 +1,8 @@
 ﻿{
     javascript: [
 
+		'~/app_plugins/fluidity/overrides/fluidity.overrides.js',
+
         '~/app_plugins/fluidity/services/utility.service.js',
 
         '~/app_plugins/fluidity/resources/fluidity.resource.js',
@@ -8,7 +10,9 @@
 	    '~/app_plugins/fluidity/backoffice/fluidity/edit.controller.js',
 		'~/app_plugins/fluidity/backoffice/fluidity/delete.controller.js', 
 		'~/app_plugins/fluidity/backoffice/fluidity/collection.controller.js', 
-		'~/app_plugins/fluidity/backoffice/fluidity/folder.controller.js'
+		'~/app_plugins/fluidity/backoffice/fluidity/folder.controller.js', 
+
+		'~/app_plugins/fluidity/directives/listview.directive.js'
 
     ],
     css: [
