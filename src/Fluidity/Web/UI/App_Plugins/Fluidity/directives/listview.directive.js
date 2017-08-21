@@ -74,6 +74,21 @@
                 $scope.options.layout.activeLayout = listViewHelper.setLayout($routeParams.id, selectedLayout, $scope.options.layout.layouts);
             }
 
+            $scope.nextPage = function (pageNumber) {
+                $scope.options.pageNumber = pageNumber;
+                $scope.reloadView($scope.contentId);
+            };
+
+            $scope.goToPage = function (pageNumber) {
+                $scope.options.pageNumber = pageNumber;
+                $scope.reloadView($scope.contentId);
+            };
+
+            $scope.prevPage = function (pageNumber) {
+                $scope.options.pageNumber = pageNumber;
+                $scope.reloadView($scope.contentId);
+            };
+
             $scope.reloadView = function (id) {
 
                 $scope.viewLoaded = false;
