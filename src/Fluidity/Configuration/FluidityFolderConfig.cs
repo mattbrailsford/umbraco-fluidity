@@ -19,10 +19,10 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityFolderConfig SetViewMode(FluidityViewMode viewMode)
-        {
-            _viewMode = viewMode;
-            return this;
-        }
+        //public FluidityFolderConfig SetViewMode(FluidityViewMode viewMode)
+        //{
+        //    _viewMode = viewMode;
+        //    return this;
+        //}
     }
 }

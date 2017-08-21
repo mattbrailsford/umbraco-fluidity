@@ -122,7 +122,7 @@ namespace Fluidity.Web.Trees
                             queryStrings,
                             collectionTreeItem.NamePlural,
                             collectionTreeItem.IconPlural,
-                            collectionTreeItem.ViewMode != FluidityViewMode.List,
+                            collectionTreeItem.ViewMode == FluidityViewMode.Tree,
                             collectionTreeItem.ViewMode == FluidityViewMode.Tree 
                                 ? SectionAlias // Tree mode so just show the default dashboard
                                 : SectionAlias + "/fluidity/collection/" + collectionTreeItem.Alias);
@@ -140,7 +140,7 @@ namespace Fluidity.Web.Trees
             }
 
             var currentCollectionConfig = currentItemConfig as FluidityCollectionConfig;
-            if (currentCollectionConfig != null && currentCollectionConfig.VisibleInTree && currentCollectionConfig.ViewMode != FluidityViewMode.List)
+            if (currentCollectionConfig != null && currentCollectionConfig.VisibleInTree && currentCollectionConfig.ViewMode == FluidityViewMode.Tree)
             {
                 // Render collection items
                 var items = Context.Services.EntityService.GetAllEntities(currentCollectionConfig);
@@ -174,7 +174,7 @@ namespace Fluidity.Web.Trees
             var currentFolderConfig = currentItemConfig as FluidityFolderConfig;
             if (currentFolderConfig != null)
             {
-                if (currentFolderConfig.ViewMode != FluidityViewMode.List)
+                if (currentFolderConfig.ViewMode == FluidityViewMode.Tree)
                 {
                     menu.Items.Add<RefreshNode, ActionRefresh>(refreshText, true);
                 }
@@ -205,7 +205,7 @@ namespace Fluidity.Web.Trees
                         menu.Items.Add(menuItem);
                     }
 
-                    if (currentCollectionConfig.ViewMode != FluidityViewMode.List)
+                    if (currentCollectionConfig.ViewMode == FluidityViewMode.Tree)
                     {
                         menu.Items.Add<RefreshNode, ActionRefresh>(refreshText, true);
                     }
