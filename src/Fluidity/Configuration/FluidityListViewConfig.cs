@@ -43,7 +43,7 @@ namespace Fluidity.Configuration
             _dataViews = new List<FluidityDataViewConfig>();
             _fields = new List<FluidityListViewFieldConfig>();
             _searchFields = new List<FluidityListViewSearchFieldConfig>();
-            _defaultLayouts = new List<FluidityListViewLayout>(new [] { new FluidityTableListViewLayout() } );
+            _defaultLayouts = new List<FluidityListViewLayout>(new FluidityListViewLayout [] { new FluidityTableListViewLayout(), new FluidityGridListViewLayout() } );
             _layouts = new List<FluidityListViewLayout>();
 
             _pageSize = 20;
