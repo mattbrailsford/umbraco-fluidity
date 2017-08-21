@@ -14,6 +14,11 @@
                 </div>
             </umb-editor-sub-header-section>
 
+            <!-- Data Views Dropdwn -->
+            <umb-editor-sub-header-section ng-if="options.dataViews && !isAnythingSelected()">
+                <select ng-model="options.dataView" ng-options="dv.alias as dv.name for dv in options.dataViews" ng-change="changeDataView()" no-dirty-check></select>
+            </umb-editor-sub-header-section>
+
             <!-- Clear Selection Button -->
             <umb-editor-sub-header-section ng-if="isAnythingSelected()">
                 <umb-button type="button"

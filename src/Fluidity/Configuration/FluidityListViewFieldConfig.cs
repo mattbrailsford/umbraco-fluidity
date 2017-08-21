@@ -9,8 +9,8 @@ namespace Fluidity.Configuration
         protected PropertyInfo _property;
         internal PropertyInfo Property => _property;
 
-        protected Expression _propertyExp;
-        internal Expression PropertyExp => _propertyExp;
+        protected LambdaExpression _propertyExp;
+        internal LambdaExpression PropertyExp => _propertyExp;
 
         protected string _heading;
         internal string Heading => _heading;
@@ -18,7 +18,7 @@ namespace Fluidity.Configuration
         protected Func<object, object, object> _format;
         internal Func<object, object, object> Format => _format;
 
-        protected FluidityListViewFieldConfig(Expression propertyExp, PropertyInfo property)
+        protected FluidityListViewFieldConfig(LambdaExpression propertyExp, PropertyInfo property)
         {
             _propertyExp = propertyExp;
             _property = property;

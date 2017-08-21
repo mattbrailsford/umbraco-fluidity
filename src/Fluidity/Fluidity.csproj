@@ -269,6 +269,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\FluidityDataViewConfig.cs" />
+    <Compile Include="Configuration\FluidityListViewSearchFieldConfig.cs" />
+    <Compile Include="Configuration\FluidityListViewSearchFieldConfig`T.cs" />
     <Compile Include="DataViews\FluidityDataView.cs" />
     <Compile Include="Extensions\SqlExtensions.cs" />
     <Compile Include="ListViewLayouts\FluidityListViewLayout.cs" />
@@ -333,6 +335,7 @@
     <Compile Include="Web\Models\FluidityEntityPost.cs" />
     <Compile Include="Web\Models\FluidityListViewDisplay.cs" />
     <Compile Include="Web\Models\FluidityListViewLayoutDisplay.cs" />
+    <Compile Include="Web\Models\FluidityListViewDataViewDisplay.cs" />
     <Compile Include="Web\Models\FluidityListViewPropertyDisplay.cs" />
     <Compile Include="Web\Models\Mappers\FluidityCollectionMapper.cs" />
     <Compile Include="Web\Models\Mappers\FluidityEntityListViewMapper.cs" />

@@ -32,7 +32,7 @@ namespace Fluidity.Data
             return GetAll().Select(x => (object)x);
         }
 
-        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, Expression orderBy, Direction orderDirection, Expression whereClause)
+        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, Direction orderDirection, LambdaExpression whereClause)
         {
             var result = GetPaged(pageNumber, pageSize, (Expression<Func<TEntity, object>>)orderBy, orderDirection, (Expression<Func<TEntity, bool>>)whereClause);
 

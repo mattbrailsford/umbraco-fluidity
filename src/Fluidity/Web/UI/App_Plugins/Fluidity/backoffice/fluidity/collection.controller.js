@@ -15,6 +15,7 @@
 
         $scope.listView = {
             options: {
+                dataViews: [],
                 layouts: [],
                 properties: [],
                 pageSize: 10,
@@ -26,6 +27,7 @@
 
         function init(collection) {
             $scope.page.name = collection.namePlural;
+            $scope.listView.options.dataViews = collection.listView.dataViews;
             $scope.listView.options.layouts = collection.listView.layouts;
             $scope.listView.options.properties = collection.listView.properties;
         }

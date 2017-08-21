@@ -12,6 +12,9 @@ namespace Fluidity.Configuration
         protected PropertyInfo _idProperty;
         internal PropertyInfo IdProperty => _idProperty;
 
+        protected LambdaExpression _idPropertyExp;
+        internal LambdaExpression IdPropertyExp => _idPropertyExp;
+
         protected string _nameSingular;
         internal string NameSignular => _nameSingular;
 
@@ -48,26 +51,26 @@ namespace Fluidity.Configuration
         protected PropertyInfo _sortProperty;
         internal PropertyInfo SortProperty => _sortProperty;
 
-        protected Expression _sortPropertyExp;
-        internal Expression SortPropertyExp => _sortPropertyExp;
+        protected LambdaExpression _sortPropertyExp;
+        internal LambdaExpression SortPropertyExp => _sortPropertyExp;
 
         protected PropertyInfo _dateCreatedProperty;
         internal PropertyInfo DateCreatedProperty => _dateCreatedProperty;
 
-        protected Expression _dateCreatedPropertyExp;
-        internal Expression DateCreatedPropertyExp => _dateCreatedPropertyExp;
+        protected LambdaExpression _dateCreatedPropertyExp;
+        internal LambdaExpression DateCreatedPropertyExp => _dateCreatedPropertyExp;
 
         protected PropertyInfo _dateModifiedProperty;
         internal PropertyInfo DateModifiedProperty => _dateModifiedProperty;
 
-        protected Expression _dateModifiedPropertyExp;
-        internal Expression DateModifiedPropertyExp => _dateModifiedPropertyExp;
+        protected LambdaExpression _dateModifiedPropertyExp;
+        internal LambdaExpression DateModifiedPropertyExp => _dateModifiedPropertyExp;
 
         protected PropertyInfo _deletedProperty;
         internal PropertyInfo DeletedProperty => _deletedProperty;
 
-        protected Expression _deletedPropertyExp;
-        internal Expression DeletedPropertyExp => _deletedPropertyExp;
+        protected LambdaExpression _deletedPropertyExp;
+        internal LambdaExpression DeletedPropertyExp => _deletedPropertyExp;
 
         protected FluidityListViewConfig _listView;
         internal FluidityListViewConfig ListView => _listView;
@@ -78,8 +81,9 @@ namespace Fluidity.Configuration
         protected Func<object, string> _nameFormat;
         internal Func<object, string> NameFormat => _nameFormat;
 
-        protected FluidityCollectionConfig(Type entityType, PropertyInfo idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null)
+        protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExp, PropertyInfo idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null)
         {
+            _idPropertyExp = idPropertyExp;
             _idProperty = idProperty;
             _entityType = entityType;
             _alias = nameSingular.ToSafeAlias(true);

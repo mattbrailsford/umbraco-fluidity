@@ -34,6 +34,11 @@ namespace Fluidity.Web.Models.Mappers
                         Path = x.View,
                         IsSystem = x.IsSystem,
                         Selected = true
+                    }),
+                    DataViews = collection.ListView.DataViews.Select(x => new FluidityListViewDataViewDisplay
+                    {
+                        Alias = x.Alias,
+                        Name = x.Name
                     })
                 }
             };

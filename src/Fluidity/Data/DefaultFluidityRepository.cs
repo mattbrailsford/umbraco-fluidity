@@ -49,12 +49,10 @@ namespace Fluidity.Data
                 }
             }
 
-            //query.OrderBy<t>()
-
             return Db.Fetch(_collection.EntityType, query);
         }
 
-        public PagedResult<object> GetPaged(int pageNumber, int pageSize, Expression orderBy, Direction orderDirection, Expression whereClause)
+        public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, Direction orderDirection, LambdaExpression whereClause)
         {
             var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
 

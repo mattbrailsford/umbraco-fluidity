@@ -7,7 +7,7 @@ namespace Fluidity.Extensions
 {
     internal static class SqlExtensions
     {
-        public static Sql OrderBy(this Sql sql, Type type, Expression orderBy, ISqlSyntaxProvider syntaxProvider)
+        public static Sql OrderBy(this Sql sql, Type type, LambdaExpression orderBy, ISqlSyntaxProvider syntaxProvider)
         {
             var method = typeof(PetaPocoSqlExtensions).GetGenericMethod("OrderBy", new[] { type }, new[] { typeof(Sql), typeof(Expression<>), typeof(ISqlSyntaxProvider) });
             var generic = method.MakeGenericMethod(type);
@@ -15,7 +15,7 @@ namespace Fluidity.Extensions
             return sql;
         }
 
-        public static Sql OrderByDescending(this Sql sql, Type type, Expression orderByDesc, ISqlSyntaxProvider syntaxProvider)
+        public static Sql OrderByDescending(this Sql sql, Type type, LambdaExpression orderByDesc, ISqlSyntaxProvider syntaxProvider)
         {
             var method = typeof(PetaPocoSqlExtensions).GetGenericMethod("OrderByDescending", new[] { type }, new[] { typeof(Sql), typeof(Expression<>), typeof(ISqlSyntaxProvider) });
             var generic = method.MakeGenericMethod(type);
@@ -23,7 +23,7 @@ namespace Fluidity.Extensions
             return sql;
         }
 
-        public static Sql Where(this Sql sql, Type type, Expression whereClause, ISqlSyntaxProvider syntaxProvider)
+        public static Sql Where(this Sql sql, Type type, LambdaExpression whereClause, ISqlSyntaxProvider syntaxProvider)
         {
             var method = typeof(PetaPocoSqlExtensions).GetGenericMethod("Where", new[] { type }, new[] { typeof(Sql), typeof(Expression<>), typeof(ISqlSyntaxProvider) });
             var generic = method.MakeGenericMethod(type);

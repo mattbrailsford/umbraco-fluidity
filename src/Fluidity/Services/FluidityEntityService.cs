@@ -27,19 +27,18 @@ namespace Fluidity.Services
 
         public FluidityCollectionDisplay GetsCollectionDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection)
         {
-            // TODO: Should this even be in the "EntityService"?
             var collectionMapper = new FluidityCollectionMapper();
             return collectionMapper.ToDisplay(section, collection);
         }
 
-        public PagedResult<FluidityEntityListViewDisplay> GetListViewEntitiesDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string orderBy = null, string orderDirection = null, string dataView = null)
+        public PagedResult<FluidityEntityListViewDisplay> GetListViewEntitiesDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, string orderBy = null, string orderDirection = null, string query = null, string dataView = null)
         {
             var repo = _repoFactory.GetRepository(collection);
             
             // Construct where clause
-            Expression whereClauseExp = null;
+            LambdaExpression whereClauseExp = null;
 
-            // Determine the list view where clause
+            // Determine the data view where clause
             var hasDataViews = collection.ListView != null && collection.ListView.DataViews.Any();
             if (hasDataViews)
             {
@@ -58,26 +57,64 @@ namespace Fluidity.Services
                 }
             }
 
+            // Construct a query where clause (and combind with the data view where clause if one exists)
+            if (!query.IsNullOrWhiteSpace() && collection.ListView != null && collection.ListView.SearchFields.Any())
+            {
+                LambdaExpression queryExpression = null;
+
+                // Create shared expressions
+                var parameter = whereClauseExp != null 
+                    ? whereClauseExp.Parameters.First() 
+                    : Expression.Parameter(collection.EntityType);
+                var queryConstantExpression = Expression.Constant(query, typeof(string));
+
+                // Loop through searchable fields
+                foreach (var searchField in collection.ListView.SearchFields)
+                {
+                    // Create field starts with expression
+                    var property = Expression.Property(parameter, searchField.Property);
+                    var startsWithCall = Expression.Call(property, "StartsWith", null, queryConstantExpression);
+                    var lambda = Expression.Lambda(startsWithCall, parameter);
+
+                    // Combine query
+                    queryExpression = queryExpression == null
+                        ? lambda
+                        : Expression.Lambda(Expression.OrElse(queryExpression.Body, lambda.Body), parameter);
+                }
+
+                // Combine query with any existing where clause
+                if (queryExpression != null)
+                {
+                    whereClauseExp = whereClauseExp == null 
+                        ? queryExpression 
+                        : Expression.Lambda(Expression.AndAlso(whereClauseExp.Body, queryExpression.Body), parameter);
+                }
+            }
+
             // Parse the order by
-            Expression orderByExp = null;
-            if (!orderBy.IsNullOrWhiteSpace() && orderBy != "name")
+            LambdaExpression orderByExp = null;
+            if (!orderBy.IsNullOrWhiteSpace() && !orderBy.InvariantEquals("name"))
             {
                 // Convert string into an Expression<Func<TEntityType, object>>
                 var prop = collection.EntityType.GetProperty(orderBy);
                 if (prop != null)
                 {
                     var parameter = Expression.Parameter(collection.EntityType);
-                    var memberExpression = Expression.Property(parameter, prop);
-                    var castToObject = Expression.Convert(memberExpression, typeof(object));
+                    var property = Expression.Property(parameter, prop);
+                    var castToObject = Expression.Convert(property, typeof(object));
                     orderByExp = Expression.Lambda(castToObject, parameter);
                 }
             }
 
             var orderDir = !orderDirection.IsNullOrWhiteSpace()
-                ? (Direction)Enum.Parse(typeof(Direction), orderDirection)
+                ? orderDirection.InvariantEquals("asc") ? Direction.Ascending : Direction.Descending
                 : collection.SortDirection;
 
-            var result = repo?.GetPaged(pageNumber, pageSize, orderByExp, orderDir, whereClauseExp);
+            // Get page size
+            var pageSize = collection.ListView?.PageSize ?? 20;
+
+            // Perform the query
+            var result = repo?.GetPaged(pageNumber, pageSize, orderByExp, orderDir, whereClauseExp); 
 
             // If we've got no results, return an empty result set
             if (result == null)
@@ -85,7 +122,7 @@ namespace Fluidity.Services
 
             // Map the results to the view display
             var mapper = new FluidityEntityListViewMapper();
-            return new PagedResult<FluidityEntityListViewDisplay>(result.TotalItems, result.PageNumber, result.PageSize)
+            return new PagedResult<FluidityEntityListViewDisplay>(result.TotalItems, pageNumber, pageSize)
             {
                 Items = result.Items.Select(x => mapper.ToDisplay(section, collection, x))
             };

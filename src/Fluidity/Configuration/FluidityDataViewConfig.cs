@@ -12,10 +12,10 @@ namespace Fluidity.Configuration
         protected string _name;
         internal string Name => _name;
 
-        protected Expression _whereClauseExpression;
-        internal Expression WhereClauseExpression => _whereClauseExpression;
+        protected LambdaExpression _whereClauseExpression;
+        internal LambdaExpression WhereClauseExpression => _whereClauseExpression;
 
-        public FluidityDataViewConfig(string name, Expression whereClauseExpression)
+        public FluidityDataViewConfig(string name, LambdaExpression whereClauseExpression)
         {
             _alias = name.ToSafeAlias();
             _name = name;

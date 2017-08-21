@@ -20,6 +20,7 @@ namespace Fluidity.Configuration
 
         public FluidityEditorConfig<TEntityType> SetNameField(Expression<Func<TEntityType, object>> nameProperty)
         {
+            _namePropertyExp = nameProperty;
             _nameProperty = nameProperty.GetPropertyInfo();
             return this;
         }

@@ -8,14 +8,33 @@
 
             getCollectionByAlias: function (section, collectionAlias) {
                 return umbRequestHelper.resourcePromise(
-                    $http.get(Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getcollectionbyalias?section=" + section + "&collectionAlias=" + collectionAlias),
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getcollectionbyalias",
+                        method: "GET",
+                        params: {
+                            section: section,
+                            collectionAlias: collectionAlias
+                        }
+                    }),
                     'Failed to get collection by alias'
                 );
             },
 
             getListViewEntities: function (section, collectionAlias, options) {
                 return umbRequestHelper.resourcePromise(
-                    $http.get(Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getlistviewentities?section=" + section + "&collectionAlias=" + collectionAlias + "&options=" + options),
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getlistviewentities", 
+                        method: "GET",
+                        params: {
+                            section: section,
+                            collectionAlias: collectionAlias,
+                            pageNumber: options.pageNumber,
+                            orderBy: options.orderBy,
+                            orderDirection: options.orderDirection,
+                            query: options.filter,
+                            dataView: options.dataView
+                        }
+                    }),
                     'Failed to get list view entities'
                 );
             },
@@ -34,14 +53,29 @@
 
             getEntityScaffold: function (section, collectionAlias) {
                 return umbRequestHelper.resourcePromise(
-                    $http.get(Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getentityscaffold?section=" + section + "&collectionAlias=" + collectionAlias),
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getentityscaffold",
+                        method: "GET",
+                        params: {
+                            section: section,
+                            collectionAlias: collectionAlias
+                        }
+                    }),
                     'Failed to get entity scaffold'
                 );
             },
 
             getEntityById: function (section, collectionAlias, id) {
                 return umbRequestHelper.resourcePromise(
-                    $http.get(Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getentitybyid?section=" + section + "&collectionAlias=" + collectionAlias + "&id=" + id),
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getentitybyid",
+                        method: "GET",
+                        params: {
+                            section: section,
+                            collectionAlias: collectionAlias,
+                            id: id
+                        }
+                    }),
                     'Failed to get entity by id'
                 );
             },
@@ -52,7 +86,15 @@
 
             deleteEntities: function (section, collectionAlias, ids) {
                 return umbRequestHelper.resourcePromise(
-                    $http.delete(Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "delete?section=" + section + "&collectionAlias=" + collectionAlias + "&ids=" + ids.join(',')),
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "delete",
+                        method: "DELETE",
+                        params: {
+                            section: section,
+                            collectionAlias: collectionAlias,
+                            ids: ids.join(',')
+                        }
+                    }),
                     'Failed to delete entity'
                 );
             },

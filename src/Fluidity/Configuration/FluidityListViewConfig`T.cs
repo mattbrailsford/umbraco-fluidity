@@ -33,6 +33,12 @@ namespace Fluidity.Configuration
             return this;
         }
 
+        public FluidityListViewConfig<TEntityType> SetPageSize(int pageSize)
+        {
+            _pageSize = pageSize;
+            return this;
+        }
+
         public FluidityListViewConfig<TEntityType> SetNameFormat(Func<TEntityType, string> format)
         {
             _nameFormat = (entity) => format((TEntityType)entity);
@@ -49,6 +55,18 @@ namespace Fluidity.Configuration
             var field = fieldConfig;
             _fields.Add(field);
             return field;
+        }
+
+        public FluidityListViewConfig<TEntityType> AddSearchField(Expression<Func<TEntityType, string>> fieldExpression)
+        {
+            return AddSearchField(new FluidityListViewSearchFieldConfig<TEntityType>(fieldExpression));
+        }
+
+        public FluidityListViewConfig<TEntityType> AddSearchField(FluidityListViewSearchFieldConfig<TEntityType> fieldConfig)
+        {
+            var field = fieldConfig;
+            _searchFields.Add(field);
+            return this;
         }
 
         public FluidityListViewConfig<TEntityType> AddLayout<TListViewLayoutType>()

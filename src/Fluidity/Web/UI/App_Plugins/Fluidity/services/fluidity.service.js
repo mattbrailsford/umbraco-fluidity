@@ -2,10 +2,14 @@
 
     'use strict';
 
-    function fluidityService(fluidityResource) {
+    function fluidityService(localStorageService) {
+
+        
 
         return {
             
+            
+
         }
 
     }

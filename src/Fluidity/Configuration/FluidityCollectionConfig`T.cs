@@ -10,7 +10,7 @@ namespace Fluidity.Configuration
     public class FluidityCollectionConfig<TEntityType> : FluidityCollectionConfig
     {
         public FluidityCollectionConfig(Expression<Func<TEntityType, object>> idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null, Action<FluidityCollectionConfig<TEntityType>> config = null)
-            : base (typeof(TEntityType), idProperty.GetPropertyInfo(), nameSingular, namePlural, iconSingular, iconPlural)
+            : base (typeof(TEntityType), idProperty, idProperty.GetPropertyInfo(), nameSingular, namePlural, iconSingular, iconPlural)
         {
             config?.Invoke(this);
         }

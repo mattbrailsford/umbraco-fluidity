@@ -16,6 +16,9 @@ namespace Fluidity.Configuration
         protected List<IFluidityBulkAction> _bulkActions;
         internal IEnumerable<IFluidityBulkAction> BulkActions => _bulkActions;
 
+        protected int _pageSize;
+        internal int PageSize => _pageSize;
+
         protected List<FluidityDataViewConfig> _dataViews;
         internal IEnumerable<FluidityDataViewConfig> DataViews => _dataViews; 
 
@@ -24,6 +27,9 @@ namespace Fluidity.Configuration
 
         protected List<FluidityListViewFieldConfig> _fields;
         internal IEnumerable<FluidityListViewFieldConfig> Fields => _fields;
+
+        protected List<FluidityListViewSearchFieldConfig> _searchFields;
+        internal IEnumerable<FluidityListViewSearchFieldConfig> SearchFields => _searchFields;
 
         protected List<FluidityListViewLayout> _defaultLayouts;
         protected List<FluidityListViewLayout> _layouts;
@@ -36,8 +42,11 @@ namespace Fluidity.Configuration
             _bulkActions = new List<IFluidityBulkAction>();
             _dataViews = new List<FluidityDataViewConfig>();
             _fields = new List<FluidityListViewFieldConfig>();
+            _searchFields = new List<FluidityListViewSearchFieldConfig>();
             _defaultLayouts = new List<FluidityListViewLayout>(new [] { new FluidityTableListViewLayout() } );
             _layouts = new List<FluidityListViewLayout>();
+
+            _pageSize = 20;
         }
     }
 }

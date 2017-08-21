@@ -11,5 +11,8 @@ namespace Fluidity.Web.Models
 
         [DataMember(Name = "layouts", IsRequired = true)]
         public IEnumerable<FluidityListViewLayoutDisplay> Layouts { get; set; }
+
+        [DataMember(Name = "dataViews")]
+        public IEnumerable<FluidityListViewDataViewDisplay> DataViews { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Fluidity.Data
 
         IEnumerable<object> GetAll();
 
-        PagedResult<object> GetPaged(int pageNumber, int pageSize, Expression orderBy, Direction orderDirection, Expression whereClause);
+        PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, Direction orderDirection, LambdaExpression whereClause);
 
         object Save(object entity);
 

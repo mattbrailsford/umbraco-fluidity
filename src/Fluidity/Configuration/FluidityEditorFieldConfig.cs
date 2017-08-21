@@ -10,8 +10,8 @@ namespace Fluidity.Configuration
         protected PropertyInfo _property;
         internal PropertyInfo Property => _property;
 
-        protected Expression _propertyExp;
-        internal Expression PropertyExp => _propertyExp;
+        protected LambdaExpression _propertyExp;
+        internal LambdaExpression PropertyExp => _propertyExp;
 
         protected string _label;
         internal string Label => _label;
@@ -34,7 +34,7 @@ namespace Fluidity.Configuration
         protected FluidityValueMapper _mapper;
         internal FluidityValueMapper Mapper => _mapper;
 
-        protected FluidityEditorFieldConfig(Expression propertyExp, PropertyInfo property)
+        protected FluidityEditorFieldConfig(LambdaExpression propertyExp, PropertyInfo property)
         {
             _propertyExp = propertyExp;
             _property = property;

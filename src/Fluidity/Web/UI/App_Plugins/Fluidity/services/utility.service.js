@@ -27,9 +27,86 @@
 (function () {
     'use strict';
 
-    function fluidityUtilityService() {
+    function fluidityUtilityService(localStorageService) {
+
+        var dataViewLocalStorageKey = "fluidityDataViewes";
+
+        function saveDataViewInLocalStorage(nodeId, selectedDataViewAlias) {
+            var dataViewFound = false;
+            var storedDataViews = [];
+
+            if (localStorageService.get(dataViewLocalStorageKey)) {
+                storedDataViews = localStorageService.get(dataViewLocalStorageKey);
+            }
+
+            if (storedDataViews.length > 0) {
+                for (var i = 0; storedDataViews.length > i; i++) {
+                    var entry = storedDataViews[i];
+                    if (entry.nodeId === nodeId) {
+                        entry.alias = selectedDataViewAlias;
+                        dataViewFound = true;
+                    }
+                }
+            }
+
+            if (!dataViewFound) {
+                var storageObject = {
+                    "nodeId": nodeId,
+                    "alias": selectedDataViewAlias
+                };
+                storedDataViews.push(storageObject);
+            }
+
+            localStorageService.set(dataViewLocalStorageKey, storedDataViews);
+
+        }
 
         var service = {
+
+            rememberDataView: function (nodeId, selectedDataViewAlias, availableDataViews) {
+                
+                var activeDataView = {};
+                var dataViewFound = false;
+
+                for (var i = 0; availableDataViews.length > i; i++) {
+                    var dataView = availableDataViews[i];
+                    if (dataView.alias === selectedDataViewAlias) {
+                        activeDataView = dataView;
+                        dataViewFound = true;
+                    }
+                }
+
+                if (!dataViewFound && availableDataViews.length > 0) {
+                    activeDataView = availableDataViews[0];
+                }
+
+                saveDataViewInLocalStorage(nodeId, activeDataView.alias);
+
+                return activeDataView.alias;
+
+            },
+
+            recallDataView: function (nodeId, availableDataViews) {
+                
+                var storedDataViews = [];
+
+                if (localStorageService.get(dataViewLocalStorageKey)) {
+                    storedDataViews = localStorageService.get(dataViewLocalStorageKey);
+                }
+
+                if (storedDataViews && storedDataViews.length > 0) {
+                    for (var i = 0; storedDataViews.length > i; i++) {
+                        var entry = storedDataViews[i];
+                        if (entry.nodeId === nodeId) {
+                            return service.rememberDataView(nodeId, entry.alias, availableDataViews);
+                        }
+                    }
+
+                }
+
+                return availableDataViews[0].alias;
+
+            },
 
             compareCurrentUmbracoVersion: function compareCurrentUmbracoVersion(v, options) {
                 return this.compareVersions(Umbraco.Sys.ServerVariables.application.version, v, options);
