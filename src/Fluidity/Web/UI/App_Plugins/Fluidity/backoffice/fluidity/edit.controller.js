@@ -115,7 +115,7 @@
                 redirectOnFailure: false
             }).then(function (data) {
                 // success
-                init($scope.content);
+                editorState.set($scope.content);
                 syncTree($scope.content, data.path);
                 $scope.page.saveButtonState = "success";
             }, function (err) {
