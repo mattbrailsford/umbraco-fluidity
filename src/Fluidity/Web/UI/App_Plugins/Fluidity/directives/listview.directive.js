@@ -29,7 +29,7 @@
                     layouts: $scope.opts.layouts,
                     activeLayout: listViewHelper.getLayout($routeParams.id, $scope.opts.layouts)
                 },
-                bulkActionsAllowed: true // TODO: Check for any actions?
+                bulkActionsAllowed: false // TODO: Check for any actions?
             });
 
             var searchListView = _.debounce(function () {
