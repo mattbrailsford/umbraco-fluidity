@@ -7,7 +7,7 @@ namespace Fluidity.Configuration
     public class FluidityListViewFieldConfig<TEntityType, TValueType> : FluidityListViewFieldConfig
     {
         public FluidityListViewFieldConfig(Expression<Func<TEntityType, TValueType>> property, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> config = null)
-            : base (property.GetPropertyInfo())
+            : base (property, property.GetPropertyInfo())
         {
             config?.Invoke(this);
         }

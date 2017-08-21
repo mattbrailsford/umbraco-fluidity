@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Fluidity.Configuration;
 using Fluidity.Data;
 using Fluidity.Extensions;
@@ -8,6 +9,7 @@ using Fluidity.Web.Models;
 using Fluidity.Web.Models.Mappers;
 using Umbraco.Core;
 using Umbraco.Core.Models;
+using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Core.Services;
 
 namespace Fluidity.Services
@@ -30,10 +32,52 @@ namespace Fluidity.Services
             return collectionMapper.ToDisplay(section, collection);
         }
 
-        public PagedResult<FluidityEntityListViewDisplay> GetListViewEntitiesDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string orderBy = null, string orderDirection = null, string filter = null)
+        public PagedResult<FluidityEntityListViewDisplay> GetListViewEntitiesDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string orderBy = null, string orderDirection = null, string dataView = null)
         {
             var repo = _repoFactory.GetRepository(collection);
-            var result = repo?.GetPaged(pageNumber, pageSize, orderBy, orderDirection, filter);
+            
+            // Construct where clause
+            Expression whereClauseExp = null;
+
+            // Determine the list view where clause
+            var hasDataViews = collection.ListView != null && collection.ListView.DataViews.Any();
+            if (hasDataViews)
+            {
+                if (!dataView.IsNullOrWhiteSpace())
+                {
+                    var dv = collection.ListView.DataViews.FirstOrDefault(x => x.Alias == dataView);
+                    if (dv != null)
+                    {
+                        whereClauseExp = dv.WhereClauseExpression;
+                    }
+                }
+
+                if (whereClauseExp == null)
+                {
+                    whereClauseExp = collection.ListView.DataViews.First().WhereClauseExpression;
+                }
+            }
+
+            // Parse the order by
+            Expression orderByExp = null;
+            if (!orderBy.IsNullOrWhiteSpace() && orderBy != "name")
+            {
+                // Convert string into an Expression<Func<TEntityType, object>>
+                var prop = collection.EntityType.GetProperty(orderBy);
+                if (prop != null)
+                {
+                    var parameter = Expression.Parameter(collection.EntityType);
+                    var memberExpression = Expression.Property(parameter, prop);
+                    var castToObject = Expression.Convert(memberExpression, typeof(object));
+                    orderByExp = Expression.Lambda(castToObject, parameter);
+                }
+            }
+
+            var orderDir = !orderDirection.IsNullOrWhiteSpace()
+                ? (Direction)Enum.Parse(typeof(Direction), orderDirection)
+                : collection.SortDirection;
+
+            var result = repo?.GetPaged(pageNumber, pageSize, orderByExp, orderDir, whereClauseExp);
 
             // If we've got no results, return an empty result set
             if (result == null)
@@ -87,14 +131,14 @@ namespace Fluidity.Services
             var repo = _repoFactory.GetRepository(collection);
             var isNew = entity.GetPropertyValue(collection.IdProperty) == collection.IdProperty.PropertyType.GetDefaultValue();
 
-            if (isNew && collection.DateCreated != null)
+            if (isNew && collection.DateCreatedProperty != null)
             {
-                entity.SetPropertyValue(collection.DateCreated, DateTime.Now);
+                entity.SetPropertyValue(collection.DateCreatedProperty, DateTime.Now);
             }
 
-            if (collection.DateModified != null)
+            if (collection.DateModifiedProperty != null)
             {
-                entity.SetPropertyValue(collection.DateModified, DateTime.Now);
+                entity.SetPropertyValue(collection.DateModifiedProperty, DateTime.Now);
             }
 
             repo?.Save(entity);

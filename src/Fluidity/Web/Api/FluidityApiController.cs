@@ -8,7 +8,6 @@ using Fluidity.Web.Models.Mappers;
 using Fluidity.Web.WebApi.Binders;
 using Fluidity.Web.WebApi.Filters;
 using Fluidity.Web.WebApi.Validation;
-using Umbraco.Core.Deploy;
 using Umbraco.Web.Editors;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
@@ -44,7 +43,7 @@ namespace Fluidity.Web.Api
         }
 
         [HttpGet]
-        public object GetListViewEntities(string section, string collectionAlias, int pageNumber = 1, int pageSize = 100, string orderBy = "", string orderDirection = "", string filter = "")
+        public object GetListViewEntities(string section, string collectionAlias, int pageNumber = 1, int pageSize = 100, string orderBy = "Age", string orderDirection = "", string filter = "")
         {
             var sectionConfig = Context.Config.Sections[section];
             var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;

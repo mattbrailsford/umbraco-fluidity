@@ -16,6 +16,9 @@ namespace Fluidity.Configuration
         protected List<IFluidityBulkAction> _bulkActions;
         internal IEnumerable<IFluidityBulkAction> BulkActions => _bulkActions;
 
+        protected List<FluidityDataViewConfig> _dataViews;
+        internal IEnumerable<FluidityDataViewConfig> DataViews => _dataViews; 
+
         protected Func<object, string> _nameFormat;
         internal Func<object, string> NameFormat => _nameFormat;
 
@@ -31,6 +34,7 @@ namespace Fluidity.Configuration
             _menuActions = new List<IFluidityMenuAction>();
             _filters = new List<IFluidityFilter>();
             _bulkActions = new List<IFluidityBulkAction>();
+            _dataViews = new List<FluidityDataViewConfig>();
             _fields = new List<FluidityListViewFieldConfig>();
             _defaultLayouts = new List<FluidityListViewLayout>(new [] { new FluidityTableListViewLayout() } );
             _layouts = new List<FluidityListViewLayout>();

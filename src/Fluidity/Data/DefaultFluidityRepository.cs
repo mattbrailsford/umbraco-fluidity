@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq.Expressions;
 using Fluidity.Configuration;
 using Fluidity.Extensions;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Persistence;
+using Umbraco.Core.Persistence.DatabaseModelDefinitions;
+using Umbraco.Core.Persistence.SqlSyntax;
 
 namespace Fluidity.Data
 {
@@ -11,6 +14,7 @@ namespace Fluidity.Data
     {
         protected FluidityCollectionConfig _collection;
 
+        protected ISqlSyntaxProvider SyntaxProvider => ApplicationContext.Current.DatabaseContext.SqlSyntax;
         protected Database Db => ApplicationContext.Current.DatabaseContext.Database;
 
         public DefaultFluidityRepository(FluidityCollectionConfig collection)
@@ -32,30 +36,56 @@ namespace Fluidity.Data
                 query.Append($"WHERE {_collection.DeletedProperty.GetColumnName()} = 0");
             }
 
-            if (_collection.SortProperty != null)
+            if (_collection.SortPropertyExp != null)
             {
-                query.OrderBy($"{_collection.SortProperty.GetColumnName()} {_collection.SortOrder}");
+                if (_collection.SortDirection == Direction.Ascending)
+                {
+                    SqlExtensions.OrderBy(query, _collection.EntityType, _collection.SortPropertyExp, SyntaxProvider);
+                }
+                else
+                {
+                    SqlExtensions.OrderByDescending(query, _collection.EntityType, _collection.SortPropertyExp, SyntaxProvider);
+
+                }
             }
+
+            //query.OrderBy<t>()
 
             return Db.Fetch(_collection.EntityType, query);
         }
 
-        public PagedResult<object> GetPaged(int pageNumber, int pageSize, string orderBy, string orderDirection, string filter)
+        public PagedResult<object> GetPaged(int pageNumber, int pageSize, Expression orderBy, Direction orderDirection, Expression whereClause)
         {
             var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
 
-            if (_collection.DeletedProperty != null)
+            // Where
+            if (whereClause != null)
             {
-                query.Append($"WHERE {_collection.DeletedProperty.GetColumnName()} = 0");
+                query.Where(_collection.EntityType, whereClause, SyntaxProvider);
+            }
+            else
+            {
+                query.Where(" 1 = 1");
             }
 
-            if (!orderBy.IsNullOrWhiteSpace())
+            if (_collection.DeletedProperty != null)
             {
-                query.OrderBy($"{orderBy} {orderDirection ?? "ASC"}");
+                query.Append($" AND {_collection.DeletedProperty.GetColumnName()} = 0");
             }
-            else if (_collection.SortProperty != null)
+
+            // Order by
+            var orderByExp = orderBy ?? _collection.SortPropertyExp;
+            if (orderByExp != null)
             {
-                query.OrderBy($"{_collection.SortProperty.GetColumnName()} {_collection.SortOrder}");
+                if (orderDirection == Direction.Ascending)
+                {
+                    SqlExtensions.OrderBy(query, _collection.EntityType, orderByExp, SyntaxProvider);
+                }
+                else
+                {
+                    SqlExtensions.OrderByDescending(query, _collection.EntityType, orderByExp, SyntaxProvider);
+
+                }
             }
 
             var result = Db.Page(_collection.EntityType, pageNumber, pageSize, query);

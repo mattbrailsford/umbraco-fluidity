@@ -37,8 +37,8 @@ namespace Fluidity.Web.Models.Mappers
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
                 Collection = collection.Alias,
-                CreateDate = entity != null && collection.DateCreated != null ? (DateTime)entity.GetPropertyValue(collection.DateCreated) : DateTime.MinValue,
-                UpdateDate = entity != null && collection.DateModified != null ? (DateTime)entity.GetPropertyValue(collection.DateCreated) : DateTime.MinValue,
+                CreateDate = entity != null && collection.DateCreatedProperty != null ? (DateTime)entity.GetPropertyValue(collection.DateCreatedProperty) : DateTime.MinValue,
+                UpdateDate = entity != null && collection.DateModifiedProperty != null ? (DateTime)entity.GetPropertyValue(collection.DateModifiedProperty) : DateTime.MinValue,
                 EditPath = $"{section.Alias}/fluidity/edit/{entityCompositeId}",
             };
 

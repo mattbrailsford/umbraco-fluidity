@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Reflection;
 using Umbraco.Core;
+using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 
 namespace Fluidity.Configuration
 {
@@ -40,20 +42,32 @@ namespace Fluidity.Configuration
         protected FluidityViewMode _viewMode;
         internal FluidityViewMode ViewMode => _viewMode;
 
-        protected FluiditySortOrder _sortOrder;
-        internal FluiditySortOrder SortOrder => _sortOrder;
+        protected Direction _sortDirection;
+        internal Direction SortDirection => _sortDirection;
 
         protected PropertyInfo _sortProperty;
         internal PropertyInfo SortProperty => _sortProperty;
 
+        protected Expression _sortPropertyExp;
+        internal Expression SortPropertyExp => _sortPropertyExp;
+
         protected PropertyInfo _dateCreatedProperty;
-        internal PropertyInfo DateCreated => _dateCreatedProperty;
+        internal PropertyInfo DateCreatedProperty => _dateCreatedProperty;
+
+        protected Expression _dateCreatedPropertyExp;
+        internal Expression DateCreatedPropertyExp => _dateCreatedPropertyExp;
 
         protected PropertyInfo _dateModifiedProperty;
-        internal PropertyInfo DateModified => _dateModifiedProperty;
+        internal PropertyInfo DateModifiedProperty => _dateModifiedProperty;
+
+        protected Expression _dateModifiedPropertyExp;
+        internal Expression DateModifiedPropertyExp => _dateModifiedPropertyExp;
 
         protected PropertyInfo _deletedProperty;
         internal PropertyInfo DeletedProperty => _deletedProperty;
+
+        protected Expression _deletedPropertyExp;
+        internal Expression DeletedPropertyExp => _deletedPropertyExp;
 
         protected FluidityListViewConfig _listView;
         internal FluidityListViewConfig ListView => _listView;

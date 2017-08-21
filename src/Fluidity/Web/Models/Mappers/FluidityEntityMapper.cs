@@ -50,8 +50,8 @@ namespace Fluidity.Web.Models.Mappers
                 IsChildOfListView = collection.ViewMode != FluidityViewMode.Tree,
                 IsChildOfTreeView = collection.ViewMode != FluidityViewMode.List,
                 TreeNodeUrl = "/umbraco/backoffice/fluidity/FluidityTree/GetTreeNode/" + entityCompositeId + "?application=" + section.Alias,
-                CreateDate = entity != null && collection.DateCreated != null ? (DateTime)entity.GetPropertyValue(collection.DateCreated) : DateTime.MinValue,
-                UpdateDate = entity != null && collection.DateModified != null ? (DateTime)entity.GetPropertyValue(collection.DateCreated) : DateTime.MinValue,
+                CreateDate = entity != null && collection.DateCreatedProperty != null ? (DateTime)entity.GetPropertyValue(collection.DateCreatedProperty) : DateTime.MinValue,
+                UpdateDate = entity != null && collection.DateModifiedProperty != null ? (DateTime)entity.GetPropertyValue(collection.DateCreatedProperty) : DateTime.MinValue,
                 Path = collection.Path + (entity != null ? FluidityConstants.PATH_SEPERATOR + collection.Alias + "!" + entity.GetPropertyValue(collection.IdProperty) : string.Empty)
             };
 

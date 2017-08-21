@@ -9,7 +9,7 @@ namespace Fluidity.Configuration
     public class FluidityEditorFieldConfig<TEntityType, TValueType> : FluidityEditorFieldConfig
     {
         public FluidityEditorFieldConfig(Expression<Func<TEntityType, TValueType>> property, Action<FluidityEditorFieldConfig<TEntityType, TValueType>> config = null)
-            : base(property.GetPropertyInfo())
+            : base(property, property.GetPropertyInfo())
         {
             config?.Invoke(this);
         }

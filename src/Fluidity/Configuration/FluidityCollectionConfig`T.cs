@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using Fluidity.Data;
 using Fluidity.Extensions;
 using Umbraco.Core;
+using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 
 namespace Fluidity.Configuration
 {
@@ -39,19 +40,22 @@ namespace Fluidity.Configuration
 
         public FluidityCollectionConfig<TEntityType> SetDeletedProperty(Expression<Func<TEntityType, bool>> deletedProperty)
         {
+            _deletedPropertyExp = deletedProperty;
             _deletedProperty = deletedProperty.GetPropertyInfo();
             return this;
         }
 
         public FluidityCollectionConfig<TEntityType> SetSortProperty(Expression<Func<TEntityType, object>> sortProperty)
         {
-            return SetSortProperty(sortProperty, FluiditySortOrder.Asc);
+            return SetSortProperty(sortProperty, Direction.Ascending);
         }
 
-        public FluidityCollectionConfig<TEntityType> SetSortProperty(Expression<Func<TEntityType, object>> sortProperty, FluiditySortOrder sortOrder)
+        public FluidityCollectionConfig<TEntityType> SetSortProperty(Expression<Func<TEntityType, object>> sortProperty, Direction sortDirection)
         {
+            
+            _sortPropertyExp = sortProperty;
             _sortProperty = sortProperty.GetPropertyInfo();
-            _sortOrder = sortOrder;
+            _sortDirection = sortDirection;
             return this;
         }
 
@@ -81,12 +85,14 @@ namespace Fluidity.Configuration
 
         public FluidityCollectionConfig<TEntityType> SetDateCreatedProperty(Expression<Func<TEntityType, object>> dateCreatedProperty)
         {
+            _dateCreatedPropertyExp = dateCreatedProperty;
             _dateCreatedProperty = dateCreatedProperty.GetPropertyInfo();
             return this;
         }
 
         public FluidityCollectionConfig<TEntityType> SetDateModifiedProperty(Expression<Func<TEntityType, object>> dateModifiedProperty)
         {
+            _dateModifiedPropertyExp = dateModifiedProperty;
             _dateModifiedProperty = dateModifiedProperty.GetPropertyInfo();
             return this;
         }

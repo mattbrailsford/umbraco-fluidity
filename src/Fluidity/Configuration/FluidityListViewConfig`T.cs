@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using Fluidity.DataViews;
 using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
@@ -57,6 +58,10 @@ namespace Fluidity.Configuration
             return this;
         }
 
-
+        public FluidityListViewConfig<TEntityType> AddDataView(string name, Expression<Func<TEntityType, bool>> whereClause)
+        {
+            _dataViews.Add(new FluidityDataViewConfig(name, whereClause));
+            return this;
+        }
     }
 }

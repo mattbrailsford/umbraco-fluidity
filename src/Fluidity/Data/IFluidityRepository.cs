@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Umbraco.Core.Models;
+using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 
 namespace Fluidity.Data
 {
@@ -9,7 +11,7 @@ namespace Fluidity.Data
 
         IEnumerable<object> GetAll();
 
-        PagedResult<object> GetPaged(int pageNumber, int pageSize, string orderBy, string orderDirection, string filter);
+        PagedResult<object> GetPaged(int pageNumber, int pageSize, Expression orderBy, Direction orderDirection, Expression whereClause);
 
         object Save(object entity);
 

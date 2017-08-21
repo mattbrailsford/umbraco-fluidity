@@ -2,28 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Fluidity.Events;
-using Fluidity.Models;
+using System.Linq.Expressions;
 using Umbraco.Core.Models;
+using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 
 namespace Fluidity.Data
 {
     public abstract class FluidityRepository<TEntity, TId> : IFluidityRepository
     {
-        //public static event EventHandler<SingleEntityEventArgs<BeforeAndAfter<TEntity>>> UpdatingEntity;
-        //public static event EventHandler<SingleEntityEventArgs<BeforeAndAfter<TEntity>>> UpdatedEntity;
-
-        //public static event EventHandler<SingleEntityEventArgs<BeforeAndAfter<TEntity>>> CreatingEntity;
-        //public static event EventHandler<SingleEntityEventArgs<BeforeAndAfter<TEntity>>> CreatedEntity;
-
-        //public static event EventHandler<MultiEntityEventArgs<BeforeAndAfter<TEntity>>> DeletingEntities;
-        //public static event EventHandler<MultiEntityEventArgs<BeforeAndAfter<TEntity>>> DeletedEntities;
-
         public abstract TEntity Get(TId id);
 
         public abstract IEnumerable<TEntity> GetAll();
 
-        public abstract PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, string orderBy = null, string orderDirection = null, string filter = null);
+        public abstract PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, object>> orderBy = null, Direction orderDirection = Direction.Ascending, Expression<Func<TEntity, bool>> whereClause = null);
 
         public abstract TEntity Save(TEntity entity);
 
@@ -41,9 +32,9 @@ namespace Fluidity.Data
             return GetAll().Select(x => (object)x);
         }
 
-        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, string orderBy, string orderDirection, string filter)
+        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, Expression orderBy, Direction orderDirection, Expression whereClause)
         {
-            var result = GetPaged(pageNumber, pageSize, orderBy, orderDirection, filter);
+            var result = GetPaged(pageNumber, pageSize, (Expression<Func<TEntity, object>>)orderBy, orderDirection, (Expression<Func<TEntity, bool>>)whereClause);
 
             return new PagedResult<object>(result.TotalItems, result.PageNumber, result.PageSize)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Umbraco.Core.Persistence;
@@ -72,10 +73,25 @@ namespace Fluidity.Extensions
                     ParamTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
                     GenericArgTypes = m.GetGenericArguments()
                 })
-                .Where(x => x.ParamTypes.Length == paramTypes.Length && x.ParamTypes.SequenceEqual(paramTypes)
+                .Where(x => x.ParamTypes.Length == paramTypes.Length && x.ParamTypes.SequenceEqual(paramTypes, new SimpleTypeComparer())
                     && x.GenericArgTypes.Length == genericArgTypes.Length)
                 .Select(x => x.Method)
                 .FirstOrDefault();
+        }
+
+        private class SimpleTypeComparer : IEqualityComparer<Type>
+        {
+            public bool Equals(Type x, Type y)
+            {
+                return x.Assembly == y.Assembly &&
+                    x.Namespace == y.Namespace &&
+                    x.Name == y.Name;
+            }
+
+            public int GetHashCode(Type obj)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
