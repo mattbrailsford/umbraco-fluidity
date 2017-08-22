@@ -2,7 +2,7 @@
 
     'use strict';
 
-    function collectionListViewController($scope, $routeParams, $http, $q, editorState, navigationService, umbRequestHelper, contentEditingHelper, localizationService, fluidityResource) {
+    function listViewController($scope, $routeParams, $http, $q, editorState, navigationService, umbRequestHelper, contentEditingHelper, localizationService, fluidityResource) {
 
         // Parse the id route param
         var collectionAlias = $routeParams.id;
@@ -53,6 +53,6 @@
 
     }
 
-    angular.module("umbraco").controller("Fluidity.Controllers.CollectionListViewController", collectionListViewController);
+    angular.module("umbraco").controller("Fluidity.Controllers.ListViewController", listViewController);
 
 })();

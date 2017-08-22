@@ -124,7 +124,7 @@ namespace Fluidity.Web.Trees
                             collectionTreeItem.ViewMode == FluidityViewMode.Tree,
                             collectionTreeItem.ViewMode == FluidityViewMode.Tree 
                                 ? SectionAlias // Tree mode so just show the default dashboard
-                                : SectionAlias + "/fluidity/collection/" + collectionTreeItem.Alias);
+                                : SectionAlias + "/fluidity/list/" + collectionTreeItem.Alias);
 
                         node.Path = collectionTreeItem.Path;
 

@@ -69,8 +69,8 @@
                 $scope.content = data;
                 if (data.isChildOfListView) {
                     $scope.page.listViewPath = ($routeParams.page)
-                        ? "/" + $scope.currentSection + "/fluidity/collection/" + $scope.content.collection + "?page=" + $routeParams.page
-                        : "/" + $scope.currentSection + "/fluidity/collection/" + $scope.content.collection;
+                        ? "/" + $scope.currentSection + "/fluidity/list/" + $scope.content.collection + "?page=" + $routeParams.page
+                        : "/" + $scope.currentSection + "/fluidity/list/" + $scope.content.collection;
                 }
                 editorState.set($scope.content);
                 syncTree($scope.content, $scope.content.path, true);

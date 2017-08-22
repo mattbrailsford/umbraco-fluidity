@@ -362,10 +362,10 @@
   <ItemGroup>
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\edit.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\delete.controller.js" />
-    <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\collection.controller.js" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\list.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\delete.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\edit.html" />
-    <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\collection.html" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\list.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\css\fluidity.css" />
     <Content Include="Web\UI\App_Plugins\Fluidity\directives\listview.directive.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\directives\listview.html" />
