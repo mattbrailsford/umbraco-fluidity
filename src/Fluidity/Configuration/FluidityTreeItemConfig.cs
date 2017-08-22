@@ -7,6 +7,9 @@ namespace Fluidity.Configuration
         protected string _alias;
         internal string Alias => _alias;
 
+        protected string _color;
+        internal string Color => _color;
+
         protected string _parentAlias;
         internal string ParentAlias => _parentAlias;
 

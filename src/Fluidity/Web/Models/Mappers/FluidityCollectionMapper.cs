@@ -17,6 +17,7 @@ namespace Fluidity.Web.Models.Mappers
                 NamePlural = collection.NamePlural,
                 IconSingular = collection.IconSingular,
                 IconPlural = collection.IconPlural,
+                Description = collection.Description,
                 Path = collection.Path,
                 ListView = new FluidityListViewDisplay
                 {

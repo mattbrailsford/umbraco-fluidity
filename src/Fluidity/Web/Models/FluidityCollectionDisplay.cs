@@ -26,6 +26,9 @@ namespace Fluidity.Web.Models
         [DataMember(Name = "iconPlural")]
         public string IconPlural { get; set; }
 
+        [DataMember(Name = "description")]
+        public string Description { get; set; }
+
         [DataMember(Name = "path")]
         public string Path { get; set; }
 

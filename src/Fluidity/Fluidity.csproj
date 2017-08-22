@@ -324,6 +324,7 @@
     <Compile Include="Fluidity.cs" />
     <Compile Include="Models\BeforeAndAfter`T.cs" />
     <Compile Include="Web\Extensions\ModelStateExtensions.cs" />
+    <Compile Include="Web\Extensions\TreeNodeExtensions.cs" />
     <Compile Include="Web\Models\FluidityBulkActionDisplay.cs" />
     <Compile Include="Web\Models\FluidityCollectionDisplay.cs" />
     <Compile Include="Web\Models\FluidityEntityBasic.cs" />

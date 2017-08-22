@@ -22,6 +22,18 @@ namespace Fluidity.Configuration
             return this;
         }
 
+        public FluidityCollectionConfig<TEntityType> SetColor(string color)
+        {
+            _color = color;
+            return this;
+        }
+
+        public FluidityCollectionConfig<TEntityType> SetDescription(string description)
+        {
+            _description = description;
+            return this;
+        }
+
         public FluidityCollectionConfig<TEntityType> SetConnectionString(string connectionStringName)
         {
             _connectionStringg = connectionStringName;

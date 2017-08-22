@@ -7,7 +7,9 @@ using System.Web;
 using System.Web.Http;
 using Fluidity.Configuration;
 using Fluidity.Extensions;
+using Fluidity.Web.Extensions;
 using umbraco.BusinessLogic.Actions;
+using Umbraco.Core;
 using Umbraco.Core.IO;
 using Umbraco.Core.Services;
 using Umbraco.Web.Models.Trees;
@@ -99,6 +101,11 @@ namespace Fluidity.Web.Trees
                             true,
                             SectionAlias); // Tree mode so just show the default dashboard
 
+                        if (!currentFolderConfig.Color.IsNullOrWhiteSpace())
+                        {
+                            node.SetColorStyle(currentFolderConfig.Color);
+                        }
+
                         node.Path = folderTreeItem.Path;
 
                         nodes.Add(node);
@@ -124,6 +131,11 @@ namespace Fluidity.Web.Trees
                         if (collectionTreeItem.ViewMode == FluidityViewMode.List)
                         {
                             node.SetContainerStyle();
+                        }
+
+                        if (!collectionTreeItem.Color.IsNullOrWhiteSpace())
+                        {
+                            node.SetColorStyle(collectionTreeItem.Color);
                         }
 
                         nodes.Add(node);
@@ -244,6 +256,11 @@ namespace Fluidity.Web.Trees
                 collection.IconSingular,
                 false,
                 SectionAlias + "/fluidity/edit/" + compositeId);
+
+            if (!collection.Color.IsNullOrWhiteSpace())
+            {
+                node.SetColorStyle(collection.Color);
+            }
 
             node.Path = collection.Path + FluidityConstants.PATH_SEPERATOR + compositeId;
             node.AdditionalData.AddOrUpdate("entityId", itemId);

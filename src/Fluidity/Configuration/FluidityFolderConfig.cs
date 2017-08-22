@@ -15,5 +15,11 @@ namespace Fluidity.Configuration
             _alias = alias;
             return this;
         }
+
+        public FluidityFolderConfig SetColor(string color)
+        {
+            _color = color;
+            return this;
+        }
     }
 }

@@ -28,6 +28,9 @@ namespace Fluidity.Configuration
         protected string _iconPlural;
         internal string IconPlural => _iconPlural;
 
+        protected string _description;
+        internal string Description => _description;
+
         protected string _connectionStringg;
         internal string ConnectionString => _connectionStringg;
 
