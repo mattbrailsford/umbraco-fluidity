@@ -15,11 +15,11 @@
 
         $scope.listView = {
             options: {
+                isSearchable: true,
                 bulkActions: [],
                 dataViews: [],
                 layouts: [],
-                properties: [],
-                pageSize: 10,
+                properties: []
             },
             getItems: function(id, options) {
                 return fluidityResource.getListViewEntities($scope.collection.section, $scope.collection.alias, options);
@@ -32,6 +32,7 @@
             $scope.listView.options.dataViews   = collection.listView.dataViews;
             $scope.listView.options.layouts     = collection.listView.layouts;
             $scope.listView.options.properties  = collection.listView.properties;
+            $scope.listView.options.isSearchable = collection.listView.isSearchable;
         }
 
         function syncTree(entity, path, initialLoad) {

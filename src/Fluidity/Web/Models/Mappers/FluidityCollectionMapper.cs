@@ -21,6 +21,7 @@ namespace Fluidity.Web.Models.Mappers
                 Path = collection.Path,
                 ListView = new FluidityListViewDisplay
                 {
+                    IsSearchable = collection.ListView.SearchFields.Any(),
                     Properties = collection.ListView.Fields.Select(x => new FluidityListViewPropertyDisplay // We don't include Name, as it's always automatically included
                     {
                         Alias = x.Property.Name,

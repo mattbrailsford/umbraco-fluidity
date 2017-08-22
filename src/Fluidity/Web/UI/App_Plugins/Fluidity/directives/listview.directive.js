@@ -25,6 +25,7 @@
                 dataViews: $scope.opts.dataViews,
                 bulkActions: $scope.opts.bulkActions,
                 bulkActionsAllowed: $scope.opts.bulkActions && $scope.opts.bulkActions.length > 0,
+                isSearchable: $scope.opts.isSearchable,
                 orderBySystemField: true,
                 includeProperties: $scope.opts.properties,
                 layout: {

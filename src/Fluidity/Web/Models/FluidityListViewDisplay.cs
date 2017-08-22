@@ -17,5 +17,8 @@ namespace Fluidity.Web.Models
 
         [DataMember(Name = "dataViews")]
         public IEnumerable<FluidityListViewDataViewDisplay> DataViews { get; set; }
+
+        [DataMember(Name = "isSearchable")]
+        public bool IsSearchable { get; set; }
     }
 }

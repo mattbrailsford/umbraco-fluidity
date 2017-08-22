@@ -274,6 +274,8 @@
     <Compile Include="Configuration\FluidityListViewSearchFieldConfig.cs" />
     <Compile Include="Configuration\FluidityListViewSearchFieldConfig`T.cs" />
     <Compile Include="DataViews\FluidityDataView.cs" />
+    <Compile Include="Events\DeleteEntityEventArgs.cs" />
+    <Compile Include="Events\SaveEntityEventArgs.cs" />
     <Compile Include="Extensions\SqlExtensions.cs" />
     <Compile Include="ListViewLayouts\FluidityListViewLayout.cs" />
     <Compile Include="Extensions\FluidityEditorFieldConfigExtensions.cs" />
@@ -302,10 +304,9 @@
     <Compile Include="Configuration\FluidityTabConfig.cs" />
     <Compile Include="Mappers\FluidityValueMapper.cs" />
     <Compile Include="Data\DefaultFluidityRepository.cs" />
-    <Compile Include="Data\FluidityRepository.cs" />
+    <Compile Include="Data\FluidityRepository`T.cs" />
     <Compile Include="Data\FluidityRepositoryFactory.cs" />
-    <Compile Include="Events\MultiEntityEventArgs`T.cs" />
-    <Compile Include="Events\SingleEntityEventArgs`T.cs" />
+    <Compile Include="Events\EntityEventArgs`T.cs" />
     <Compile Include="Extensions\DatabaseExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
