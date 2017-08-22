@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Fluidity.Actions;
 using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
@@ -10,8 +11,9 @@ namespace Fluidity.Configuration
         protected int _pageSize;
         internal int PageSize => _pageSize;
 
-        protected List<IFluidityBulkAction> _bulkActions;
-        internal IEnumerable<IFluidityBulkAction> BulkActions => _bulkActions;
+        protected List<FluidityBulkAction> _defaultBulkActions;
+        protected List<FluidityBulkAction> _bulkActions;
+        internal IEnumerable<FluidityBulkAction> BulkActions => _bulkActions.Concat(_defaultBulkActions);
 
         protected List<FluidityDataViewConfig> _dataViews;
         internal IEnumerable<FluidityDataViewConfig> DataViews => _dataViews; 
@@ -32,7 +34,8 @@ namespace Fluidity.Configuration
         protected FluidityListViewConfig()
         {
             _pageSize = 20;
-            _bulkActions = new List<IFluidityBulkAction>();
+            _defaultBulkActions = new List<FluidityBulkAction>(new [] { new FluidityDeleteBulkAction() });
+            _bulkActions = new List<FluidityBulkAction>();
             _dataViews = new List<FluidityDataViewConfig>();
             _fields = new List<FluidityListViewFieldConfig>();
             _searchFields = new List<FluidityListViewSearchFieldConfig>();

@@ -15,6 +15,7 @@
 
         $scope.listView = {
             options: {
+                bulkActions: [],
                 dataViews: [],
                 layouts: [],
                 properties: [],
@@ -27,9 +28,10 @@
 
         function init(collection) {
             $scope.page.name = collection.namePlural;
-            $scope.listView.options.dataViews = collection.listView.dataViews;
-            $scope.listView.options.layouts = collection.listView.layouts;
-            $scope.listView.options.properties = collection.listView.properties;
+            $scope.listView.options.bulkActions = collection.listView.bulkActions;
+            $scope.listView.options.dataViews   = collection.listView.dataViews;
+            $scope.listView.options.layouts     = collection.listView.layouts;
+            $scope.listView.options.properties  = collection.listView.properties;
         }
 
         function syncTree(entity, path, initialLoad) {

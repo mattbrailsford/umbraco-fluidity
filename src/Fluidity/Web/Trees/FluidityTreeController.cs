@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Http;
 using Fluidity.Configuration;
 using Fluidity.Extensions;
-using umbraco;
 using umbraco.BusinessLogic.Actions;
 using Umbraco.Core.IO;
 using Umbraco.Core.Services;

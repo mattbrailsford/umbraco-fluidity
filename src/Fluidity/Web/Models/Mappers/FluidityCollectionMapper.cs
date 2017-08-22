@@ -39,6 +39,13 @@ namespace Fluidity.Web.Models.Mappers
                     {
                         Alias = x.Alias,
                         Name = x.Name
+                    }),
+                    BulkActions = collection.ListView.BulkActions.Select(x => new FluidityBulkActionDisplay
+                    {
+                        Icon = x.Icon,
+                        Alias = x.Alias,
+                        Name = x.Name,
+                        AngularServiceName = x.AngularServiceName
                     })
                 }
             };

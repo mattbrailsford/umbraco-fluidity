@@ -2,7 +2,7 @@
 
     'use strict';
 
-    function fluidityListView($routeParams, listViewHelper, fluidityUtilityService) {
+    function fluidityListView($routeParams, $injector, $timeout, listViewHelper, notificationsService, localizationService, fluidityUtilityService) {
 
         function link($scope, el, attr, ctrl) {
 
@@ -23,13 +23,14 @@
                 filter: '', // Variable has to be named "filter" to work with list view properly
                 dataView: fluidityUtilityService.recallDataView($routeParams.id, $scope.opts.dataViews), // TODO: Remember the dataview like how the layout persists
                 dataViews: $scope.opts.dataViews,
+                bulkActions: $scope.opts.bulkActions,
+                bulkActionsAllowed: $scope.opts.bulkActions && $scope.opts.bulkActions.length > 0,
                 orderBySystemField: true,
                 includeProperties: $scope.opts.properties,
                 layout: {
                     layouts: $scope.opts.layouts,
                     activeLayout: listViewHelper.getLayout($routeParams.id, $scope.opts.layouts)
-                },
-                bulkActionsAllowed: false // TODO: Check for any actions?
+                }
             });
 
             var searchListView = _.debounce(function () {
@@ -41,8 +42,55 @@
             function makeSearch() {
                 if ($scope.options.filter !== null && $scope.options.filter !== undefined) {
                     $scope.options.pageNumber = 1;
-                    $scope.reloadView($scope.contentId);
+                    $scope.reloadView($scope.entityId);
                 }
+            }
+
+            function showNotificationsAndReset(err, reload, successMsg) {
+
+                //check if response is ysod
+                if (err.status && err.status >= 500) {
+
+                    // Open ysod overlay
+                    $scope.ysodOverlay = {
+                        view: "ysod",
+                        error: err,
+                        show: true
+                    };
+                }
+
+                $timeout(function () {
+                    $scope.bulkStatus = "";
+                    $scope.actionInProgress = false;
+                },
+                    500);
+
+                if (reload === true) {
+                    $scope.reloadView($scope.entityId);
+                }
+
+                if (err.data && angular.isArray(err.data.notifications)) {
+                    for (var i = 0; i < err.data.notifications.length; i++) {
+                        notificationsService.showNotification(err.data.notifications[i]);
+                    }
+                } else if (successMsg) {
+                    localizationService.localize("bulk_done")
+                        .then(function (v) {
+                            notificationsService.success(v, successMsg);
+                        });
+                }
+            }
+
+            function serial(selected, fn, getProgressMsg, index) {
+                return fn(selected, index).then(function (content) {
+                    index++;
+                    $scope.bulkStatus = getProgressMsg(index, selected.length);
+                    return index < selected.length ? serial(selected, fn, getProgressMsg, index) : content;
+                }, function (err) {
+                    var reload = index > 0;
+                    showNotificationsAndReset(err, reload);
+                    return err;
+                });
             }
 
             $scope.forceSearch = function (ev) {
@@ -63,11 +111,53 @@
             $scope.changeDataView = function () {
                 $scope.options.pageNumber = 1;
                 fluidityUtilityService.rememberDataView($routeParams.id, $scope.options.dataView, $scope.options.dataViews);
-                $scope.reloadView($scope.contentId);
+                $scope.reloadView($scope.entityId);
             };
 
             $scope.isAnythingSelected = function() {
-                return false;
+                return $scope.selection.length !== 0;
+            }
+
+            $scope.clearSelection = function () {
+                listViewHelper.clearSelection($scope.listViewResultSet.items, false, $scope.selection);
+            };
+
+            $scope.performBulkAction = function (bulkAction) {
+
+                var selected = $scope.selection;
+                if (selected.length === 0)
+                    return;
+
+                if (!bulkAction.angularServiceName)
+                    return; // TODO: Error
+
+                var bulkActionService = $injector.get(bulkAction.angularServiceName);
+                if (!bulkActionService || !bulkActionService.performAction)
+                    return; // TODO: Error
+
+
+                if (bulkActionService.getConfirmMessage && !confirm(bulkActionService.getConfirmMessage(selected.length)))
+                    return;
+
+                var getProgressMsg = bulkActionService.getProgressMessage || function(count, total) {
+                    return count + " of " + total + " items processed";
+                }
+
+                var getCompleteMsg = bulkActionService.getCompleteMessage || function (total) {
+                    return total + " items successfully processed";
+                }
+
+                $scope.actionInProgress = true;
+                $scope.bulkStatus = getProgressMsg(0, selected.length);
+
+                return serial(selected, function (selected, index) {
+                    return bulkActionService.performAction($scope.collection.section, $scope.collection.alias, selected[index].id);
+                }, getProgressMsg, 0).then(function (result) {
+                    // executes once the whole selection has been processed
+                    // in case of an error (caught by serial), result will be the error
+                    if (!(result.data && angular.isArray(result.data.notifications)))
+                        showNotificationsAndReset(result, true, getCompleteMsg(selected.length));
+                });
             }
 
             $scope.selectLayout = function (selectedLayout) {
@@ -76,17 +166,17 @@
 
             $scope.nextPage = function (pageNumber) {
                 $scope.options.pageNumber = pageNumber;
-                $scope.reloadView($scope.contentId);
+                $scope.reloadView($scope.entityId);
             };
 
             $scope.goToPage = function (pageNumber) {
                 $scope.options.pageNumber = pageNumber;
-                $scope.reloadView($scope.contentId);
+                $scope.reloadView($scope.entityId);
             };
 
             $scope.prevPage = function (pageNumber) {
                 $scope.options.pageNumber = pageNumber;
-                $scope.reloadView($scope.contentId);
+                $scope.reloadView($scope.entityId);
             };
 
             $scope.reloadView = function (id) {

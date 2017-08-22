@@ -268,6 +268,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\FluidityBulkAction.cs" />
+    <Compile Include="Actions\FluidityDeleteBulkAction.cs" />
     <Compile Include="Configuration\FluidityDataViewConfig.cs" />
     <Compile Include="Configuration\FluidityListViewSearchFieldConfig.cs" />
     <Compile Include="Configuration\FluidityListViewSearchFieldConfig`T.cs" />
@@ -318,12 +320,11 @@
     <Compile Include="Configuration\FluidityTreeConfig.cs" />
     <Compile Include="Configuration\FluidityTreeItemConfig.cs" />
     <Compile Include="FluidityBootManager.cs" />
-    <Compile Include="IFluidityBulkAction.cs" />
-    <Compile Include="IFluidityMenuAction.cs" />
     <Compile Include="Data\IFluidityRepository.cs" />
     <Compile Include="Fluidity.cs" />
     <Compile Include="Models\BeforeAndAfter`T.cs" />
     <Compile Include="Web\Extensions\ModelStateExtensions.cs" />
+    <Compile Include="Web\Models\FluidityBulkActionDisplay.cs" />
     <Compile Include="Web\Models\FluidityCollectionDisplay.cs" />
     <Compile Include="Web\Models\FluidityEntityBasic.cs" />
     <Compile Include="Web\Models\FluidityEntityListViewDisplay.cs" />
@@ -353,7 +354,6 @@
     <None Include="Web\UI\App_Plugins\Fluidity\package.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Builders\" />
     <Folder Include="Web\UI\App_Plugins\Fluidity\views\" />
   </ItemGroup>
   <ItemGroup>
@@ -370,8 +370,8 @@
     <Content Include="Web\UI\App_Plugins\Fluidity\directives\listview.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\overrides\fluidity.overrides.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\resources\fluidity.resource.js" />
-    <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.service.js" />
-    <Content Include="Web\UI\App_Plugins\Fluidity\services\utility.service.js" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.bulkactions.service.js" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.utility.service.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />

@@ -3,7 +3,8 @@
 
 		'~/app_plugins/fluidity/overrides/fluidity.overrides.js',
 
-        '~/app_plugins/fluidity/services/utility.service.js',
+        '~/app_plugins/fluidity/services/fluidity.utility.service.js',
+        '~/app_plugins/fluidity/services/fluidity.bulkactions.service.js',
 
         '~/app_plugins/fluidity/resources/fluidity.resource.js',
 

@@ -1,6 +1,6 @@
 using System;
 using System.Linq.Expressions;
-using Fluidity.DataViews;
+using Fluidity.Actions;
 using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
@@ -13,7 +13,7 @@ namespace Fluidity.Configuration
         }
 
         public FluidityListViewConfig<TEntityType> AddBulkAction<TBulkActionType>()
-            where TBulkActionType : IFluidityBulkAction, new()
+            where TBulkActionType : FluidityBulkAction, new()
         {
             _bulkActions.Add(new TBulkActionType());
             return this;

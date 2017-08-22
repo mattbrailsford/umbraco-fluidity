@@ -5,7 +5,7 @@
         <umb-editor-sub-header-content-left>
 
             <!-- Create Button -->
-            <umb-editor-sub-header-section ng-if="collection">
+            <umb-editor-sub-header-section ng-if="collection && !isAnythingSelected()">
                 <div class="btn-group">
                     <a class="btn" href="#/{{collection.section}}/fluidity/edit/{{collection.alias}}">
                         <i class="{{collection.iconSingular}}"></i>
@@ -21,17 +21,19 @@
 
             <!-- Clear Selection Button -->
             <umb-editor-sub-header-section ng-if="isAnythingSelected()">
-                <umb-button type="button"
-                    label="Clear selection"
-                    label-key="buttons_clearSelection"
-                    action="clearSelection()"
-                    disabled="actionInProgress">
-                </umb-button>
+                <div class="btn-group">
+                    <umb-button type="button"
+                        label="Clear selection"
+                        label-key="buttons_clearSelection"
+                        action="clearSelection()"
+                        disabled="actionInProgress">
+                    </umb-button>
+                </div>
             </umb-editor-sub-header-section>
 
             <!-- Selection Info -->
             <umb-editor-sub-header-section ng-if="isAnythingSelected()">
-                <strong ng-show="!actionInProgress">{{ selectedItemsCount() }} <localize key="general_of">of</localize> {{ listViewResultSet.items.length }} <localize key="general_selected">selected</localize></strong>
+                <strong ng-show="!actionInProgress">{{ selection.length }} <localize key="general_of">of</localize> {{ listViewResultSet.items.length }} <localize key="general_selected">selected</localize></strong>
                 <strong ng-show="actionInProgress" ng-bind="bulkStatus"></strong>
                 <div class="umb-loader-wrapper -bottom" ng-show="actionInProgress">
                     <div class="umb-loader"></div>
@@ -75,15 +77,14 @@
             <!-- Bulk Actions -->
             <umb-editor-sub-header-section ng-if="isAnythingSelected()">
 
-                <!--<umb-button ng-if="options.allowBulkPublish && (buttonPermissions == null || buttonPermissions.canPublish)"
-                            type="button"
-                            button-style="link"
-                            label="Publish"
-                            label-key="actions_publish"
-                            icon="icon-globe"
-                            action="publish()"
-                            disabled="actionInProgress">
-                </umb-button>-->
+                <umb-button ng-repeat="bulkAction in options.bulkActions"
+                    type="button"
+                    button-style="link"
+                    label="{{ bulkAction.name }}"
+                    icon="{{ bulkAction.icon }}"
+                    action="performBulkAction(bulkAction)"
+                    disabled="actionInProgress">
+                </umb-button>
 
             </umb-editor-sub-header-section>
 
@@ -94,6 +95,7 @@
     <!-- Layout -->
     <umb-list-view-layout ng-if="viewLoaded"
         items="listViewResultSet.items"
+        content-id="entityId"
         selection="selection"
         options="options"
         entity-type="fluidity"
