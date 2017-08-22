@@ -80,19 +80,19 @@ namespace Fluidity.Configuration
 
         public FluidityCollectionConfig<TEntityType> ShowOnDashboard()
         {
-            _visibleOnDashboard = true;
+            _isVisibleOnDashboard = true;
             return this;
         }
 
         public FluidityCollectionConfig<TEntityType> HideFromTree()
         {
-            _visibleInTree = false;
+            _isVisibleInTree = false;
             return this;
         }
 
         public FluidityCollectionConfig<TEntityType> MakeReadOnly()
         {
-            _readOnly = true;
+            _isReadOnly = true;
             return this;
         }
 

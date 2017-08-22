@@ -10,8 +10,9 @@
 
 	    '~/app_plugins/fluidity/backoffice/fluidity/edit.controller.js',
 		'~/app_plugins/fluidity/backoffice/fluidity/delete.controller.js', 
-		'~/app_plugins/fluidity/backoffice/fluidity/collection.controller.js', 
-		'~/app_plugins/fluidity/backoffice/fluidity/folder.controller.js', 
+		'~/app_plugins/fluidity/backoffice/fluidity/collection.controller.js',
+
+		'~/app_plugins/fluidity/views/dashboard.controller.js',
 
 		'~/app_plugins/fluidity/directives/listview.directive.js'
 

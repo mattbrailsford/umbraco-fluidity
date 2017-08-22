@@ -22,6 +22,10 @@
     cursor: pointer;
 }
 
+.fluidity__dashboard__item .inner .umb-package-description {
+    white-space: normal;
+}
+
 .fluidity__dashboard__item-overlay { 
     position: absolute;
     top: 0;

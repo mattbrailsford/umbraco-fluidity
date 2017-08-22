@@ -27,6 +27,13 @@ namespace Fluidity.Web.Api
         }
 
         [HttpGet]
+        public object GetSectionByAlias(string section)
+        {
+            var sectionConfig = Context.Config.Sections[section];
+            return Context.Services.EntityService.GetSectionDisplay(sectionConfig);
+        }
+
+        [HttpGet]
         public object GetEntityScaffold(string section, string collectionAlias)
         {
             var sectionConfig = Context.Config.Sections[section];
@@ -102,7 +109,23 @@ namespace Fluidity.Web.Api
             var sectionConfig = Context.Config.Sections[section];
             var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
 
-            return Context.Services.EntityService.GetsCollectionDisplay(sectionConfig, collectionConfig);
+            return Context.Services.EntityService.GetCollectionDisplay(sectionConfig, collectionConfig);
+        }
+
+        [HttpGet]
+        public object GetDashboardCollections(string section)
+        {
+            var sectionConfig = Context.Config.Sections[section];
+            return Context.Services.EntityService.GetDashboardCollectionDisplays(sectionConfig);
+        }
+
+        [HttpGet]
+        public object GetEntityTotalRecordCount(string section, string collectionAlias)
+        {
+            var sectionConfig = Context.Config.Sections[section];
+            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+
+            return Context.Services.EntityService.GetsEntityTotalRecordCount(collectionConfig);
         }
     }
 }

@@ -27,7 +27,7 @@
 (function () {
     'use strict';
 
-    function fluidityUtilityService(localStorageService) {
+    function fluidityUtilityService(localStorageService, fluidityResource) {
 
         var dataViewLocalStorageKey = "fluidityDataViewes";
 

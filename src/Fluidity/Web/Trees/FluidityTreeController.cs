@@ -112,7 +112,7 @@ namespace Fluidity.Web.Trees
                     }
 
                     var collectionTreeItem = treeItem as FluidityCollectionConfig;
-                    if (collectionTreeItem != null && collectionTreeItem.VisibleInTree)
+                    if (collectionTreeItem != null && collectionTreeItem.IsVisibleInTree)
                     {
                         // Render collection folder
                         var node = CreateTreeNode(
@@ -144,7 +144,7 @@ namespace Fluidity.Web.Trees
             }
 
             var currentCollectionConfig = currentItemConfig as FluidityCollectionConfig;
-            if (currentCollectionConfig != null && currentCollectionConfig.VisibleInTree && currentCollectionConfig.ViewMode == FluidityViewMode.Tree)
+            if (currentCollectionConfig != null && currentCollectionConfig.IsVisibleInTree && currentCollectionConfig.ViewMode == FluidityViewMode.Tree)
             {
                 // Render collection items
                 var items = Context.Services.EntityService.GetAllEntities(currentCollectionConfig);
@@ -194,7 +194,7 @@ namespace Fluidity.Web.Trees
                         hasMenuItems = true;
                     }
 
-                    if (!currentCollectionConfig.ReadOnly)
+                    if (!currentCollectionConfig.IsReadOnly)
                     {
                         // We create a custom item as we need to direct all fluidity delete commands to the
                         // same view, where as the in built delete dialog looks for seperate views per tree
@@ -208,7 +208,7 @@ namespace Fluidity.Web.Trees
                 {
                     var hasMenuItems = false;
 
-                    if (!currentCollectionConfig.ReadOnly)
+                    if (!currentCollectionConfig.IsReadOnly)
                     {
                         // We create a custom item as we need to direct all fluidity create commands to the
                         // same view, where as the in built create dialog looks for seperate views per tree

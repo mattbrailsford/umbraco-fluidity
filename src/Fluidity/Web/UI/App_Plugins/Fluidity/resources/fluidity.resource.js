@@ -6,6 +6,32 @@
 
         var api = {
 
+            getSectionByAlias: function (section) {
+                return umbRequestHelper.resourcePromise(
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getsectionbyalias",
+                        method: "GET",
+                        params: {
+                            section: section
+                        }
+                    }),
+                    'Failed to get section by alias'
+                );
+            },
+
+            getDashboardCollections: function (section) {
+                return umbRequestHelper.resourcePromise(
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getdashboardcollections",
+                        method: "GET",
+                        params: {
+                            section: section
+                        }
+                    }),
+                    'Failed to get dashboard collections'
+                );
+            },
+
             getCollectionByAlias: function (section, collectionAlias) {
                 return umbRequestHelper.resourcePromise(
                     $http({
@@ -92,6 +118,20 @@
                         }
                     }),
                     'Failed to delete entity'
+                );
+            },
+
+            getEntityTotalRecordCount: function (section, collectionAlias) {
+                return umbRequestHelper.resourcePromise(
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getentitytotalrecordcount",
+                        method: "GET",
+                        params: {
+                            section: section,
+                            collectionAlias: collectionAlias
+                        }
+                    }),
+                    'Failed to get entity total record count'
                 );
             },
 

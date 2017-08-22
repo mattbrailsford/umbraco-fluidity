@@ -1,27 +1,26 @@
-﻿<div class="umb-packages-section fluidity__dashboard">
+﻿<div ng-controller="Fluidity.Controllers.DashboardController" class="umb-packages-section fluidity__dashboard">
 
     <div class="umb-packages clearfix">
 
-        <!-- ngRepeat: package in vm.popular -->
-        <div class="umb-package fluidity__dashboard__item" ng-repeat="x in [].constructor(10) track by $index">
+        <div class="umb-package fluidity__dashboard__item" ng-repeat="collection in collections">
             <div class="inner">
 
                 <div class="fluidity__dashboard__item-overlay">
-                    <a href=""><i class="icon-add"></i></a>
-                    <a href=""><i class="icon-link"></i></a>
+                    <a ng-if="!collection.isReadOnly" href="#/{{ collection.section }}/fluidity/edit/{{collection.alias}}"><i class="icon-add"></i></a>
+                    <a  ng-if="collection.hasListView" href="#/{{ collection.section }}/fluidity/collection/{{collection.alias}}"><i class="icon-link"></i></a>
                 </div>
 
                 <div class="umb-package-icon">
-                    <i class="umb-content-grid__icon icon-umb-users"></i>
+                    <i class="umb-content-grid__icon {{ collection.icon }}"></i>
                 </div>
 
                 <div class="umb-package-info">
-                    <div class="umb-package-name ng-binding">Contour</div>
-                    <div class="umb-package-description ng-binding">Contour makes creating contact forms, en<!-- ngIf: package.excerpt > (package.excerpt | limitTo: 40) --><span ng-if="package.excerpt > (package.excerpt | limitTo: 40)" class="ng-scope">...</span></div>
+                    <div class="umb-package-name">{{ collection.name }}</div>
+                    <div class="umb-package-description">{{ collection.description }}</div>
 
                     <div class="umb-package-numbers">
                         <small class="umb-package-downloads">
-                            <i class="icon-server-alt"></i> <strong>148230</strong>
+                            <i class="icon-server-alt"></i> <strong>{{ collection.recordCount }}</strong>
                         </small>
                     </div>
                 </div>

@@ -326,6 +326,7 @@
     <Compile Include="Web\Extensions\ModelStateExtensions.cs" />
     <Compile Include="Web\Extensions\TreeNodeExtensions.cs" />
     <Compile Include="Web\Models\FluidityBulkActionDisplay.cs" />
+    <Compile Include="Web\Models\FluidityDashboardCollectionDisplay.cs" />
     <Compile Include="Web\Models\FluidityCollectionDisplay.cs" />
     <Compile Include="Web\Models\FluidityEntityBasic.cs" />
     <Compile Include="Web\Models\FluidityEntityListViewDisplay.cs" />
@@ -338,6 +339,8 @@
     <Compile Include="Web\Models\FluidityListViewLayoutDisplay.cs" />
     <Compile Include="Web\Models\FluidityListViewDataViewDisplay.cs" />
     <Compile Include="Web\Models\FluidityListViewPropertyDisplay.cs" />
+    <Compile Include="Web\Models\FluiditySectionDisplay.cs" />
+    <Compile Include="Web\Models\Mappers\FluiditySectionMapper.cs" />
     <Compile Include="Web\Models\Mappers\FluidityCollectionMapper.cs" />
     <Compile Include="Web\Models\Mappers\FluidityEntityListViewMapper.cs" />
     <Compile Include="Web\Models\Mappers\FluidityEntityMapper.cs" />
@@ -356,12 +359,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\folder.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\edit.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\delete.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\collection.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\delete.html" />
-    <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\folder.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\edit.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\collection.html" />
     <Content Include="Web\UI\App_Plugins\Fluidity\css\fluidity.css" />
@@ -371,6 +372,7 @@
     <Content Include="Web\UI\App_Plugins\Fluidity\resources\fluidity.resource.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.bulkactions.service.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.utility.service.js" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\views\dashboard.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\views\dashboard.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

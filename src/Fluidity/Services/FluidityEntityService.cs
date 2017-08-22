@@ -25,7 +25,23 @@ namespace Fluidity.Services
             _repoFactory = repositoryFactory;
         }
 
-        public FluidityCollectionDisplay GetsCollectionDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection)
+        public FluiditySectionDisplay GetSectionDisplay(FluiditySectionConfig section)
+        {
+            var sectionMapper = new FluiditySectionMapper();
+
+            return sectionMapper.ToDisplay(section);
+        }
+
+        public IEnumerable<FluidityDashboardCollectionDisplay> GetDashboardCollectionDisplays(FluiditySectionConfig section)
+        {
+            var collectionMapper = new FluidityCollectionMapper();
+
+            return section.Tree.FalttenedTreeItems.Values
+                .Where(x => x is FluidityCollectionConfig && ((FluidityCollectionConfig)x).IsVisibleOnDashboard)
+                .Select(x => collectionMapper.ToDashboardDisplay(section, (FluidityCollectionConfig)x));
+        }
+
+        public FluidityCollectionDisplay GetCollectionDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection)
         {
             var collectionMapper = new FluidityCollectionMapper();
             return collectionMapper.ToDisplay(section, collection);
@@ -187,6 +203,12 @@ namespace Fluidity.Services
         {
             var repo = _repoFactory.GetRepository(collection);
             repo?.Delete(id);
+        }
+
+        public long GetsEntityTotalRecordCount(FluidityCollectionConfig collection)
+        {
+            var repo = _repoFactory.GetRepository(collection);
+            return repo?.GetTotalRecordCount() ?? 0;
         }
     }
 }

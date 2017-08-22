@@ -51,5 +51,20 @@ namespace Fluidity.Web.Models.Mappers
                 }
             };
         }
+
+        public FluidityDashboardCollectionDisplay ToDashboardDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection)
+        {
+            return new FluidityDashboardCollectionDisplay
+            {
+                Section = section.Alias,
+                Tree = section.Tree.Alias,
+                Alias = collection.Alias,
+                Name = collection.NamePlural,
+                Icon = collection.IconPlural + (!collection.Color.IsNullOrWhiteSpace() ? " color-" + collection.Color : ""),
+                Description = collection.Description,
+                IsReadOnly = collection.IsReadOnly,
+                HasListView = collection.ViewMode == FluidityViewMode.List
+            };
+        }
     }
 }

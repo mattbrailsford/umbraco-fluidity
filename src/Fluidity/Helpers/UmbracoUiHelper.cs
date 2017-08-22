@@ -1,6 +1,7 @@
 ﻿using System.Xml;
 using umbraco.cms.businesslogic.packager.standardPackageActions;
 using Umbraco.Core;
+using Umbraco.Core.IO;
 using Umbraco.Core.Services;
 
 namespace Fluidity.Helpers
@@ -30,6 +31,9 @@ namespace Fluidity.Helpers
                     sectionConfig.Name, 
                     sectionConfig.Alias, 
                     sectionConfig.Icon);
+
+                // Add section name to default lang file
+                AddSectionNameToLangFile(sectionConfig.Alias, sectionConfig.Name);
 
                 // Add dashboard to section
                 AddFluidityDashboardToSection(sectionConfig.Alias);
@@ -68,6 +72,62 @@ namespace Fluidity.Helpers
 
             var action = new addDashboardSection();
             action.Execute("fluidity", xdoc.DocumentElement);
+        }
+
+        private void AddSectionNameToLangFile(string sectionAlias, string sectionName)
+        {
+            var langFileDir = IOHelper.MapPath(SystemDirectories.AppPlugins + "/fluidity/lang");
+            var langFilePath = langFileDir + "/en-US.xml";
+
+            IOHelper.EnsurePathExists(langFileDir);
+            IOHelper.EnsureFileExists(langFilePath, @"<?xml version=""1.0"" encoding=""utf-8"" standalone=""yes""?>
+<language alias=""en"" intName=""English (US)"" localName=""English (US)"" lcid="""" culture=""en-US"">
+  <creator>
+    <name>Fluidity</name>
+    <link>http://our.umbraco.org</link>
+  </creator>
+  <area alias=""sections"">
+    <key alias=""fluidity"">Fluidity</key>
+  </area>
+</language>");
+
+            var xd = XmlHelper.OpenAsXmlDocument(langFilePath);
+
+            var sectionsNode = xd.SelectSingleNode("//area[@alias='sections']");
+            if (sectionsNode != null)
+            {
+                var changes = false;
+                var existing = sectionsNode.SelectSingleNode("key[@alias='" + sectionAlias + "']");
+                if (existing != null)
+                {
+                    if (existing.InnerText != sectionName && existing.Attributes?["autoGen"] != null)
+                    {
+                        existing.InnerText = sectionName;
+                        changes = true;
+                    }
+                }
+                else
+                {
+                    var keyNode = xd.CreateElement("key");
+                    keyNode.InnerText = sectionName;
+
+                    var aliasAttr = xd.CreateAttribute("alias");
+                    aliasAttr.Value = sectionAlias;
+                    keyNode.Attributes.Append(aliasAttr);
+
+                    var autoGenAttr = xd.CreateAttribute("autoGen");
+                    autoGenAttr.Value = "true";
+                    keyNode.Attributes.Append(autoGenAttr);
+
+                    sectionsNode.AppendChild(keyNode);
+                    changes = true;
+                }
+
+                if (changes)
+                {
+                    xd.Save(langFilePath);
+                }
+            }
         }
     }
 }

@@ -40,14 +40,14 @@ namespace Fluidity.Configuration
         protected Type _repositoryType;
         internal Type RepositoryType => _repositoryType;
 
-        protected bool _visibleOnDashboard;
-        internal bool VisibleOnDashboard => _visibleOnDashboard;
+        protected bool _isVisibleOnDashboard;
+        internal bool IsVisibleOnDashboard => _isVisibleOnDashboard;
 
-        protected bool _visibleInTree;
-        internal bool VisibleInTree => _visibleInTree;
+        protected bool _isVisibleInTree;
+        internal bool IsVisibleInTree => _isVisibleInTree;
 
-        protected bool _readOnly;
-        internal bool ReadOnly => _readOnly;
+        protected bool _isReadOnly;
+        internal bool IsReadOnly => _isReadOnly;
 
         protected FluidityViewMode _viewMode;
         internal FluidityViewMode ViewMode => _viewMode;
@@ -104,7 +104,7 @@ namespace Fluidity.Configuration
             _namePlural = namePlural;
             _iconSingular = iconSingular ?? "icon-folder";
             _iconPlural = iconPlural ?? "icon-folder";
-            _visibleInTree = true;
+            _isVisibleInTree = true;
 
             _containerMenuItems = new List<MenuItem>();
             _entityMenuItems = new List<MenuItem>();
