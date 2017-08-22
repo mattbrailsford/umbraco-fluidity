@@ -22,6 +22,12 @@ namespace Fluidity.Configuration
             return this;
         }
 
+        public FluidityCollectionConfig<TEntityType> SetConnectionString(string connectionStringName)
+        {
+            _connectionStringg = connectionStringName;
+            return this;
+        }
+
         public FluidityCollectionConfig<TEntityType> SetRepositoryType<TRepositoryType>()
             where TRepositoryType : IFluidityRepository
         {

@@ -15,7 +15,10 @@ namespace Fluidity.Data
         protected FluidityCollectionConfig _collection;
 
         protected ISqlSyntaxProvider SyntaxProvider => ApplicationContext.Current.DatabaseContext.SqlSyntax;
-        protected Database Db => ApplicationContext.Current.DatabaseContext.Database;
+
+        protected Database Db => !_collection.ConnectionString.IsNullOrWhiteSpace() 
+            ? new Database(_collection.ConnectionString) 
+            : ApplicationContext.Current.DatabaseContext.Database;
 
         public DefaultFluidityRepository(FluidityCollectionConfig collection)
         {
