@@ -1,6 +1,7 @@
 ﻿using System;
 using Fluidity.Configuration;
 using Fluidity.Data;
+using Fluidity.Events;
 using Fluidity.Helpers;
 using Fluidity.Services;
 using Umbraco.Core;
@@ -52,10 +53,5 @@ namespace Fluidity
                 }
             }
         }
-    }
-
-    internal class FluidityStartingEventArgs : EventArgs
-    {
-        public FluidityConfig Config { get; set; }
     }
 }
