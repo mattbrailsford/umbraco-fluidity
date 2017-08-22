@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 using Fluidity.Configuration;
+using Fluidity.Events;
 using Fluidity.Extensions;
+using Fluidity.Models;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Persistence;
@@ -99,19 +101,49 @@ namespace Fluidity.Data
 
         public object Save(object entity)
         {
-            Db.Save(entity);
+            var existing = Get(entity.GetPropertyValue(_collection.IdProperty));
+            var args = new SavingEntityEventArgs
+            {
+                Entity = new BeforeAndAfter<object>
+                {
+                    Before = existing,
+                    After = entity
+                }
+            };
 
-            return entity;
+            Fluidity.OnSavingEntity(args);
+
+            if (args.Cancel)
+                return args.Entity.After;
+
+            Db.Save(args.Entity.After);
+
+            Fluidity.OnSavedEntity(args);
+
+            return args.Entity.After;
         }
 
         public void Delete(object id)
         {
+            var existing = Get(id);
+            var args = new DeletingEntityEventArgs
+            {
+                Entity = existing
+            };
+
+            Fluidity.OnDeletingEntity(args);
+
+            if (args.Cancel)
+                return;
+
             var query = new Sql(_collection.DeletedProperty != null
                 ? $"UPDATE {_collection.EntityType.GetTableName()} SET {_collection.DeletedProperty.GetColumnName()} = 1 WHERE {_collection.IdProperty.GetColumnName()} = @0"
                 : $"DELETE FROM {_collection.EntityType.GetTableName()} WHERE {_collection.IdProperty.GetColumnName()} = @0",
                 id);
 
             Db.Execute(query);
+
+            Fluidity.OnDeletedEntity(args);
         }
 
         public long GetTotalRecordCount()

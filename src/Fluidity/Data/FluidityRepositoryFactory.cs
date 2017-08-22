@@ -5,9 +5,6 @@ namespace Fluidity.Data
 {
     internal class FluidityRepositoryFactory
     {
-        internal FluidityRepositoryFactory()
-        { }
-
         public IFluidityRepository GetRepository(FluidityCollectionConfig collection)
         {
             var defaultRepoType = typeof(DefaultFluidityRepository);

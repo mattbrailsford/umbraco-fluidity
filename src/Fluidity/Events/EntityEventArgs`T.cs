@@ -2,7 +2,7 @@
 
 namespace Fluidity.Events
 {
-    public class SingleEntityEventArgs<TEntityType> : EventArgs
+    public class EntityEventArgs<TEntityType> : EventArgs
     {
         public TEntityType Entity { get; set; }
     }
