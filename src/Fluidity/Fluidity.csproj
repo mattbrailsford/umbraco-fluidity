@@ -353,9 +353,7 @@
     <None Include="packages.config" />
     <None Include="Web\UI\App_Plugins\Fluidity\package.manifest" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Web\UI\App_Plugins\Fluidity\views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\folder.controller.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\backoffice\fluidity\edit.controller.js" />
@@ -372,6 +370,7 @@
     <Content Include="Web\UI\App_Plugins\Fluidity\resources\fluidity.resource.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.bulkactions.service.js" />
     <Content Include="Web\UI\App_Plugins\Fluidity\services\fluidity.utility.service.js" />
+    <Content Include="Web\UI\App_Plugins\Fluidity\views\dashboard.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
