@@ -88,14 +88,12 @@ namespace Fluidity.Web.Api
         }
 
         [HttpDelete]
-        public void Delete(string section, string collectionAlias, string ids)
+        public void DeleteEntity(string section, string collectionAlias, string id)
         {
-            var idsArray = ids.Split(new [] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
             var sectionConfig = Context.Config.Sections[section];
             var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
 
-            Context.Services.EntityService.DeleteEntity(collectionConfig, idsArray);
+            Context.Services.EntityService.DeleteEntity(collectionConfig, id);
         }
 
         [HttpGet]

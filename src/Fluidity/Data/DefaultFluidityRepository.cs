@@ -104,14 +104,26 @@ namespace Fluidity.Data
             return entity;
         }
 
-        public void Delete(object[] ids)
+        public void Delete(object id)
         {
             var query = new Sql(_collection.DeletedProperty != null
-                ? $"UPDATE {_collection.EntityType.GetTableName()} SET {_collection.DeletedProperty.GetColumnName()} = 1 WHERE {_collection.IdProperty.GetColumnName()} IN (@ids)"
-                : $"DELETE FROM {_collection.EntityType.GetTableName()} WHERE {_collection.IdProperty.GetColumnName()} IN (@ids)",
-                new { ids });
+                ? $"UPDATE {_collection.EntityType.GetTableName()} SET {_collection.DeletedProperty.GetColumnName()} = 1 WHERE {_collection.IdProperty.GetColumnName()} = @0"
+                : $"DELETE FROM {_collection.EntityType.GetTableName()} WHERE {_collection.IdProperty.GetColumnName()} = @0",
+                id);
 
             Db.Execute(query);
+        }
+
+        public long GetTotalRecordCount()
+        {
+            var sql = $"SELECT COUNT(1) FROM {_collection.EntityType.GetTableName()}";
+
+            if (_collection.DeletedProperty != null)
+            {
+                sql += $" WHERE {_collection.DeletedProperty.GetColumnName()} = 0";
+            }
+
+            return Db.ExecuteScalar<long>(sql);
         }
     }
 }

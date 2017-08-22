@@ -18,7 +18,9 @@ namespace Fluidity.Data
 
         public abstract TEntity Save(TEntity entity);
 
-        public abstract void Delete(TId[ ] ids);
+        public abstract void Delete(TId id);
+
+        public abstract long GetTotalRecordCount();
 
         #region IFluidityRepository
 
@@ -47,9 +49,9 @@ namespace Fluidity.Data
             return Save((TEntity)entity);
         }
 
-        void IFluidityRepository.Delete(object[] ids)
+        void IFluidityRepository.Delete(object id)
         {
-            Delete(ids.Select(x => (TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(x)).ToArray());
+            Delete((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id));
         }
 
         #endregion

@@ -81,18 +81,14 @@
             },
 
             deleteEntity: function (section, collectionAlias, id) {
-                return api.deleteEntities(section, collectionAlias, [id]);
-            },
-
-            deleteEntities: function (section, collectionAlias, ids) {
                 return umbRequestHelper.resourcePromise(
                     $http({
-                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "delete",
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "deleteentity",
                         method: "DELETE",
                         params: {
                             section: section,
                             collectionAlias: collectionAlias,
-                            ids: ids.join(',')
+                            id: id
                         }
                     }),
                     'Failed to delete entity'

@@ -15,6 +15,8 @@ namespace Fluidity.Data
 
         object Save(object entity);
 
-        void Delete(object[] ids);
+        void Delete(object id);
+
+        long GetTotalRecordCount();
     }
 }

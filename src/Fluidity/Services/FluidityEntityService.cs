@@ -183,10 +183,10 @@ namespace Fluidity.Services
             return entity;
         }
 
-        public void DeleteEntity(FluidityCollectionConfig collection, object[] ids)
+        public void DeleteEntity(FluidityCollectionConfig collection, object id)
         {
             var repo = _repoFactory.GetRepository(collection);
-            repo?.Delete(ids);
+            repo?.Delete(id);
         }
     }
 }
