@@ -12,20 +12,6 @@ namespace Fluidity.Configuration
             config?.Invoke(this);
         }
 
-        public FluidityListViewConfig<TEntityType> AddMenuAction<TActionType>()
-            where TActionType : IFluidityMenuAction, new()
-        {
-            _menuActions.Add(new TActionType());
-            return this;
-        }
-
-        public FluidityListViewConfig<TEntityType> AddFilter<TFilterType>()
-            where TFilterType : IFluidityFilter, new()
-        {
-            _filters.Add(new TFilterType());
-            return this;
-        }
-
         public FluidityListViewConfig<TEntityType> AddBulkAction<TBulkActionType>()
             where TBulkActionType : IFluidityBulkAction, new()
         {

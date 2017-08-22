@@ -11,13 +11,6 @@ namespace Fluidity.Configuration
             config?.Invoke(this);
         }
 
-        public FluidityEditorConfig<TEntityType> AddMenuAction<TActionType>()
-            where TActionType : IFluidityMenuAction
-        {
-            _menuActionTypes.Add(typeof(TActionType));
-            return this;
-        }
-
         public FluidityEditorConfig<TEntityType> SetNameField(Expression<Func<TEntityType, object>> nameProperty)
         {
             _namePropertyExp = nameProperty;

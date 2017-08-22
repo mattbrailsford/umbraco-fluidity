@@ -319,7 +319,6 @@
     <Compile Include="Configuration\FluidityTreeItemConfig.cs" />
     <Compile Include="FluidityBootManager.cs" />
     <Compile Include="IFluidityBulkAction.cs" />
-    <Compile Include="IFluidityFilter.cs" />
     <Compile Include="IFluidityMenuAction.cs" />
     <Compile Include="Data\IFluidityRepository.cs" />
     <Compile Include="Fluidity.cs" />

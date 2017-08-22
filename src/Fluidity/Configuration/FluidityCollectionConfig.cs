@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Umbraco.Core;
 using Umbraco.Core.Persistence.DatabaseModelDefinitions;
+using Umbraco.Web.Models.Trees;
 
 namespace Fluidity.Configuration
 {
@@ -81,6 +82,12 @@ namespace Fluidity.Configuration
         protected Func<object, string> _nameFormat;
         internal Func<object, string> NameFormat => _nameFormat;
 
+        protected List<MenuItem> _containerMenuItems;
+        internal IEnumerable<MenuItem> ContainerMenuItems => _containerMenuItems;
+
+        protected List<MenuItem> _entityMenuItems;
+        internal IEnumerable<MenuItem> EntityMenuItems => _entityMenuItems;
+
         protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExp, PropertyInfo idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null)
         {
             _idPropertyExp = idPropertyExp;
@@ -92,6 +99,9 @@ namespace Fluidity.Configuration
             _iconSingular = iconSingular ?? "icon-folder";
             _iconPlural = iconPlural ?? "icon-folder";
             _visibleInTree = true;
+
+            _containerMenuItems = new List<MenuItem>();
+            _entityMenuItems = new List<MenuItem>();
         }
     }
 }

@@ -7,9 +7,6 @@ namespace Fluidity.Configuration
 {
     public abstract class FluidityEditorConfig
     {
-        protected List<Type> _menuActionTypes;
-        internal IEnumerable<Type> MenuActionTypes => _menuActionTypes;
-
         protected PropertyInfo _nameProperty;
         internal PropertyInfo NameProperty => _nameProperty;
 
@@ -21,7 +18,6 @@ namespace Fluidity.Configuration
 
         protected FluidityEditorConfig()
         {
-            _menuActionTypes = new List<Type>();
             _tabs = new List<FluidityTabConfig>();
         }
     }

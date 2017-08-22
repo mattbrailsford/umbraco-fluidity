@@ -4,9 +4,6 @@ namespace Fluidity.Configuration
 {
     public class FluidityFolderConfig : FluidityContainerTreeItemConfig
     {
-        protected FluidityViewMode _viewMode;
-        internal FluidityViewMode ViewMode => _viewMode;
-
         public FluidityFolderConfig(string name, string icon = null, Action<FluidityFolderConfig> config = null)
             : base(name, icon)
         {
@@ -18,11 +15,5 @@ namespace Fluidity.Configuration
             _alias = alias;
             return this;
         }
-
-        //public FluidityFolderConfig SetViewMode(FluidityViewMode viewMode)
-        //{
-        //    _viewMode = viewMode;
-        //    return this;
-        //}
     }
 }

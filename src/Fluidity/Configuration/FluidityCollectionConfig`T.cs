@@ -4,6 +4,7 @@ using Fluidity.Data;
 using Fluidity.Extensions;
 using Umbraco.Core;
 using Umbraco.Core.Persistence.DatabaseModelDefinitions;
+using Umbraco.Web.Models.Trees;
 
 namespace Fluidity.Configuration
 {
@@ -80,6 +81,32 @@ namespace Fluidity.Configuration
         public FluidityCollectionConfig<TEntityType> SetViewMode(FluidityViewMode viewMode)
         {
             _viewMode = viewMode;
+            return this;
+        }
+
+        public FluidityCollectionConfig<TEntityType> AddContainerMenuItem<TMenuItem>()
+            where TMenuItem : MenuItem, new()
+        {
+            _containerMenuItems.Add(new TMenuItem());
+            return this;
+        }
+
+        public FluidityCollectionConfig<TEntityType> AddContainerMenuItem(MenuItem menuItem)
+        {
+            _containerMenuItems.Add(menuItem);
+            return this;
+        }
+
+        public FluidityCollectionConfig<TEntityType> AddEntityMenuItem<TMenuItem>()
+            where TMenuItem : MenuItem, new()
+        {
+            _entityMenuItems.Add(new TMenuItem());
+            return this;
+        }
+
+        public FluidityCollectionConfig<TEntityType> AddEntityMenuItem(MenuItem menuItem)
+        {
+            _entityMenuItems.Add(menuItem);
             return this;
         }
 

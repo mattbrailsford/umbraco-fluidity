@@ -34,7 +34,7 @@
 
         function syncTree(entity, path, initialLoad) {
             navigationService.syncTree({ tree: entity.tree, path: path.split(","), forceReload: initialLoad !== true }).then(function (syncArgs) {
-                // $scope.page.menu.currentNode = syncArgs.node;
+                $scope.page.menu.currentNode = syncArgs.node;
             });
         }
 

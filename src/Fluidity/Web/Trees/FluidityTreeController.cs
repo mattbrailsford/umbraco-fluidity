@@ -98,16 +98,9 @@ namespace Fluidity.Web.Trees
                             folderTreeItem.Name,
                             folderTreeItem.Icon,
                             true,
-                            folderTreeItem.ViewMode == FluidityViewMode.Tree
-                                ? SectionAlias // Tree mode so just show the default dashboard
-                                : SectionAlias + "/fluidity/folder/" + folderTreeItem.Alias);
+                            SectionAlias); // Tree mode so just show the default dashboard
 
                         node.Path = folderTreeItem.Path;
-
-                        if (folderTreeItem.ViewMode == FluidityViewMode.List)
-                        {
-                            node.SetContainerStyle();
-                        }
 
                         nodes.Add(node);
                     }
@@ -174,10 +167,7 @@ namespace Fluidity.Web.Trees
             var currentFolderConfig = currentItemConfig as FluidityFolderConfig;
             if (currentFolderConfig != null)
             {
-                if (currentFolderConfig.ViewMode == FluidityViewMode.Tree)
-                {
-                    menu.Items.Add<RefreshNode, ActionRefresh>(refreshText, true);
-                }
+                menu.Items.Add<RefreshNode, ActionRefresh>(refreshText, true);
             }
 
             var currentCollectionConfig = currentItemConfig as FluidityCollectionConfig;
@@ -185,17 +175,28 @@ namespace Fluidity.Web.Trees
             {
                 if (entityId != null) // If we have an id, we must be editing an entity
                 {
+                    var hasMenuItems = false;
+
+                    if (currentCollectionConfig.EntityMenuItems.Any())
+                    {
+                        menu.Items.AddRange(currentCollectionConfig.EntityMenuItems);
+                        hasMenuItems = true;
+                    }
+
                     if (!currentCollectionConfig.ReadOnly)
                     {
                         // We create a custom item as we need to direct all fluidity delete commands to the
                         // same view, where as the in built delete dialog looks for seperate views per tree
                         var menuItem = new MenuItem("delete", deleteText) { Icon = "delete" };
                         menuItem.LaunchDialogView(IOHelper.ResolveUrl($"{SystemDirectories.AppPlugins}/fluidity/backoffice/fluidity/delete.html"), deleteText);
+                        menuItem.SeperatorBefore = hasMenuItems;
                         menu.Items.Add(menuItem);
                     }
                 }
                 else
                 {
+                    var hasMenuItems = false;
+
                     if (!currentCollectionConfig.ReadOnly)
                     {
                         // We create a custom item as we need to direct all fluidity create commands to the
@@ -203,11 +204,27 @@ namespace Fluidity.Web.Trees
                         var menuItem = new MenuItem("create", createText) { Icon = "add" };
                         menuItem.NavigateToRoute(SectionAlias + "/fluidity/edit/" + currentCollectionConfig.Alias);
                         menu.Items.Add(menuItem);
+                        hasMenuItems = true;
+                    }
+
+                    if (currentCollectionConfig.ContainerMenuItems.Any())
+                    {
+                        if (hasMenuItems)
+                        {
+                            currentCollectionConfig.ContainerMenuItems.First().SeperatorBefore = true;
+                        }
+
+                        menu.Items.AddRange(currentCollectionConfig.ContainerMenuItems);
                     }
 
                     if (currentCollectionConfig.ViewMode == FluidityViewMode.Tree)
                     {
                         menu.Items.Add<RefreshNode, ActionRefresh>(refreshText, true);
+
+                        if (hasMenuItems)
+                        {
+                            menu.Items.Last().SeperatorBefore = true;
+                        }
                     }
                 }
             }
