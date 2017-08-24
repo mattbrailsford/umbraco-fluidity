@@ -3,7 +3,7 @@
 namespace Fluidity.Web.Models
 {
     [DataContract(Name = "layout", Namespace = "")]
-    public class FluidityListViewLayoutDisplay
+    public class FluidityListViewLayoutDisplayModel
     {
         [DataMember(Name = "name", IsRequired = true)]
         public string Name { get; set; }

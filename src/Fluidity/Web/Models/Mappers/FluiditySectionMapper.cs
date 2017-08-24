@@ -4,9 +4,9 @@ namespace Fluidity.Web.Models.Mappers
 {
     internal class FluiditySectionMapper
     {
-        public FluiditySectionDisplay ToDisplay(FluiditySectionConfig section)
+        public FluiditySectionDisplayModel ToDisplayModel(FluiditySectionConfig section)
         {
-            return new FluiditySectionDisplay
+            return new FluiditySectionDisplayModel
             {
                 Alias = section.Alias,
                 Name = section.Name,

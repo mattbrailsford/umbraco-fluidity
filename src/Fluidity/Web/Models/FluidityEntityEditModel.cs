@@ -7,9 +7,9 @@ using Umbraco.Web.Models.ContentEditing;
 namespace Fluidity.Web.Models
 {   
     [DataContract(Name = "entity", Namespace = "")]
-    public class FluidityEntityDisplay : FluidityEntityBasic
+    public class FluidityEntityEditModel : FluidityEntityBasicModel
     {
-        public FluidityEntityDisplay()
+        public FluidityEntityEditModel()
         {
             Tabs = new List<Tab<ContentPropertyDisplay>>();
             Errors = new Dictionary<string, object>();

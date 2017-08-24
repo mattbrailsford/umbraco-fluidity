@@ -5,9 +5,9 @@ using Umbraco.Web.Models.ContentEditing;
 namespace Fluidity.Web.Models
 {
     [DataContract(Name = "entity", Namespace = "")]
-    public class FluidityEntityPost : FluidityEntityBasic, IHaveUploadedFiles
+    public class FluidityEntityPostModel : FluidityEntityBasicModel, IHaveUploadedFiles
     {
-        public FluidityEntityPost()
+        public FluidityEntityPostModel()
         {
             Properties = new List<ContentPropertyBasic>();
             UploadedFiles = new List<ContentItemFile>();

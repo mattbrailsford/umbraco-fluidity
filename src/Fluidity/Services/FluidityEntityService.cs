@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using Fluidity.Configuration;
@@ -25,29 +26,29 @@ namespace Fluidity.Services
             _repoFactory = repositoryFactory;
         }
 
-        public FluiditySectionDisplay GetSectionDisplay(FluiditySectionConfig section)
+        public FluiditySectionDisplayModel GetSectionDisplayModel(FluiditySectionConfig section)
         {
             var sectionMapper = new FluiditySectionMapper();
 
-            return sectionMapper.ToDisplay(section);
+            return sectionMapper.ToDisplayModel(section);
         }
 
-        public IEnumerable<FluidityDashboardCollectionDisplay> GetDashboardCollectionDisplays(FluiditySectionConfig section)
+        public IEnumerable<FluidityCollectionDisplayModel> GetDashboardCollectionDisplayModels(FluiditySectionConfig section)
         {
             var collectionMapper = new FluidityCollectionMapper();
 
             return section.Tree.FalttenedTreeItems.Values
                 .Where(x => x is FluidityCollectionConfig && ((FluidityCollectionConfig)x).IsVisibleOnDashboard)
-                .Select(x => collectionMapper.ToDashboardDisplay(section, (FluidityCollectionConfig)x));
+                .Select(x => collectionMapper.ToDisplayModel(section, (FluidityCollectionConfig)x, false));
         }
 
-        public FluidityCollectionDisplay GetCollectionDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection)
+        public FluidityCollectionDisplayModel GetCollectionDisplayModel(FluiditySectionConfig section, FluidityCollectionConfig collection, bool includeListView)
         {
             var collectionMapper = new FluidityCollectionMapper();
-            return collectionMapper.ToDisplay(section, collection);
+            return collectionMapper.ToDisplayModel(section, collection, includeListView);
         }
 
-        public PagedResult<FluidityEntityListViewDisplay> GetListViewEntitiesDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, string orderBy = null, string orderDirection = null, string query = null, string dataView = null)
+        public PagedResult<FluidityEntityDisplayModel> GetEntityDisplayModels(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string orderBy = null, string orderDirection = null, string query = null, string dataView = null)
         {
             var repo = _repoFactory.GetRepository(collection);
             
@@ -55,21 +56,16 @@ namespace Fluidity.Services
             LambdaExpression whereClauseExp = null;
 
             // Determine the data view where clause
-            var hasDataViews = collection.ListView != null && collection.ListView.DataViews.Any();
-            if (hasDataViews)
+            if (!dataView.IsNullOrWhiteSpace())
             {
-                if (!dataView.IsNullOrWhiteSpace())
+                var hasDataViews = collection.ListView != null && collection.ListView.DataViews.Any();
+                if (hasDataViews)
                 {
-                    var dv = collection.ListView.DataViews.FirstOrDefault(x => x.Alias == dataView);
+                    var dv = collection.ListView.DataViews.FirstOrDefault(x => x.Alias.InvariantEquals(dataView));
                     if (dv != null)
                     {
                         whereClauseExp = dv.WhereClauseExpression;
                     }
-                }
-
-                if (whereClauseExp == null)
-                {
-                    whereClauseExp = collection.ListView.DataViews.First().WhereClauseExpression;
                 }
             }
 
@@ -126,25 +122,59 @@ namespace Fluidity.Services
                 ? orderDirection.InvariantEquals("asc") ? Direction.Ascending : Direction.Descending
                 : collection.SortDirection;
 
-            // Get page size
-            var pageSize = collection.ListView?.PageSize ?? 20;
-
             // Perform the query
             var result = repo?.GetPaged(pageNumber, pageSize, orderByExp, orderDir, whereClauseExp); 
 
             // If we've got no results, return an empty result set
             if (result == null)
-                return new PagedResult<FluidityEntityListViewDisplay>(0, pageNumber, pageSize);
+                return new PagedResult<FluidityEntityDisplayModel>(0, pageNumber, pageSize);
 
             // Map the results to the view display
-            var mapper = new FluidityEntityListViewMapper();
-            return new PagedResult<FluidityEntityListViewDisplay>(result.TotalItems, pageNumber, pageSize)
+            var mapper = new FluidityEntityMapper();
+            return new PagedResult<FluidityEntityDisplayModel>(result.TotalItems, pageNumber, pageSize)
             {
-                Items = result.Items.Select(x => mapper.ToDisplay(section, collection, x))
+                Items = result.Items.Select(x => mapper.ToDisplayModel(section, collection, x))
             };
         }
 
-        public FluidityEntityDisplay GetEntityDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection, object entityOrId = null)
+        public IEnumerable<FluidityEntityDisplayModel> GetEntityDisplayModelsByIds(FluiditySectionConfig section, FluidityCollectionConfig collection, object[] ids)
+        {
+            var repo = _repoFactory.GetRepository(collection);
+
+            // Construct where clause
+            LambdaExpression whereClauseExp = null;
+
+            // Create shared expressions
+            var parameter = Expression.Parameter(collection.EntityType);
+
+            // Loop through ids
+            foreach (var id in ids)
+            {
+                // Create id comparrisons
+                var property = Expression.Property(parameter, collection.IdProperty);
+                var idsConst = Expression.Constant(TypeDescriptor.GetConverter(collection.IdProperty.PropertyType).ConvertFrom(id), collection.IdProperty.PropertyType);
+                var compare = Expression.Equal(property, idsConst);
+                var lambda = Expression.Lambda(compare, parameter);
+
+                // Combine clauses
+                whereClauseExp = whereClauseExp == null
+                    ? lambda
+                    : Expression.Lambda(Expression.OrElse(whereClauseExp.Body, lambda.Body), parameter);
+            }
+
+            // Perform the query
+            var result = repo?.GetPaged(1, ids.Length, null, Direction.Ascending, whereClauseExp);
+
+            // If we've got no results, return null
+            if (result == null)
+                return null;
+
+            // Map the results to the view display
+            var mapper = new FluidityEntityMapper();
+            return result.Items.Select(x => mapper.ToDisplayModel(section, collection, x));
+        }
+
+        public FluidityEntityEditModel GetEntityEditModel(FluiditySectionConfig section, FluidityCollectionConfig collection, object entityOrId = null)
         {
             var repo = _repoFactory.GetRepository(collection);
              
@@ -155,7 +185,7 @@ namespace Fluidity.Services
             }
 
             var mapper = new FluidityEntityMapper();
-            var scaffold = mapper.ToDisplay(section, collection, entity);
+            var scaffold = mapper.ToEditModel(section, collection, entity);
 
             return scaffold;
         }

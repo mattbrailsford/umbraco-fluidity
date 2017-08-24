@@ -6,30 +6,37 @@ namespace Fluidity.Web.Models.Mappers
 {
     internal class FluidityCollectionMapper
     {
-        public FluidityCollectionDisplay ToDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection)
+        public FluidityCollectionDisplayModel ToDisplayModel(FluiditySectionConfig section, FluidityCollectionConfig collection, bool includeListView)
         {
-            return new FluidityCollectionDisplay
+            var m = new FluidityCollectionDisplayModel
             {
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
                 Alias = collection.Alias,
-                NameSingular = collection.NameSignular,
-                NamePlural = collection.NamePlural,
+                NameSingular = collection.NameSignular + (!collection.Color.IsNullOrWhiteSpace() ? " color-" + collection.Color : ""),
+                NamePlural = collection.NamePlural + (!collection.Color.IsNullOrWhiteSpace() ? " color-" + collection.Color : ""),
                 IconSingular = collection.IconSingular,
                 IconPlural = collection.IconPlural,
                 Description = collection.Description,
-                Path = collection.Path,
-                ListView = new FluidityListViewDisplay
+                IsReadOnly = collection.IsReadOnly,
+                HasListView = collection.ViewMode == FluidityViewMode.List,
+                Path = collection.Path
+            };
+
+            if (includeListView)
+            {
+                m.ListView = new FluidityListViewDisplayModel
                 {
                     IsSearchable = collection.ListView.SearchFields.Any(),
-                    Properties = collection.ListView.Fields.Select(x => new FluidityListViewPropertyDisplay // We don't include Name, as it's always automatically included
+                    PageSize = collection.ListView.PageSize,
+                    Properties = collection.ListView.Fields.Select(x => new FluidityListViewPropertyDisplayModel // We don't include Name, as it's always automatically included
                     {
                         Alias = x.Property.Name,
                         Header = x.Heading ?? x.Property.Name.SplitPascalCasing(),
                         AllowSorting = true,
                         IsSystem = false
                     }),
-                    Layouts = collection.ListView.Layouts.Select((x, idx) => new FluidityListViewLayoutDisplay
+                    Layouts = collection.ListView.Layouts.Select((x, idx) => new FluidityListViewLayoutDisplayModel
                     {
                         Icon = x.Icon,
                         Name = x.Name,
@@ -37,35 +44,22 @@ namespace Fluidity.Web.Models.Mappers
                         IsSystem = x.IsSystem,
                         Selected = true
                     }),
-                    DataViews = collection.ListView.DataViews.Select(x => new FluidityListViewDataViewDisplay
+                    DataViews = collection.ListView.DataViews.Select(x => new FluidityListViewDataViewDisplayModel
                     {
                         Alias = x.Alias,
                         Name = x.Name
                     }),
-                    BulkActions = collection.ListView.BulkActions.Select(x => new FluidityBulkActionDisplay
+                    BulkActions = collection.ListView.BulkActions.Select(x => new FluidityListViewBulkActionDisplayModel
                     {
                         Icon = x.Icon,
                         Alias = x.Alias,
                         Name = x.Name,
                         AngularServiceName = x.AngularServiceName
                     })
-                }
-            };
-        }
+                };
+            }
 
-        public FluidityDashboardCollectionDisplay ToDashboardDisplay(FluiditySectionConfig section, FluidityCollectionConfig collection)
-        {
-            return new FluidityDashboardCollectionDisplay
-            {
-                Section = section.Alias,
-                Tree = section.Tree.Alias,
-                Alias = collection.Alias,
-                Name = collection.NamePlural,
-                Icon = collection.IconPlural + (!collection.Color.IsNullOrWhiteSpace() ? " color-" + collection.Color : ""),
-                Description = collection.Description,
-                IsReadOnly = collection.IsReadOnly,
-                HasListView = collection.ViewMode == FluidityViewMode.List
-            };
+            return m;
         }
     }
 }

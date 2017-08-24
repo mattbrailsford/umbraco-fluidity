@@ -23,7 +23,7 @@ namespace Fluidity.Web.WebApi.Validation
             : this(new UmbracoDataTypeHelper())
         { }
 
-        public void Validate(ModelStateDictionary modelState, FluidityEntityPost entity, FluidityCollectionConfig config)
+        public void Validate(ModelStateDictionary modelState, FluidityEntityPostModel entity, FluidityCollectionConfig config)
         {
             var configProps = config.Editor?.Tabs.SelectMany(x => x.Fields).ToArray() ?? new FluidityEditorFieldConfig[0];
 
@@ -31,7 +31,7 @@ namespace Fluidity.Web.WebApi.Validation
             if (ValidatePropertyData(modelState, entity, configProps) == false) return;
         }
 
-        protected virtual bool ValidateProperties(ModelStateDictionary modelState, FluidityEntityPost entity, FluidityEditorFieldConfig[] configProps)
+        protected virtual bool ValidateProperties(ModelStateDictionary modelState, FluidityEntityPostModel entity, FluidityEditorFieldConfig[] configProps)
         {
             foreach (var p in entity.Properties)
             {
@@ -44,7 +44,7 @@ namespace Fluidity.Web.WebApi.Validation
             return true;
         }
 
-        protected virtual bool ValidatePropertyData(ModelStateDictionary modelState, FluidityEntityPost entity, FluidityEditorFieldConfig[] configProps)
+        protected virtual bool ValidatePropertyData(ModelStateDictionary modelState, FluidityEntityPostModel entity, FluidityEditorFieldConfig[] configProps)
         {
             foreach (var p in configProps)
             {

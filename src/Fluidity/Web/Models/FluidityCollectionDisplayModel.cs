@@ -3,7 +3,7 @@
 namespace Fluidity.Web.Models
 {
     [DataContract(Name = "collection", Namespace = "")]
-    public class FluidityCollectionDisplay
+    public class FluidityCollectionDisplayModel
     {
         [DataMember(Name = "section", IsRequired = true)]
         public object Section { get; set; }
@@ -29,10 +29,16 @@ namespace Fluidity.Web.Models
         [DataMember(Name = "description")]
         public string Description { get; set; }
 
+        [DataMember(Name = "isReadOnly")]
+        public bool IsReadOnly { get; set; }
+
+        [DataMember(Name = "hasListView")]
+        public bool HasListView { get; set; }
+
         [DataMember(Name = "path")]
         public string Path { get; set; }
 
         [DataMember(Name = "listView")]
-        public FluidityListViewDisplay ListView { get; set; }
+        public FluidityListViewDisplayModel ListView { get; set; }
     }
 }

@@ -65,7 +65,7 @@ namespace Fluidity.Helpers
             <area>{sectionAlias}</area>
         </areas>
         <tab caption=""Summary"">
-            <control>../app_plugins/fluidity/views/dashboard.html</control>
+            <control>../app_plugins/fluidity/dashboards/dashboard.html</control>
         </tab>  
     </section>
 </Action>");

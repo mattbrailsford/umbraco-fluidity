@@ -1,0 +1,45 @@
+﻿<div class="fluidity__entity-picker umb-editor umb-contentpicker" ng-controller="Fluidity.Controllers.EntityPickerController">
+
+    <ng-form name="entityPickerForm">
+
+        <div ui-sortable="sortableOptions" ng-model="renderModel">
+            <umb-node-preview ng-repeat="node in renderModel"
+                icon="node.icon"
+                name="node.name"
+                published="true"
+                description="'/' + node.section + '/' + node.collection + '/' + node.id"
+                sortable="!sortableOptions.disabled"
+                allow-remove="true"
+                on-remove="remove($index)">
+            </umb-node-preview>
+        </div>
+
+        <a ng-show="model.config.maxItems > 1 || renderModel.length === 0"
+           class="umb-node-preview-add"
+           href=""
+           ng-click="openEntityPicker()"
+           prevent-default>
+           <localize key="general_add">Add</localize>
+        </a>
+
+        <!--These are here because we need ng-form fields to validate against-->
+        <input type="hidden" name="minCount" ng-model="renderModel" />
+        <input type="hidden" name="maxCount" ng-model="renderModel" />
+
+        <div class="help-inline" val-msg-for="minCount" val-toggle-msg="minCount">
+            You need to add at least {{model.config.minItems}} items
+        </div>
+
+        <div class="help-inline" val-msg-for="maxCount" val-toggle-msg="maxCount">
+            You can only have {{model.config.maxItems}} items selected
+        </div>
+
+    </ng-form>
+
+    <umb-overlay ng-if="entityPickerOverlay.show"
+        model="entityPickerOverlay"
+        view="entityPickerOverlay.view"
+        position="right">
+    </umb-overlay>
+
+</div>

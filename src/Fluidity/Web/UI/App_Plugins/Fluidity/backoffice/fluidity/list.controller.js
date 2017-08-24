@@ -16,13 +16,14 @@
         $scope.listView = {
             options: {
                 isSearchable: true,
+                pageSize: 10,
                 bulkActions: [],
                 dataViews: [],
                 layouts: [],
                 properties: []
             },
             getItems: function(id, options) {
-                return fluidityResource.getListViewEntities($scope.collection.section, $scope.collection.alias, options);
+                return fluidityResource.getEntities($scope.collection.section, $scope.collection.alias, options);
             }
         }
 
@@ -31,7 +32,8 @@
             $scope.listView.options.bulkActions = collection.listView.bulkActions;
             $scope.listView.options.dataViews   = collection.listView.dataViews;
             $scope.listView.options.layouts     = collection.listView.layouts;
-            $scope.listView.options.properties  = collection.listView.properties;
+            $scope.listView.options.properties = collection.listView.properties;
+            $scope.listView.options.pageSize = collection.listView.pageSize;
             $scope.listView.options.isSearchable = collection.listView.isSearchable;
         }
 

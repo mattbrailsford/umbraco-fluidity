@@ -3,6 +3,11 @@
     min-width: 100%;
 }
 
+/* Prevent double top border on tables without a header */
+.umb-table > .umb-table-body:first-child > .umb-table-row:first-child {
+    border-top: 0;
+}
+
 /* Dashboard */
 .fluidity__dashboard__item .inner {
     position: relative;

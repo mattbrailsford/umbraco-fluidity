@@ -1,0 +1,5 @@
+﻿<div class="fluidity__collection-picker" ng-controller="Fluidity.Controllers.CollectionPickerController">
+    <select ng-model="model.value" ng-options="collection.sectionAlias + ',' + collection.alias as collection.name group by collection.sectionName for collection in collections">
+        <option value="">---Please select---</option>
+    </select>
+</div>

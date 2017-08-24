@@ -3,7 +3,7 @@
 namespace Fluidity.Web.Models
 {
     [DataContract(Name = "section", Namespace = "")]
-    public class FluiditySectionDisplay
+    public class FluiditySectionDisplayModel
     {
         [DataMember(Name = "alias", IsRequired = true)]
         public object Alias { get; set; }

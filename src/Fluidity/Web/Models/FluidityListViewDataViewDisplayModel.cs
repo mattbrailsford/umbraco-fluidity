@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 namespace Fluidity.Web.Models
 {
     [DataContract(Name = "dataView", Namespace = "")]
-    public class FluidityListViewDataViewDisplay
+    public class FluidityListViewDataViewDisplayModel
     {
         [DataMember(Name = "alias", IsRequired = true)]
         public string Alias { get; set; }

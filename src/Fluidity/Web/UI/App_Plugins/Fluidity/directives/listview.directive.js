@@ -18,6 +18,7 @@
 
             $scope.options = angular.extend({}, {
                 pageNumber: ($routeParams.page && Number($routeParams.page) != NaN && Number($routeParams.page) > 0) ? $routeParams.page : 1,
+                pageSize: $scope.opts.pageSize,
                 orderBy: "name",
                 orderDirection: "desc",
                 filter: '', // Variable has to be named "filter" to work with list view properly

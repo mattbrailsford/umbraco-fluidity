@@ -3,7 +3,7 @@
 namespace Fluidity.Web.Models
 {
     [DataContract(Name = "bulkAction", Namespace = "")]
-    public class FluidityBulkActionDisplay
+    public class FluidityListViewBulkActionDisplayModel
     {
         [DataMember(Name = "icon")]
         public string Icon { get; set; }

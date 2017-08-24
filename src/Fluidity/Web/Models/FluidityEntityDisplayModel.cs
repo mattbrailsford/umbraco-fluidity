@@ -6,9 +6,9 @@ using Umbraco.Web.Models.ContentEditing;
 namespace Fluidity.Web.Models
 {   
     [DataContract(Name = "entity", Namespace = "")]
-    public class FluidityEntityListViewDisplay : FluidityEntityBasic
+    public class FluidityEntityDisplayModel : FluidityEntityBasicModel
     {
-        public FluidityEntityListViewDisplay()
+        public FluidityEntityDisplayModel()
         {
             Properties = new List<ContentPropertyBasic>();
         }

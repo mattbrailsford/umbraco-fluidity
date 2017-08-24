@@ -71,12 +71,12 @@ namespace Fluidity.Web.WebApi.Binders
 
             // Get the json post data from the request and deserialize it
             var contentItem = result.FormData["contentItem"];
-            var model = JsonConvert.DeserializeObject<FluidityEntityPost>(contentItem);
+            var model = JsonConvert.DeserializeObject<FluidityEntityPostModel>(contentItem);
 
             // Get the default body validator and validate the object
             var bodyValidator = actionContext.ControllerContext.Configuration.Services.GetBodyModelValidator();
             var metadataProvider = actionContext.ControllerContext.Configuration.Services.GetModelMetadataProvider();
-            bodyValidator.Validate(model, typeof(FluidityEntityPost), metadataProvider, actionContext, "");
+            bodyValidator.Validate(model, typeof(FluidityEntityPostModel), metadataProvider, actionContext, "");
 
             // Get the files
             foreach (var file in result.FileData)

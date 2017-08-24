@@ -1,4 +1,42 @@
 ﻿{
+	propertyEditors: [
+		{
+			alias: "Fluidity.EntityPicker",
+			name: "Fluidity Entity Picker",
+			editor: {
+			view: "~/app_plugins/fluidity/propertyeditors/entitypicker.html"
+			},
+			prevalues: {
+				fields: [
+					{
+						label: "Collection",
+						description: "Choose the collection from which to select entities from",
+						key: "collection",
+						view: "~/app_plugins/fluidity/prevalues/collectionpicker.html"
+					},
+					{
+						label: "Data view",
+						description: "Enter the alias of a data view to display",
+						key: "dataView",
+						view: "textstring"
+					},
+					{
+						label: "Minimum number of items",
+						description: "Enter the minimum number of items that can be selected",
+						key: "minItems",
+						view: "number"
+					},
+					{
+						label: "Maximum number of items",
+						description: "Enter the maximum number of items that can be selected",
+						key: "maxItems",
+						view: "number"
+					}
+				]
+			}
+
+		}
+    ],
     javascript: [
 
 		'~/app_plugins/fluidity/overrides/fluidity.overrides.js',
@@ -12,9 +50,16 @@
 		'~/app_plugins/fluidity/backoffice/fluidity/delete.controller.js', 
 		'~/app_plugins/fluidity/backoffice/fluidity/list.controller.js',
 
-		'~/app_plugins/fluidity/views/dashboard.controller.js',
+		'~/app_plugins/fluidity/propertyeditors/entitypicker.controller.js',
 
-		'~/app_plugins/fluidity/directives/listview.directive.js'
+		'~/app_plugins/fluidity/prevalues/collectionpicker.controller.js',
+
+		'~/app_plugins/fluidity/dialogs/entitypicker.controller.js',
+
+		'~/app_plugins/fluidity/dashboards/dashboard.controller.js',
+
+		'~/app_plugins/fluidity/directives/listview.directive.js',
+		'~/app_plugins/fluidity/directives/minilistview.directive.js'
 
     ],
     css: [

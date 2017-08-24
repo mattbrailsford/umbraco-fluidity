@@ -3,7 +3,7 @@
 namespace Fluidity.Web.Models
 {
     [DataContract(Name = "entity", Namespace = "")]
-    public class FluidityEntityBasic
+    public class FluidityEntityBasicModel
     {
         [DataMember(Name = "id", IsRequired = true)]
         public object Id { get; set; }

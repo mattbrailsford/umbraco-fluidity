@@ -19,6 +19,16 @@
                 );
             },
 
+            getCollectionsLookup: function () {
+                return umbRequestHelper.resourcePromise(
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getcollectionslookup",
+                        method: "GET"
+                    }),
+                    'Failed to get collections lookup'
+                );
+            },
+
             getDashboardCollections: function (section) {
                 return umbRequestHelper.resourcePromise(
                     $http({
@@ -46,22 +56,38 @@
                 );
             },
 
-            getListViewEntities: function (section, collectionAlias, options) {
+            getEntitiesByIds: function (section, collectionAlias, ids) {
                 return umbRequestHelper.resourcePromise(
                     $http({
-                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getlistviewentities", 
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getentitiesbyids",
+                        method: "GET",
+                        params: {
+                            section: section,
+                            collectionAlias: collectionAlias,
+                            ids: ids.join(',')
+                        }
+                    }),
+                    'Failed to get entities'
+                );
+            },
+
+            getEntities: function (section, collectionAlias, options) {
+                return umbRequestHelper.resourcePromise(
+                    $http({
+                        url: Umbraco.Sys.ServerVariables.fluidity.apiBaseUrl + "getentities", 
                         method: "GET",
                         params: {
                             section: section,
                             collectionAlias: collectionAlias,
                             pageNumber: options.pageNumber,
+                            pageSize: options.pageSize,
                             orderBy: options.orderBy,
                             orderDirection: options.orderDirection,
                             query: options.filter,
                             dataView: options.dataView
                         }
                     }),
-                    'Failed to get list view entities'
+                    'Failed to get entities'
                 );
             },
 
