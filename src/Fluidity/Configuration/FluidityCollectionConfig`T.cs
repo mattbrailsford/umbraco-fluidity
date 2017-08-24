@@ -1,7 +1,6 @@
 using System;
 using System.Linq.Expressions;
 using Fluidity.Data;
-using Fluidity.Extensions;
 using Umbraco.Core;
 using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Web.Models.Trees;
@@ -11,7 +10,7 @@ namespace Fluidity.Configuration
     public class FluidityCollectionConfig<TEntityType> : FluidityCollectionConfig
     {
         public FluidityCollectionConfig(Expression<Func<TEntityType, object>> idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null, Action<FluidityCollectionConfig<TEntityType>> config = null)
-            : base (typeof(TEntityType), idProperty, idProperty.GetPropertyInfo(), nameSingular, namePlural, iconSingular, iconPlural)
+            : base (typeof(TEntityType), idProperty, nameSingular, namePlural, iconSingular, iconPlural)
         {
             config?.Invoke(this);
         }
@@ -25,6 +24,19 @@ namespace Fluidity.Configuration
         public FluidityCollectionConfig<TEntityType> SetColor(string color)
         {
             _color = color;
+            return this;
+        }
+
+        public FluidityCollectionConfig<TEntityType> SetNameProperty(Expression<Func<TEntityType, string>> nameProperty)
+        {
+            _nameProperty = nameProperty;
+            _searchProperties.Add(_nameProperty);
+
+            if (_sortProperty == null)
+            {
+                _sortProperty = _nameProperty;
+            }
+
             return this;
         }
 
@@ -59,8 +71,7 @@ namespace Fluidity.Configuration
 
         public FluidityCollectionConfig<TEntityType> SetDeletedProperty(Expression<Func<TEntityType, bool>> deletedProperty)
         {
-            _deletedPropertyExp = deletedProperty;
-            _deletedProperty = deletedProperty.GetPropertyInfo();
+            _deletedProperty = deletedProperty;
             return this;
         }
 
@@ -71,9 +82,8 @@ namespace Fluidity.Configuration
 
         public FluidityCollectionConfig<TEntityType> SetSortProperty(Expression<Func<TEntityType, object>> sortProperty, Direction sortDirection)
         {
-            
-            _sortPropertyExp = sortProperty;
-            _sortProperty = sortProperty.GetPropertyInfo();
+
+            _sortProperty = sortProperty;
             _sortDirection = sortDirection;
             return this;
         }
@@ -128,17 +138,21 @@ namespace Fluidity.Configuration
             return this;
         }
 
+        public FluidityCollectionConfig<TEntityType> AddSearchProperty(Expression<Func<TEntityType, string>> searchProp)
+        {
+            _searchProperties.Add(searchProp);
+            return this;
+        }
+
         public FluidityCollectionConfig<TEntityType> SetDateCreatedProperty(Expression<Func<TEntityType, object>> dateCreatedProperty)
         {
-            _dateCreatedPropertyExp = dateCreatedProperty;
-            _dateCreatedProperty = dateCreatedProperty.GetPropertyInfo();
+            _dateCreatedProperty = dateCreatedProperty;
             return this;
         }
 
         public FluidityCollectionConfig<TEntityType> SetDateModifiedProperty(Expression<Func<TEntityType, object>> dateModifiedProperty)
         {
-            _dateModifiedPropertyExp = dateModifiedProperty;
-            _dateModifiedProperty = dateModifiedProperty.GetPropertyInfo();
+            _dateModifiedProperty = dateModifiedProperty;
             return this;
         }
 

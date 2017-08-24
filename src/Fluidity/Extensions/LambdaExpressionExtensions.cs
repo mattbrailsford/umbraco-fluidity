@@ -6,7 +6,7 @@ namespace Fluidity.Extensions
 {
     internal static class LambdaExpressionExtensions
     {
-        public static PropertyInfo GetPropertyInfo<TSource, TProperty>(this Expression<Func<TSource, TProperty>> propertyLambda)
+        public static PropertyInfo GetPropertyInfo(this LambdaExpression propertyLambda)
         {
             var member = propertyLambda.Body as MemberExpression;
             if (member == null)
@@ -29,12 +29,12 @@ namespace Fluidity.Extensions
                 throw new ArgumentException($"Expression '{propertyLambda}' refers to a field, not a property.");
             }
 
-            var type = typeof(TSource);
-            if (propInfo.ReflectedType != null && type != propInfo.ReflectedType
-                && !type.IsSubclassOf(propInfo.ReflectedType))
-            {
-                throw new ArgumentException($"Expresion '{propertyLambda}' refers to a property that is not from type {type}.");
-            }
+            //var type = typeof(TSource);
+            //if (propInfo.ReflectedType != null && type != propInfo.ReflectedType
+            //    && !type.IsSubclassOf(propInfo.ReflectedType))
+            //{
+            //    throw new ArgumentException($"Expresion '{propertyLambda}' refers to a property that is not from type {type}.");
+            //}
 
             return propInfo;
         }

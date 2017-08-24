@@ -70,7 +70,7 @@ namespace Fluidity.Services
             }
 
             // Construct a query where clause (and combind with the data view where clause if one exists)
-            if (!query.IsNullOrWhiteSpace() && collection.ListView != null && collection.ListView.SearchFields.Any())
+            if (!query.IsNullOrWhiteSpace() && collection.ListView != null && collection.SearchProperties.Any())
             {
                 LambdaExpression queryExpression = null;
 
@@ -81,10 +81,10 @@ namespace Fluidity.Services
                 var queryConstantExpression = Expression.Constant(query, typeof(string));
 
                 // Loop through searchable fields
-                foreach (var searchField in collection.ListView.SearchFields)
+                foreach (var searchProp in collection.SearchProperties)
                 {
                     // Create field starts with expression
-                    var property = Expression.Property(parameter, searchField.Property);
+                    var property = Expression.Property(parameter, searchProp.PropertyInfo);
                     var startsWithCall = Expression.Call(property, "StartsWith", null, queryConstantExpression);
                     var lambda = Expression.Lambda(startsWithCall, parameter);
 
@@ -146,13 +146,14 @@ namespace Fluidity.Services
 
             // Create shared expressions
             var parameter = Expression.Parameter(collection.EntityType);
+            var idPropInfo = collection.IdProperty.PropertyInfo;
 
             // Loop through ids
             foreach (var id in ids)
             {
                 // Create id comparrisons
-                var property = Expression.Property(parameter, collection.IdProperty);
-                var idsConst = Expression.Constant(TypeDescriptor.GetConverter(collection.IdProperty.PropertyType).ConvertFrom(id), collection.IdProperty.PropertyType);
+                var property = Expression.Property(parameter, idPropInfo);
+                var idsConst = Expression.Constant(TypeDescriptor.GetConverter(idPropInfo.PropertyType).ConvertFrom(id), idPropInfo.PropertyType);
                 var compare = Expression.Equal(property, idsConst);
                 var lambda = Expression.Lambda(compare, parameter);
 
@@ -212,7 +213,7 @@ namespace Fluidity.Services
         public object SaveEntity(FluidityCollectionConfig collection, object entity)
         {
             var repo = _repoFactory.GetRepository(collection);
-            var isNew = entity.GetPropertyValue(collection.IdProperty) == collection.IdProperty.PropertyType.GetDefaultValue();
+            var isNew = entity.GetPropertyValue(collection.IdProperty) == collection.IdProperty.PropertyInfo.PropertyType.GetDefaultValue();
 
             if (isNew && collection.DateCreatedProperty != null)
             {

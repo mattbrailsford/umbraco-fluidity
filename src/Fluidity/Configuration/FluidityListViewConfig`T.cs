@@ -25,12 +25,6 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityListViewConfig<TEntityType> SetNameFormat(Func<TEntityType, string> format)
-        {
-            _nameFormat = (entity) => format((TEntityType)entity);
-            return this;
-        }
-
         public FluidityListViewFieldConfig<TEntityType, TValueType> AddField<TValueType>(Expression<Func<TEntityType, TValueType>> fieldExpression, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> fieldConfig = null)
         {
             return AddField(new FluidityListViewFieldConfig<TEntityType, TValueType>(fieldExpression, fieldConfig));
@@ -41,18 +35,6 @@ namespace Fluidity.Configuration
             var field = fieldConfig;
             _fields.Add(field);
             return field;
-        }
-
-        public FluidityListViewConfig<TEntityType> AddSearchField(Expression<Func<TEntityType, string>> fieldExpression)
-        {
-            return AddSearchField(new FluidityListViewSearchFieldConfig<TEntityType>(fieldExpression));
-        }
-
-        public FluidityListViewConfig<TEntityType> AddSearchField(FluidityListViewSearchFieldConfig<TEntityType> fieldConfig)
-        {
-            var field = fieldConfig;
-            _searchFields.Add(field);
-            return this;
         }
 
         public FluidityListViewConfig<TEntityType> AddLayout<TListViewLayoutType>()

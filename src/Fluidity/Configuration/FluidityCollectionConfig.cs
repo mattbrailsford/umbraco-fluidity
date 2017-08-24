@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Reflection;
 using Umbraco.Core;
 using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Web.Models.Trees;
@@ -10,11 +9,14 @@ namespace Fluidity.Configuration
 {
     public abstract class FluidityCollectionConfig : FluidityTreeItemConfig
     {
-        protected PropertyInfo _idProperty;
-        internal PropertyInfo IdProperty => _idProperty;
+        protected FluidityPropertyConfig _idProperty;
+        internal FluidityPropertyConfig IdProperty => _idProperty;
 
-        protected LambdaExpression _idPropertyExp;
-        internal LambdaExpression IdPropertyExp => _idPropertyExp;
+        protected FluidityPropertyConfig _nameProperty;
+        internal FluidityPropertyConfig NameProperty => _nameProperty;
+
+        protected Func<object, string> _nameFormat;
+        internal Func<object, string> NameFormat => _nameFormat;
 
         protected string _nameSingular;
         internal string NameSignular => _nameSingular;
@@ -55,29 +57,17 @@ namespace Fluidity.Configuration
         protected Direction _sortDirection;
         internal Direction SortDirection => _sortDirection;
 
-        protected PropertyInfo _sortProperty;
-        internal PropertyInfo SortProperty => _sortProperty;
+        protected FluidityPropertyConfig _sortProperty;
+        internal FluidityPropertyConfig SortProperty => _sortProperty;
 
-        protected LambdaExpression _sortPropertyExp;
-        internal LambdaExpression SortPropertyExp => _sortPropertyExp;
+        protected FluidityPropertyConfig _dateCreatedProperty;
+        internal FluidityPropertyConfig DateCreatedProperty => _dateCreatedProperty;
 
-        protected PropertyInfo _dateCreatedProperty;
-        internal PropertyInfo DateCreatedProperty => _dateCreatedProperty;
+        protected FluidityPropertyConfig _dateModifiedProperty;
+        internal FluidityPropertyConfig DateModifiedProperty => _dateModifiedProperty;
 
-        protected LambdaExpression _dateCreatedPropertyExp;
-        internal LambdaExpression DateCreatedPropertyExp => _dateCreatedPropertyExp;
-
-        protected PropertyInfo _dateModifiedProperty;
-        internal PropertyInfo DateModifiedProperty => _dateModifiedProperty;
-
-        protected LambdaExpression _dateModifiedPropertyExp;
-        internal LambdaExpression DateModifiedPropertyExp => _dateModifiedPropertyExp;
-
-        protected PropertyInfo _deletedProperty;
-        internal PropertyInfo DeletedProperty => _deletedProperty;
-
-        protected LambdaExpression _deletedPropertyExp;
-        internal LambdaExpression DeletedPropertyExp => _deletedPropertyExp;
+        protected FluidityPropertyConfig _deletedProperty;
+        internal FluidityPropertyConfig DeletedProperty => _deletedProperty;
 
         protected FluidityListViewConfig _listView;
         internal FluidityListViewConfig ListView => _listView;
@@ -85,19 +75,18 @@ namespace Fluidity.Configuration
         protected FluidityEditorConfig _editor;
         internal FluidityEditorConfig Editor => _editor;
 
-        protected Func<object, string> _nameFormat;
-        internal Func<object, string> NameFormat => _nameFormat;
-
         protected List<MenuItem> _containerMenuItems;
         internal IEnumerable<MenuItem> ContainerMenuItems => _containerMenuItems;
 
         protected List<MenuItem> _entityMenuItems;
         internal IEnumerable<MenuItem> EntityMenuItems => _entityMenuItems;
 
-        protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExp, PropertyInfo idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null)
+        protected List<FluidityPropertyConfig> _searchProperties;
+        internal IEnumerable<FluidityPropertyConfig> SearchProperties => _searchProperties;
+
+        protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExp, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null)
         {
-            _idPropertyExp = idPropertyExp;
-            _idProperty = idProperty;
+            _idProperty = idPropertyExp;
             _entityType = entityType;
             _alias = nameSingular.ToSafeAlias(true);
             _nameSingular = nameSingular;
@@ -108,6 +97,7 @@ namespace Fluidity.Configuration
 
             _containerMenuItems = new List<MenuItem>();
             _entityMenuItems = new List<MenuItem>();
+            _searchProperties = new List<FluidityPropertyConfig>();
         }
     }
 }

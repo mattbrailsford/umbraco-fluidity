@@ -26,6 +26,12 @@ namespace Fluidity.Configuration
             config?.Invoke(this);
         }
 
+        public FluiditySectionConfig SetAlias(string alias)
+        {
+            _alias = alias;
+            return this;
+        }
+
         public FluidityTreeConfig SetTree(string name, Action<FluidityTreeConfig> treeConfig = null)
         {
             return SetTree(new FluidityTreeConfig(name, config : treeConfig));

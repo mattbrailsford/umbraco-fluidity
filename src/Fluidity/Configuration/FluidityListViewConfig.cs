@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fluidity.Actions;
@@ -18,14 +17,8 @@ namespace Fluidity.Configuration
         protected List<FluidityDataViewConfig> _dataViews;
         internal IEnumerable<FluidityDataViewConfig> DataViews => _dataViews; 
 
-        protected Func<object, string> _nameFormat;
-        internal Func<object, string> NameFormat => _nameFormat;
-
         protected List<FluidityListViewFieldConfig> _fields;
         internal IEnumerable<FluidityListViewFieldConfig> Fields => _fields;
-
-        protected List<FluidityListViewSearchFieldConfig> _searchFields;
-        internal IEnumerable<FluidityListViewSearchFieldConfig> SearchFields => _searchFields;
 
         protected List<FluidityListViewLayout> _defaultLayouts;
         protected List<FluidityListViewLayout> _layouts;
@@ -38,7 +31,6 @@ namespace Fluidity.Configuration
             _bulkActions = new List<FluidityBulkAction>();
             _dataViews = new List<FluidityDataViewConfig>();
             _fields = new List<FluidityListViewFieldConfig>();
-            _searchFields = new List<FluidityListViewSearchFieldConfig>();
             _defaultLayouts = new List<FluidityListViewLayout>(new FluidityListViewLayout [] { new FluidityTableListViewLayout(), new FluidityGridListViewLayout() } );
             _layouts = new List<FluidityListViewLayout>();
         }

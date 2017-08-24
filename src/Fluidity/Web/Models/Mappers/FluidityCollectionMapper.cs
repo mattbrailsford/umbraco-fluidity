@@ -19,6 +19,7 @@ namespace Fluidity.Web.Models.Mappers
                 IconPlural = collection.IconPlural,
                 Description = collection.Description,
                 IsReadOnly = collection.IsReadOnly,
+                IsSearchable = collection.SearchProperties.Any(),
                 HasListView = collection.ViewMode == FluidityViewMode.List,
                 Path = collection.Path
             };
@@ -27,12 +28,11 @@ namespace Fluidity.Web.Models.Mappers
             {
                 m.ListView = new FluidityListViewDisplayModel
                 {
-                    IsSearchable = collection.ListView.SearchFields.Any(),
                     PageSize = collection.ListView.PageSize,
                     Properties = collection.ListView.Fields.Select(x => new FluidityListViewPropertyDisplayModel // We don't include Name, as it's always automatically included
                     {
-                        Alias = x.Property.Name,
-                        Header = x.Heading ?? x.Property.Name.SplitPascalCasing(),
+                        Alias = x.Property.PropertyInfo.Name,
+                        Header = x.Heading ?? x.Property.PropertyInfo.Name.SplitPascalCasing(),
                         AllowSorting = true,
                         IsSystem = false
                     }),

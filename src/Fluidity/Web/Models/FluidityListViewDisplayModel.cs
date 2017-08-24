@@ -6,6 +6,9 @@ namespace Fluidity.Web.Models
     [DataContract(Name = "listView", Namespace = "")]
     public class FluidityListViewDisplayModel
     {
+        [DataMember(Name = "pageSize")]
+        public int PageSize { get; set; }
+
         [DataMember(Name = "bulkActions")]
         public IEnumerable<FluidityListViewBulkActionDisplayModel> BulkActions { get; set; }
 
@@ -17,11 +20,5 @@ namespace Fluidity.Web.Models
 
         [DataMember(Name = "dataViews")]
         public IEnumerable<FluidityListViewDataViewDisplayModel> DataViews { get; set; }
-
-        [DataMember(Name = "pageSize")]
-        public int PageSize { get; set; }
-
-        [DataMember(Name = "isSearchable")]
-        public bool IsSearchable { get; set; }
     }
 }

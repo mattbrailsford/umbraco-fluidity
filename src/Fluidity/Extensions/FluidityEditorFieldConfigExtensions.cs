@@ -14,19 +14,19 @@ namespace Fluidity.Extensions
 
             // TODO: Check for NText attribute for textarea/rte?
 
-            if (fieldConfig.Property.PropertyType == typeof(DateTime)
-                || fieldConfig.Property.PropertyType == typeof(DateTime?))
+            if (fieldConfig.Property.PropertyInfo.PropertyType == typeof(DateTime)
+                || fieldConfig.Property.PropertyInfo.PropertyType == typeof(DateTime?))
             {
                 dtdId = -41; // Date picker
             }
 
-            if (fieldConfig.Property.PropertyType == typeof(bool))
+            if (fieldConfig.Property.PropertyInfo.PropertyType == typeof(bool))
             {
                 dtdId = -49; // True/False
             }
 
-            if (fieldConfig.Property.PropertyType == typeof(int)
-                || fieldConfig.Property.PropertyType == typeof(long))
+            if (fieldConfig.Property.PropertyInfo.PropertyType == typeof(int)
+                || fieldConfig.Property.PropertyInfo.PropertyType == typeof(long))
             {
                 dtdId = -51; // Numeric
             }

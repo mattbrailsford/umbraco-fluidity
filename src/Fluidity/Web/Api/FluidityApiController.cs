@@ -53,16 +53,22 @@ namespace Fluidity.Web.Api
         [HttpGet]
         public object GetCollectionsLookup()
         {
-            return Context.Config.Sections.Values.SelectMany(s => s.Tree.FalttenedTreeItems.Values
-                .Where(c => c is FluidityCollectionConfig)
-                .Cast<FluidityCollectionConfig>()
-                .Select(c => new {
-                    alias = c.Alias,
-                    name = c.NamePlural,
-                    sectionAlias = s.Alias,
-                    sectionName = s.Name
-                })
-            );
+            return Context.Config.Sections.Values.Select(s => new {
+                    alias = s.Alias,
+                    name = s.Name,
+                    collections = s.Tree.FalttenedTreeItems.Values
+                        .Where(c => c is FluidityCollectionConfig)
+                        .Cast<FluidityCollectionConfig>()
+                        .Select(c => new {
+                            alias = c.Alias,
+                            name = c.NamePlural,
+                            dataViews = c.ListView?.DataViews.Select(dv => new
+                            {
+                                alias = dv.Alias,
+                                name = dv.Name
+                            })
+                        })
+                });
         }
 
         [HttpGet]

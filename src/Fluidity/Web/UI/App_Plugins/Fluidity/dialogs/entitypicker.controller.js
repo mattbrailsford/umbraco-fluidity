@@ -45,7 +45,7 @@
         }
 
         function init(collection) {
-            $scope.listView.options.isSearchable = collection.listView.isSearchable;
+            $scope.listView.options.isSearchable = collection.isSearchable;
             $scope.collection = collection;
         }
 

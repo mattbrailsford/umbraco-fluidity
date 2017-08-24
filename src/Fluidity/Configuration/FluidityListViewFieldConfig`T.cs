@@ -1,13 +1,12 @@
 using System;
 using System.Linq.Expressions;
-using Fluidity.Extensions;
 
 namespace Fluidity.Configuration
 {
     public class FluidityListViewFieldConfig<TEntityType, TValueType> : FluidityListViewFieldConfig
     {
         public FluidityListViewFieldConfig(Expression<Func<TEntityType, TValueType>> property, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> config = null)
-            : base (property, property.GetPropertyInfo())
+            : base (property)
         {
             config?.Invoke(this);
         }

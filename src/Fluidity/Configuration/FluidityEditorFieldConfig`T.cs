@@ -1,7 +1,6 @@
 using System;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
-using Fluidity.Extensions;
 using Fluidity.Mappers;
 
 namespace Fluidity.Configuration
@@ -9,7 +8,7 @@ namespace Fluidity.Configuration
     public class FluidityEditorFieldConfig<TEntityType, TValueType> : FluidityEditorFieldConfig
     {
         public FluidityEditorFieldConfig(Expression<Func<TEntityType, TValueType>> property, Action<FluidityEditorFieldConfig<TEntityType, TValueType>> config = null)
-            : base(property, property.GetPropertyInfo())
+            : base(property)
         {
             config?.Invoke(this);
         }

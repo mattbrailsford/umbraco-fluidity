@@ -36,9 +36,9 @@ namespace Fluidity.Web.Models.Mappers
                 : null;
 
             var name = "";
-            if (collection.ListView?.NameFormat != null)
+            if (collection.NameProperty != null)
             {
-                name = collection.ListView.NameFormat(entity);
+                name = entity.GetPropertyValue(collection.NameProperty).ToString();
             }
             else if (collection.NameFormat != null)
             {
@@ -79,7 +79,7 @@ namespace Fluidity.Web.Models.Mappers
                         var propertyScaffold = new ContentPropertyBasic
                         {
                             Id = properties.Count,
-                            Alias = field.Property.Name,
+                            Alias = field.Property.PropertyInfo.Name,
                             Value = value?.ToString()
                         };
 
@@ -103,7 +103,8 @@ namespace Fluidity.Web.Models.Mappers
             var display = new FluidityEntityEditModel
             {
                 Id = entity?.GetPropertyValue(collection.IdProperty),
-                Name = collection.Editor?.NameProperty != null ? entity?.GetPropertyValue(collection.Editor.NameProperty).ToString() : collection.NameSignular,
+                Name = collection?.NameProperty != null ? entity?.GetPropertyValue(collection.NameProperty).ToString() : collection.NameSignular,
+                HasNameProperty = collection.NameProperty != null,
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
                 Collection = collection.Alias,
@@ -111,7 +112,6 @@ namespace Fluidity.Web.Models.Mappers
                 CollectionNamePlural = collection.NamePlural,
                 CollectionIconSingular = collection.IconSingular,
                 CollectionIconPlural = collection.IconPlural,
-                HasNameProperty = collection.Editor?.NameProperty != null,
                 IsChildOfListView = collection.ViewMode == FluidityViewMode.List,
                 IsChildOfTreeView = collection.ViewMode == FluidityViewMode.Tree,
                 TreeNodeUrl = "/umbraco/backoffice/fluidity/FluidityTree/GetTreeNode/" + entityCompositeId + "?application=" + section.Alias,
@@ -158,8 +158,8 @@ namespace Fluidity.Web.Models.Mappers
                             var propertyScaffold = new ContentPropertyDisplay
                             {
                                 Id = properties.Count,
-                                Alias = field.Property.Name,
-                                Label = field.Label ?? field.Property.Name.SplitPascalCasing(),
+                                Alias = field.Property.PropertyInfo.Name,
+                                Label = field.Label ?? field.Property.PropertyInfo.Name.SplitPascalCasing(),
                                 Description = field.Description,
                                 Editor = dataTypeInfo.PropertyEditor.Alias,
                                 View = dataTypeInfo.PropertyEditor.ValueEditor.View,
@@ -188,16 +188,16 @@ namespace Fluidity.Web.Models.Mappers
             var editorProps = collection.Editor.Tabs.SelectMany(x => x.Fields).ToArray();
 
             // Update the name property
-            if (collection.Editor.NameProperty != null)
+            if (collection.NameProperty != null)
             {
-                entity.SetPropertyValue(collection.Editor.NameProperty, postModel.Name);
+                entity.SetPropertyValue(collection.NameProperty, postModel.Name);
             }
 
             // Update the individual properties
             foreach (var prop in postModel.Properties)
             {
                 // Get the prop config
-                var propConfig = editorProps.First(x => x.Property.Name == prop.Alias);
+                var propConfig = editorProps.First(x => x.Property.PropertyInfo.Name == prop.Alias);
 
                 // Create additional data for file handling
                 var additionalData = new Dictionary<string, object>();
@@ -220,7 +220,7 @@ namespace Fluidity.Web.Models.Mappers
                 // rather they are used to generate a unique path, so we just use the nearest
                 // equivilaants from the fluidity api. 
                 var cuid = $"{section.Alias}_{collection.Alias}_{entity.GetPropertyValue(collection.IdProperty)}";
-                var puid = $"{section.Alias}_{collection.Alias}_{propConfig.Property.Name}";
+                var puid = $"{section.Alias}_{collection.Alias}_{propConfig.Property.PropertyInfo.Name}";
 
                 additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
                 additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));

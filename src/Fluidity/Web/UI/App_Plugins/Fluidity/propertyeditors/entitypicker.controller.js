@@ -6,8 +6,9 @@
 
         // TODO: Validate collection config
         var aliases = $scope.model.config.collection.split(',');
-        var sectionAlias = aliases[0];
-        var collectionAlias = aliases[1];
+        var sectionAlias = aliases.length >= 1 ? aliases[0] : "";
+        var collectionAlias = aliases.length >= 2 ? aliases[1] : "";
+        var dataView = aliases.length >= 3 ? aliases[2] : "";
 
         $scope.renderModel = [];
         $scope.dialogEditor = editorState && editorState.current && editorState.current.isDialogEditor;
@@ -25,7 +26,7 @@
             multiPicker: $scope.model.config.maxItems > 1,
             section: sectionAlias,
             collection: collectionAlias,
-            dataView: $scope.model.config.dataView
+            dataView: dataView
         };
 
         $scope.openEntityPicker = function () {

@@ -10,15 +10,9 @@
 				fields: [
 					{
 						label: "Collection",
-						description: "Choose the collection from which to select entities from",
 						key: "collection",
-						view: "~/app_plugins/fluidity/prevalues/collectionpicker.html"
-					},
-					{
-						label: "Data view",
-						description: "Enter the alias of a data view to display",
-						key: "dataView",
-						view: "textstring"
+						view: "~/app_plugins/fluidity/prevalues/collectionpicker.html",
+						hideLabel: true
 					},
 					{
 						label: "Minimum number of items",

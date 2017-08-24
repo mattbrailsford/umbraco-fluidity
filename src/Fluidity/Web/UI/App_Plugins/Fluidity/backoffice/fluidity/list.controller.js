@@ -29,12 +29,12 @@
 
         function init(collection) {
             $scope.page.name = collection.namePlural;
+            $scope.listView.options.isSearchable = collection.isSearchable;
+            $scope.listView.options.pageSize = collection.listView.pageSize;
             $scope.listView.options.bulkActions = collection.listView.bulkActions;
             $scope.listView.options.dataViews   = collection.listView.dataViews;
             $scope.listView.options.layouts     = collection.listView.layouts;
             $scope.listView.options.properties = collection.listView.properties;
-            $scope.listView.options.pageSize = collection.listView.pageSize;
-            $scope.listView.options.isSearchable = collection.listView.isSearchable;
         }
 
         function syncTree(entity, path, initialLoad) {

@@ -1,6 +1,4 @@
 using System;
-using System.Linq.Expressions;
-using Fluidity.Extensions;
 
 namespace Fluidity.Configuration
 {
@@ -9,13 +7,6 @@ namespace Fluidity.Configuration
         public FluidityEditorConfig(Action<FluidityEditorConfig<TEntityType>> config = null)
         {
             config?.Invoke(this);
-        }
-
-        public FluidityEditorConfig<TEntityType> SetNameField(Expression<Func<TEntityType, object>> nameProperty)
-        {
-            _namePropertyExp = nameProperty;
-            _nameProperty = nameProperty.GetPropertyInfo();
-            return this;
         }
 
         public FluidityTabConfig<TEntityType> AddTab(string name, Action<FluidityTabConfig<TEntityType>> tabConfig = null)

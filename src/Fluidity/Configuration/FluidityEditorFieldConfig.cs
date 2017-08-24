@@ -1,17 +1,12 @@
 using System.Linq.Expressions;
-using System.Reflection;
-using Fluidity.Extensions;
 using Fluidity.Mappers;
 
 namespace Fluidity.Configuration
 {
     public abstract class FluidityEditorFieldConfig
     {
-        protected PropertyInfo _property;
-        internal PropertyInfo Property => _property;
-
-        protected LambdaExpression _propertyExp;
-        internal LambdaExpression PropertyExp => _propertyExp;
+        protected FluidityPropertyConfig _property;
+        internal FluidityPropertyConfig Property => _property;
 
         protected string _label;
         internal string Label => _label;
@@ -34,10 +29,9 @@ namespace Fluidity.Configuration
         protected FluidityValueMapper _mapper;
         internal FluidityValueMapper Mapper => _mapper;
 
-        protected FluidityEditorFieldConfig(LambdaExpression propertyExp, PropertyInfo property)
+        protected FluidityEditorFieldConfig(LambdaExpression propertyExp)
         {
-            _propertyExp = propertyExp;
-            _property = property;
+            _property = propertyExp;
         }
     }
 }

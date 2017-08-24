@@ -8,6 +8,11 @@
     border-top: 0;
 }
 
+/* Remove extra space in nested prevalues */
+.fluidity__collection-picker {
+    margin-bottom: -36px;
+}
+
 /* Dashboard */
 .fluidity__dashboard__item .inner {
     position: relative;

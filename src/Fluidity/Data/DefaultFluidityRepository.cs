@@ -41,15 +41,15 @@ namespace Fluidity.Data
                 query.Append($"WHERE {_collection.DeletedProperty.GetColumnName()} = 0");
             }
 
-            if (_collection.SortPropertyExp != null)
+            if (_collection.SortProperty != null)
             {
                 if (_collection.SortDirection == Direction.Ascending)
                 {
-                    SqlExtensions.OrderBy(query, _collection.EntityType, _collection.SortPropertyExp, SyntaxProvider);
+                    SqlExtensions.OrderBy(query, _collection.EntityType, _collection.SortProperty, SyntaxProvider);
                 }
                 else
                 {
-                    SqlExtensions.OrderByDescending(query, _collection.EntityType, _collection.SortPropertyExp, SyntaxProvider);
+                    SqlExtensions.OrderByDescending(query, _collection.EntityType, _collection.SortProperty, SyntaxProvider);
 
                 }
             }
@@ -77,7 +77,7 @@ namespace Fluidity.Data
             }
 
             // Order by
-            var orderByExp = orderBy ?? _collection.SortPropertyExp;
+            LambdaExpression orderByExp = orderBy ?? _collection.SortProperty;
             if (orderByExp != null)
             {
                 if (orderDirection == Direction.Ascending)

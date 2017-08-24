@@ -23,6 +23,12 @@ namespace Fluidity.Configuration
             config?.Invoke(this);
         }
 
+        public FluidityTreeConfig SetAlias(string alias)
+        {
+            _alias = alias;
+            return this;
+        }
+
         internal void PostProcess()
         {
             PostProcessTreeItemsRecursive(TreeItems.Values, this);
