@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Linq.Expressions;
 using System.Reflection;
 using Fluidity.Extensions;
 
@@ -11,6 +12,10 @@ namespace Fluidity.Configuration
 
         protected LambdaExpression _propertyExp;
         internal LambdaExpression PropertyExpression => _propertyExp;
+
+        internal string Name => _propertyInfo.Name;
+
+        internal Type Type => _propertyInfo.PropertyType;
 
         public FluidityPropertyConfig(LambdaExpression propertyExp)
         {

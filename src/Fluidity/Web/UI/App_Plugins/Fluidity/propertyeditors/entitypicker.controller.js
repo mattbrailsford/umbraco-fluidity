@@ -4,7 +4,6 @@
 
     function entityPickerController($scope, editorState, angularHelper, fluidityResource) {
 
-        // TODO: Validate collection config
         var aliases = $scope.model.config.collection.split(',');
         var sectionAlias = aliases.length >= 1 ? aliases[0] : "";
         var collectionAlias = aliases.length >= 2 ? aliases[1] : "";
@@ -41,8 +40,6 @@
                         $scope.add(item);
                     });
                 }
-
-                angularHelper.getCurrentForm($scope).$setDirty();
 
                 $scope.entityPickerOverlay.show = false;
                 $scope.entityPickerOverlay = null;
@@ -121,6 +118,8 @@
                 }
 
                 setSortingState($scope.renderModel);
+
+                angularHelper.getCurrentForm($scope).$setDirty();
 
             });
         }

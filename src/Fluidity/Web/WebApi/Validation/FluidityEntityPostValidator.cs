@@ -35,7 +35,7 @@ namespace Fluidity.Web.WebApi.Validation
         {
             foreach (var p in entity.Properties)
             {
-                if (configProps.Any(property => property.Property.PropertyInfo.Name == p.Alias) == false)
+                if (configProps.Any(property => property.Property.Name == p.Alias) == false)
                 {
                     throw new InvalidOperationException($"property with alias: {p.Alias} was not found");
                 }
@@ -49,13 +49,13 @@ namespace Fluidity.Web.WebApi.Validation
             foreach (var p in configProps)
             {
                 var dataTypeInfo = _dataTypeHelper.ResolveDataType(p);
-                var postedValue = entity.Properties.Single(x => x.Alias == p.Property.PropertyInfo.Name).Value;
+                var postedValue = entity.Properties.Single(x => x.Alias == p.Property.Name).Value;
 
                 // Validate against the prop editor validators
                 foreach (var result in dataTypeInfo.PropertyEditor.ValueEditor.Validators
                     .SelectMany(v => v.Validate(postedValue, dataTypeInfo.PreValues, dataTypeInfo.PropertyEditor)))
                 {
-                    modelState.AddPropertyError(result, p.Property.PropertyInfo.Name);
+                    modelState.AddPropertyError(result, p.Property.Name);
                 }
 
                 // Now we need to validate the property based on the PropertyType validation (i.e. regex and required)
@@ -65,7 +65,7 @@ namespace Fluidity.Web.WebApi.Validation
                     foreach (var result in dataTypeInfo.PropertyEditor.ValueEditor.RequiredValidator
                         .Validate(postedValue, "", dataTypeInfo.PreValues, dataTypeInfo.PropertyEditor))
                     {
-                        modelState.AddPropertyError(result, p.Property.PropertyInfo.Name);
+                        modelState.AddPropertyError(result, p.Property.Name);
                     }
                 }
 
@@ -87,7 +87,7 @@ namespace Fluidity.Web.WebApi.Validation
                         foreach (var result in dataTypeInfo.PropertyEditor.ValueEditor.RegexValidator
                             .Validate(postedValue, p.ValidationRegex, dataTypeInfo.PreValues, dataTypeInfo.PropertyEditor))
                         {
-                            modelState.AddPropertyError(result, p.Property.PropertyInfo.Name);
+                            modelState.AddPropertyError(result, p.Property.Name);
                         }
                     }
                 }

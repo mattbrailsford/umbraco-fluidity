@@ -213,7 +213,7 @@ namespace Fluidity.Services
         public object SaveEntity(FluidityCollectionConfig collection, object entity)
         {
             var repo = _repoFactory.GetRepository(collection);
-            var isNew = entity.GetPropertyValue(collection.IdProperty) == collection.IdProperty.PropertyInfo.PropertyType.GetDefaultValue();
+            var isNew = entity.GetPropertyValue(collection.IdProperty) == collection.IdProperty.Type.GetDefaultValue();
 
             if (isNew && collection.DateCreatedProperty != null)
             {
