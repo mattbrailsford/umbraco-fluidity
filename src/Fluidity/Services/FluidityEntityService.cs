@@ -139,6 +139,18 @@ namespace Fluidity.Services
 
         public IEnumerable<FluidityEntityDisplayModel> GetEntityDisplayModelsByIds(FluiditySectionConfig section, FluidityCollectionConfig collection, object[] ids)
         {
+            // Get the entities
+            var entities = GetEntitiesByIds(section, collection, ids);
+            if (entities == null)
+                return  null;
+
+            // Map the results to the view display
+            var mapper = new FluidityEntityMapper();
+            return entities.Select(x => mapper.ToDisplayModel(section, collection, x));
+        }
+
+        public IEnumerable<object> GetEntitiesByIds(FluiditySectionConfig section, FluidityCollectionConfig collection, object[] ids)
+        {
             var repo = _repoFactory.GetRepository(collection);
 
             // Construct where clause
@@ -166,13 +178,8 @@ namespace Fluidity.Services
             // Perform the query
             var result = repo?.GetPaged(1, ids.Length, null, Direction.Ascending, whereClauseExp);
 
-            // If we've got no results, return null
-            if (result == null)
-                return null;
-
-            // Map the results to the view display
-            var mapper = new FluidityEntityMapper();
-            return result.Items.Select(x => mapper.ToDisplayModel(section, collection, x));
+            // Return the results
+            return result?.Items;
         }
 
         public FluidityEntityEditModel GetEntityEditModel(FluiditySectionConfig section, FluidityCollectionConfig collection, object entityOrId = null)
