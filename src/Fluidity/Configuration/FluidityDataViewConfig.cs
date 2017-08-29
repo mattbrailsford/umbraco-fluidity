@@ -16,7 +16,7 @@ namespace Fluidity.Configuration
 
         public FluidityDataViewConfig(string name, LambdaExpression whereClauseExpression)
         {
-            _alias = name.ToSafeAlias();
+            _alias = name.ToSafeAlias(true);
             _name = name;
             _whereClauseExpression = whereClauseExpression;
         }
