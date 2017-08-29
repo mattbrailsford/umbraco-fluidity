@@ -2,7 +2,7 @@
 
 namespace Fluidity.Configuration
 {
-    public abstract class FluidityConfiguration : ApplicationEventHandler
+    public abstract class FluidityConfigModule : ApplicationEventHandler
     {
         protected override void ApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {

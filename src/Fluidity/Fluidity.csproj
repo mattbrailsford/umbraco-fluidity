@@ -290,7 +290,7 @@
     <Compile Include="Configuration\FluidityCollectionConfig.cs" />
     <Compile Include="Configuration\FluidityCollectionConfig`T.cs" />
     <Compile Include="Configuration\FluidityConfig.cs" />
-    <Compile Include="Configuration\FluidityConfiguration.cs" />
+    <Compile Include="Configuration\FluidityConfigModule.cs" />
     <Compile Include="Configuration\FluidityEditorConfig`T.cs" />
     <Compile Include="Configuration\FluidityEditorConfig.cs" />
     <Compile Include="Configuration\FluidityEditorFieldConfig`T.cs" />
