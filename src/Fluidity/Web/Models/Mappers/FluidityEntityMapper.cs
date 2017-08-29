@@ -79,7 +79,7 @@ namespace Fluidity.Web.Models.Mappers
                         var propertyScaffold = new ContentPropertyBasic
                         {
                             Id = properties.Count,
-                            Alias = field.Property.PropertyInfo.Name,
+                            Alias = field.Property.Name,
                             Value = value?.ToString()
                         };
 
@@ -158,8 +158,8 @@ namespace Fluidity.Web.Models.Mappers
                             var propertyScaffold = new ContentPropertyDisplay
                             {
                                 Id = properties.Count,
-                                Alias = field.Property.PropertyInfo.Name,
-                                Label = field.Label ?? field.Property.PropertyInfo.Name.SplitPascalCasing(),
+                                Alias = field.Property.Name,
+                                Label = field.Label ?? field.Property.Name.SplitPascalCasing(),
                                 Description = field.Description,
                                 Editor = dataTypeInfo.PropertyEditor.Alias,
                                 View = dataTypeInfo.PropertyEditor.ValueEditor.View,
@@ -197,7 +197,7 @@ namespace Fluidity.Web.Models.Mappers
             foreach (var prop in postModel.Properties)
             {
                 // Get the prop config
-                var propConfig = editorProps.First(x => x.Property.PropertyInfo.Name == prop.Alias);
+                var propConfig = editorProps.First(x => x.Property.Name == prop.Alias);
 
                 // Create additional data for file handling
                 var additionalData = new Dictionary<string, object>();
@@ -220,7 +220,7 @@ namespace Fluidity.Web.Models.Mappers
                 // rather they are used to generate a unique path, so we just use the nearest
                 // equivilaants from the fluidity api. 
                 var cuid = $"{section.Alias}_{collection.Alias}_{entity.GetPropertyValue(collection.IdProperty)}";
-                var puid = $"{section.Alias}_{collection.Alias}_{propConfig.Property.PropertyInfo.Name}";
+                var puid = $"{section.Alias}_{collection.Alias}_{propConfig.Property.Name}";
 
                 additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
                 additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));

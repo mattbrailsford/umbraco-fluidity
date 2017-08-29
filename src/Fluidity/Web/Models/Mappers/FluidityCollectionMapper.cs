@@ -31,8 +31,8 @@ namespace Fluidity.Web.Models.Mappers
                     PageSize = collection.ListView.PageSize,
                     Properties = collection.ListView.Fields.Select(x => new FluidityListViewPropertyDisplayModel // We don't include Name, as it's always automatically included
                     {
-                        Alias = x.Property.PropertyInfo.Name,
-                        Header = x.Heading ?? x.Property.PropertyInfo.Name.SplitPascalCasing(),
+                        Alias = x.Property.Name,
+                        Header = x.Heading ?? x.Property.Name.SplitPascalCasing(),
                         AllowSorting = true,
                         IsSystem = false
                     }),
