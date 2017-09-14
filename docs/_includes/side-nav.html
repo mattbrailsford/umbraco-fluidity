@@ -1,9 +1,5 @@
 {% assign parentUrl = '' %}
 {% for item in site.data.navigation %}
-    {% assign itemUrl = item.url | append: 'index.html' %}
-    {% if itemUrl == page.url %}
-        {% assign parentUrl = item.url %}
-    {% endif %}
     {% for sub in item.subnav %}
         {% assign subUrl = sub.url | append: 'index.html' %}
         {% if subUrl == page.url %}
@@ -14,7 +10,7 @@
 
 <nav class="side-nav sticky--desktop">
     {% for item in site.data.navigation %}
-        <h3><a href="{{ item.url }}"{% if item.url == parentUrl %} class="active"{% endif %}>{{ item.title }}</a></h3>
+        <h3>{{ item.title }}</h3>
         <ul>
         {% for sub in item.subnav %}
             {% assign subUrl = sub.url | append: 'index.html' %}

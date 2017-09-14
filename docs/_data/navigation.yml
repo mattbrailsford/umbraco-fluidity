@@ -1,41 +1,36 @@
-- title: Installation
-  url: /installation/
+- title: Overview
   subnav: 
-    - title: Requirements
-      url: "#requirements"
-    - title: Our Umbraco installation
-      url: "#our-umbraco"
-    - title: Nuget installation
-      url: "#nuget"
-    - title: Manual installation
-      url: "#manual"
+    - title: Introduction
+      url: /introduction/
+    - title: UI Concepts
+      url: /ui-concepts/
+    - title: Installation
+      url: /installation/
+    - title: Getting Started
+      url: /getting-started/
 
-- title: Usage Guide
-  url: /usage/
+- title: Reference
   subnav:
-    - title: Basic Usage
-      url: "#basic-usage"
-    - title: Processors
-      url: /usage/processors/
-    - title: Conversion Handlers
-      url: /usage/conversion/
-    - title: MVC
-      url: /usage/mvc/
+    - title: Conventions
+      url: /conventions/
+    - title: Sections
+      url: /sections/
+    - title: Trees
+      url: /trees/
+    - title: Folders
+      url: /folders/
+    - title: Collections
+      url: /collections/
+    - title: Menu Items
+      url: /menu-items/
+    - title: Bulk Actions
+      url: /bulk-actions/
+    - title: Mappers
+      url: /mappers/
+    - title: Repositories
+      url: /repositories/
 
-- title: Advanced Topics
-  url: /advanced/
+- title: Property Editors
   subnav: 
-    - title: Lazy Loading
-      url: "#lazy-loading"
-    - title: Lists
-      url: "#lists"
-  
-- title: Upgrading
-  url: /upgrading/
-  subnav:
-    - title: Upgrading to v1.0.0
-      url: upgrading-to-v100
-    - title: Upgrading to v0.9.0
-      url: upgrading-to-v090
-
-- title: API
+    - title: Entity Picker
+      url: /entity-picker/
