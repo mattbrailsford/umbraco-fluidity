@@ -18,7 +18,7 @@ To in install the package manually, you can download the package file from the f
 
 [SCREENSHOT - Package Installer]
 
-To install from the package gallery, simply search for “Fluidity” in the package galleries search field, click the Fluidity search result and then click the “Install Package” button.
+To install from the package gallery, simply search for **Fluidity** in the package galleries search field, click the Fluidity search result and then click the **Install Package** button.
 
 [SCREENSHOT - Package Gallery Search]
 [SCREENSHOT - Package Gallery Install]
@@ -33,7 +33,7 @@ To install from NuGet you can run the following command from within the Visual S
 PM> Install-Package Our.Umbraco.Fluidity
 ````
 
-Alternatively you can search for “Our.Umbraco.Fluidity” within the NuGet Package Manager interface.
+Alternatively you can search for **Our.Umbraco.Fluidity** within the NuGet Package Manager interface.
 
 [SCREENSHOT - Nuget package manager search]
 
