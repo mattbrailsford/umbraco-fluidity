@@ -264,6 +264,15 @@ header h2 {
     color: #333;
 }
 
+.side-nav h3 a {
+    color: #333;
+}
+
+.side-nav h3 a:hover,
+.side-nav h3 a:focus {
+    color: #00bec1;
+}
+
 .side-nav ul,
 .side-nav li {
     list-style: none;
