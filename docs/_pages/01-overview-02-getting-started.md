@@ -59,4 +59,4 @@ Which in turn will generate a fully working user interface like this
 
 As you can see, with very little code you can start to create very powerful interfaces for your custom models. 
 
-To see all the possible configuration options for each of the UI components, be sure to check out the Reference section.
+To see all the possible configuration options for each of the UI components, be sure to check out the [API section]({{ site.baseurl }}/api/conventions/).
