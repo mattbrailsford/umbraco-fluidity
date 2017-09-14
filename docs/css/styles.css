@@ -61,11 +61,11 @@ a {
 }
 
 a:hover {
-    color: #297380;
+    color: #237a93;
 }
 
 .main-nav {
-    background-color: #297380;
+    background-color: #237a93;
     height: 80px;
     padding: 10px 0;
     text-align: right;
@@ -80,7 +80,7 @@ a:hover {
     list-style: none;
     padding: 0;
     margin: 0;
-    background-color: #297380;
+    background-color: #237a93;
     z-index: 100;
 }
 
@@ -88,7 +88,7 @@ a:hover {
     display: block;
     text-align: left;
     line-height: 60px;
-    border-top: solid 1px #215c66;
+    border-top: solid 1px #1d5a6c;
 }
 
 .main-nav a {
@@ -108,7 +108,7 @@ a:hover {
 .main-nav li a:hover,
 .main-nav li a:focus {
     color: white;
-    background-color: #215c66;
+    background-color: #1d5a6c;
 }
 
 @media only screen and (min-width: 960px) {
