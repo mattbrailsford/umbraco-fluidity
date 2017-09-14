@@ -25,7 +25,8 @@ config.AddSection("Database", sectionConfig => {
 
 <hr />
 
-#### FluiditySectionConfig AddSection(string name, string icon,  Lambda sectionConfig = null)
+#### AddSection(string name, string icon,  Lambda sectionConfig = null) *: FluiditySectionConfig*
+{: .signature}
 
 Adds a section to the Umbraco sidebar with the given name + icon.
 
@@ -38,7 +39,8 @@ config.AddSection("Database", "database", sectionConfig => {
 
 ### Configuration Options
 
-#### FluiditySectionConfig SetAlias(string alias)
+#### SetAlias(string alias) *: FluiditySectionConfig*
+{: .signature}
 
 Sets the alias of the section.  
 
@@ -51,7 +53,8 @@ sectionConfig.SetAlias("database");
 
 <hr />
 
-#### FluidityTreeConfig SetTree(string name, Lambda treeConfig = null)
+#### SetTree(string name, Lambda treeConfig = null) *: FluidityTreeConfig*
+{: .signature}
 
 Sets the tree to display in the Umbraco side panel for the current section with the given name. See the [Trees section]({{ site.baseurl }}/api/trees/) for more info.
 
