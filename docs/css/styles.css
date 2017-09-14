@@ -38,6 +38,10 @@ h3 {
     font-weight: 600;
     font-size: 20px;
     line-height: 35px;
+    
+    padding-bottom: 10px;
+    border-bottom: solid 2px #f5f5f5;
+    margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 960px) {
@@ -289,6 +293,9 @@ header h2 {
     font-size: 18px;
     line-height: 24px;
     color: #666;
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .side-nav h3 a {
