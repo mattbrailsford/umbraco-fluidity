@@ -22,6 +22,8 @@ config.AddSection("Database", sectionConfig => {
 });
 ````
 
+<hr />
+
 #### `FluiditySectionConfig AddSection(string name, string icon,  Lambda sectionConfig = null)`
 
 Adds a section to the Umbraco sidebar with the given name + icon.
