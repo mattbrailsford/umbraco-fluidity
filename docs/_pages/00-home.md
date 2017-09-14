@@ -5,6 +5,7 @@ permalink: /index.html
 ---
 
 ## Fluidity
+### Introduction
 
 Fluidity is a rapid Umbraco user interface builder for custom data structures configured via a fluent API. 
 
