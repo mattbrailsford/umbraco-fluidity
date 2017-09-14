@@ -279,7 +279,7 @@ header h2 {
     padding: 0;
 }
 
-.side-nav a {
+.side-nav li a {
     display: block;
     margin: 0 -20px;
     padding: 5px 20px;
@@ -287,8 +287,8 @@ header h2 {
     border-right: 2px solid transparent;
 }
 
-.side-nav a:hover,
-.side-nav a.active {
+.side-nav li a:hover,
+.side-nav li a.active {
     background: #eee;
     border-right: 2px solid #ccc;
 }
