@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% if page.title %}
+    <title>{{ page.title }} | {{ site.name }}</title>
+  {% else %}
+    <title>{{ site.name }} – {{ site.description }}</title>
+  {% endif %}
+  <meta name="description" content="Fluidity Documentation">
+  <meta name="author" content="Matt Brailsford">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,600" rel="stylesheet">
+  <link rel="stylesheet" href="/css/prism.css?v=1.0">
+  <link rel="stylesheet" href="/css/prism-vs-dark.css?v=2.0">
+  <link rel="stylesheet" href="/css/styles.css?v=1.0">
+
+  <link rel="canonical" href="{{ page.url }}">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  
+  <script src="/js/modernizr.min.js"></script>
+  <script src="/js/matchMedia.js"></script>
+</head>
+
+<body>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="/"><img class="logo" src="/img/fluidity_white.png" alt="Fluidity" /></a>
+            {% include main-nav.html %}
+            <a class="nav-toggle" href="#" class=" ">&#9776;</a>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <h2>{{ page.title }}</h2>
+        </div>
+    </header>
+    <section class="body">
+        <div class="container body-container">
+            <div class="body-content">
+                {{ content }}
+            </div>
+            <aside>
+                {% include side-nav.html %}
+            </aside>
+        </div>
+    </section>
+    <footer>
+        <a href="/"><img class="badge" src="/img/badge_black.png" alt="Fluidity" /></a>
+        <p>Copyright &copy; Matt Brailsford 2017. All rights reserved.</p>
+    </footer>
+    
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/enquire.min.js"></script>
+    <script src="/js/jquery.sticky-kit.min.js"></script>
+    <script src="/js/prism.js"></script>
+    <script src="/js/scripts.js"></script>
+
+    {% include analytics.html %}
+        
+    <!-- UPTIME_CHECK_10DE9B82915046818F35E6E0BF0BFD9A -->
+
+</body>
+</html>
