@@ -14,7 +14,7 @@
         <ul>
         {% for sub in item.subnav %}
             {% assign subUrl = sub.url | append: 'index.html' %}
-            <li><a href="{{ sub.url }}"{% if subUrl == page.url %} class="active"{% endif %}>{{ sub.title }}</a></li>
+            <li><a href="{{ site.baseurl }}{{ sub.url }}"{% if subUrl == page.url %} class="active"{% endif %}>{{ sub.title }}</a></li>
         {% endfor %}
         </ul>
     {% endfor %}
