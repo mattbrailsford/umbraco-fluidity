@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Property Editors
+section: Property Editors
+title: Entity Picker
 permalink: /property-editors/entity-picker/index.html
 ---
 
-<h2>Entity Picker</h2>

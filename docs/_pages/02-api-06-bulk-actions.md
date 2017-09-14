@@ -1,7 +1,6 @@
 ---
 layout: default
-title: API
+section: API
+title: Bulk Actions
 permalink: /api/bulk-actions/index.html
 ---
-
-<h2>Bulk Actions</h2>

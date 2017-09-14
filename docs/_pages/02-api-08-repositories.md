@@ -1,7 +1,7 @@
 ---
 layout: default
-title: API
+section: API
+title: Repositories
 permalink: /api/repositories/index.html
 ---
 
-<h2>Repositories</h2>

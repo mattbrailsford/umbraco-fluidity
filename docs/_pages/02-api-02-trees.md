@@ -1,7 +1,7 @@
 ---
 layout: default
-title: API
+section: API
+title: Trees
 permalink: /api/trees/index.html
 ---
 
-<h2>Trees</h2>

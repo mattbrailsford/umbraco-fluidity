@@ -1,7 +1,6 @@
 ---
 layout: default
-title: API
+section: API
+title: Menu Items
 permalink: /api/menu-items/index.html
 ---
-
-<h2>Menu Items</h2>

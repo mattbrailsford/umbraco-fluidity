@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Overview
+section: Overview
+title: Getting Started
 permalink: /overview/getting-started/index.html
 ---
-
-## Getting Started
 
 Out of the box Fluidity works using PetaPoco as the persistence layer, as this is what ships with Umbraco. It is possible to change this if you like, but for the sake of getting started, we’ll assume you are using this default strategy.
 

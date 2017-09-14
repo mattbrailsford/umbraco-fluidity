@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Overview
+section: Overview
+title: Installation
 permalink: /overview/installation/index.html
 ---
-
-## Installation
 
 Fluidity can be installed from either Our Umbraco, the NuGet package repository or by downloading and compiling the source code manually.
 

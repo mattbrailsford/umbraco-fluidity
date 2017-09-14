@@ -1,7 +1,6 @@
 ---
 layout: default
-title: API
+section: API
+title: Folders
 permalink: /api/folders/index.html
 ---
-
-<h2>Folders</h2>

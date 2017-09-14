@@ -1,7 +1,6 @@
 ---
 layout: default
-title: API
+section: API
+title: Conventions
 permalink: /api/conventions/index.html
 ---
-
-<h2>Conventions</h2>

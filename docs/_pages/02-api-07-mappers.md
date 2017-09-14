@@ -1,7 +1,6 @@
 ---
 layout: default
-title: API
+section: API
+title: Mappers
 permalink: /api/mappers/index.html
 ---
-
-<h2>Mappers</h2>

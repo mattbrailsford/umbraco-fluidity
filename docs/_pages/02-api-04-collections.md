@@ -1,7 +1,6 @@
 ---
 layout: default
-title: API
+section: API
+title: Collections
 permalink: /api/collections/index.html
 ---
-
-<h2>Collections</h2>
