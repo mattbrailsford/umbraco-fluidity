@@ -22,13 +22,13 @@ h1, h2, h3, h4, h5, h6 {
     text-rendering: optimizelegibility;
 }
 
-h2 {
+h1, h2 {
     font-size: 30px;
     line-height: 40px;
 }
 
 @media only screen and (min-width: 960px) {
-    h2 {
+    h1, h2 {
         font-size: 50px;
         line-height: 60px;
     }
