@@ -4,7 +4,7 @@ title: User Documentation
 permalink: /index.html
 ---
 
-<h2> Getting Started</h2>
+<h2>Fluidity</h2>
 <h3 id="welcome"> Welcome</h3>
 <p> Are you listening to your customers?</p>
 

@@ -26,7 +26,7 @@ url: ""
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: ""
+baseurl: "/umbraco-fluidity"
 
 # collections
 collections:
@@ -49,6 +49,10 @@ kramdown:
   # Disable the syntax highlighter
   syntax_highlighter_opts:
     disable: true
+
+# Use the following plug-ins
+gems:
+  - jekyll-redirect-from # Redirect from old url structure
 
 # Exclude these files from your production _site
 exclude:
