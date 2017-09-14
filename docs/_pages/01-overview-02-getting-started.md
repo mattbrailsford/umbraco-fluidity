@@ -37,7 +37,7 @@ public class Person
 }
 ````
 
-With the database and model setup, we can now start to configure Fluidity itself. The entry point for a Fluidity configuration is via a class that inherits from the abstract base class FluidityConfigModule. This class exposes a single method, ‘Configure’, which is passed a FluidityConfig element against which you can start configuring your UI.
+With the database and model setup, we can now start to configure Fluidity itself. The entry point for a Fluidity configuration is via a class that inherits from the abstract base class `FluidityConfigModule`. This class exposes a single method, `Configure`, which is passed a `FluidityConfig` element against which you can start configuring your UI.
 
 ````csharp
 public class FluidityBootstrap : FluidityConfigModule
