@@ -68,7 +68,7 @@ treeConfig.AddFolder("Settings", "icon-settings", folderConfig => {
 
 ---
 
-#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, Lambda collectionConfig) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Adds a collection to the current tree with the given names and a default icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property. See the [Collections API documentation]({{ site.baseurl }}/api/collections/) for more info.
@@ -82,7 +82,7 @@ treeConfig.AddCollection<Person>(p => p.Id, "Person", "People", collectionConfig
 
 ---
 
-#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string iconSingular, string iconPlural, Lambda collectionConfig) *: FluidityCollectionConfig&lt;TEntityType>*
+#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string iconSingular, string iconPlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Adds a collection to the current tree with the given names + icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property. See the [Collections API documentation]({{ site.baseurl }}/api/collections/) for more info.
