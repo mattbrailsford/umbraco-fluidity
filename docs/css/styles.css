@@ -333,3 +333,7 @@ footer {
     width: 100px;
     opacity: 0.1;
 }
+
+.mt {
+    margin-top: 20px;
+}
