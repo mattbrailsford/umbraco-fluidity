@@ -12,12 +12,12 @@ Start by setting up a database table for you model (you might want to populate i
 
 ````sql
 CREATE TABLE [Person] (
-  [Id] int IDENTITY (1,1) NOT NULL
-, [Name] nvarchar(255) NOT NULL
-, [JobTitle] nvarchar(255) NOT NULL
-, [Email] nvarchar(255) NOT NULL
-, [Telephone] nvarchar(255) NOT NULL
-, [Avatar] nvarchar(255) NOT NULL
+    [Id] int IDENTITY (1,1) NOT NULL, 
+    [Name] nvarchar(255) NOT NULL, 
+    [JobTitle] nvarchar(255) NOT NULL, 
+    [Email] nvarchar(255) NOT NULL, 
+    [Telephone] nvarchar(255) NOT NULL, 
+    [Avatar] nvarchar(255) NOT NULL
 );
 ````
 
