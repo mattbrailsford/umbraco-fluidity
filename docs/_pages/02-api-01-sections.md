@@ -16,21 +16,22 @@ You define a section by calling one of the `AddSection` methods on the root leve
 Adds a section to the Umbraco sidebar with the given name and a default icon.
 
 ````csharp
+// Example
 config.AddSection("Database", sectionConfig => {
     ...
 });
 ````
 
-````csharp
-// Signature
-FluiditySectionConfig AddSection(string name, string icon,  Lambda sectionConfig = null)
+#### `FluiditySectionConfig AddSection(string name, string icon,  Lambda sectionConfig = null)`
 
+Adds a section to the Umbraco sidebar with the given name + icon.
+
+````csharp
 // Example
 config.AddSection("Database", "database", sectionConfig => {
     ...
 });
 ````
-Adds a section to the Umbraco sidebar with the given name + icon.
 
 ### Configuration Options
 
