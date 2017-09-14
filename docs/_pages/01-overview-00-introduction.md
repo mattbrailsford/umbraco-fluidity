@@ -2,7 +2,7 @@
 layout: default
 title: Overview
 permalink: /overview/introduction/index.html
-redirect-from:
+redirect_from:
  - /overview/
 ---
 

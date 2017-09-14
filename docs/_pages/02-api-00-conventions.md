@@ -2,7 +2,7 @@
 layout: default
 title: API
 permalink: /api/conventions/index.html
-redirect-from:
+redirect_from:
  - /api/
 ---
 

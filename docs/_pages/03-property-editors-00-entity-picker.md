@@ -2,7 +2,7 @@
 layout: default
 title: Property Editors
 permalink: /property-editors/entity-picker/index.html
-redirect-from:
+redirect_from:
  - /property-editors/
 ---
 
