@@ -15,13 +15,11 @@
 <nav class="side-nav sticky--desktop">
     {% for item in site.data.navigation %}
         <h3><a href="{{ item.url }}"{% if item.url == parentUrl %} class="active"{% endif %}>{{ item.title }}</a></h3>
-        {% if item.url == parentUrl %}
-            <ul>
-            {% for sub in item.subnav %}
-                {% assign subUrl = sub.url | append: 'index.html' %}
-                <li><a href="{{ sub.url }}"{% if subUrl == page.url %} class="active"{% endif %}>{{ sub.title }}</a></li>
-            {% endfor %}
-            </ul>
-        {% endif %}
+        <ul>
+        {% for sub in item.subnav %}
+            {% assign subUrl = sub.url | append: 'index.html' %}
+            <li><a href="{{ sub.url }}"{% if subUrl == page.url %} class="active"{% endif %}>{{ sub.title }}</a></li>
+        {% endfor %}
+        </ul>
     {% endfor %}
 </nav>
