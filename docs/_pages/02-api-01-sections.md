@@ -32,7 +32,7 @@ Adds a section to the Umbraco sidebar with the given name + icon.
 
 ````csharp
 // Example
-config.AddSection("Database", "database", sectionConfig => {
+config.AddSection("Database", "icon-database", sectionConfig => {
     ...
 });
 ````
