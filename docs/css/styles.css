@@ -66,6 +66,10 @@ pre {
 	font-weight: 600;
 }
 
+.mono {
+    font-family: monospace;
+}
+
 hr {
     border: 0;
     height: 2px;
