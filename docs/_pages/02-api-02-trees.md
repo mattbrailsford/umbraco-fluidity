@@ -54,7 +54,7 @@ treeConfig.AddFolder("Settings", folderConfig => {
 
 ---
 
-#### AddFolder(string name, string icon, Lambda folderConfig = null) : *: FluidityFolderConfig*
+#### AddFolder(string name, string icon, Lambda folderConfig = null) *: FluidityFolderConfig*
 {: .signature}
 
 Adds a folder to the current tree with the given name + icon. See the [Folders API documentation]({{ site.baseurl }}/api/folders/) for more info.
