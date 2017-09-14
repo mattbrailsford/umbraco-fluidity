@@ -9,7 +9,7 @@ A tree is a hierarchical structure to help organise a section into logical sub-s
 
 ### Defining a Tree
 
-You define a tree for a section by calling one of the `SetTree` methods on the given `SectionConfig` object.
+You define a tree for a section by calling the `SetTree` method on the given `SectionConfig` instance.
 
 #### SetTree(string name, Lambda treeConfig = null) *: FluidityTreeConfig*
 {: .signature}

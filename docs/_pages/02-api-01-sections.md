@@ -9,7 +9,7 @@ A section is a distinct area of the Umbraco back office, such as content, media,
 
 ### Defining a Section
 
-You define a section by calling one of the `AddSection` methods on the root level `FluidityConfig` object.
+You define a section by calling one of the `AddSection` methods on the root level `FluidityConfig` instance.
 
 #### AddSection(string name, Lambda sectionConfig = null) *: FluiditySectionConfig*
 {: .signature}
