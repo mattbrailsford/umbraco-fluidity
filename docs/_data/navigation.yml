@@ -9,7 +9,7 @@
     - title: Getting Started
       url: /overview/getting-started/
 
-- title: Api
+- title: API
   subnav:
     - title: Conventions
       url: /api/conventions/
