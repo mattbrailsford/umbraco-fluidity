@@ -5,6 +5,8 @@ title: Getting Started
 permalink: /overview/getting-started/index.html
 ---
 
+### Basic Setup
+
 Out of the box Fluidity works using PetaPoco as the persistence layer, as this is what ships with Umbraco. It is possible to change this if you like, but for the sake of getting started, we’ll assume you are using this default strategy.
 
 Start by setting up a database table for you model (you might want to populate it with some dummy data as well whilst learning). We’ll use the following as an example
