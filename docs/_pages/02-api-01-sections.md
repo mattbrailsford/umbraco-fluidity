@@ -8,7 +8,6 @@ permalink: /api/sections/index.html
 A section is a distinct area of the Umbraco back office, such as content, media, etc, and is accessed via an icon + label in the main sidebar of the Umbraco interface. Fluidity allows you to define multiple sections in order to organise the management of your models into logical sections.
 
 ### Defining a Section
-{: .mt}
 
 You define a section by calling one of the `AddSection` methods on the root level `FluidityConfig` object.
 
@@ -39,6 +38,7 @@ config.AddSection("Database", "database", sectionConfig => {
 ````
 
 ### Configuration Options
+{: .mt}
 
 #### SetAlias(string alias) *: FluiditySectionConfig*
 {: .signature}
