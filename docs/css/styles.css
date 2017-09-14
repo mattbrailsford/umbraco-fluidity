@@ -9,7 +9,7 @@ html {
 body {
     margin: 0;
     font-family: Montserrat, sans-serif;
-    color: #333;
+    color: #666;
     font-size: 16px;
     line-height: 26px;
     -webkit-font-smoothing: antialiased;
@@ -261,11 +261,11 @@ header h2 {
 .side-nav h3 {
     font-size: 18px;
     line-height: 24px;
-    color: #333;
+    color: #666;
 }
 
 .side-nav h3 a {
-    color: #333;
+    color: #666;
 }
 
 .side-nav h3 a:hover,
