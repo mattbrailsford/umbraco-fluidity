@@ -1,7 +1,5 @@
 - title: Overview
   subnav: 
-    - title: Introduction
-      url: /overview/introduction/
     - title: UI Concepts
       url: /overview/ui-concepts/
     - title: Installation
