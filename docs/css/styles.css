@@ -66,8 +66,13 @@ pre {
 	font-weight: 600;
 }
 
-.mono {
+.signature {
     font-family: monospace;
+}
+
+.signature em {
+    font-style: normal;
+    color: #ccc;
 }
 
 hr {
