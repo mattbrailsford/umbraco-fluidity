@@ -29,7 +29,7 @@ To complete the installation, follow the on screen instructions presented by the
 
 To install from NuGet you can run the following command from within the Visual Studio Package Manager Console window.
 
-````
+````bash
 PM> Install-Package Our.Umbraco.Fluidity
 ````
 
@@ -41,7 +41,7 @@ Alternatively you can search for “Our.Umbraco.Fluidity” within the NuGet Pac
 
 If you’d prefer to compile Fluidity yourself you can do so by cloning the Fluidity GitHub repository and running the automated build script like so:
 
-````
+````bash
 git clone https://github.com/mattbrailsford/umbraco-fluidity.git umbraco-fluidity
 cd umbraco-fluidity
 .\build.cmd
