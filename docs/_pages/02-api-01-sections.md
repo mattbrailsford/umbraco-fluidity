@@ -37,24 +37,26 @@ config.AddSection("Database", "database", sectionConfig => {
 
 ### Configuration Options
 
-````csharp
-// Signature
-FluiditySectionConfig SetAlias(string alias)
+#### `FluiditySectionConfig SetAlias(string alias)`
 
-// Example
-sectionConfig.SetAlias("database");
-````
 Sets the alias of the section.  
 
 **Optional:** When adding a new section, an alias is automatically generated from the supplied name for you, however you can use the `SetAlias` method to override this should you need a specific alias.
 
 ````csharp
-// Signature
-FluidityTreeConfig SetTree(string name, Lambda treeConfig = null)
+// Example
+sectionConfig.SetAlias("database");
+````
 
+<hr />
+
+#### `FluidityTreeConfig SetTree(string name, Lambda treeConfig = null)`
+
+Sets the tree to display in the Umbraco side panel for the current section with the given name. See the [Trees section]({{ site.baseurl }}/api/trees/) for more info.
+
+````csharp
 // Example
 sectionConfig.SetTree("Database", treeConfig => {
     ...
 });
 ````
-Sets the tree to display in the Umbraco side panel for the current section with the given name. See the [Trees section]({{ site.baseurl }}/api/trees/) for more info.
