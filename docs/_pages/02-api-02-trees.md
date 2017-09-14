@@ -24,6 +24,7 @@ sectionConfig.SetTree("Database", treeConfig => {
 ````
 
 ### Configuration Options
+{: .mt}
 
 #### SetAlias(string alias) *: FluidityTreeConfig*
 {: .signature}
