@@ -20,8 +20,12 @@ Adds a section to the Umbraco sidebar with the given name + icon.
 
 ### Configuration Options
 
-#### `FluiditySectionConfig SetAlias(string alias)`
+````csharp
+FluiditySectionConfig SetAlias(string alias)
+````
 Optional. When adding a new section, an alias is automatically generated from the supplied name for you, however you can use the `SetAlias` method to override this should you need a specific alias.
 
-#### `FluidityTreeConfig SetTree(string name, Lambda treeConfig)`
+````csharp
+FluidityTreeConfig SetTree(string name, Lambda treeConfig)
+````
 Sets the tree to display in the Umbraco side panel for the current section with the given name. See the [Trees section]({{ site.baseurl }}/api/trees/) for more info.
