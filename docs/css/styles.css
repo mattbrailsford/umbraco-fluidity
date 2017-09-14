@@ -265,6 +265,7 @@ header h2 {
 }
 
 .side-nav h3 a {
+    display: block;
     color: #666;
 }
 
