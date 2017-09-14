@@ -61,7 +61,7 @@ Adds a folder to the current tree with the given name + icon. See the [Folders A
 
 ````csharp
 // Example
-treeConfig.AddFolder("Settings", "icon-cog", folderConfig => {
+treeConfig.AddFolder("Settings", "icon-settings", folderConfig => {
     ...
 });
 ````
@@ -89,7 +89,7 @@ Adds a collection to the current tree with the given names + icons. An ID proper
 
 ````csharp
 // Example
-treeConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-person", "icon-people", collectionConfig => {
+treeConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-umb-users", "icon-umb-users", collectionConfig => {
     ...
 });
 ````
