@@ -11,6 +11,7 @@ A section is a distinct area of the Umbraco back office, such as content, media,
 
 You define a section by calling one of the `AddSection` methods on the root level `FluidityConfig` object.
 
+#### AddSection
 ````csharp
 // Signature
 FluiditySectionConfig AddSection(string name, Lambda sectionConfig = null)
@@ -42,7 +43,8 @@ FluiditySectionConfig SetAlias(string alias)
 // Example
 sectionConfig.SetAlias("database");
 ````
-Optional. When adding a new section, an alias is automatically generated from the supplied name for you, however you can use the `SetAlias` method to override this should you need a specific alias.
+Sets the alias of the section.
+**Optional:** When adding a new section, an alias is automatically generated from the supplied name for you, however you can use the `SetAlias` method to override this should you need a specific alias.
 
 ````csharp
 // Signature
