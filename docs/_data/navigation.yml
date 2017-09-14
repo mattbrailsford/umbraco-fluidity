@@ -1,36 +1,36 @@
 - title: Overview
   subnav: 
     - title: Introduction
-      url: /introduction/
+      url: /overview/introduction/
     - title: UI Concepts
-      url: /ui-concepts/
+      url: /overview/ui-concepts/
     - title: Installation
-      url: /installation/
+      url: /overview/installation/
     - title: Getting Started
-      url: /getting-started/
+      url: /overview/getting-started/
 
-- title: Reference
+- title: Api
   subnav:
     - title: Conventions
-      url: /conventions/
+      url: /api/conventions/
     - title: Sections
-      url: /sections/
+      url: /api/sections/
     - title: Trees
-      url: /trees/
+      url: /api/trees/
     - title: Folders
-      url: /folders/
+      url: /api/folders/
     - title: Collections
-      url: /collections/
+      url: /api/collections/
     - title: Menu Items
-      url: /menu-items/
+      url: /api/menu-items/
     - title: Bulk Actions
-      url: /bulk-actions/
+      url: /api/bulk-actions/
     - title: Mappers
-      url: /mappers/
+      url: /api/mappers/
     - title: Repositories
-      url: /repositories/
+      url: /api/repositories/
 
 - title: Property Editors
   subnav: 
     - title: Entity Picker
-      url: /entity-picker/
+      url: /property-editors/entity-picker/
