@@ -321,13 +321,14 @@ header h2 {
     padding: 5px 20px;
     text-decoration: none;
     border-right: 2px solid transparent;
-    color: #237a93;
+    color: #666;
 }
 
 .side-nav li a:hover,
 .side-nav li a.active {
+    color: #666;
     background: #eee;
-    border-right: 2px solid #ccc;
+    border-right: 2px solid #00bec1;
 }
 
 footer {
