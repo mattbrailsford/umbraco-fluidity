@@ -5,7 +5,7 @@ title: Collections
 permalink: /api/collections/index.html
 ---
 
-A collection is a container for a given entity type and lists all of the entities in your repository in either a tree or list view as well as proiding configuration for how the entity type should be edited.
+A collection is a container for a given entity type and configures how the given entity should display in a tree or list view as well as how it should be edited.
 
 ### Defining a collection
 
