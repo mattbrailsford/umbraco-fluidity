@@ -65,7 +65,7 @@ Sets the collection icon color to the given color.  Possible options are `black`
 collectionConfig.SetIconColor("blue");
 ````
 
-### Defining the collection name
+### Defining the entity name
 {: .mt}
 
 Within Umbraco it is expected that an entity has a name property so we need to let Fluidity know which property to use for the name or if our entity doesn't have a single name property, then how to construct a name from an entities other properties. We do this by using either the `SetNameProperty` or `SetNameFormat` methods on a `FluidityCollectionConfig` instance.
