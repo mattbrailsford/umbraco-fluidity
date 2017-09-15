@@ -247,6 +247,7 @@ header h2 {
 
 .body-content {
     margin-bottom: 2em;
+    overflow: hidden;
 }
 
 .body-content > *:first-child {

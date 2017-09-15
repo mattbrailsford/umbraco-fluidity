@@ -7,7 +7,7 @@ permalink: /api/trees/index.html
 
 A tree is a hierarchical structure to help organise a section into logical sub-sections and is accessed in the main side panel of the Umbraco interface. In Fluidity, a section may only have a single tree definition, however you can use folder nodes to help organise the tree structure how you need it.
 
-### Defining a Tree
+### Defining a tree
 
 You define a tree for a section by calling the `SetTree` method on the given `SectionConfig` instance.
 
@@ -23,7 +23,7 @@ sectionConfig.SetTree("Database", treeConfig => {
 });
 ````
 
-### Configuration Options
+### Changing the tree alias
 {: .mt}
 
 #### SetAlias(string alias) *: FluidityTreeConfig*
@@ -38,7 +38,8 @@ Sets the alias of the tree.
 treeConfig.SetAlias("database");
 ````
 
----
+### Adding a folder to a tree
+{: .mt}
 
 #### AddFolder(string name, Lambda folderConfig = null) *: FluidityFolderConfig*
 {: .signature}
@@ -66,7 +67,8 @@ treeConfig.AddFolder("Settings", "icon-settings", folderConfig => {
 });
 ````
 
----
+### Adding a collection to a tree
+{: .mt}
 
 #### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
