@@ -120,3 +120,28 @@ Sets which property of our entity to use as the deleted property flag. Property 
 // Example
 collectionConfig.SetDeletedProperty(p => p.Deleted);
 ````
+
+### Defining the default sort order
+{: .mt}
+
+#### SetSortProperty(Lambda deletedPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets which property of our entity to sort against, defaulting to ascending sort direction.
+
+````csharp
+// Example
+collectionConfig.SetSortProperty(p => p.FirstName);
+````
+
+---
+
+#### SetSortProperty(Lambda deletedPropertyExpression, Direction sortDirection) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets which property of our entity to sort against in the provided sort direction.
+
+````csharp
+// Example
+collectionConfig.SetSortProperty(p => p.FirstName, Direction.Descending);
+````
