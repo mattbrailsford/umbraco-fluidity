@@ -47,7 +47,7 @@ Adds a child folder to the current folder with the given name and a default fold
 
 ````csharp
 // Example
-folderConfig.AddFolder("Settings", childFolderConfig => {
+folderConfig.AddFolder("Categories", childFolderConfig => {
     ...
 });
 ````
@@ -61,7 +61,7 @@ Adds a child folder to the current folder with the given name + icon.
 
 ````csharp
 // Example
-folderConfig.AddFolder("Settings", "icon-settings", childFolderConfig => {
+folderConfig.AddFolder("Categories", "icon-tags", childFolderConfig => {
     ...
 });
 ````
