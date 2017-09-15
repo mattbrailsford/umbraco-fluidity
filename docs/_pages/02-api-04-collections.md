@@ -211,6 +211,21 @@ Adds the given property to the searchable properties collection. Property must b
 collectionConfig.AddSearchableProperty(p => p.LastName);
 ````
 
+### Showing a collection on the summary dashboard
+{: .mt}
+
+When navigating to a Fluidity section you are automatically presented with a dashboard interface on which you can add your collections to. This dashboard gives a quick entry point to frequently used collections showing the number of items in the collection as well as links to it's list view (if one is defined) as well as a quick create link (if the collection isn't read only).
+
+#### ShowOnDashboard(string description = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the collection to display on the summary dashboard with the optional collection description.
+
+````csharp
+// Example
+collectionConfig.ShowOnDashboard("A collection of company members");
+````
+
 ### Making a collection read only
 {: .mt}
 
