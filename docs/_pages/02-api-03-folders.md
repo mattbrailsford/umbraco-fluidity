@@ -9,7 +9,7 @@ A folder appears in a tree and is used to help organise the tree structure by gr
 
 ### Defining a folder
 
-You define a folder by calling the `AddFolder` method on a given `FluidityTreeConfig` or parent `FluidityFolderConfig` instance.
+You define a folder by calling one of the `AddFolder` methods on a given `FluidityTreeConfig` or parent `FluidityFolderConfig` instance.
 
 #### AddFolder(string name, Lambda folderConfig = null) *: FluidityFolderConfig*
 {: .signature}
