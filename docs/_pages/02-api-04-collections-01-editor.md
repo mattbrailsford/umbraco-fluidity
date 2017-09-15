@@ -7,7 +7,7 @@ permalink: /api/collections/editor/index.html
 
 An editor is the user interface used to edit an entity and is made up of tabs and property editors.
 
-### Configuraing an editor
+### Configuring an editor
 
 The editor configuration is a sub configuration of a [`FluidityCollectionConfig`]({{ site.baseurl }}/api/collections/) instance and is accessing via it's `Editor` method.
 
