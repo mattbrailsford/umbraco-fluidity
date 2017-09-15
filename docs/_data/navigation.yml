@@ -21,7 +21,7 @@
       url: /api/collections/
       subnav:
         - title: List View
-          url: /api/collections/listview/
+          url: /api/collections/list-view/
         - title: Editor
           url: /api/collections/editor/
     - title: Menu Items
