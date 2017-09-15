@@ -28,6 +28,8 @@
       url: /api/menu-items/
     - title: Bulk Actions
       url: /api/bulk-actions/
+    - title: List View Layouts
+      url: /api/list-view-layouts/
     - title: Mappers
       url: /api/mappers/
     - title: Repositories
