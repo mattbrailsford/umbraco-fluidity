@@ -26,7 +26,7 @@ collectionConfig.ListView(listViewConfig => {
 #### ListView(FluidityListViewConfig&lt;TEntityType&gt; listViewConfig) *: FluidityListViewConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Sets the list view config of the given collection with a pre-configured `FluidityListViewConfig&lt;TEntityType&gt;` instance.
+Sets the list view config of the given collection with a pre-configured `FluidityListViewConfig<TEntityType>` instance.
 
 ````csharp
 // Example
