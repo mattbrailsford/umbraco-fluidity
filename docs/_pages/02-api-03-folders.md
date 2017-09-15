@@ -5,7 +5,7 @@ title: Folders
 permalink: /api/folders/index.html
 ---
 
-A folder appears in a tree and is used to help organise the tree structure by grouping collections together. Folders can be added to a tree instance or any other folder instance allowing you to create a hierarchical structure of limitless depth. 
+A folder appears in a tree and is used to help organise the tree structure by grouping things together. Folders can be added to a tree instance or any other folder instance allowing you to create a hierarchical structure of limitless depth and can contain either other folders or [collections]({{ site.baseurl }}/api/collections/). 
 
 ### Defining a folder
 
@@ -47,7 +47,7 @@ Adds a child folder to the current folder with the given name and a default fold
 
 ````csharp
 // Example
-folderConfig.AddFolder("Settings", folderConfig => {
+folderConfig.AddFolder("Settings", childFolderConfig => {
     ...
 });
 ````
@@ -61,7 +61,7 @@ Adds a child folder to the current folder with the given name + icon.
 
 ````csharp
 // Example
-folderConfig.AddFolder("Settings", "icon-settings", folderConfig => {
+folderConfig.AddFolder("Settings", "icon-settings", childFolderConfig => {
     ...
 });
 ````
