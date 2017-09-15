@@ -218,7 +218,7 @@ See [Menu Items API documentation]({{ site.baseurl }}/api/menu-items/) for more 
 #### AddContainerMenuItem&lt;TMenuItemType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a menu item of the given type to the collection container right click menu as well as the list view actions menu.
+Adds a menu item of the given type to the collection tree node right click menu as well as the list view actions menu.
 
 ````csharp
 // Example
