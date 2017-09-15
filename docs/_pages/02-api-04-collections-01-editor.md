@@ -33,3 +33,27 @@ Sets the editor config of the given collection with a pre-configured `FluidityEd
 // Example
 collectionConfig.Editor(editorConfig);
 ````
+
+### Adding a tab to the editor
+{: .mt}
+
+### Adding a field to a tab
+{: .mt}
+
+### Changing the label of a field
+{: .mt}
+
+### Adding a description to a field
+{: .mt}
+
+### Making a field mandatory
+{: .mt}
+
+### Validating a field
+{: .mt}
+
+### Changing the data type of a field
+{: .mt}
+
+### Adding a mapper to a field
+{: .mt}
