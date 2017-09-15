@@ -328,7 +328,7 @@ header h2 {
 .side-nav li a.active {
     color: #666;
     background: #eee;
-    border-right: 2px solid #00bec1;
+    border-right: 4px solid #00bec1;
 }
 
 footer {
