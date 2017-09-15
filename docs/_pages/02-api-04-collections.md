@@ -65,6 +65,32 @@ Sets the collection icon color to the given color.  Possible options are `black`
 collectionConfig.SetIconColor("blue");
 ````
 
+### Defining the collection name
+{: .mt}
+
+Within Umbraco it is expected that an entity has a name property so we need to let Fluidity know which property to use as the name field or if our entity doesn't have a single name property, then how to construct a name value from an entity instance. We do this by using either the `SetNameProperty` or `SetNameFormat` methods on a `FluidityCollectionConfig` instance.
+
+#### SetNameProperty(Lamda nameProperytyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets which property of our entity to use as the name property. Property must be of type `string`. By defining a property as the name property, it's value will be used as the label for the entity in things like trees and list views and will also be editable in the header region of the editor interface. The property will also automatically be added to the searchable properties collection.
+
+````csharp
+// Example
+collectionConfig.SetNameProperty(p => p.Name);
+````
+---
+
+#### SetNameFormat(Lamda nameFormatExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets a format expression to use to dynamically create a label for the entity in things like trees and list views. By providing a name format it is assumed there is no single name property available on the entity and as such there will be no name input field within the header region of the editor interface and nothing will be added to the searchable properties collection by default.
+
+````csharp
+// Example
+collectionConfig.SetNameFormat(p => $"{p.FirstName} {p.LastName}");
+````
+
 ### Changing the collection connection string
 {: .mt}
 
