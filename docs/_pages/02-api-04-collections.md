@@ -105,3 +105,18 @@ Sets a format expression to use to dynamically create a label for the entity in 
 // Example
 collectionConfig.SetNameFormat(p => $"{p.FirstName} {p.LastName}");
 ````
+
+### Defining a deleted flag
+{: .mt}
+
+By default in Fluidity any entity that is deleted via fluidity repository is completely removed from the system. In some occasions however you may wish to keep the records in the data repository but just mark them as deleted so that they don't appear in the UI. This is where the `SetDeletedProperty` method comes in handy.
+
+#### SetDeletedProperty(Lamda deletedPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets which property of our entity to use as the deleted property flag. Property must be of type `boolean`. When a deleted property is set, any delete actions will set the deleted flag instead of actualy deleting the entity. In addition, any fetch actions will also pre-filter out any deleted entities.
+
+````csharp
+// Example
+collectionConfig.SetDeletedProperty(p => p.Deleted);
+````
