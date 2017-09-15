@@ -19,6 +19,11 @@
       url: /api/folders/
     - title: Collections
       url: /api/collections/
+      subnav:
+        - title: List View
+          url: /api/collections/listview/
+        - title: Editor
+          url: /api/collections/editor/
     - title: Menu Items
       url: /api/menu-items/
     - title: Bulk Actions
