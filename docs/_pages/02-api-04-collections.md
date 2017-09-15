@@ -170,3 +170,16 @@ Sets which property of our entity to use as the date modified property. Property
 // Example
 collectionConfig.SetDateModifiedProperty(p => p.DateModified);
 ````
+
+### Making a collection read only
+{: .mt}
+
+#### MakeReadOnly() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the collection as read only and disables any CRUD operations from being performed on the collection via the UI.
+
+````csharp
+// Example
+collectionConfig.MakeReadOnly();
+````
