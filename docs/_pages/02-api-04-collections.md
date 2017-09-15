@@ -109,7 +109,7 @@ collectionConfig.SetNameFormat(p => $"{p.FirstName} {p.LastName}");
 ### Defining a deleted flag
 {: .mt}
 
-By default in Fluidity any entity that is deleted via fluidity repository is completely removed from the system. In some occasions however you may wish to keep the records in the data repository but just mark them as deleted so that they don't appear in the UI. This is where the `SetDeletedProperty` method comes in handy.
+By default in Fluidity any entity that is deleted via the fluidity repository is completely removed from the system. In some occasions however you may wish to keep the records in the data repository but just mark them as deleted so that they don't appear in the UI. This is where the `SetDeletedProperty` method comes in handy.
 
 #### SetDeletedProperty(Lambda deletedPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
