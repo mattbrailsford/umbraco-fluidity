@@ -124,7 +124,7 @@ collectionConfig.SetDeletedProperty(p => p.Deleted);
 ### Defining the default sort order
 {: .mt}
 
-#### SetSortProperty(Lambda deletedPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### SetSortProperty(Lambda sortPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets which property of our entity to sort against, defaulting to ascending sort direction.
@@ -136,7 +136,7 @@ collectionConfig.SetSortProperty(p => p.FirstName);
 
 ---
 
-#### SetSortProperty(Lambda deletedPropertyExpression, Direction sortDirection) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### SetSortProperty(Lambda sortPropertyExpression, Direction sortDirection) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets which property of our entity to sort against in the provided sort direction.
@@ -144,4 +144,29 @@ Sets which property of our entity to sort against in the provided sort direction
 ````csharp
 // Example
 collectionConfig.SetSortProperty(p => p.FirstName, Direction.Descending);
+````
+
+### Defining time stamp properties
+{: .mt}
+
+#### SetDateCreatedProperty(Lambda dateCreatedProperty) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets which property of our entity to use as the date created property. Property must be of type `DateTime`. When set and a new entity is saved via the Fluidity repository, then the given field will be populated with the current date and time.
+
+````csharp
+// Example
+collectionConfig.SetDateCreatedProperty(p => p.DateCreated);
+````
+
+---
+
+#### SetDateModifiedProperty(Lambda dateCreatedProperty) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets which property of our entity to use as the date modified property. Property must be of type `DateTime`. When set and an entity is saved via the Fluidity repository, then the given field will be populated with the current date and time.
+
+````csharp
+// Example
+collectionConfig.SetDateModifiedProperty(p => p.DateModified);
 ````
