@@ -215,7 +215,7 @@ collectionConfig.AddSearchableProperty(p => p.LastName);
 {: .mt}
 See [Menu Items API documentation]({{ site.baseurl }}/api/menu-items/) for more info.
 
-#### AddContainerMenuItem&lgt;TMenuItemType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddContainerMenuItem&lt;TMenuItemType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Adds a menu item of the given type to the collection container right click menu as well as the list view actions menu.
@@ -239,7 +239,7 @@ collectionConfig.AddContainerMenuItem(typeof(ExportMenuItem));
 
 ---
 
-#### AddEntityMenuItem&lgt;TMenuItemType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddEntityMenuItem&lt;TMenuItemType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Adds a menu item of the given type to the entity tree node right click menu as well as the entity editor actions menu.
