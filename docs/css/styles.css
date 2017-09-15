@@ -324,6 +324,10 @@ header h2 {
     color: #666;
 }
 
+.side-nav li li a {
+    padding-left: 40px;
+}
+
 .side-nav li a:hover,
 .side-nav li a.active {
     color: #666;
