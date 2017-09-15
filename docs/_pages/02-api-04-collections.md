@@ -9,7 +9,7 @@ A collection is a container for a given entity type and configures how the given
 
 ### Defining a collection
 
-You define a collection by calling one of the `AddCollection` methods on a given `FluidityTreeConfig` or parent `FluidityFolderConfig` instance.
+You define a collection by calling one of the `AddCollection` methods on a given [`FluidityTreeConfig`]({{ site.baseurl }}/api/trees/) or parent [`FluidityFolderConfig`]({{ site.baseurl }}/api/folders/) instance.
 
 #### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
