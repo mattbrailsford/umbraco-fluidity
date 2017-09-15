@@ -46,3 +46,21 @@ Sets the number of items to display per page for the given list view.
 // Example
 listViewConfig.SetPageSize(20);
 ````
+
+### Adding a data view
+{: .mt}
+
+### Adding a bulk action
+{: .mt}
+
+### Changing the list view layout
+{: .mt}
+
+### Adding a field to the list view
+{: .mt}
+
+### Changing the heading of a field
+{: .mt}
+
+### Formatting the value of a field
+{: .mt}
