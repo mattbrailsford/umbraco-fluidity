@@ -9,12 +9,12 @@ A tree is a hierarchical structure to help organise a section into logical sub-s
 
 ### Defining a tree
 
-You define a tree for a section by calling the `SetTree` method on the given `SectionConfig` instance.
+You define a tree for a section by calling the `SetTree` method on the given `FluiditySectionConfig` instance.
 
 #### SetTree(string name, Lambda treeConfig = null) *: FluidityTreeConfig*
 {: .signature}
 
-Sets the tree to display in the Umbraco side panel for the current section with the given name. 
+Sets the tree with the given name to display in the Umbraco side panel for the given section.
 
 ````csharp
 // Example

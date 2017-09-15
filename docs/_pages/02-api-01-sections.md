@@ -58,7 +58,7 @@ sectionConfig.SetAlias("database");
 #### SetTree(string name, Lambda treeConfig = null) *: FluidityTreeConfig*
 {: .signature}
 
-Defines a tree with the given name to display in the Umbraco side panel for the current section. See the [Trees API documentation]({{ site.baseurl }}/api/trees/) for more info.
+Sets the tree with the given name to display in the Umbraco side panel for the current section. See the [Trees API documentation]({{ site.baseurl }}/api/trees/) for more info.
 
 ````csharp
 // Example
