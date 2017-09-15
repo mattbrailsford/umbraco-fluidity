@@ -80,10 +80,10 @@ Sets the connection string name for the given collection repository.
 collectionConfig.SetConnectionString("myConnectionStringName");
 ````
 
-### Changing the collection repository
+### Changing the collection repository implementation
 {: .mt}
 
-By default Fluidity will use a PetaPoco based repository for storing and fetching entities however you can implement your own repository should you need to store your entities via another strategy. To change the repository used by a collection you can use the `SetRepositoryType` method. See [Repositories API documentation]({{ site.baseurl }}/api/repositories/) for more info.
+By default Fluidity will use a PetaPoco based repository for storing and fetching entities however you can implement your own repository should you need to store your entities via another strategy. To change the repository implementation used by a collection you can use the `SetRepositoryType` method. See [Repositories API documentation]({{ site.baseurl }}/api/repositories/) for more info.
 
 #### SetRepositoryType&lt;TRepositoryType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
