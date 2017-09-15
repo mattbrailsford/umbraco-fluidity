@@ -14,7 +14,7 @@ You define a collection by calling one of the `AddCollection` methods on a given
 #### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a collection to the given container with the given names and a default icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property.
+Adds a collection to the given container with the given names and default icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property.
 
 ````csharp
 // Example
