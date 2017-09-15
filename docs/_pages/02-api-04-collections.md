@@ -85,7 +85,7 @@ collectionConfig.SetConnectionString("myConnectionStringName");
 
 Within Umbraco it is expected that an entity has a name property so we need to let Fluidity know which property to use for the name or if our entity doesn't have a single name property, then how to construct a name from an entities other properties. We do this by using either the `SetNameProperty` or `SetNameFormat` methods on a `FluidityCollectionConfig` instance.
 
-#### SetNameProperty(Lamda nameProperytyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### SetNameProperty(Lambda nameProperytyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets which property of our entity to use as the name property. Property must be of type `string`. By defining a property as the name property, it's value will be used as the label for the entity in things like trees and list views and will also be editable in the header region of the editor interface. The property will also automatically be added to the searchable properties collection.
@@ -96,7 +96,7 @@ collectionConfig.SetNameProperty(p => p.Name);
 ````
 ---
 
-#### SetNameFormat(Lamda nameFormatExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### SetNameFormat(Lambda nameFormatExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets a format expression to use to dynamically create a label for the entity in things like trees and list views. By providing a name format it is assumed there is no single name property available on the entity and as such there will be no name input field within the header region of the editor interface and nothing will be added to the searchable properties collection by default.
@@ -111,7 +111,7 @@ collectionConfig.SetNameFormat(p => $"{p.FirstName} {p.LastName}");
 
 By default in Fluidity any entity that is deleted via fluidity repository is completely removed from the system. In some occasions however you may wish to keep the records in the data repository but just mark them as deleted so that they don't appear in the UI. This is where the `SetDeletedProperty` method comes in handy.
 
-#### SetDeletedProperty(Lamda deletedPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### SetDeletedProperty(Lambda deletedPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets which property of our entity to use as the deleted property flag. Property must be of type `boolean`. When a deleted property is set, any delete actions will set the deleted flag instead of actualy deleting the entity. In addition, any fetch actions will also pre-filter out any deleted entities.
