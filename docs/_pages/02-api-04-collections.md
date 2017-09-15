@@ -68,7 +68,7 @@ collectionConfig.SetIconColor("blue");
 ### Defining the collection name
 {: .mt}
 
-Within Umbraco it is expected that an entity has a name property so we need to let Fluidity know which property to use as the name field or if our entity doesn't have a single name property, then how to construct a name value from an entity instance. We do this by using either the `SetNameProperty` or `SetNameFormat` methods on a `FluidityCollectionConfig` instance.
+Within Umbraco it is expected that an entity has a name property so we need to let Fluidity know which property to use for the name or if our entity doesn't have a single name property, then how to construct a name from an entities other properties. We do this by using either the `SetNameProperty` or `SetNameFormat` methods on a `FluidityCollectionConfig` instance.
 
 #### SetNameProperty(Lamda nameProperytyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
