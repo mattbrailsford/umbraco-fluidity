@@ -171,19 +171,6 @@ Sets which property of our entity to use as the date modified property. Property
 collectionConfig.SetDateModifiedProperty(p => p.DateModified);
 ````
 
-### Making a collection read only
-{: .mt}
-
-#### MakeReadOnly() *: FluidityCollectionConfig&lt;TEntityType&gt;*
-{: .signature}
-
-Sets the collection as read only and disables any CRUD operations from being performed on the collection via the UI.
-
-````csharp
-// Example
-collectionConfig.MakeReadOnly();
-````
-
 ### Defining searchable properties
 {: .mt}
 
@@ -195,6 +182,19 @@ Adds the given property to the searchable properties collection. Property must b
 ````csharp
 // Example
 collectionConfig.AddSearchableProperty(p => p.LastName);
+````
+
+### Making a collection read only
+{: .mt}
+
+#### MakeReadOnly() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the collection as read only and disables any CRUD operations from being performed on the collection via the UI.
+
+````csharp
+// Example
+collectionConfig.MakeReadOnly();
 ````
 
 ### Setting the view mode
