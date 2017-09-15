@@ -64,3 +64,18 @@ Sets the collection icon color to the given color.  Possible options are `black`
 // Example
 collectionConfig.SetIconColor("blue");
 ````
+
+### Changing the collection connection string
+{: .mt}
+
+By default Fluidity will use the Umbraco connection string for it's database connection however you can change this by calling the `SetConnectionString` method on a `FluidityCollectionConfig` instance.
+
+#### SetConnectionString(string connectionStringName) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the connection string name for the given collection repository.
+
+````csharp
+// Example
+collectionConfig.SetConnectionString("myConnectionStringName");
+````
