@@ -211,6 +211,56 @@ Adds the given property to the searchable properties collection. Property must b
 collectionConfig.AddSearchableProperty(p => p.LastName);
 ````
 
+### Defining menu items
+{: .mt}
+See [Menu Items API documentation]({{ site.baseurl }}/api/menu-items/) for more info.
+
+#### AddContainerMenuItem&lgt;TMenuItemType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a menu item of the given type to the collection container right click menu as well as the list view actions menu.
+
+````csharp
+// Example
+collectionConfig.AddContainerMenuItem<ExportMenuItem>();
+````
+
+---
+
+#### AddContainerMenuItem(Type menuItemType) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a menu item of the given type to the collection tree node right click menu as well as the list view actions menu.
+
+````csharp
+// Example
+collectionConfig.AddContainerMenuItem(typeof(ExportMenuItem));
+````
+
+---
+
+#### AddEntityMenuItem&lgt;TMenuItemType&gt;() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a menu item of the given type to the entity tree node right click menu as well as the entity editor actions menu.
+
+````csharp
+// Example
+collectionConfig.AddEntityMenuItem<ExportMenuItem>();
+````
+
+---
+
+#### AddEntityMenuItem(Type menuItemType) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a menu item of the given type to the entity tree node right click menu as well as the entity editor actions menu.
+
+````csharp
+// Example
+collectionConfig.AddEntityMenuItem(typeof(ExportMenuItem));
+````
+
 ### Showing a collection on the section dashboard
 {: .mt}
 
