@@ -36,3 +36,31 @@ folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-umb-user
     ...
 });
 ````
+
+### Changing the collection alias
+{: .mt}
+
+#### SetAlias(string alias) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the alias of the collection.  
+
+**Optional:** When creating a new collection, an alias is automatically generated from the supplied name for you, however you can use the `SetAlias` method to override this should you need a specific alias.
+
+````csharp
+// Example
+collectionConfig.SetAlias("person");
+````
+
+### Changing the collection icon color
+{: .mt}
+
+#### SetColor(string color) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the icon color to the given color.  Possible options are `black`, `green`, `yellow`, `orange`, `blue` or `red`.
+
+````csharp
+// Example
+collectionConfig.SetColor("blue");
+````
