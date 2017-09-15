@@ -37,7 +37,7 @@ folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-umb-user
 });
 ````
 
-### Changing the collection alias
+### Changing a collection alias
 {: .mt}
 
 #### SetAlias(string alias) *: FluidityCollectionConfig&lt;TEntityType&gt;*
@@ -52,7 +52,7 @@ Sets the alias of the collection.
 collectionConfig.SetAlias("person");
 ````
 
-### Changing the collection icon color
+### Changing a collection icon color
 {: .mt}
 
 #### SetIconColor(string color) *: FluidityCollectionConfig&lt;TEntityType&gt;*
@@ -65,7 +65,7 @@ Sets the collection icon color to the given color.  Possible options are `black`
 collectionConfig.SetIconColor("blue");
 ````
 
-### Changing the collection connection string
+### Changing a collection connection string
 {: .mt}
 
 By default Fluidity will use the Umbraco connection string for it's database connection however you can change this by calling the `SetConnectionString` method on a `FluidityCollectionConfig` instance.
@@ -80,7 +80,7 @@ Sets the connection string name for the given collection repository.
 collectionConfig.SetConnectionString("myConnectionStringName");
 ````
 
-### Changing the collection repository implementation
+### Changing a collection repository implementation
 {: .mt}
 
 By default Fluidity will use a PetaPoco based repository for storing and fetching entities however you can implement your own repository should you need to store your entities via another strategy. To change the repository implementation used by a collection you can use the `SetRepositoryType` method. See [Repositories API documentation]({{ site.baseurl }}/api/repositories/) for more info.
@@ -107,7 +107,7 @@ Sets the repository type to the given type for the current collection.
 collectionConfig.SetRepositoryType(typeof(MyRepositoryType));
 ````
 
-### Defining the entity name
+### Defining an entity name
 {: .mt}
 
 Within Umbraco it is expected that an entity has a name property so we need to let Fluidity know which property to use for the name or if our entity doesn't have a single name property, then how to construct a name from an entities other properties. We do this by using either the `SetNameProperty` or `SetNameFormat` methods on a `FluidityCollectionConfig` instance.
@@ -173,7 +173,7 @@ Sets which property of our entity to use as the deleted property flag. Property 
 collectionConfig.SetDeletedProperty(p => p.Deleted);
 ````
 
-### Defining the default sort order
+### Defining a default sort order
 {: .mt}
 
 #### SetSortProperty(Lambda sortPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
@@ -289,7 +289,7 @@ Sets the collection as read only and disables any CRUD operations from being per
 collectionConfig.MakeReadOnly();
 ````
 
-### Setting the view mode
+### Setting a view mode
 {: .mt}
 
 #### SetViewMode(FluidityViewMode viewMode) *: FluidityCollectionConfig&lt;TEntityType&gt;*

@@ -37,7 +37,7 @@ config.AddSection("Database", "icon-server-alt", sectionConfig => {
 });
 ````
 
-### Changing the alias of a section
+### Changing a section alias
 {: .mt}
 
 #### SetAlias(string alias) *: FluiditySectionConfig*
@@ -52,7 +52,7 @@ Sets the alias of the section.
 sectionConfig.SetAlias("database");
 ````
 
-### Setting the tree of a section
+### Setting a section tree
 {: .mt}
 
 #### SetTree(string name, Lambda treeConfig = null) *: FluidityTreeConfig*

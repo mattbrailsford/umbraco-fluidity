@@ -34,7 +34,7 @@ Sets the editor config of the given collection with a pre-configured `FluidityEd
 collectionConfig.Editor(editorConfig);
 ````
 
-### Adding a tab to the editor
+### Adding a tab to an editor
 {: .mt}
 
 ### Adding a field to a tab

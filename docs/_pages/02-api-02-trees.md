@@ -23,7 +23,7 @@ sectionConfig.SetTree("Database", treeConfig => {
 });
 ````
 
-### Changing the tree alias
+### Changing a tree alias
 {: .mt}
 
 #### SetAlias(string alias) *: FluidityTreeConfig*

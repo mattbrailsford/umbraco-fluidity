@@ -37,7 +37,7 @@ treeConfig.AddFolder("Settings", "icon-settings", folderConfig => {
 });
 ````
 
-### Changing the folder alias
+### Changing a folder alias
 {: .mt}
 
 #### SetAlias(string alias) *: FluidityFolderConfig*
@@ -52,7 +52,7 @@ Sets the alias of the folder.
 folderConfig.SetAlias("settings");
 ````
 
-### Changing the folder icon color
+### Changing a folder icon color
 {: .mt}
 
 #### SetIconColor(string color) *: FluidityFolderConfig*
