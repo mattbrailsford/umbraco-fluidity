@@ -295,7 +295,7 @@ collectionConfig.MakeReadOnly();
 #### SetViewMode(FluidityViewMode viewMode) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Sets the view mode of the current collection. Opions are `Tree` or `List`. When set to `Tree` then all entities will appear as nodes in the tree. When set as `List` then entities will be hidden from the tree and show in a list view in the right hand content area.
+Sets the view mode of the current collection. Opions are `Tree` or `List`. When set to `Tree` then all entities will appear as nodes in the tree. When set as `List` then entities will be hidden from the tree and show in a [list view]({{ site.baseurl }}/api/collections/list-view/) in the right hand content area.
 
 ````csharp
 // Example
