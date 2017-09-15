@@ -184,6 +184,19 @@ Sets the collection as read only and disables any CRUD operations from being per
 collectionConfig.MakeReadOnly();
 ````
 
+### Defining searchable properties
+{: .mt}
+
+#### AddSearchableProperty(Lambda searchableProp) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds the given property to the searchable properties collection. Property must be of type `String`. When set searches via the list view search and entity picker property editor search fields will search across the properties defined in this collection. If no properties are defined as searchable then these UI elements will be disabled.
+
+````csharp
+// Example
+collectionConfig.AddSearchableProperty(p => p.LastName);
+````
+
 ### Setting the view mode
 {: .mt}
 
