@@ -37,6 +37,34 @@ treeConfig.AddFolder("Settings", "icon-settings", folderConfig => {
 });
 ````
 
+### Changing the folder alias
+{: .mt}
+
+#### SetAlias(string alias) *: FluidityFolderConfig*
+{: .signature}
+
+Sets the alias of the folder.  
+
+**Optional:** When creating a new folder, an alias is automatically generated from the supplied name for you, however you can use the `SetAlias` method to override this should you need a specific alias.
+
+````csharp
+// Example
+folderConfig.SetAlias("settings");
+````
+
+### Changing the folder icon color
+{: .mt}
+
+#### SetIconColor(string color) *: FluidityFolderConfig*
+{: .signature}
+
+Sets the folder icon color to the given color.  Possible options are `black`, `green`, `yellow`, `orange`, `blue` or `red`.
+
+````csharp
+// Example
+folderConfig.SetIconColor("blue");
+````
+
 ### Adding a child folder to a folder
 {: .mt}
 

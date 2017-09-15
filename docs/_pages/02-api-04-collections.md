@@ -55,12 +55,12 @@ collectionConfig.SetAlias("person");
 ### Changing the collection icon color
 {: .mt}
 
-#### SetColor(string color) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### SetIconColor(string color) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Sets the icon color to the given color.  Possible options are `black`, `green`, `yellow`, `orange`, `blue` or `red`.
+Sets the collection icon color to the given color.  Possible options are `black`, `green`, `yellow`, `orange`, `blue` or `red`.
 
 ````csharp
 // Example
-collectionConfig.SetColor("blue");
+collectionConfig.SetIconColor("blue");
 ````
