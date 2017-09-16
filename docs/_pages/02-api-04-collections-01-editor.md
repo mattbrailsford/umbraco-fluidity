@@ -134,27 +134,27 @@ Set the data type of the current field to the Umbraco data type with the given i
 fieldConfig.SetDataType(-88);
 ````
 
-### Setting a field mapper
+### Setting a field value mapper
 {: .mt}
 
-#### SetMapper&lt;TMapperType&gt;() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+#### SetValueMapper&lt;TMapperType&gt;() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
 Set the value mapper for the current field. See [Value Mapper API documentation]({{ site.baseurl }}/api/value-mappers/) for more info.
 
 ````csharp
 // Example
-fieldConfig.SetMapper<MyMapper>();
+fieldConfig.SetValueMapper<MyValueMapper>();
 ````
 
 ---
 
-#### SetMapper(FluidityMapper mapper) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+#### SetValueMapper(FluidityMapper mapper) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
 Set the value mapper for the current field. See [Value Mapper API documentation]({{ site.baseurl }}/api/value-mappers/) for more info.
 
 ````csharp
 // Example
-fieldConfig.SetMapper(new MyMapper());
+fieldConfig.SetValueMapper(new MyValueMapper());
 ````
