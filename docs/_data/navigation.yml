@@ -34,6 +34,8 @@
       url: /api/value-mappers/
     - title: Repositories
       url: /api/repositories/
+    - title: Events
+      url: /api/events/
 
 - title: Property Editors
   subnav: 
