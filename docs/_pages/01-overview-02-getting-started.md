@@ -69,10 +69,8 @@ public class FluidityBootstrap : FluidityConfigModule
                     collectionConfig.SetViewMode(FluidityViewMode.List);
 
                     collectionConfig.ListView(listViewConfig => {
-
                         listViewConfig.AddField(p => p.JobTitle);
                         listViewConfig.AddField(p => p.Email);
-
                     });
 
                     collectionConfig.Editor(editorConfig => {
