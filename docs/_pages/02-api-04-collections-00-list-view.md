@@ -113,7 +113,7 @@ Adds the given property to the list view.
 
 ````csharp
 // Example
-listViewConfig.AddField(p => p.LastName, fieldConfig => {
+listViewConfig.AddField(p => p.FirstName, fieldConfig => {
     ...
 });
 ````
@@ -128,7 +128,7 @@ Sets the heading for the list view field.
 
 ````csharp
 // Example
-fieldConfig.SetHeading("Last Name");
+fieldConfig.SetHeading("First Name");
 ````
 
 ### Formatting the value of a field
