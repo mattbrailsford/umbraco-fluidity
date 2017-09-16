@@ -30,7 +30,7 @@ Fluidity.Saving += (sender, args) => {
 #### Saved(object sender, SavedEntityEventArgs args)
 {: .signature}
 
-Raised when the repository `Save` method is called and after the entity has been saved. The `args` param contains an `Entity` property with `Before` and `After` inner properties providing access to a copy of the previously persisted entity (or null if a new entity) and the updated entity about just saved. 
+Raised when the repository `Save` method is called and after the entity has been saved. The `args` param contains an `Entity` property with `Before` and `After` inner properties providing access to a copy of the previously persisted entity (or null if a new entity) and the updated entity just saved. 
 
 ````csharp
 // Example
@@ -65,7 +65,7 @@ Fluidity.Deleting += (sender, args) => {
 #### Deleted(object sender, DeletedEntityEventArgs args)
 {: .signature}
 
-Raised when the repository `Delete` method is called and after the entity is deleted. The `args` param contains an `Entity` property providing access to a copy of the entity just deleted. 
+Raised when the repository `Delete` method is called and after the entity has been deleted. The `args` param contains an `Entity` property providing access to a copy of the entity just deleted. 
 
 ````csharp
 // Example
