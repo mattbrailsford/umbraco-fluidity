@@ -99,19 +99,19 @@ Adds a list view layout of the given type to the list view. See [List View Layou
 
 ````csharp
 // Example
-listViewConfig.AddListViewLayout<MyCustomListViewLayout>();
+listViewConfig.AddLayout<MyCustomListViewLayout>();
 ````
 
 ---
 
-#### AddListViewLayout(FluidityListViewLayout listViewLayout) *: FluidityListViewConfig&lt;TEntityType&gt;*
+#### AddLayout(FluidityListViewLayout listViewLayout) *: FluidityListViewConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Adds the provided list view layout to the list view. See [List View Layouts API documentation]({{ site.baseurl }}/api/list-view-layouts/) for more info.
 
 ````csharp
 // Example
-listViewConfig.AddListViewLayout(new MyCustomListViewLayout());
+listViewConfig.AddLayout(new MyCustomListViewLayout());
 ````
 
 ### Adding a field to the list view
