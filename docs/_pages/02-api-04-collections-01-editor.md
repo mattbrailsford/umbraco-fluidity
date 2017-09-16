@@ -48,7 +48,7 @@ Adds the given property to the editor.
 
 ````csharp
 // Example
-editorConfig.AddField(p => p.LastName, fieldConfig => {
+editorConfig.AddField(p => p.FirstName, fieldConfig => {
     ...
 });
 ````
@@ -65,7 +65,7 @@ Sets the label for the editor field.
 
 ````csharp
 // Example
-fieldConfig.SetLabel("Last Name");
+fieldConfig.SetLabel("First Name");
 ````
 
 ### Adding a description to a field
