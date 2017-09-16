@@ -37,6 +37,8 @@ config.AddSection("Database", "icon-server-alt", sectionConfig => {
 });
 ````
 
+**Note:** Due to the nature of how Umbraco works, when you first create your section it will likely not instantly appear this is because you first need to give access to your back office user account. Go to the user editor for your user account and check the the 'Sections' checkbox next to your section name, click 'Save' and then refresh your browser. 
+
 ### Changing a section alias
 {: .mt}
 
