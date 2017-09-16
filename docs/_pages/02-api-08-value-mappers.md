@@ -32,26 +32,4 @@ public class MyMapper : FluidityValueMapper
 ### Setting a mapper on a field
 {: .mt}
 
-A mapper is assigned to a field as part of the [editor]({{ site.baseurl }}/api/collections/editor/) configuration.
-
-#### SetValueMapper&lt;TMapperType&gt;() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
-{: .signature}
-
-Set the value mapper for the given field.
-
-````csharp
-// Example
-fieldConfig.SetValueMapper<MyValueMapper>();
-````
-
----
-
-#### SetValueMapper(FluidityMapper mapper) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
-{: .signature}
-
-Set the value mapper for the given field.
-
-````csharp
-// Example
-fieldConfig.SetValueMapper(new MyValueMapper());
-````
+A mapper is assigned to a field as part of the editor configuration. See [Editor API Documentation]({{ site.baseurl }}/api/collections/editor/#setting-a-field-value-mapper) for more info.
