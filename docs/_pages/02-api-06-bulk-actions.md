@@ -79,3 +79,14 @@ The optional service methods are:
 * **getConfirmMessage(count)** Should return a string to display as the confirmation message before the bulk action is performed. A generic default message will be used if no `getConfirmMessage` method is defined.
 * **getProgressMessage(count, total)** Should return a string to display as the progress message whilst the bulk action is running. A generic default message will be used if no `getProgressMessage` method is defined.
 * **getCompleteMessage(total)** Should return a string to display as the complete message once the bulk action has finished running. A generic default message will be used if no `getCompleteMessage` method is defined.
+
+You'll need to ensure your angular service as well as any resources needed by your service are loaded before it can be used. This is a bit out of scope for the Fluidity documentation, however in summary you will want to:
+
+* Create a plugin folder in the root app_plugin folder.
+* Create a `package.manifest` file in your plugin folder.
+* Add the service js file path to the `package.manifest`.
+
+### Adding a bulk action to a list view
+{: .mt}
+
+Bulk actions are added to a list view as part of the list view configuration. See [List View API documentation]({{ site.baseurl }}/api/collections/#adding-a-bulk-action) for more info.
