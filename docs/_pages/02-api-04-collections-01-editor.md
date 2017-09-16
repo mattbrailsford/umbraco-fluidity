@@ -140,7 +140,7 @@ fieldConfig.SetDataType(-88);
 #### SetMapper&lt;TMapperType&gt;() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
-Set the mapper for the current field. See [Mapper API documentation]({{ site.baseurl }}/api/mappers/) for more info.
+Set the value mapper for the current field. See [Value Mapper API documentation]({{ site.baseurl }}/api/value-mappers/) for more info.
 
 ````csharp
 // Example
@@ -152,7 +152,7 @@ fieldConfig.SetMapper<MyMapper>();
 #### SetMapper(FluidityMapper mapper) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
-Set the mapper for the current field. See [Mapper API documentation]({{ site.baseurl }}/api/mappers/) for more info.
+Set the value mapper for the current field. See [Value Mapper API documentation]({{ site.baseurl }}/api/value-mappers/) for more info.
 
 ````csharp
 // Example

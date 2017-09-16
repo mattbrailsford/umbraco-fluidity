@@ -30,8 +30,8 @@
       url: /api/bulk-actions/
     - title: List View Layouts
       url: /api/list-view-layouts/
-    - title: Mappers
-      url: /api/mappers/
+    - title: Value Mappers
+      url: /api/value-mappers/
     - title: Repositories
       url: /api/repositories/
 
