@@ -12,6 +12,7 @@ Bulk actions provides an API to perform bulk operations from within a list view 
 To define a bulk action you create a class that inherits from the base class `FluidityBulkAction` and implements the abstract configuration properties.
 
 ````csharp
+// Example
 public class DeleteBulkAction : FluidityBulkAction
 {
     public override string Name => "Delete";

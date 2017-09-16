@@ -5,13 +5,14 @@ title: Repositories
 permalink: /api/repositories/index.html
 ---
 
-Repositories are used by Fluidity to access the entity data stores. By default collections will use a generic built in PetaPoco repository however you can define your own repository implementation should you wish to store your entities via another strategy.
+Repositories are used by Fluidity to access the entity data stores. By default collections will use a generic built in PetaPoco repository however you can define your own repository implementation should you wish to store your entities via an alternative strategy.
 
 ### Defining a repository
 
-To define a repository you create a class that inherits from the base class `FluidityRepository<TEntity, TId>` and implements the abstract methods.
+To define a repository you create a class that inherits from the base class `FluidityRepository<TEntity, TId>` and implements all of its abstract methods.
 
 ````csharp
+// Example
 public class PersonRepository : FluidityRepository<Person, int> {
 
     protected override int GetIdImpl(Person entity) 

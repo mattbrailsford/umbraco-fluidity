@@ -12,6 +12,7 @@ List view layouts allow you to provide custom angular views to be used by the li
 To define a list view layout you create a class that inherits from the base class `FluidityListViewLayout` and implements the abstract configuration properties.
 
 ````csharp
+// Example
 public class MyCustomListViewLayout : FluidityListViewLayout
 {
     public override string Name => "My Custom List";
