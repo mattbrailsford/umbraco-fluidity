@@ -44,7 +44,7 @@ Adds a tab to the editor.
 
 ````csharp
 // Example
-collectionConfig.AddTab("General", tabConfig => {
+editorConfig.AddTab("General", tabConfig => {
     ...
 });
 ````
