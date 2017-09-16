@@ -134,7 +134,7 @@ Set the data type of the current field to the Umbraco data type with the given i
 fieldConfig.SetDataType(-88);
 ````
 
-### Adding a mapper to a field
+### Setting a field mapper
 {: .mt}
 
 #### SetMapper&lt;TMapperType&gt;() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
