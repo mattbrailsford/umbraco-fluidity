@@ -65,6 +65,28 @@ listViewConfig.AddDataView("Active", p => p.IsActive);
 ### Adding a bulk action
 {: .mt}
 
+#### AddBulkAction&lt;TBulkActionType&gt;() *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a bulk action of the given type to the list view. See [Bulk Actions API documentation]({{ site.baseurl }}/api/bulk-actions/) for more info.
+
+````csharp
+// Example
+listViewConfig.AddBulkAction<ExportBulkAction>();
+````
+
+---
+
+#### AddBulkAction(FluidityBulkAction bulkAction) *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds the provided bulk action to the list view. See [Bulk Actions API documentation]({{ site.baseurl }}/api/bulk-actions/) for more info.
+
+````csharp
+// Example
+listViewConfig.AddBulkAction(new ExportBulkAction());
+````
+
 ### Changing the list view layout
 {: .mt}
 

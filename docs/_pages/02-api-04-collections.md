@@ -227,14 +227,14 @@ collectionConfig.AddContainerMenuItem<ExportMenuItem>();
 
 ---
 
-#### AddContainerMenuItem(Type menuItemType) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddContainerMenuItem(MenuItem menuItem) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a menu item of the given type to the collection tree node right click menu as well as the list view actions menu.
+Adds the provided menu item to the collection tree node right click menu as well as the list view actions menu.
 
 ````csharp
 // Example
-collectionConfig.AddContainerMenuItem(typeof(ExportMenuItem));
+collectionConfig.AddContainerMenuItem(new ExportMenuItem());
 ````
 
 ---
@@ -251,14 +251,14 @@ collectionConfig.AddEntityMenuItem<ExportMenuItem>();
 
 ---
 
-#### AddEntityMenuItem(Type menuItemType) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddEntityMenuItem(MenuItem menuItem) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a menu item of the given type to the entity tree node right click menu as well as the entity editor actions menu.
+Adds the provided menu item to the entity tree node right click menu as well as the entity editor actions menu.
 
 ````csharp
 // Example
-collectionConfig.AddEntityMenuItem(typeof(ExportMenuItem));
+collectionConfig.AddEntityMenuItem(new ExportMenuItem());
 ````
 
 ### Showing a collection on the section dashboard
