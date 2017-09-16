@@ -316,17 +316,6 @@ collectionConfig.ListView(listViewConfig => {
     ...
 });
 ````
----
-
-#### ListView(FluidityListViewConfig&lt;TEntityType&gt; listViewConfig) *: FluidityListViewConfig&lt;TEntityType&gt;*
-{: .signature}
-
-Sets the list view config of the current collection with a pre-configured `FluidityListViewConfig<TEntityType>` instance. See [List View API documentation]({{ site.baseurl }}/api/collections/list-view/) for more info.
-
-````csharp
-// Example
-collectionConfig.ListView(listViewConfig);
-````
 
 ### Configuring the editor
 {: .mt}
@@ -341,15 +330,4 @@ Accesses the editor config of the current collection. See [Editor API documentat
 collectionConfig.Editor(editorConfig => {
     ...
 });
-````
----
-
-#### Editor(FluidityEditorConfig&lt;TEntityType&gt; editorConfig) *: FluidityEditorConfig&lt;TEntityType&gt;*
-{: .signature}
-
-Sets the editor config of the current collection with a pre-configured `FluidityEditorConfig<TEntityType>` instance. See [Editor API documentation]({{ site.baseurl }}/api/collections/editor/) for more info.
-
-````csharp
-// Example
-collectionConfig.Editor(editorConfig);
 ````
