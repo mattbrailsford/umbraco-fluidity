@@ -90,7 +90,7 @@ listViewConfig.AddBulkAction(new ExportBulkAction());
 ### Changing the list view layout
 {: .mt}
 
-By default the list view will use the built in Umbraco table and grid list view layouts however you can provide your own custom layouts. If you provide a layout, then it will replace the defaults, so if you still want the defaults as options, you'll need to add these explicitly.
+By default the list view will use the built in Umbraco table and grid list view layouts however you can provide your own custom layouts. If you provide a layout, then it will replace the defaults, so if you still want the defaults as options, you'll need to add these again explicitly.
 
 #### AddLayout&lt;TListViewLayoutType&gt;() *: FluidityListViewConfig&lt;TEntityType&gt;*
 {: .signature}
