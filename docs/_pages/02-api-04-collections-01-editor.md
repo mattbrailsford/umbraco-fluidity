@@ -160,7 +160,7 @@ fieldConfig.SetMapper<MyMapper>();
 
 ---
 
-#### SetMapper(FLuidityMapper mapper) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+#### SetMapper(FluidityMapper mapper) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
 Set the mapper for the current field. See [Mapper API documentation]({{ site.baseurl }}/api/mappers/) for more info.
