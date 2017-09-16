@@ -15,9 +15,9 @@ To configure an entity picker you'll firstly want to create a data type in the U
 
 From their choose the 'Section' and then 'Collection' you'd like to pick entities from, as well as an optional list view 'Data View' if there are any configured.
 
-You can also set a minimum and maximum number of items to be able to pick.
+You can also set a minimum and maximum number of items to be able to pick if required.
 
-With an entity picker data type defined, finish of the configuration by adding it to the desired document type definition.
+With an entity picker data type defined, finish off the configuration by adding it to the desired document type definition.
 
 [SCREENSHOT]
 
