@@ -18,6 +18,7 @@ CREATE TABLE [Person] (
     [JobTitle] nvarchar(255) NOT NULL, 
     [Email] nvarchar(255) NOT NULL, 
     [Telephone] nvarchar(255) NOT NULL, 
+    [Age] int NOT NULL, 
     [Avatar] nvarchar(255) NOT NULL
 );
 ````
@@ -34,6 +35,7 @@ public class Person
     public string JobTitle { get; set; }
     public string Email { get; set; }
     public string Telephone { get; set; }
+    public int Age { get; set; }
     public string Avatar { get; set; }
 }
 ````
@@ -52,7 +54,50 @@ public class FluidityBootstrap : FluidityConfigModule
 
 An example of a basic configuration for our model might look something like this
 
-[CODE SNIPPET]
+````csharp
+public class FluidityBootstrap : FluidityConfigModule
+{
+    public override void Configure (FluidityConfig  config) 
+    {
+        config.AddSection("Database", sectionConfig => {
+            
+            sectionConfig.SetTree("Database", treeConfig => {
+                
+                treeConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-umb-users", "icon-umb-users", collectionConfig => {
+
+                    collectionConfig.SetNameProperty(p => p.Name);
+                    collectionConfig.SetViewMode(FluidityViewMode.List);
+
+                    collectionConfig.ListView(listViewConfig => {
+
+                        listViewConfig.AddField(p => p.JobTitle);
+                        listViewConfig.AddField(p => p.Email);
+
+                    });
+
+                    collectionConfig.Editor(editorConfig => {
+
+                        editorConfig.AddTab("General", tabConfig => {
+                            tabConfig.AddField(p => p.JobTitle).IsRequired();
+                            tabConfig.AddField(p => p.Email).SetValidationRegex("[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}");
+                            tabConfig.AddField(p => p.Telephone).SetDescription("inc area code");
+                            tabConfig.AddField(p => p.Age);
+                        });
+
+                        editorConfig.AddTab("Media", tabConfig => {
+                            tabConfig.AddField(p => p.JobTitle).SetDataType("Upload");
+                        });
+                        
+                    });
+
+                });
+            
+            });
+        
+        });
+    }
+}
+````
 
 Which in turn will generate a fully working user interface like this
 
