@@ -43,7 +43,7 @@ In addition, there are three options for the type of action the menu item should
 
 You can find more detailed information on `MenuItem` class over at the offical [Umbraco Menu Item documentation](https://our.umbraco.org/apidocs/csharp/api/Umbraco.Web.Models.Trees.MenuItem.html)
 
-As well as defining the menu item class, depending on the action type you configure, you will also need to implement the relevant angular view, however this is a little out of scope for the Fluidity documentation, however in summary you will want to:
+As well as defining the menu item class, depending on the action type you configure, you will also need to implement the relevant angular view. This is a little out of scope for the Fluidity documentation, however in summary you will want to:
 
 * Create a plugin folder in the root app_plugin folder
 * Create a `package.manifest` file in your plugin folder
