@@ -117,8 +117,40 @@ listViewConfig.AddLayout(new MyCustomListViewLayout());
 ### Adding a field to the list view
 {: .mt}
 
+#### AddField(Lambda propertyExpression, Lambda propertyConfig = null) *: FluidityListViewFieldConfig&lt;TEntityType, TValueType&gt;*
+{: .signature}
+
+Adds the given property to the list view.
+
+````csharp
+// Example
+listViewConfig.AddField(p => p.LastName, propertyConfig => {
+    ...
+});
+````
+
 ### Changing the heading of a field
 {: .mt}
 
+#### SetHeadng(string heading) *: FluidityListViewFieldConfig&lt;TEntityType, TValueType&gt;*
+{: .signature}
+
+Sets the heading for the list view field.
+
+````csharp
+// Example
+propertyConfig.SetHeading("Last Name");
+````
+
 ### Formatting the value of a field
 {: .mt}
+
+#### SetFormat(Lambda formatExpression) *: FluidityListViewFieldConfig&lt;TEntityType, TValueType&gt;*
+{: .signature}
+
+Sets the format expression for the list view field.
+
+````csharp
+// Example
+propertyConfig.SetFormat((v, p) => $"{v} years old");
+````
