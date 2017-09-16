@@ -24,7 +24,7 @@ collectionConfig.Editor(editorConfig => {
 ````
 ---
 
-#### Editort(FluidityEditorConfig&lt;TEntityType&gt; editorConfig) *: FluidityEditorConfig&lt;TEntityType&gt;*
+#### Editor(FluidityEditorConfig&lt;TEntityType&gt; editorConfig) *: FluidityEditorConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets the editor config of the given collection with a pre-configured `FluidityEditorConfig<TEntityType>` instance.
@@ -36,6 +36,18 @@ collectionConfig.Editor(editorConfig);
 
 ### Adding a tab to an editor
 {: .mt}
+
+#### AddTab(string name, Lambda tabConfig = null) *: FluidityTabConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a tab to the editor.
+
+````csharp
+// Example
+collectionConfig.AddTab("General", tabConfig => {
+    ...
+});
+````
 
 ### Adding a field to a tab
 {: .mt}

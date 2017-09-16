@@ -344,7 +344,7 @@ collectionConfig.Editor(editorConfig => {
 ````
 ---
 
-#### Editort(FluidityEditorConfig&lt;TEntityType&gt; editorConfig) *: FluidityEditorConfig&lt;TEntityType&gt;*
+#### Editor(FluidityEditorConfig&lt;TEntityType&gt; editorConfig) *: FluidityEditorConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets the editor config of the current collection with a pre-configured `FluidityEditorConfig<TEntityType>` instance. See [Editor API documentation]({{ site.baseurl }}/api/collections/editor/) for more info.
