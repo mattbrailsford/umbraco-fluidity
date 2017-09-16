@@ -90,6 +90,30 @@ listViewConfig.AddBulkAction(new ExportBulkAction());
 ### Changing the list view layout
 {: .mt}
 
+By default the list view will use the built in Umbraco table and grid list view layouts however you can provide your own custom layouts. If you provide a layout, then it will replace the defaults, so if you still want the defaults as options, you'll need to add these explicitly.
+
+#### AddLayout&lt;TListViewLayoutType&gt;() *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a list view layout of the given type to the list view. See [List View Layouts API documentation]({{ site.baseurl }}/api/list-view-layouts/) for more info.
+
+````csharp
+// Example
+listViewConfig.AddListViewLayout<MyCustomListViewLayout>();
+````
+
+---
+
+#### AddListViewLayout(FluidityListViewLayout listViewLayout) *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds the provided list view layout to the list view. See [List View Layouts API documentation]({{ site.baseurl }}/api/list-view-layouts/) for more info.
+
+````csharp
+// Example
+listViewConfig.AddListViewLayout(new MyCustomListViewLayout());
+````
+
 ### Adding a field to the list view
 {: .mt}
 
