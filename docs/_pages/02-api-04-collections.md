@@ -92,7 +92,7 @@ Sets the repository type to the given type for the current collection.
 
 ````csharp
 // Example
-collectionConfig.SetRepositoryType<MyRepositoryType>();
+collectionConfig.SetRepositoryType<PersonRepositoryType>();
 ````
 
 ---
@@ -104,7 +104,7 @@ Sets the repository type to the given type for the current collection.
 
 ````csharp
 // Example
-collectionConfig.SetRepositoryType(typeof(MyRepositoryType));
+collectionConfig.SetRepositoryType(typeof(PersonRepositoryType));
 ````
 
 ### Defining an entity name
@@ -208,7 +208,7 @@ Adds the given property to the searchable properties collection. Property must b
 
 ````csharp
 // Example
-collectionConfig.AddSearchableProperty(p => p.LastName);
+collectionConfig.AddSearchableProperty(p => p.FirstName);
 ````
 
 ### Defining menu items
