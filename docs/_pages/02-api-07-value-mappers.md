@@ -7,7 +7,7 @@ permalink: /api/value-mappers/index.html
 
 A value mapper is a little Fluidity helper class that sits between the editor UI and the database and lets you tweak the stored value of a field. By default Fluidity will save a datatypes value is it would be stored in Umbraco. Value mappers let you change this. 
 
-### Defining a mapper
+### Defining a value mapper
 
 To define a mapper you create a class that inherits from the base class `FluidityValueMapper` and implements the methods `EditorToModel` and `ModelToEditor`.
 
