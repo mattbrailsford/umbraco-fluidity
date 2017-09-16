@@ -50,6 +50,18 @@ listViewConfig.SetPageSize(20);
 ### Adding a data view
 {: .mt}
 
+Data views allow you to define multiple, pre-filtered views of the same data source which can be toggled between via the list view UI. This can be useful when entities exist in different states and you want a way to toggle between them.
+
+#### AddDataView(string name, Lambda whereClauseExpression) *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds a data view with the given name and where clause filter expression. Expression must be a `boolean` expression.
+
+````csharp
+// Example
+listViewConfig.AddDataView("Active", p => p.IsActive);
+````
+
 ### Adding a bulk action
 {: .mt}
 
