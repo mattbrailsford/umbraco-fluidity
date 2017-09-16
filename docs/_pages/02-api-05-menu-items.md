@@ -31,7 +31,7 @@ public class ExportMenuItem : MenuItem
 Available configuration options are:
 
 * **Name:** The name of the menu item
-* **Alias:** An unique alias for the menu item
+* **Alias:** A unique alias for the menu item
 * **Icon:** An icon to display next to the name in the menu
 * **SeperatorBefore:** Boolean flag to set whether to show a seperator in the menu before this menu item
 
