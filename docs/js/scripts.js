@@ -56,7 +56,8 @@ var ie = (function () {
         {
             $(".sticky--desktop").each(function (idx, itm) {
                 $(itm).stick_in_parent({
-                    offset_top: 40
+                    offset_top: 40,
+                    offset_bottom: 40
                 });
             });
         }
@@ -84,6 +85,7 @@ var ie = (function () {
             $(".sticky--mobile").each(function (idx, itm) {
                 $(itm).stick_in_parent({
                     offset_top: 20,
+                    offset_bottom: 20
                 });
             });
         }
