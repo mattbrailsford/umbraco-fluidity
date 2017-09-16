@@ -301,3 +301,55 @@ Sets the view mode of the current collection. Opions are `Tree` or `List`. When 
 // Example
 collectionConfig.SetViewMode(FluidityViewMode.List);
 ````
+
+### Configuring the list view
+{: .mt}
+
+#### ListView(Lambda listViewConfig = null) *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Accesses the list view config of the current collection. See [List View API documentation]({{ site.baseurl }}/api/collections/list-view/) for more info.
+
+````csharp
+// Example
+collectionConfig.ListView(listViewConfig => {
+    ...
+});
+````
+---
+
+#### ListView(FluidityListViewConfig&lt;TEntityType&gt; listViewConfig) *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the list view config of the current collection with a pre-configured `FluidityListViewConfig<TEntityType>` instance. See [List View API documentation]({{ site.baseurl }}/api/collections/list-view/) for more info.
+
+````csharp
+// Example
+collectionConfig.ListView(listViewConfig);
+````
+
+### Configuring the editor
+{: .mt}
+
+#### Editor(Lambda editorConfig = null) *: FluidityEditorConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Accesses the editor config of the current collection. See [Editor API documentation]({{ site.baseurl }}/api/collections/editor/) for more info.
+
+````csharp
+// Example
+collectionConfig.Editor(editorConfig => {
+    ...
+});
+````
+---
+
+#### Editort(FluidityEditorConfig&lt;TEntityType&gt; editorConfig) *: FluidityEditorConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the editor config of the current collection with a pre-configured `FluidityEditorConfig<TEntityType>` instance. See [Editor API documentation]({{ site.baseurl }}/api/collections/editor/) for more info.
+
+````csharp
+// Example
+collectionConfig.Editor(editorConfig);
+````
