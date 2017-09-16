@@ -62,6 +62,7 @@ Adds the given property to the editor.
 editorConfig.AddField(p => p.LastName, fieldConfig => {
     ...
 });
+````
 
 ### Changing the label of a field
 {: .mt}
