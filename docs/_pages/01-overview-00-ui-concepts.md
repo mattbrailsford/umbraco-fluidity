@@ -9,9 +9,9 @@ Before you get to know Fluidity, you need to be familiar with the Umbraco UI and
 
 ![UI Concepts 1]({{ site.baseurl }}/img/ui-concepts-01.png) 
 
-**1. Section** A distinct area of the Umbraco back office.
-**2. Tree** A hierarchical structure to help organise a section.
-**3. Dashboard** An intro area for a section, usually with useful links for the section.
+**1. Section** A distinct area of the Umbraco back office.  
+**2. Tree** A hierarchical structure to help organise a section.  
+**3. Dashboard** An intro area for a section, usually with useful links for the section.  
 
 ![UI Concepts 2]({{ site.baseurl }}/img/ui-concepts-02.png) 
 
