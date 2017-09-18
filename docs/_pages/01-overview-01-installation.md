@@ -24,7 +24,7 @@ To install from the package gallery, simply search for **Fluidity** in the packa
 
 To complete the installation, follow the on screen instructions presented by the package installer. 
 
-### NuGet Package Repository
+### NuGet package repository
 
 To install from NuGet you can run the following command from within the Visual Studio Package Manager Console window.
 
