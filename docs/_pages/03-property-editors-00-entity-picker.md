@@ -11,7 +11,7 @@ The Entity Picker property editor is an Umbraco property editor that lets you se
 
 To configure an entity picker you'll firstly want to create a data type in the Umbraco back office choosing 'Fluidity Entity Picker' from the property editor dropdown.
 
-[SCREENSHOT]
+![Pre Value]({{ site.baseurl }}/img/pre-value.png) 
 
 From their choose the 'Section' and then 'Collection' you'd like to pick entities from, as well as an optional list view 'Data View' if there are any configured.
 
@@ -19,7 +19,7 @@ You can also set a minimum and maximum number of items to be able to pick if req
 
 With an entity picker data type defined, finish off the configuration by adding it to the desired document type definition.
 
-[SCREENSHOT]
+![Add to Doc Type]({{ site.baseurl }}/img/add-to-doc-type.png) 
 
 ### Using an entity picker
 {: .mt}
@@ -28,13 +28,13 @@ Using the entity picker should be pretty fimilar as it aims to mimic the content
 
 To pick an entity click the 'Add' link to launch the picker dialog. The dialog should present a pagniated list of entities to pick from. If any searchable fields have been configured for the entity type, you can also perform a search by typing a search term in the search input field.
 
-[SCREENSHOT]
+![Picker Dialog]({{ site.baseurl }}/img/picker-dialog.png) 
 
 To pick your items simply click on the entity names and then click 'Select' in the bottom right hand corner.
 
 The picker should display a summary of the selected entities and can be sorted by dragging the selected entities into the desired order.
 
-[SCREENSHOT]
+![Picker]({{ site.baseurl }}/img/picker.png) 
 
 To save the value either save or save and publish the current document.
 
