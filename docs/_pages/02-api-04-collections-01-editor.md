@@ -104,7 +104,7 @@ Defines the regular expression to use when validating the field.
 
 ````csharp
 // Example
-fieldConfig.SetValidationRegex("[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}");
+fieldConfig.SetValidationRegex("[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}");
 ````
 
 ### Changing the data type of a field

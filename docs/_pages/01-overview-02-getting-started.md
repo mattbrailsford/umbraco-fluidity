@@ -77,7 +77,7 @@ public class FluidityBootstrap : FluidityConfigModule
 
                         editorConfig.AddTab("General", tabConfig => {
                             tabConfig.AddField(p => p.JobTitle).IsRequired();
-                            tabConfig.AddField(p => p.Email).SetValidationRegex("[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}");
+                            tabConfig.AddField(p => p.Email).SetValidationRegex("[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}");
                             tabConfig.AddField(p => p.Telephone).SetDescription("inc area code");
                             tabConfig.AddField(p => p.Age);
                         });
