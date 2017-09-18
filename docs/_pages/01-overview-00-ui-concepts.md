@@ -29,4 +29,4 @@ Before you get to know Fluidity, you need to be familiar with the Umbraco UI and
 
 ![UI Concepts 5]({{ site.baseurl }}/img/ui-concepts-05.png) 
 
-**6. Bulk Action** An action to perform on multiple nodes at once.
+**7. Bulk Action** An action to perform on multiple nodes at once.
