@@ -99,7 +99,9 @@ public class FluidityBootstrap : FluidityConfigModule
 
 Which in turn will generate a fully working user interface like this
 
-[SCREENSHOT]
+![List View]({{ site.baseurl }}/img/list-view.png) 
+
+![Editor]({{ site.baseurl }}/img/editor.png) 
 
 As you can see, with very little code you can start to create very powerful interfaces for your custom models. 
 
