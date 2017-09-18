@@ -13,13 +13,13 @@ To install from Our Umbraco, you can either download the package file directly f
 
 To in install the package manually, you can download the package file from the following location and then upload it to the package installer when prompted.
 
-[URL]
+[{{ site.data.links.umbraco }}]({{ site.data.links.umbraco }})
 
-[SCREENSHOT - Package Installer]
+![Upload Package]({{ site.baseurl }}/img/upload-package.png) 
 
 To install from the package gallery, simply search for **Fluidity** in the package galleries search field, click the Fluidity search result and then click the **Install Package** button.
 
-[SCREENSHOT - Package Gallery Search]
+[SCREENSHOT - Package Gallery Search]  
 [SCREENSHOT - Package Gallery Install]
 
 To complete the installation, follow the on screen instructions presented by the package installer. 
