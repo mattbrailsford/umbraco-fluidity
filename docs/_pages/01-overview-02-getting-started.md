@@ -7,9 +7,9 @@ permalink: /overview/getting-started/index.html
 
 ### Basic setup
 
-Out of the box Fluidity works using PetaPoco as the persistence layer, as this is what ships with Umbraco. It is possible to change this if you like using a custom [Repository]({{ site.baseurl }}/api/repositories/), but for the sake of getting started, we'll assume you are using this default strategy.
+Out of the box Fluidity works using PetaPoco as the persistence layer as this is what ships with Umbraco. However, it is possible to use a custom [Repository]({{ site.baseurl }}/api/repositories/) if you prefer. For the sake of getting started, we'll assume you are using this default strategy.
 
-Start by setting up a database table for you model (you might want to populate it with some dummy data as well whilst learning). We’ll use the following as an example
+Start by setting up a database table for your model (you might want to populate it with some dummy data as well whilst learning). We’ll use the following as an example:
 
 ````sql
 CREATE TABLE [Person] (
@@ -23,7 +23,7 @@ CREATE TABLE [Person] (
 );
 ````
 
-Then, create the associated poco model
+Then, create the associated poco model:
 
 ````csharp
 [TableName("Person")]
@@ -40,7 +40,7 @@ public class Person
 }
 ````
 
-With the database and model setup, we can now start to configure Fluidity itself. The entry point for a Fluidity configuration is via a class that inherits from the abstract base class `FluidityConfigModule`. This class exposes a single method, `Configure`, which is passed a `FluidityConfig` instance against which you can start configuring your UI.
+With the database and model setup, we can now start to configure Fluidity itself. The entry point for a Fluidity configuration is via a class that inherits from the abstract base class `FluidityConfigModule`. This class exposes a single method, `Configure`, which is passed a `FluidityConfig` instance. It is against this instance that you configure your UI.
 
 ````csharp
 public class FluidityBootstrap : FluidityConfigModule
