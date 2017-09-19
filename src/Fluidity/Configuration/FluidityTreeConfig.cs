@@ -4,6 +4,10 @@ using Fluidity.Collections;
 
 namespace Fluidity.Configuration
 {
+    /// <summary>
+    /// Fluidity tree configuration
+    /// </summary>
+    /// <seealso cref="Fluidity.Configuration.FluidityContainerTreeItemConfig" />
     public class FluidityTreeConfig : FluidityContainerTreeItemConfig
     {
         protected bool _initialize;
@@ -12,6 +16,12 @@ namespace Fluidity.Configuration
         protected ConcurrentDictionary<string, FluidityTreeItemConfig> _flattenedTreeItems;
         internal IReadOnlyDictionary<string, FluidityTreeItemConfig> FalttenedTreeItems => _flattenedTreeItems;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FluidityTreeConfig"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="config">A configuration delegate.</param>
         public FluidityTreeConfig(string name, string icon = null, Action<FluidityTreeConfig> config = null)
             : base(name, icon)
         {
@@ -23,17 +33,33 @@ namespace Fluidity.Configuration
             config?.Invoke(this);
         }
 
+        /// <summary>
+        /// Changes the alias of the tree.
+        /// </summary>
+        /// <remarks>
+        /// An alias will automatically be generated from the tree name however you can use SetAlias to change this if required
+        /// </remarks>
+        /// <param name="alias">The alias.</param>
+        /// <returns>The tree configuration.</returns>
         public FluidityTreeConfig SetAlias(string alias)
         {
             _alias = alias;
             return this;
         }
 
+        /// <summary>
+        /// Performs any post processing needed after initialization
+        /// </summary>
         internal void PostProcess()
         {
             PostProcessTreeItemsRecursive(TreeItems.Values, this);
         }
 
+        /// <summary>
+        /// Post processes the tree items recursively.
+        /// </summary>
+        /// <param name="configs">The configs.</param>
+        /// <param name="parentConfig">The parent configuration.</param>
         private void PostProcessTreeItemsRecursive(IEnumerable<FluidityTreeItemConfig> configs, FluidityTreeItemConfig parentConfig)
         {
             foreach (var config in configs)

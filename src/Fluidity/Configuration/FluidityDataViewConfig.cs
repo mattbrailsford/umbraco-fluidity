@@ -3,6 +3,9 @@ using Umbraco.Core;
 
 namespace Fluidity.Configuration
 {
+    /// <summary>
+    /// Fluidity data view configuration
+    /// </summary>
     public class FluidityDataViewConfig
     {
         protected string _alias;
@@ -14,6 +17,11 @@ namespace Fluidity.Configuration
         protected LambdaExpression _whereClauseExpression;
         internal LambdaExpression WhereClauseExpression => _whereClauseExpression;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FluidityDataViewConfig"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="whereClauseExpression">The where clause expression.</param>
         public FluidityDataViewConfig(string name, LambdaExpression whereClauseExpression)
         {
             _alias = name.ToSafeAlias(true);

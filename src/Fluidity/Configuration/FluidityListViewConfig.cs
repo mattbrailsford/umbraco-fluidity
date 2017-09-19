@@ -5,6 +5,9 @@ using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
 {
+    /// <summary>
+    /// Un typed base class for a <see cref="FluidityListViewConfig{TEntityType}"/>
+    /// </summary>
     public abstract class FluidityListViewConfig
     {
         protected int _pageSize;
@@ -24,6 +27,9 @@ namespace Fluidity.Configuration
         protected List<FluidityListViewLayout> _layouts;
         internal IEnumerable<FluidityListViewLayout> Layouts => _layouts.Any() ? _layouts : _defaultLayouts;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FluidityListViewConfig"/> class.
+        /// </summary>
         protected FluidityListViewConfig()
         {
             _pageSize = 20;

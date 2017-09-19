@@ -10,33 +10,68 @@ using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 
 namespace Fluidity.Data
 {
+    /// <summary>
+    /// Base class for a custom Fluidity repository
+    /// </summary>
+    /// <typeparam name="TEntity">The type of the entity.</typeparam>
+    /// <typeparam name="TId">The type of the identifier.</typeparam>
+    /// <seealso cref="Fluidity.Data.IFluidityRepository" />
     public abstract class FluidityRepository<TEntity, TId> : IFluidityRepository
     {
-        protected abstract TId GetIdImpl(TEntity entity);
         private TId GetId(TEntity entity)
         {
             return GetIdImpl(entity);
         }
+        protected abstract TId GetIdImpl(TEntity entity);
 
-        protected abstract TEntity GetImpl(TId id);
+
+        /// <summary>
+        /// Gets entity by id.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
+        /// <returns>The entity.</returns>
         public TEntity Get(TId id, bool fireEvents = true)
         {
             return GetImpl(id);
         }
+        protected abstract TEntity GetImpl(TId id);
 
-        protected abstract IEnumerable<TEntity> GetAllImpl();
+
+        /// <summary>
+        /// Gets all entities.
+        /// </summary>
+        /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
+        /// <returns>A collection of entities.</returns>
         public IEnumerable<TEntity> GetAll(bool fireEvents = true)
         {
             return GetAllImpl();
         }
+        protected abstract IEnumerable<TEntity> GetAllImpl();
 
-        protected abstract PagedResult<TEntity> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<TEntity, object>> orderBy, Direction orderDirection, Expression<Func<TEntity, bool>> whereClause);
+        
+        /// <summary>
+        /// Gets a paged collection of entities.
+        /// </summary>
+        /// <param name="pageNumber">The page number.</param>
+        /// <param name="pageSize">Size of the page.</param>
+        /// <param name="orderBy">The order by.</param>
+        /// <param name="orderDirection">The order direction.</param>
+        /// <param name="whereClause">The where clause.</param>
+        /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
+        /// <returns>A collection of entities.</returns>
         public PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, object>> orderBy = null, Direction orderDirection = Direction.Ascending, Expression<Func<TEntity, bool>> whereClause = null, bool fireEvents = true)
         {
             return GetPagedImpl(pageNumber, pageSize, orderBy, orderDirection, whereClause);
         }
+        protected abstract PagedResult<TEntity> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<TEntity, object>> orderBy, Direction orderDirection, Expression<Func<TEntity, bool>> whereClause);
 
-        protected abstract TEntity SaveImpl(TEntity entity);
+        /// <summary>
+        /// Saves the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
+        /// <returns>The entity.</returns>
         public TEntity Save(TEntity entity, bool fireEvents = true)
         {
             SavingEntityEventArgs args = null;
@@ -72,8 +107,14 @@ namespace Fluidity.Data
 
             return entity;
         }
+        protected abstract TEntity SaveImpl(TEntity entity);
 
-        protected abstract void DeleteImpl(TId id);
+
+        /// <summary>
+        /// Deletes the entity with the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         public void Delete(TId id, bool fireEvents = true)
         {
             DeletingEntityEventArgs args = null;
@@ -97,12 +138,18 @@ namespace Fluidity.Data
             if (fireEvents)
                 Fluidity.OnDeletedEntity(args);
         }
+        protected abstract void DeleteImpl(TId id);
 
-        protected abstract long GetTotalRecordCountImpl();
+        /// <summary>
+        /// Gets the total record count.
+        /// </summary>
+        /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
+        /// <returns>The total number of records.</returns>
         public long GetTotalRecordCount(bool fireEvents = true)
         {
             return GetTotalRecordCountImpl();
         }
+        protected abstract long GetTotalRecordCountImpl();
 
         #region IFluidityRepository
 

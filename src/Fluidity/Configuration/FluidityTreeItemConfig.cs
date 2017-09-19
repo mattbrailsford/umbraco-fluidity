@@ -2,6 +2,9 @@ using System;
 
 namespace Fluidity.Configuration
 {
+    /// <summary>
+    /// Base class for Fluidity tree item configuration
+    /// </summary>
     public abstract class FluidityTreeItemConfig
     {
         protected string _alias;
@@ -19,6 +22,10 @@ namespace Fluidity.Configuration
         protected string _path;
         internal string Path => _path;
 
+        /// <summary>
+        /// Used in post processing to work out tree item paths once config is complete.
+        /// </summary>
+        /// <param name="parentPath">The parent path.</param>
         internal void UpdatePaths(string parentPath)
         {
             _parentPath = parentPath;

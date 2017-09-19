@@ -3,6 +3,9 @@ using Fluidity.Mappers;
 
 namespace Fluidity.Configuration
 {
+    /// <summary>
+    /// Un typed base class  for a <see cref="FluidityEditorFieldConfig{TEntityType, TValueType}"/>
+    /// </summary>
     public abstract class FluidityEditorFieldConfig
     {
         protected FluidityPropertyConfig _property;
@@ -26,12 +29,16 @@ namespace Fluidity.Configuration
         protected int _dataTypeId;
         internal int DataTypeId => _dataTypeId;
 
-        protected FluidityValueMapper _mapper;
-        internal FluidityValueMapper Mapper => _mapper;
+        protected FluidityValueMapper _valueMapper;
+        internal FluidityValueMapper ValueMapper => _valueMapper;
 
-        protected FluidityEditorFieldConfig(LambdaExpression propertyExp)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig"/> class.
+        /// </summary>
+        /// <param name="propertyExpression">The property exp.</param>
+        protected FluidityEditorFieldConfig(LambdaExpression propertyExpression)
         {
-            _property = propertyExp;
+            _property = propertyExpression;
         }
     }
 }

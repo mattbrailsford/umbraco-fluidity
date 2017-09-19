@@ -5,6 +5,11 @@ using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
 {
+    /// <summary>
+    /// Fluidity list view configuration
+    /// </summary>
+    /// <typeparam name="TEntityType">The type of the entity type.</typeparam>
+    /// <seealso cref="Fluidity.Configuration.FluidityListViewConfig" />
     public class FluidityListViewConfig<TEntityType> : FluidityListViewConfig
     {
         public FluidityListViewConfig(Action<FluidityListViewConfig<TEntityType>> config = null)
@@ -12,6 +17,11 @@ namespace Fluidity.Configuration
             config?.Invoke(this);
         }
 
+        /// <summary>
+        /// Adds a bulk action to the list view.
+        /// </summary>
+        /// <typeparam name="TBulkActionType">The type of the bulk action.</typeparam>
+        /// <returns>The list view configuration.</returns>
         public FluidityListViewConfig<TEntityType> AddBulkAction<TBulkActionType>()
             where TBulkActionType : FluidityBulkAction, new()
         {
@@ -19,17 +29,35 @@ namespace Fluidity.Configuration
             return this;
         }
 
+        /// <summary>
+        /// Sets the page size for the list view.
+        /// </summary>
+        /// <param name="pageSize">Size of the page.</param>
+        /// <returns>The list view configuration.</returns>
         public FluidityListViewConfig<TEntityType> SetPageSize(int pageSize)
         {
             _pageSize = pageSize;
             return this;
         }
 
+        /// <summary>
+        /// Adds a field to the list view.
+        /// </summary>
+        /// <typeparam name="TValueType">The type of the value.</typeparam>
+        /// <param name="fieldExpression">The field expression.</param>
+        /// <param name="fieldConfig">A field configuration delegate.</param>
+        /// <returns>The list view field configuration.</returns>
         public FluidityListViewFieldConfig<TEntityType, TValueType> AddField<TValueType>(Expression<Func<TEntityType, TValueType>> fieldExpression, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> fieldConfig = null)
         {
             return AddField(new FluidityListViewFieldConfig<TEntityType, TValueType>(fieldExpression, fieldConfig));
         }
 
+        /// <summary>
+        /// Adds a field to the list view.
+        /// </summary>
+        /// <typeparam name="TValueType">The type of the value.</typeparam>
+        /// <param name="fieldConfig">The field configuration.</param>
+        /// <returns>The list view field configuration.</returns>
         public FluidityListViewFieldConfig<TEntityType, TValueType> AddField<TValueType>(FluidityListViewFieldConfig<TEntityType, TValueType> fieldConfig)
         {
             var field = fieldConfig;
@@ -37,6 +65,14 @@ namespace Fluidity.Configuration
             return field;
         }
 
+        /// <summary>
+        /// Adds a custom layout to the list view.
+        /// </summary>
+        /// <remarks>
+        /// By adding a custom list view layout this will remove any default list view layouts so if you still require these you'll need to explicitly add them again.
+        /// </remarks>
+        /// <typeparam name="TListViewLayoutType">The type of the ListView layout type.</typeparam>
+        /// <returns>The list view configuration.</returns>
         public FluidityListViewConfig<TEntityType> AddLayout<TListViewLayoutType>()
             where TListViewLayoutType : FluidityListViewLayout, new()
         {
@@ -44,6 +80,12 @@ namespace Fluidity.Configuration
             return this;
         }
 
+        /// <summary>
+        /// Adds a data view to the list view.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="whereClause">The where clause.</param>
+        /// <returns>The list view configuration.</returns>
         public FluidityListViewConfig<TEntityType> AddDataView(string name, Expression<Func<TEntityType, bool>> whereClause)
         {
             _dataViews.Add(new FluidityDataViewConfig(name, whereClause));

@@ -11,6 +11,10 @@ namespace Fluidity.Configuration
             };
         }
 
+        /// <summary>
+        /// The entry point for a Fluidity configuration.
+        /// </summary>
+        /// <param name="config">The base Fluidity configuration.</param>
         public abstract void Configure(FluidityConfig config);
     }
 }

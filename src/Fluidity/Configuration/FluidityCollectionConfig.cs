@@ -7,6 +7,10 @@ using Umbraco.Web.Models.Trees;
 
 namespace Fluidity.Configuration
 {
+    /// <summary>
+    /// Un-typed base class for a <see cref="FluidityCollectionConfig{TEntityType}"/>
+    /// </summary>
+    /// <seealso cref="Fluidity.Configuration.FluidityTreeItemConfig" />
     public abstract class FluidityCollectionConfig : FluidityTreeItemConfig
     {
         protected FluidityPropertyConfig _idProperty;
@@ -84,9 +88,19 @@ namespace Fluidity.Configuration
         protected List<FluidityPropertyConfig> _searchableProperties;
         internal IEnumerable<FluidityPropertyConfig> SearchableProperties => _searchableProperties;
 
-        protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExp, string nameSingular, string namePlural, string description, string iconSingular = null, string iconPlural = null)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FluidityCollectionConfig"/> class.
+        /// </summary>
+        /// <param name="entityType">Type of the entity.</param>
+        /// <param name="idPropertyExpression">The identifier property expression.</param>
+        /// <param name="nameSingular">The singular name.</param>
+        /// <param name="namePlural">The plural name.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="iconSingular">The singular icon.</param>
+        /// <param name="iconPlural">The plural icon.</param>
+        protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExpression, string nameSingular, string namePlural, string description, string iconSingular = null, string iconPlural = null)
         {
-            _idProperty = idPropertyExp;
+            _idProperty = idPropertyExpression;
             _entityType = entityType;
             _alias = nameSingular.ToSafeAlias(true);
             _nameSingular = nameSingular;

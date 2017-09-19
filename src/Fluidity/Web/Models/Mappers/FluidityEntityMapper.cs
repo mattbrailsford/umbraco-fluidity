@@ -147,9 +147,9 @@ namespace Fluidity.Web.Models.Mappers
 
                             var value = entity?.GetPropertyValue(field.Property);
 
-                            if (field.Mapper != null)
+                            if (field.ValueMapper != null)
                             {
-                                value = field.Mapper.ModelToEditor(value);
+                                value = field.ValueMapper.ModelToEditor(value);
                             }
 
                             var dummyProp = new Property(new PropertyType(dataTypeInfo.DataTypeDefinition), value);
@@ -231,15 +231,15 @@ namespace Fluidity.Web.Models.Mappers
                 if (!dataTypeInfo.PropertyEditor.ValueEditor.IsReadOnly)
                 {
                     var currentValue = entity.GetPropertyValue(propConfig.Property);
-                    if (propConfig.Mapper != null)
+                    if (propConfig.ValueMapper != null)
                     {
-                        currentValue = propConfig.Mapper.ModelToEditor(currentValue);
+                        currentValue = propConfig.ValueMapper.ModelToEditor(currentValue);
                     }
 
                     var propVal = dataTypeInfo.PropertyEditor.ValueEditor.ConvertEditorToDb(data, currentValue);
-                    if (propConfig.Mapper != null)
+                    if (propConfig.ValueMapper != null)
                     {
-                        propVal = propConfig.Mapper.EditorToModel(propVal);
+                        propVal = propConfig.ValueMapper.EditorToModel(propVal);
                     }
 
                     var supportTagsAttribute = TagExtractor.GetAttribute(dataTypeInfo.PropertyEditor);
