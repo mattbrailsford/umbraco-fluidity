@@ -364,6 +364,10 @@ footer {
     position: relative;
     min-width: 100%;
     padding-top: 56.25%;
+
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.1);
 }
 
 .video iframe {
