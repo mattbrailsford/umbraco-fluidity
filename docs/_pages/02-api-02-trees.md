@@ -5,7 +5,7 @@ title: Trees
 permalink: /api/trees/index.html
 ---
 
-A tree is a hierarchical structure to help organise a section into logical sub-sections and is accessed in the main side panel of the Umbraco interface. In Fluidity, a section may only have a single tree definition, however you can use folder nodes to help organise the tree structure how you need it.
+A tree is a hierarchical structure that helps organise a section into logical sub-sections and is accessed in the main side panel of the Umbraco interface. In Fluidity, a section may only have a single tree definition, however you can use folder nodes to help organise the tree structure how you need it.
 
 ### Defining a tree
 
