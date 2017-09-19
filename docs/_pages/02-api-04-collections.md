@@ -11,28 +11,28 @@ A collection is a container for a given entity type and configures how the given
 
 You define a collection by calling one of the `AddCollection` methods on a given [`FluidityTreeConfig`]({{ site.baseurl }}/api/trees/) or parent [`FluidityFolderConfig`]({{ site.baseurl }}/api/folders/) instance.
 
-#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string description, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a collection to the given container with the given names and default icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property.
+Adds a collection to the given container with the given names and description and default icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property.
 
 ````csharp
 // Example
-folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", collectionConfig => {
+folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "A collection of people", collectionConfig => {
     ...
 });
 ````
 
 ---
 
-#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string iconSingular, string iconPlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string description, string iconSingular, string iconPlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a collection to the given container with the given names + icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property.
+Adds a collection to the given container with the given names, description and icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property.
 
 ````csharp
 // Example
-folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-umb-users", "icon-umb-users", collectionConfig => {
+folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "A collection of people", "icon-umb-users", "icon-umb-users", collectionConfig => {
     ...
 });
 ````
@@ -266,14 +266,14 @@ collectionConfig.AddEntityMenuItem(new ExportMenuItem());
 
 When navigating to a Fluidity section you are automatically presented with a dashboard interface on which you can add your collections to. This dashboard gives a quick entry point to frequently used collections showing the number of items in the collection as well as links to it's list view (if one is defined) as well as a quick create link (if the collection isn't read only).
 
-#### ShowOnDashboard(string description = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### ShowOnDashboard() *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Sets the collection to display on the section dashboard with the optional collection description.
+Sets the collection to display on the section dashboard.
 
 ````csharp
 // Example
-collectionConfig.ShowOnDashboard("A collection of company members");
+collectionConfig.ShowOnDashboard();
 ````
 
 ### Making a collection read only

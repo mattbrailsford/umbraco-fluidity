@@ -97,28 +97,28 @@ folderConfig.AddFolder("Categories", "icon-tags", childFolderConfig => {
 ### Adding a collection to a folder
 {: .mt}
 
-#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string description, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a collection to the current folder with the given names and a default icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property. See the [Collections API documentation]({{ site.baseurl }}/api/collections/) for more info.
+Adds a collection to the current folder with the given names and description and default icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property. See the [Collections API documentation]({{ site.baseurl }}/api/collections/) for more info.
 
 ````csharp
 // Example
-folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", collectionConfig => {
+folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "A collection of people", collectionConfig => {
     ...
 });
 ````
 
 ---
 
-#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string iconSingular, string iconPlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### AddCollection&lt;TEntityType&gt;(Lambda idFieldExpression, string nameSingular, string namePlural, string description, string iconSingular, string iconPlural, Lambda collectionConfig = null) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Adds a collection to the current folder with the given names + icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property. See the [Collections API documentation]({{ site.baseurl }}/api/collections/) for more info.
+Adds a collection to the current folder with the given names, description and icons. An ID property accessor expression is required so that Fluidity knows which property is the ID property. See the [Collections API documentation]({{ site.baseurl }}/api/collections/) for more info.
 
 ````csharp
 // Example
-folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-umb-users", "icon-umb-users", collectionConfig => {
+folderConfig.AddCollection<Person>(p => p.Id, "Person", "People", "A collection of people", "icon-umb-users", "icon-umb-users", collectionConfig => {
     ...
 });
 ````
