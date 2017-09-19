@@ -11,7 +11,7 @@ Fluidity can be installed from either Our Umbraco, the NuGet package repository 
 
 To install from Our Umbraco, you can either download the package file directly from the Our website and upload it into the package installer manually, or you can search for and install it automatically via the package gallery found in your Umbraco install.
 
-To in install the package manually, you can download the package file from the following location and then upload it to the package installer when prompted.
+To manually install the package, you can download the package file from the following location and then upload it to the package installer when prompted.
 
 [{{ site.data.links.umbraco }}]({{ site.data.links.umbraco }})
 
