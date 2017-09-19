@@ -13,4 +13,4 @@ If you have a custom data store that you’d like to be able to content manage f
 
 With Fluidity, custom data user interfaces can now take a matter of minutes, rather than days.
 
-![List View]({{ site.baseurl }}/img/list-view.png) 
+![Editor]({{ site.baseurl }}/img/editor.png) 
