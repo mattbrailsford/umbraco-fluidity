@@ -87,7 +87,10 @@
             },
 
             recallDataView: function (nodeId, availableDataViews) {
-                
+
+                if (availableDataViews.length == 0)
+                    return undefined;
+
                 var storedDataViews = [];
 
                 if (localStorageService.get(dataViewLocalStorageKey)) {

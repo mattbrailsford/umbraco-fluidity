@@ -13,13 +13,13 @@ namespace Fluidity.Web.Models.Mappers
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
                 Alias = collection.Alias,
-                NameSingular = collection.NameSignular + (!collection.Color.IsNullOrWhiteSpace() ? " color-" + collection.Color : ""),
-                NamePlural = collection.NamePlural + (!collection.Color.IsNullOrWhiteSpace() ? " color-" + collection.Color : ""),
+                NameSingular = collection.NameSignular + (!collection.IconColor.IsNullOrWhiteSpace() ? " color-" + collection.IconColor : ""),
+                NamePlural = collection.NamePlural + (!collection.IconColor.IsNullOrWhiteSpace() ? " color-" + collection.IconColor : ""),
                 IconSingular = collection.IconSingular,
                 IconPlural = collection.IconPlural,
                 Description = collection.Description,
                 IsReadOnly = collection.IsReadOnly,
-                IsSearchable = collection.SearchProperties.Any(),
+                IsSearchable = collection.SearchableProperties.Any(),
                 HasListView = collection.ViewMode == FluidityViewMode.List,
                 Path = collection.Path
             };

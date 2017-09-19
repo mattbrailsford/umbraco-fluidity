@@ -53,7 +53,7 @@ namespace Fluidity.Web.Models.Mappers
             {
                 Id = entity?.GetPropertyValue(collection.IdProperty),
                 Name = name,
-                Icon = collection.IconSingular + (collection.Color != null ? " color-" + collection.Color : ""),
+                Icon = collection.IconSingular + (collection.IconColor != null ? " color-" + collection.IconColor : ""),
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
                 Collection = collection.Alias,

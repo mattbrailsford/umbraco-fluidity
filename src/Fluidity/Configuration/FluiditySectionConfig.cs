@@ -34,13 +34,13 @@ namespace Fluidity.Configuration
 
         public FluidityTreeConfig SetTree(string name, Action<FluidityTreeConfig> treeConfig = null)
         {
-            return SetTree(new FluidityTreeConfig(name, config : treeConfig));
+            return SetTree(new FluidityTreeConfig(name, _icon, treeConfig));
         }
 
-        public FluidityTreeConfig SetTree(string name, string icon, Action<FluidityTreeConfig> treeConfig = null)
-        {
-            return SetTree(new FluidityTreeConfig(name, icon, treeConfig));
-        }
+        //public FluidityTreeConfig SetTree(string name, string icon, Action<FluidityTreeConfig> treeConfig = null)
+        //{
+        //    return SetTree(new FluidityTreeConfig(name, icon, treeConfig));
+        //}
 
         public FluidityTreeConfig SetTree(FluidityTreeConfig treeConfig)
         {

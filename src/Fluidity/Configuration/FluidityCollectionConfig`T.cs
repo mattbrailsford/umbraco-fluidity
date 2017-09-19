@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Linq.Expressions;
 using Fluidity.Data;
 using Umbraco.Core;
@@ -9,8 +10,8 @@ namespace Fluidity.Configuration
 {
     public class FluidityCollectionConfig<TEntityType> : FluidityCollectionConfig
     {
-        public FluidityCollectionConfig(Expression<Func<TEntityType, object>> idProperty, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null, Action<FluidityCollectionConfig<TEntityType>> config = null)
-            : base (typeof(TEntityType), idProperty, nameSingular, namePlural, iconSingular, iconPlural)
+        public FluidityCollectionConfig(Expression<Func<TEntityType, object>> idProperty, string nameSingular, string namePlural, string description, string iconSingular = null, string iconPlural = null, Action<FluidityCollectionConfig<TEntityType>> config = null)
+            : base (typeof(TEntityType), idProperty, nameSingular, namePlural, description, iconSingular, iconPlural)
         {
             config?.Invoke(this);
         }
@@ -21,30 +22,36 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityCollectionConfig<TEntityType> SetColor(string color)
+        public FluidityCollectionConfig<TEntityType> SetIconColor(string color)
         {
-            _color = color;
+            _iconColor = color;
             return this;
         }
 
         public FluidityCollectionConfig<TEntityType> SetNameProperty(Expression<Func<TEntityType, string>> nameProperty)
         {
             _nameProperty = nameProperty;
-            _searchProperties.Add(_nameProperty);
+            _searchableProperties.Add(_nameProperty);
 
             if (_sortProperty == null)
             {
-                _sortProperty = _nameProperty;
+                // Convert lambda to object based property accessor for the sort property
+                var entityParam = nameProperty.Parameters[0];
+                var memberExp = (MemberExpression)nameProperty.Body;
+                var convertExp = Expression.Convert(memberExp, typeof(object));
+                var lambda = Expression.Lambda<Func<TEntityType, object>>(convertExp, entityParam);
+
+                _sortProperty = lambda;
             }
 
             return this;
         }
 
-        public FluidityCollectionConfig<TEntityType> SetDescription(string description)
-        {
-            _description = description;
-            return this;
-        }
+        //public FluidityCollectionConfig<TEntityType> SetDescription(string description)
+        //{
+        //    _description = description;
+        //    return this;
+        //}
 
         public FluidityCollectionConfig<TEntityType> SetConnectionString(string connectionStringName)
         {
@@ -138,9 +145,9 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityCollectionConfig<TEntityType> AddSearchProperty(Expression<Func<TEntityType, string>> searchProp)
+        public FluidityCollectionConfig<TEntityType> AddSearchableProperty(Expression<Func<TEntityType, string>> searchableProp)
         {
-            _searchProperties.Add(searchProp);
+            _searchableProperties.Add(searchableProp);
             return this;
         }
 

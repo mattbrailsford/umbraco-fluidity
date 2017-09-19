@@ -70,7 +70,7 @@ namespace Fluidity.Services
             }
 
             // Construct a query where clause (and combind with the data view where clause if one exists)
-            if (!query.IsNullOrWhiteSpace() && collection.ListView != null && collection.SearchProperties.Any())
+            if (!query.IsNullOrWhiteSpace() && collection.ListView != null && collection.SearchableProperties.Any())
             {
                 LambdaExpression queryExpression = null;
 
@@ -81,7 +81,7 @@ namespace Fluidity.Services
                 var queryConstantExpression = Expression.Constant(query, typeof(string));
 
                 // Loop through searchable fields
-                foreach (var searchProp in collection.SearchProperties)
+                foreach (var searchProp in collection.SearchableProperties)
                 {
                     // Create field starts with expression
                     var property = Expression.Property(parameter, searchProp.PropertyInfo);

@@ -101,9 +101,9 @@ namespace Fluidity.Web.Trees
                             true,
                             SectionAlias); // Tree mode so just show the default dashboard
 
-                        if (!currentFolderConfig.Color.IsNullOrWhiteSpace())
+                        if (!currentFolderConfig.IconColor.IsNullOrWhiteSpace())
                         {
-                            node.SetColorStyle(currentFolderConfig.Color);
+                            node.SetColorStyle(currentFolderConfig.IconColor);
                         }
 
                         node.Path = folderTreeItem.Path;
@@ -133,9 +133,9 @@ namespace Fluidity.Web.Trees
                             node.SetContainerStyle();
                         }
 
-                        if (!collectionTreeItem.Color.IsNullOrWhiteSpace())
+                        if (!collectionTreeItem.IconColor.IsNullOrWhiteSpace())
                         {
-                            node.SetColorStyle(collectionTreeItem.Color);
+                            node.SetColorStyle(collectionTreeItem.IconColor);
                         }
 
                         nodes.Add(node);
@@ -257,9 +257,9 @@ namespace Fluidity.Web.Trees
                 false,
                 SectionAlias + "/fluidity/edit/" + compositeId);
 
-            if (!collection.Color.IsNullOrWhiteSpace())
+            if (!collection.IconColor.IsNullOrWhiteSpace())
             {
-                node.SetColorStyle(collection.Color);
+                node.SetColorStyle(collection.IconColor);
             }
 
             node.Path = collection.Path + FluidityConstants.PATH_SEPERATOR + compositeId;

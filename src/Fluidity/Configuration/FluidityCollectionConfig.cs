@@ -81,23 +81,24 @@ namespace Fluidity.Configuration
         protected List<MenuItem> _entityMenuItems;
         internal IEnumerable<MenuItem> EntityMenuItems => _entityMenuItems;
 
-        protected List<FluidityPropertyConfig> _searchProperties;
-        internal IEnumerable<FluidityPropertyConfig> SearchProperties => _searchProperties;
+        protected List<FluidityPropertyConfig> _searchableProperties;
+        internal IEnumerable<FluidityPropertyConfig> SearchableProperties => _searchableProperties;
 
-        protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExp, string nameSingular, string namePlural, string iconSingular = null, string iconPlural = null)
+        protected FluidityCollectionConfig(Type entityType, LambdaExpression idPropertyExp, string nameSingular, string namePlural, string description, string iconSingular = null, string iconPlural = null)
         {
             _idProperty = idPropertyExp;
             _entityType = entityType;
             _alias = nameSingular.ToSafeAlias(true);
             _nameSingular = nameSingular;
             _namePlural = namePlural;
+            _description = description;
             _iconSingular = iconSingular ?? "icon-folder";
             _iconPlural = iconPlural ?? "icon-folder";
             _isVisibleInTree = true;
 
             _containerMenuItems = new List<MenuItem>();
             _entityMenuItems = new List<MenuItem>();
-            _searchProperties = new List<FluidityPropertyConfig>();
+            _searchableProperties = new List<FluidityPropertyConfig>();
         }
     }
 }

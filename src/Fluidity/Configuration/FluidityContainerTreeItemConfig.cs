@@ -43,14 +43,14 @@ namespace Fluidity.Configuration
             return folder;
         }
 
-        public virtual FluidityCollectionConfig<TEntityType> AddCollection<TEntityType>(Expression<Func<TEntityType, object>> idFieldExpression, string nameSingular, string namePlural, Action<FluidityCollectionConfig<TEntityType>> collectionConfig = null)
+        public virtual FluidityCollectionConfig<TEntityType> AddCollection<TEntityType>(Expression<Func<TEntityType, object>> idFieldExpression, string nameSingular, string namePlural, string description, Action<FluidityCollectionConfig<TEntityType>> collectionConfig = null)
         {
-            return AddCollection(new FluidityCollectionConfig<TEntityType>(idFieldExpression, Path, nameSingular, namePlural, config: collectionConfig));
+            return AddCollection(new FluidityCollectionConfig<TEntityType>(idFieldExpression, Path, nameSingular, namePlural, description, config: collectionConfig));
         }
 
-        public virtual FluidityCollectionConfig<TEntityType> AddCollection<TEntityType>(Expression<Func<TEntityType, object>> idFieldExpression, string nameSingular, string namePlural, string iconSingular, string iconPlural, Action<FluidityCollectionConfig<TEntityType>> collectionConfig = null)
+        public virtual FluidityCollectionConfig<TEntityType> AddCollection<TEntityType>(Expression<Func<TEntityType, object>> idFieldExpression, string nameSingular, string namePlural, string description, string iconSingular, string iconPlural, Action<FluidityCollectionConfig<TEntityType>> collectionConfig = null)
         {
-            return AddCollection(new FluidityCollectionConfig<TEntityType>(idFieldExpression, nameSingular, namePlural, iconSingular, iconPlural, collectionConfig));
+            return AddCollection(new FluidityCollectionConfig<TEntityType>(idFieldExpression, nameSingular, namePlural, description, iconSingular, iconPlural, collectionConfig));
         }
 
         public virtual FluidityCollectionConfig<TEntityType> AddCollection<TEntityType>(FluidityCollectionConfig<TEntityType> collectionConfig)

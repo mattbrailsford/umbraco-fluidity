@@ -16,9 +16,9 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityFolderConfig SetColor(string color)
+        public FluidityFolderConfig SetIconColor(string color)
         {
-            _color = color;
+            _iconColor = color;
             return this;
         }
     }
