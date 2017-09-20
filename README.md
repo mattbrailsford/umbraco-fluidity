@@ -6,9 +6,7 @@ If you have a custom data store that you’d like to be able to content manage f
 
 With Fluidity, custom data user interfaces can now take a matter of minutes, rather than days.
 
-<div class="video">
-    <iframe width="480" height="270" src="https://www.youtube.com/embed/lt8IRg2Svq0?feature=oembed" frameborder="0" allowfullscreen></iframe>
-</div>
+[![ScreenShot](docs/img/video-screenshot.png)](https://www.youtube.com/watch?v=lt8IRg2Svq0)
 
 ## Documentation 
 
