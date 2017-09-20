@@ -82,7 +82,7 @@ namespace Fluidity.Configuration
         /// <returns>The collection configuration.</returns>
         public virtual FluidityCollectionConfig<TEntityType> AddCollection<TEntityType>(Expression<Func<TEntityType, object>> idPropertyExpression, string nameSingular, string namePlural, string description, Action<FluidityCollectionConfig<TEntityType>> collectionConfig = null)
         {
-            return AddCollection(new FluidityCollectionConfig<TEntityType>(idPropertyExpression, Path, nameSingular, namePlural, description, config: collectionConfig));
+            return AddCollection(new FluidityCollectionConfig<TEntityType>(idPropertyExpression, nameSingular, namePlural, description, config: collectionConfig));
         }
 
         /// <summary>
