@@ -1,4 +1,9 @@
-﻿using System;
+﻿// <copyright file="FluidityEntityPostValidator.cs" company="Matt Brailsford">
+// Copyright (c) 2017 Matt Brailsford and contributors.
+// Licensed under the Apache License, Version 2.0.
+// </copyright>
+
+using System;
 using System.Linq;
 using System.Web.Http.ModelBinding;
 using Fluidity.Configuration;
@@ -9,7 +14,7 @@ using Umbraco.Core;
 
 namespace Fluidity.Web.WebApi.Validation
 {
-    // Base on https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Filters/ContentItemValidationHelper.cs
+    // Based on https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Filters/ContentItemValidationHelper.cs
     internal class FluidityEntityPostValidator
     {
         private UmbracoDataTypeHelper _dataTypeHelper;

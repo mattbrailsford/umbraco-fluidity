@@ -1,4 +1,9 @@
-﻿using Umbraco.Core.Models;
+﻿// <copyright file="DataTypeInfo.cs" company="Matt Brailsford">
+// Copyright (c) 2017 Matt Brailsford and contributors.
+// Licensed under the Apache License, Version 2.0.
+// </copyright>
+
+using Umbraco.Core.Models;
 using Umbraco.Core.PropertyEditors;
 
 namespace Fluidity.Models

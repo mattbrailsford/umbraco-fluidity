@@ -1,4 +1,9 @@
-﻿using System.Reflection;
+﻿// <copyright file="PropertyInfoExtensions.cs" company="Matt Brailsford">
+// Copyright (c) 2017 Matt Brailsford and contributors.
+// Licensed under the Apache License, Version 2.0.
+// </copyright>
+
+using System.Reflection;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
 
