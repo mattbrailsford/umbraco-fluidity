@@ -13,6 +13,11 @@ namespace Fluidity.Web.Models
         [DataMember(Name = "id", IsRequired = true)]
         public object Id { get; set; }
 
+        // Currently hard coding parent id as nuPickers requires passing
+        // a parent id into it's functions even though it may not be used.
+        [DataMember(Name = "parentId")]
+        public object ParentId => -1;
+
         [DataMember(Name = "collection")]
         public string Collection { get; set; }
 
