@@ -7,7 +7,7 @@ permalink: /api/conventions/index.html
 
 ### Fluent Conventions
 
-Most configuration methods in Fluidity aim to be fluent in nature, in that they return a relevant config instance to allow you to chain multiple method calls together in one. For those who prefer to be a bit more verbose, many methods also accept an optional lambda expression to allow you to pass in a delegate to perform the inner configuration of the element being defined.
+Most configuration methods in Fluidity aim to be fluent in nature, in that they return a relevant config instance allowing you to chain multiple method calls together in one. For those who prefer to be a bit more verbose, many methods also accept an optional lambda expression which allows you to pass in a delegate to perform the inner configuration of the element being defined.
 
 ````csharp
 // Chaining example
