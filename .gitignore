@@ -101,7 +101,8 @@ src/*/App_Data/TEMP/*
 !/Build/Tools/MSBuildUmbracoTasks/*
 
 artifacts
-build/_temp
+build/_nuget
+build/_umbraco
 
 applicationhost.config
 *.Matt.sln
