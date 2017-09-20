@@ -1,4 +1,9 @@
-﻿using System.IO;
+﻿// <copyright file="FluidityEntityBinder.cs" company="Matt Brailsford">
+// Copyright (c) 2017 Matt Brailsford and contributors.
+// Licensed under the Apache License, Version 2.0.
+// </copyright>
+
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
