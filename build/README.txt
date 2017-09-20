@@ -14,7 +14,7 @@
         ▀▀▀▀                                                          ▀▀ 
                                   
                          Copyright 2017 Matt Brailsford         
-                            Licened under Apache 2.0                   
+                            Licensed under Apache 2.0                   
 
 ---------------------------------------------------------------------------------
 
