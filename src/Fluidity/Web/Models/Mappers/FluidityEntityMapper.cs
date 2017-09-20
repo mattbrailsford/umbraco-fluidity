@@ -247,6 +247,15 @@ namespace Fluidity.Web.Models.Mappers
                         propVal = propConfig.ValueMapper.EditorToModel(propVal);
                     }
 
+                    if (!propVal.GetType().IsAssignableFrom(propConfig.Property.Type))
+                    {
+                        var convert = propVal.TryConvertTo(propConfig.Property.Type);
+                        if (convert.Success)
+                        {
+                            propVal = convert.Result;
+                        }
+                    }
+
                     var supportTagsAttribute = TagExtractor.GetAttribute(dataTypeInfo.PropertyEditor);
                     if (supportTagsAttribute != null)
                     {
