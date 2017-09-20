@@ -20,8 +20,8 @@
 		<ProjectName>Fluidity</ProjectName>
 		<PackageName>Fluidity</PackageName>
 		<Description>A fluent CRUD user interface generator for Umbraco</Description>
-		<Owners>Matt Brailsford and other contributors</Owners>
-		<Authors>Matt Brailsford and other contributors</Authors>
+		<Owners>Matt Brailsford</Owners>
+		<Authors>Matt Brailsford</Authors>
 		<AuthorUrl>https://github.com/mattbrailsford/umbraco-fluidity</AuthorUrl>
 		<PackageLicenseName>Apache 2.0 license</PackageLicenseName>
 		<PackageLicenseUrl>https://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
