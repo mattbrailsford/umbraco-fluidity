@@ -31,6 +31,6 @@ Anyone and everyone is welcome to contribute. Please take a moment to review the
 
 ## License
 
-Copyright © 2017 Matt Brailsford
+Copyright © 2017 Matt Brailsford and contributors
 
 Licensed under the [Apache 2.0 License](LICENSE.md)
