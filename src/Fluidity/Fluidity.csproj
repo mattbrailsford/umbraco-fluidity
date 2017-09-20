@@ -355,6 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Fluidity.licenseheader" />
     <None Include="packages.config" />
     <None Include="Web\UI\App_Plugins\Fluidity\package.manifest" />
   </ItemGroup>
