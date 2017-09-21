@@ -1,7 +1,10 @@
-﻿// <copyright file="FileUploadCleanupFilterAttribute.cs" company="Matt Brailsford">
-// Copyright (c) 2017 Matt Brailsford and contributors.
-// Licensed under the Apache License, Version 2.0.
+﻿// <copyright file="FileUploadCleanupFilterAttribute.cs" company="Umbraco">
+// Copyright (c) 2017 Umbraco and contributors.
+// Licensed under the MIT License.
 // </copyright>
+// <remarks>
+// Copied from https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Filters/FileUploadCleanupFilterAttribute.cs
+// </remarks>
 
 using System;
 using System.Collections.Generic;
@@ -17,7 +20,6 @@ namespace Fluidity.Web.WebApi.Filters
 {
     /// <summary>
     /// Checks if the parameter is ContentItemSave and then deletes any temporary saved files from file uploads associated with the request
-    /// Copied from https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Filters/FileUploadCleanupFilterAttribute.cs
     /// </summary>
     internal sealed class FileUploadCleanupFilterAttribute : ActionFilterAttribute
     {

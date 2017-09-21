@@ -1,7 +1,11 @@
-﻿// <copyright file="FluidityEntityBinder.cs" company="Matt Brailsford">
-// Copyright (c) 2017 Matt Brailsford and contributors.
-// Licensed under the Apache License, Version 2.0.
+﻿// <copyright file="FluidityEntityBinder.cs" company="Umbraco, Matt Brailsford">
+// Original work Copyright (c) 2017 Umbraco and contributors.
+// Modified work Copyright (c) 2017 Matt Brailsford and contributors.
+// Licensed under the MIT License.
 // </copyright>
+// <remarks>
+// Based on https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Binders/ContentItemBinder.cs
+// </remarks>
 
 using System.IO;
 using System.Net;
@@ -20,7 +24,6 @@ namespace Fluidity.Web.WebApi.Binders
     // Based heavily on the ContentItemBinder in core as we need to mimic the 
     // core pipeline as closely as possible to ensure things get executed 
     // as expected
-    // Based on https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Binders/ContentItemBinder.cs
     internal class FluidityEntityBinder : IModelBinder
     {
         public bool BindModel(HttpActionContext actionContext, ModelBindingContext bindingContext)

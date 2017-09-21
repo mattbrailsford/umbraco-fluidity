@@ -1,7 +1,10 @@
-﻿// <copyright file="CustomDateTimeConvertor.cs" company="Matt Brailsford">
-// Copyright (c) 2017 Matt Brailsford and contributors.
-// Licensed under the Apache License, Version 2.0.
+﻿// <copyright file="CustomDateTimeConvertor.cs" company="Umbraco">
+// Copyright (c) 2017 Umbraco and contributors.
+// Licensed under the MIT License.
 // </copyright>
+// <remarks>
+// Copied from https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/CustomDateTimeConvertor.cs
+// </remarks>
 
 using System;
 using Newtonsoft.Json;
@@ -12,7 +15,6 @@ namespace Fluidity.Web.WebApi
 {
     /// <summary>
     /// Used to convert the format of a DateTime object when serializing
-    /// Copied from https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/CustomDateTimeConvertor.cs
     /// </summary>
     internal class CustomDateTimeConvertor : IsoDateTimeConverter
     {
