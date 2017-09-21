@@ -47,4 +47,4 @@ cd umbraco-fluidity
 .\build.cmd
 ````
 
-Umbraco package files and nuget files can then be found in the `artifacts` directory ready to be installed by one of the methods above.
+Umbraco package files and nuget files can then be found in the `artifacts` directory ready to be installed by one of the methods above. 
