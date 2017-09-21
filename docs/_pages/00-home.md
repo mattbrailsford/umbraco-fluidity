@@ -2,6 +2,7 @@
 layout: default
 section: User Documentation
 title: Fluidity
+meta_title: {{ site.name }} – {{ site.description }}
 permalink: /index.html
 ---
 
