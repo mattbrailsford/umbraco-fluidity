@@ -1,6 +1,6 @@
 ﻿// <copyright file="FileUploadCleanupFilterAttribute.cs" company="Umbraco">
 // Copyright (c) 2013 Umbraco and contributors.
-// Licensed under the MIT License.
+// Licensed under the MIT License (https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/LICENSE.md).
 // </copyright>
 // <remarks>
 // Copied from https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Filters/FileUploadCleanupFilterAttribute.cs
