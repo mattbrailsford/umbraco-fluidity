@@ -1,5 +1,5 @@
 ﻿// <copyright file="CustomDateTimeConvertor.cs" company="Umbraco">
-// Copyright (c) 2017 Umbraco and contributors.
+// Copyright (c) 2013 Umbraco and contributors.
 // Licensed under the MIT License.
 // </copyright>
 // <remarks>

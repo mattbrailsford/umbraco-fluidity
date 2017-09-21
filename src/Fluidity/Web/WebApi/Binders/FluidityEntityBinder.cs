@@ -1,7 +1,8 @@
 ﻿// <copyright file="FluidityEntityBinder.cs" company="Umbraco, Matt Brailsford">
-// Original work Copyright (c) 2017 Umbraco and contributors.
+// Original work Copyright (c) 2013 Umbraco and contributors.
+// Original work licensed under the MIT License.
 // Modified work Copyright (c) 2017 Matt Brailsford and contributors.
-// Licensed under the MIT License.
+// Modified work licensed under the Apache License, Version 2.0.
 // </copyright>
 // <remarks>
 // Based on https://github.com/umbraco/Umbraco-CMS/blob/release-7.6.0/src/Umbraco.Web/WebApi/Binders/ContentItemBinder.cs
