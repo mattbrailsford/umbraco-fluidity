@@ -46,3 +46,5 @@ git clone https://github.com/mattbrailsford/umbraco-fluidity.git umbraco-fluidit
 cd umbraco-fluidity
 .\build.cmd
 ````
+
+Umbraco package files and nuget files can then be found in the `artifacts` directory ready to be installed by one of the methods above.
