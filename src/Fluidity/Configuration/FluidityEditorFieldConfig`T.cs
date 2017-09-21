@@ -116,5 +116,16 @@ namespace Fluidity.Configuration
             _valueMapper = new TValueMapperType();
             return this;
         }
+
+        /// <summary>
+        /// Sets the field value mapper.
+        /// </summary>
+        /// <param name="valueMapper">The value mapper.</param>
+        /// <returns>The editor field configuration.</returns>
+        public FluidityEditorFieldConfig<TEntityType, TValueType> SetValueMapper(FluidityValueMapper valueMapper)
+        {
+            _valueMapper = valueMapper;
+            return this;
+        }
     }
 }
