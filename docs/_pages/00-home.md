@@ -2,7 +2,7 @@
 layout: default
 section: User Documentation
 title: Fluidity
-meta_title: {{ site.name }} – {{ site.description }}
+meta_title: Fluidity – A fluent CRUD user interface generator for Umbraco
 permalink: /index.html
 ---
 
