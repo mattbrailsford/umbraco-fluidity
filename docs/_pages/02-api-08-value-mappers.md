@@ -13,7 +13,7 @@ To define a mapper you create a class that inherits from the base class `Fluidit
 
 ````csharp
 // Example
-public class MyMapper : FluidityValueMapper
+public class MyValueMapper : FluidityValueMapper
 {
     public override object EditorToModel(object input)
     {
