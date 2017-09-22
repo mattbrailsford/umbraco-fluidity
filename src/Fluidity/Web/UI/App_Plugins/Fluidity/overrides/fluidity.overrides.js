@@ -7,7 +7,8 @@
 
     'use strict';
 
-    function fluidityOverrides($provide) {
+    // Umbraco overrides
+    function fluidityUmbracoOverrides($provide) {
 
         $provide.decorator('$controller', function ($delegate, $location) {
 
@@ -50,6 +51,31 @@
 
     }
 
-    angular.module("umbraco").config(['$provide', fluidityOverrides]);
+    angular.module("umbraco").config(['$provide', fluidityUmbracoOverrides]);
+
+    // Umbraco services overrides
+    function fluidityUmbracoServicesOverrides($provide) {
+
+        $provide.decorator('contentEditingHelper', function ($delegate) {
+
+            // Override handleSuccessfulSave and look for redirectId in scope
+            // instead of just args as args is not modifiable like scope is.
+            // We need this as we use a non standard ID structure in urls so
+            // need to provide an explicit redirect ID
+            var oldHandleSuccessfulSave = $delegate.handleSuccessfulSave;
+            $delegate.handleSuccessfulSave = function (args) {
+                if (args.scope.redirectId) {
+                    args.redirectId = args.scope.redirectId;
+                }
+                oldHandleSuccessfulSave.apply($delegate, arguments);
+            };
+
+            return $delegate;
+
+        });
+
+    }
+
+    angular.module("umbraco.services").config(['$provide', fluidityUmbracoServicesOverrides]);
 
 })();

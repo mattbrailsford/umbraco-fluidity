@@ -110,7 +110,17 @@
                         });
                     });
 
-                    return fluidityResource.saveEntity(postModel, isNew, files);
+                    return fluidityResource.saveEntity(postModel, isNew, files).then(function (savedEntity) {
+                        
+                        // Stash a composite in scope as the contentEditorPerformSave will
+                        // perform a redirect to the edit screen if an entity is new but 
+                        // fluidity uses a componsite ID and not just the entity id
+                        $scope.redirectId = savedEntity.collection + "!" + savedEntity.id;
+
+                        return savedEntity;
+
+                    });
+                    
                 },
                 scope: $scope,
                 content: $scope.content,
