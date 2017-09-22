@@ -41,3 +41,8 @@
   subnav: 
     - title: Entity Picker
       url: /property-editors/entity-picker/
+
+- title: Reference
+  subnav: 
+    - title: Umbraco Icons
+      url: /reference/umbraco-icons/
