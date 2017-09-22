@@ -159,7 +159,7 @@ namespace Fluidity.Configuration
         public FluidityEditorFieldConfig<TEntityType, TValueType> IsReadonly()
         {
             //TODO: Create defaults for different primitives
-            return IsReadonly(type => type.ToString());
+            return IsReadonly(type => type?.ToString());
         }
 
         public FluidityEditorFieldConfig<TEntityType, TValueType> IsReadonly(Func<TValueType, string> format) {
