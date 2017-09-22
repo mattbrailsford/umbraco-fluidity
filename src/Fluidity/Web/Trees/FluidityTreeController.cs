@@ -60,7 +60,7 @@ namespace Fluidity.Web.Trees
                 alias = alias.Substring(0, seperatorIndex);
             }
 
-            var collectionConfig = TreeConfig.FalttenedTreeItems[alias] as FluidityCollectionConfig;
+            var collectionConfig = TreeConfig.FlattenedTreeItems[alias] as FluidityCollectionConfig;
             if (collectionConfig == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -85,7 +85,7 @@ namespace Fluidity.Web.Trees
             var nodes = new TreeNodeCollection();
 
             var alias = id;
-            var currentItemConfig = alias == "-1" ? TreeConfig : TreeConfig.FalttenedTreeItems[alias];
+            var currentItemConfig = alias == "-1" ? TreeConfig : TreeConfig.FlattenedTreeItems[alias];
 
             var currentFolderConfig = currentItemConfig as FluidityContainerTreeItemConfig;
             if (currentFolderConfig != null)
@@ -178,7 +178,7 @@ namespace Fluidity.Web.Trees
                 alias = alias.Substring(0, seperatorIndex);
             }
             
-            var currentItemConfig = alias == "-1" ? TreeConfig : TreeConfig.FalttenedTreeItems[alias];
+            var currentItemConfig = alias == "-1" ? TreeConfig : TreeConfig.FlattenedTreeItems[alias];
 
             var currentFolderConfig = currentItemConfig as FluidityFolderConfig;
             if (currentFolderConfig != null)
