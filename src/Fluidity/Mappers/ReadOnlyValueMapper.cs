@@ -17,7 +17,7 @@ namespace Fluidity.Mappers
 
         public override object EditorToModel(object input)
         {
-            return _format(input);
+            throw new NotSupportedException("ReadOnly value mapping does not support mapping the value back to a model.");
         }
     }
 }
