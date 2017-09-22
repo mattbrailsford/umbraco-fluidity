@@ -183,3 +183,28 @@ Set the value mapper for the current field. See [Value Mapper API documentation]
 // Example
 fieldConfig.SetValueMapper(new MyValueMapper());
 ````
+
+### Setting a field as read only
+{: .mt}
+
+#### IsReadOnly() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+{: .signature}
+
+Set the ReadOnly flag for the current field. Disables editing for the field in the UI. A ReadOnly property cannot have a custom DataType, ValueMapper or ValidationRegExp.
+
+````csharp
+// Example
+fieldConfig.IsReadOnly();
+````
+
+---
+
+#### IsReadOnly(Func&lt;TValueType, string&gt; format) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+{: .signature}
+
+Set the ReadOnly flag for the current field. Disables editing for the field in the UI. A ReadOnly property cannot have a custom DataType, ValueMapper or ValidationRegExp. Provides a custom formatting expression to use when rendering the value as a string.
+
+````csharp
+// Example
+fieldConfig.IsReadOnly(myEntityDistanceProperty => $"{myEntityDistanceProperty:## 'km'}");
+````
