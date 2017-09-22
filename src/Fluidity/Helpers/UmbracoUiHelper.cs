@@ -32,10 +32,14 @@ namespace Fluidity.Helpers
             foreach (var sectionConfig in context.Config.Sections.Values)
             {
                 // Create the section
-                _sectionService.MakeNew(
-                    sectionConfig.Name, 
-                    sectionConfig.Alias, 
-                    sectionConfig.Icon);
+                var existingSection = _sectionService.GetByAlias(sectionConfig.Alias);
+                if (existingSection == null)
+                {
+                    _sectionService.MakeNew(
+                        sectionConfig.Name,
+                        sectionConfig.Alias,
+                        sectionConfig.Icon);
+                }
 
                 // Add section name to default lang file
                 AddSectionNameToLangFile(sectionConfig.Alias, sectionConfig.Name);
@@ -46,15 +50,19 @@ namespace Fluidity.Helpers
                 // Create section tree
                 if (sectionConfig.Tree != null)
                 {
-                    _treeService.MakeNew(
-                        sectionConfig.Tree.Initialize,
-                        0,
-                        sectionConfig.Alias,
-                        sectionConfig.Tree.Alias,
-                        sectionConfig.Tree.Name,
-                        sectionConfig.Tree.Icon,
-                        sectionConfig.Tree.Icon,
-                        "Fluidity.Web.Trees.FluidityTreeController, Fluidity");
+                    var existingTree = _treeService.GetByAlias(sectionConfig.Tree.Alias);
+                    if (existingTree == null)
+                    {
+                        _treeService.MakeNew(
+                            sectionConfig.Tree.Initialize,
+                            0,
+                            sectionConfig.Alias,
+                            sectionConfig.Tree.Alias,
+                            sectionConfig.Tree.Name,
+                            sectionConfig.Tree.Icon,
+                            sectionConfig.Tree.Icon,
+                            "Fluidity.Web.Trees.FluidityTreeController, Fluidity");
+                    }
                 }
             }
         }

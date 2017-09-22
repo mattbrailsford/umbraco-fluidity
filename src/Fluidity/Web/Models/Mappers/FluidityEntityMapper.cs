@@ -109,12 +109,12 @@ namespace Fluidity.Web.Models.Mappers
             var display = new FluidityEntityEditModel
             {
                 Id = entity?.GetPropertyValue(collection.IdProperty),
-                Name = collection?.NameProperty != null ? entity?.GetPropertyValue(collection.NameProperty).ToString() : collection.NameSignular,
+                Name = collection?.NameProperty != null ? entity?.GetPropertyValue(collection.NameProperty).ToString() : collection.NameSingular,
                 HasNameProperty = collection.NameProperty != null,
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
                 Collection = collection.Alias,
-                CollectionNameSingular = collection.NameSignular,
+                CollectionNameSingular = collection.NameSingular,
                 CollectionNamePlural = collection.NamePlural,
                 CollectionIconSingular = collection.IconSingular,
                 CollectionIconPlural = collection.IconPlural,

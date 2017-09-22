@@ -28,7 +28,7 @@ namespace Fluidity.Configuration
         internal Func<object, string> NameFormat => _nameFormat;
 
         protected string _nameSingular;
-        internal string NameSignular => _nameSingular;
+        internal string NameSingular => _nameSingular;
 
         protected string _namePlural;
         internal string NamePlural => _namePlural;

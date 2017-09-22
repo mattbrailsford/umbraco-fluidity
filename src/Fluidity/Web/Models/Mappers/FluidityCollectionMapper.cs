@@ -18,7 +18,7 @@ namespace Fluidity.Web.Models.Mappers
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
                 Alias = collection.Alias,
-                NameSingular = collection.NameSignular + (!collection.IconColor.IsNullOrWhiteSpace() ? " color-" + collection.IconColor : ""),
+                NameSingular = collection.NameSingular + (!collection.IconColor.IsNullOrWhiteSpace() ? " color-" + collection.IconColor : ""),
                 NamePlural = collection.NamePlural + (!collection.IconColor.IsNullOrWhiteSpace() ? " color-" + collection.IconColor : ""),
                 IconSingular = collection.IconSingular,
                 IconPlural = collection.IconPlural,
