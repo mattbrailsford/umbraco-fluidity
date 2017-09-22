@@ -407,7 +407,7 @@ footer {
     width: 100%;
 }
 
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 520px) {
     .icons-list li 
     {
         width: 50%;
@@ -2280,4 +2280,10 @@ footer {
 }
 .icon-alert-alt:before {
     content: "\e25d"
+}
+.icon-chevron-up:before {
+    content: "\e128";
+}
+.icon-chevron-down:before {
+    content: "\e0c9";
 }
