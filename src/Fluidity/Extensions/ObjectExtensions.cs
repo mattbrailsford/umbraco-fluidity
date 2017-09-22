@@ -42,6 +42,7 @@ namespace Fluidity.Extensions
             using (var sha1 = SHA1.Create())
             {
                 var hash = sha1.ComputeHash(Encoding.Default.GetBytes(obj.ToString()));
+                Array.Resize(ref hash, 16); // Needs to be 128 bits max
                 result = new Guid(hash);
             }
             return result;
