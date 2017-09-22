@@ -404,7 +404,21 @@ footer {
 .icons-list li 
 {
     display: flex;
-    width: 25%;
+    width: 100%;
+}
+
+@media only screen and (min-width: 425px) {
+    .icons-list li 
+    {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .icons-list li 
+    {
+        width: 33.3%;
+    }
 }
 
 [class^="icon-"],
