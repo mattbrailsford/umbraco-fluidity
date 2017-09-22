@@ -46,7 +46,7 @@ namespace Fluidity.Converters
                 if (section == null)
                     throw new ApplicationException($"Fluidity DataType {propertyType.DataTypeId} has an invalid 'collection' pre value. No section found with the alias {collectionParts[0]}");
 
-                var collection = section.Tree.FalttenedTreeItems[collectionParts[1]] as FluidityCollectionConfig;
+                var collection = section.Tree.FlattenedTreeItems[collectionParts[1]] as FluidityCollectionConfig;
                 if (collection == null)
                     throw new ApplicationException($"Fluidity DataType {propertyType.DataTypeId} has an invalid 'collection' pre value. No collection found with the alias {collectionParts[1]}");
 

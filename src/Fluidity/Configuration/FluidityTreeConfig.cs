@@ -19,7 +19,7 @@ namespace Fluidity.Configuration
         internal bool Initialize => _initialize;
 
         protected ConcurrentDictionary<string, FluidityTreeItemConfig> _flattenedTreeItems;
-        internal IReadOnlyDictionary<string, FluidityTreeItemConfig> FalttenedTreeItems => _flattenedTreeItems;
+        internal IReadOnlyDictionary<string, FluidityTreeItemConfig> FlattenedTreeItems => _flattenedTreeItems;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityTreeConfig"/> class.

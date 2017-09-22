@@ -43,7 +43,7 @@ namespace Fluidity.Web.Api
         public object GetCollectionByAlias(string section, string collectionAlias)
         {
             var sectionConfig = Context.Config.Sections[section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
 
             return Context.Services.EntityService.GetCollectionDisplayModel(sectionConfig, collectionConfig, true);
         }
@@ -61,7 +61,7 @@ namespace Fluidity.Web.Api
             return Context.Config.Sections.Values.Select(s => new {
                     alias = s.Alias,
                     name = s.Name,
-                    collections = s.Tree.FalttenedTreeItems.Values
+                    collections = s.Tree.FlattenedTreeItems.Values
                         .Where(c => c is FluidityCollectionConfig)
                         .Cast<FluidityCollectionConfig>()
                         .Select(c => new {
@@ -80,7 +80,7 @@ namespace Fluidity.Web.Api
         public object GetEntityScaffold(string section, string collectionAlias)
         {
             var sectionConfig = Context.Config.Sections[section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
             return Context.Services.EntityService.GetEntityEditModel(sectionConfig, collectionConfig);
         }
 
@@ -88,7 +88,7 @@ namespace Fluidity.Web.Api
         public object GetEntityById(string section, string collectionAlias, string id)
         {
             var sectionConfig = Context.Config.Sections[section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
             return Context.Services.EntityService.GetEntityEditModel(sectionConfig, collectionConfig, id);
         }
 
@@ -96,7 +96,7 @@ namespace Fluidity.Web.Api
         public object GetEntities(string section, string collectionAlias, int pageNumber = 1, int pageSize = 10, string orderBy = "", string orderDirection = "", string query = "", string dataView = "")
         {
             var sectionConfig = Context.Config.Sections[section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
             return Context.Services.EntityService.GetEntityDisplayModels(sectionConfig, collectionConfig, pageNumber, pageSize, orderBy, orderDirection, query, dataView);
         }
 
@@ -104,7 +104,7 @@ namespace Fluidity.Web.Api
         public object GetEntitiesByIds(string section, string collectionAlias, string ids)
         {
             var sectionConfig = Context.Config.Sections[section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
             return Context.Services.EntityService.GetEntityDisplayModelsByIds(sectionConfig, collectionConfig, ids.Split(new [] {','}, StringSplitOptions.RemoveEmptyEntries));
         }
 
@@ -115,7 +115,7 @@ namespace Fluidity.Web.Api
             FluidityEntityEditModel display;
 
             var sectionConfig = Context.Config.Sections[postModel.Section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[postModel.Collection] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[postModel.Collection] as FluidityCollectionConfig;
 
             var entity = postModel.Id != null
                 ? Context.Services.EntityService.GetEntity(collectionConfig, postModel.Id)
@@ -149,7 +149,7 @@ namespace Fluidity.Web.Api
         public void DeleteEntity(string section, string collectionAlias, string id)
         {
             var sectionConfig = Context.Config.Sections[section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
 
             Context.Services.EntityService.DeleteEntity(collectionConfig, id);
         }
@@ -158,7 +158,7 @@ namespace Fluidity.Web.Api
         public object GetEntityTotalRecordCount(string section, string collectionAlias)
         {
             var sectionConfig = Context.Config.Sections[section];
-            var collectionConfig = sectionConfig.Tree.FalttenedTreeItems[collectionAlias] as FluidityCollectionConfig;
+            var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
 
             return Context.Services.EntityService.GetsEntityTotalRecordCount(collectionConfig);
         }

@@ -42,7 +42,7 @@ namespace Fluidity.Services
         {
             var collectionMapper = new FluidityCollectionMapper();
 
-            return section.Tree.FalttenedTreeItems.Values
+            return section.Tree.FlattenedTreeItems.Values
                 .Where(x => x is FluidityCollectionConfig && ((FluidityCollectionConfig)x).IsVisibleOnDashboard)
                 .Select(x => collectionMapper.ToDisplayModel(section, (FluidityCollectionConfig)x, false));
         }
