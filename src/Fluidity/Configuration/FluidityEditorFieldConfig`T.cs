@@ -106,7 +106,7 @@ namespace Fluidity.Configuration
         /// <returns>The editor field configuration.</returns>
         public FluidityEditorFieldConfig<TEntityType, TValueType> SetDataType(int id)
         {
-            if (!_isReadonly)
+            if(!_isReadonly)
                 _dataTypeId = id;
             return this;
         }
