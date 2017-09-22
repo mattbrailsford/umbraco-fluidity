@@ -156,13 +156,13 @@ namespace Fluidity.Configuration
             return this;
         }
 
-        public FluidityEditorFieldConfig<TEntityType, TValueType> IsReadonly()
+        public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadonly()
         {
             //TODO: Create defaults for different primitives
-            return IsReadonly(type => type?.ToString());
+            return MakeReadonly(type => type?.ToString());
         }
 
-        public FluidityEditorFieldConfig<TEntityType, TValueType> IsReadonly(Func<TValueType, string> format) {
+        public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadonly(Func<TValueType, string> format) {
             _valueMapper = new ReadOnlyValueMapper(value => format((TValueType)value));
             _dataTypeId = -92;
 	        _isReadOnly = true;
