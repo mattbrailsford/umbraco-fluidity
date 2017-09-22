@@ -18,8 +18,6 @@ namespace Fluidity.Configuration
     /// <seealso cref="Fluidity.Configuration.FluidityEditorFieldConfig" />
     public class FluidityEditorFieldConfig<TEntityType, TValueType> : FluidityEditorFieldConfig
     {
-        private bool _isReadonly;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig{TEntityType, TValueType}"/> class.
         /// </summary>
@@ -60,7 +58,7 @@ namespace Fluidity.Configuration
         /// <returns>The editor field configuration.</returns>
         public FluidityEditorFieldConfig<TEntityType, TValueType> SetValidationRegex(string regex)
         {
-            if(!_isReadonly)
+            if(!_isReadOnly)
                 _validationRegex = regex;
             return this;
         }
@@ -72,7 +70,7 @@ namespace Fluidity.Configuration
         /// <returns>The editor field configuration.</returns>
         public FluidityEditorFieldConfig<TEntityType, TValueType> SetValidationRegex(Regex regex)
         {
-            if(!_isReadonly)
+            if(!_isReadOnly)
                 _validationRegex = regex.ToString();
             return this;
         }
@@ -94,7 +92,7 @@ namespace Fluidity.Configuration
         /// <returns>The editor field configuration.</returns>
         public FluidityEditorFieldConfig<TEntityType, TValueType> SetDataType(string name)
         {
-            if(!_isReadonly)
+            if(!_isReadOnly)
                 _dataTypeName = name;
             return this;
         }
@@ -106,7 +104,7 @@ namespace Fluidity.Configuration
         /// <returns>The editor field configuration.</returns>
         public FluidityEditorFieldConfig<TEntityType, TValueType> SetDataType(int id)
         {
-            if(!_isReadonly)
+            if(!_isReadOnly)
                 _dataTypeId = id;
             return this;
         }
@@ -119,7 +117,7 @@ namespace Fluidity.Configuration
         public FluidityEditorFieldConfig<TEntityType, TValueType> SetValueMapper<TValueMapperType>()
             where TValueMapperType : FluidityValueMapper, new()
         {
-            if(!_isReadonly)
+            if(!_isReadOnly)
                 _valueMapper = new TValueMapperType();
             return this;
         }
@@ -131,7 +129,7 @@ namespace Fluidity.Configuration
         /// <returns>The editor field configuration.</returns>
         public FluidityEditorFieldConfig<TEntityType, TValueType> SetValueMapper(FluidityValueMapper valueMapper)
         {
-            if(!_isReadonly)
+            if(!_isReadOnly)
                 _valueMapper = valueMapper;
             return this;
         }
@@ -167,7 +165,7 @@ namespace Fluidity.Configuration
         public FluidityEditorFieldConfig<TEntityType, TValueType> IsReadonly(Func<TValueType, string> format) {
             _valueMapper = new ReadOnlyValueMapper(value => format((TValueType)value));
             _dataTypeId = -92;
-            _isReadonly = true;
+	        _isReadOnly = true;
             return this;
         }
     }

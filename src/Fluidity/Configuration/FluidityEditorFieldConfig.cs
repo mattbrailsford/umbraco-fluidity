@@ -41,11 +41,15 @@ namespace Fluidity.Configuration
         protected Func<object> _defaultValueFunc;
         internal Func<object> DefaultValueFunc => _defaultValueFunc;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig"/> class.
-        /// </summary>
-        /// <param name="propertyExpression">The property exp.</param>
-        protected FluidityEditorFieldConfig(LambdaExpression propertyExpression)
+	    protected bool _isReadOnly;
+	    internal bool IsReadOnly => _isReadOnly;
+
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FluidityEditorFieldConfig"/> class.
+		/// </summary>
+		/// <param name="propertyExpression">The property exp.</param>
+		protected FluidityEditorFieldConfig(LambdaExpression propertyExpression)
         {
             _property = propertyExpression;
         }

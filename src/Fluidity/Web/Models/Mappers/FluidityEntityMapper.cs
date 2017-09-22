@@ -206,68 +206,59 @@ namespace Fluidity.Web.Models.Mappers
             {
                 // Get the prop config
                 var propConfig = editorProps.First(x => x.Property.Name == prop.Alias);
+                if (!propConfig.IsReadOnly) {
+                    // Create additional data for file handling
+                    var additionalData = new Dictionary<string, object>();
 
-                // Create additional data for file handling
-                var additionalData = new Dictionary<string, object>();
-                
-                // Grab any uploaded files and add them to the additional data
-                var files = postModel.UploadedFiles.Where(x => x.PropertyAlias == prop.Alias).ToArray();
-                if (files.Length > 0)
-                {
-                    additionalData.Add("files", files);
-                }
-
-                // Ensure safe filenames
-                foreach (var file in files)
-                {
-                    file.FileName = file.FileName.ToSafeFileName();
-                }
-
-                // Add extra things needed to figure out where to put the files
-                // Looking into the core code, these are not actually used for any lookups,
-                // rather they are used to generate a unique path, so we just use the nearest
-                // equivilaants from the fluidity api. 
-                var cuid = $"{section.Alias}_{collection.Alias}_{entity.GetPropertyValue(collection.IdProperty)}";
-                var puid = $"{section.Alias}_{collection.Alias}_{propConfig.Property.Name}";
-
-                additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
-                additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));
-
-                var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig);
-                var data = new ContentPropertyData(prop.Value, dataTypeInfo.PreValues, additionalData);
-
-                if (!dataTypeInfo.PropertyEditor.ValueEditor.IsReadOnly)
-                {
-                    var currentValue = entity.GetPropertyValue(propConfig.Property);
-                    if (propConfig.ValueMapper != null)
-                    {
-                        currentValue = propConfig.ValueMapper.ModelToEditor(currentValue);
+                    // Grab any uploaded files and add them to the additional data
+                    var files = postModel.UploadedFiles.Where(x => x.PropertyAlias == prop.Alias).ToArray();
+                    if (files.Length > 0) {
+                        additionalData.Add("files", files);
                     }
 
-                    var propVal = dataTypeInfo.PropertyEditor.ValueEditor.ConvertEditorToDb(data, currentValue);
-                    if (propConfig.ValueMapper != null)
-                    {
-                        propVal = propConfig.ValueMapper.EditorToModel(propVal);
+                    // Ensure safe filenames
+                    foreach (var file in files) {
+                        file.FileName = file.FileName.ToSafeFileName();
                     }
 
-                    if (!propVal.GetType().IsAssignableFrom(propConfig.Property.Type))
-                    {
-                        var convert = propVal.TryConvertTo(propConfig.Property.Type);
-                        if (convert.Success)
-                        {
-                            propVal = convert.Result;
+                    // Add extra things needed to figure out where to put the files
+                    // Looking into the core code, these are not actually used for any lookups,
+                    // rather they are used to generate a unique path, so we just use the nearest
+                    // equivilaants from the fluidity api. 
+                    var cuid = $"{section.Alias}_{collection.Alias}_{entity.GetPropertyValue(collection.IdProperty)}";
+                    var puid = $"{section.Alias}_{collection.Alias}_{propConfig.Property.Name}";
+
+                    additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
+                    additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));
+
+                    var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig);
+                    var data = new ContentPropertyData(prop.Value, dataTypeInfo.PreValues, additionalData);
+
+                    if (!dataTypeInfo.PropertyEditor.ValueEditor.IsReadOnly) {
+                        var currentValue = entity.GetPropertyValue(propConfig.Property);
+                        if (propConfig.ValueMapper != null) {
+                            currentValue = propConfig.ValueMapper.ModelToEditor(currentValue);
                         }
-                    }
 
-                    var supportTagsAttribute = TagExtractor.GetAttribute(dataTypeInfo.PropertyEditor);
-                    if (supportTagsAttribute != null)
-                    {
-                        var dummyProp = new Property(new PropertyType(dataTypeInfo.DataTypeDefinition), propVal);
-                        TagExtractor.SetPropertyTags(dummyProp, data, propVal, supportTagsAttribute);
-                    }
-                    else
-                    {
-                        entity.SetPropertyValue(propConfig.Property, propVal);
+                        var propVal = dataTypeInfo.PropertyEditor.ValueEditor.ConvertEditorToDb(data, currentValue);
+                        if (propConfig.ValueMapper != null) {
+                            propVal = propConfig.ValueMapper.EditorToModel(propVal);
+                        }
+
+                        if (!propVal.GetType().IsAssignableFrom(propConfig.Property.Type)) {
+                            var convert = propVal.TryConvertTo(propConfig.Property.Type);
+                            if (convert.Success) {
+                                propVal = convert.Result;
+                            }
+                        }
+
+                        var supportTagsAttribute = TagExtractor.GetAttribute(dataTypeInfo.PropertyEditor);
+                        if (supportTagsAttribute != null) {
+                            var dummyProp = new Property(new PropertyType(dataTypeInfo.DataTypeDefinition), propVal);
+                            TagExtractor.SetPropertyTags(dummyProp, data, propVal, supportTagsAttribute);
+                        } else {
+                            entity.SetPropertyValue(propConfig.Property, propVal);
+                        }
                     }
                 }
             }
