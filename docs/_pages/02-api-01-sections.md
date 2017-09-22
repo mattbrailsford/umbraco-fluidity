@@ -41,6 +41,8 @@ config.AddSection("Database", "icon-server-alt", sectionConfig => {
 
 ![User sections permissions]({{ site.baseurl }}/img/user-sections.png) 
 
+**Note:** Both of the `AddSection` methods are simple proxies to the Umbraco `SectionService.MakeNew` method which is purely a creational method, meaning if you change the name or icon of an existing section declaration then your changes likely won't take effect. As one of the principles of Fluidity is to work only with public supported methods, this unfortunately means modifying an existing section via the Fluidity API isn't possible. The current workaround to change a section name / icon is to to edit the `applications.config` file in the `Config` folder manually.
+
 ### Changing a section alias
 {: .mt}
 
