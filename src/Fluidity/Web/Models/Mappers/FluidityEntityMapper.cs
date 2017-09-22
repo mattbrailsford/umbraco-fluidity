@@ -275,7 +275,7 @@ namespace Fluidity.Web.Models.Mappers
                             propVal = propConfig.ValueMapper.EditorToModel(propVal);
                         }
 
-                        if (!propVal.GetType().IsAssignableFrom(propConfig.Property.Type)) {
+                        if (propVal != null && propVal.GetType() != propConfig.Property.Type) {
                             var convert = propVal.TryConvertTo(propConfig.Property.Type);
                             if (convert.Success) {
                                 propVal = convert.Result;
