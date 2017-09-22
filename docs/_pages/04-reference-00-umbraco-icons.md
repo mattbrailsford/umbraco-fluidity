@@ -12,10 +12,10 @@ The following is a list of icons and icon colors supported by Umbraco that can b
 <ul class="icons-list">
     <li><i class="icon-home color-black"></i></li>
     <li><i class="icon-home color-red"></i></li>
-    <li><i class="icon-home color-blue"></i></li>
     <li><i class="icon-home color-orange"></i></li>
-    <li><i class="icon-home color-green"></i></li>
     <li><i class="icon-home color-yellow"></i></li>
+    <li><i class="icon-home color-green"></i></li>
+    <li><i class="icon-home color-blue"></i></li>
 </ul>
 
 ### Icons
