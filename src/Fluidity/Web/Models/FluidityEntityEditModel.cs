@@ -26,8 +26,8 @@ namespace Fluidity.Web.Models
         [DataMember(Name = "tree", IsRequired = true)]
         public string Tree { get; set; }
 
-	    [DataMember(Name = "collectionIsReadOnly")]
-		public bool CollectionIsReadOnly { get; set; }
+        [DataMember(Name = "collectionIsReadOnly")]
+        public bool CollectionIsReadOnly { get; set; }
 
         [DataMember(Name = "collectionNameSingular")]
         public string CollectionNameSingular { get; set; }
