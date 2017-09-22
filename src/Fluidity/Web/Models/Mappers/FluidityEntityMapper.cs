@@ -100,6 +100,7 @@ namespace Fluidity.Web.Models.Mappers
 
         public FluidityEntityEditModel ToEditModel(FluiditySectionConfig section, FluidityCollectionConfig collection, object entity)
         {
+            var isNew = entity == null;
             var entityId = entity?.GetPropertyValue(collection.IdProperty);
             var entityCompositeId = entityId != null
                 ? collection.Alias + "!" + entityId
@@ -150,7 +151,9 @@ namespace Fluidity.Web.Models.Mappers
                             var propEditorConfig = dataTypeInfo.PropertyEditor.PreValueEditor.ConvertDbToEditor(dataTypeInfo.PropertyEditor.DefaultPreValues,
                                 dataTypeInfo.PreValues);
 
-                            var value = entity?.GetPropertyValue(field.Property);
+                            object value = !isNew
+                                ? entity?.GetPropertyValue(field.Property)
+                                : field.DefaultValueFunc != null ? field.DefaultValueFunc() : field.Property.Type.GetDefaultValue();
 
                             if (field.ValueMapper != null)
                             {

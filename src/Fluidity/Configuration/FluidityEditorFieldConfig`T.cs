@@ -127,5 +127,27 @@ namespace Fluidity.Configuration
             _valueMapper = valueMapper;
             return this;
         }
+
+        /// <summary>
+        /// Sets the field default value.
+        /// </summary>
+        /// <param name="defaultValue">The default value.</param>
+        /// <returns>The editor field configuration.</returns>
+        public FluidityEditorFieldConfig<TEntityType, TValueType> SetDefaultValue(TValueType defaultValue)
+        {
+            _defaultValueFunc = () => defaultValue;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the field default value via a function for dynamic values.
+        /// </summary>
+        /// <param name="defaultValueFunc">The default value function.</param>
+        /// <returns>The editor field configuration.</returns>
+        public FluidityEditorFieldConfig<TEntityType, TValueType> SetDefaultValue(Func<TValueType> defaultValueFunc)
+        {
+            _defaultValueFunc = () => defaultValueFunc();
+            return this;
+        }
     }
 }

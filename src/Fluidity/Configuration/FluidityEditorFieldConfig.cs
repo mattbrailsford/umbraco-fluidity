@@ -5,6 +5,7 @@
 
 using System.Linq.Expressions;
 using Fluidity.Mappers;
+using System;
 
 namespace Fluidity.Configuration
 {
@@ -36,6 +37,9 @@ namespace Fluidity.Configuration
 
         protected FluidityValueMapper _valueMapper;
         internal FluidityValueMapper ValueMapper => _valueMapper;
+
+        protected Func<object> _defaultValueFunc;
+        internal Func<object> DefaultValueFunc => _defaultValueFunc;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig"/> class.
