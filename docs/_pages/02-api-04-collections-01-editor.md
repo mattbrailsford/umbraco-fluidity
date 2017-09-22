@@ -81,6 +81,31 @@ Sets the description for the editor field.
 fieldConfig.SetDescription("Enter your age in years");
 ````
 
+### Setting the default value of a field
+{: .mt}
+
+#### SetDefaultValue(TValueType defaultValue) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+{: .signature}
+
+Sets the default value to a known constant.
+
+````csharp
+// Example
+fieldConfig.SetDefaultValue(10);
+````
+
+---
+
+#### SetDefaultValue(Func<TValueType> defaultValueFunc) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+{: .signature}
+
+Sets the default value via a function that gets evaluated at time of entity creation.
+
+````csharp
+// Example
+fieldConfig.SetDefaultValue(() => DateTime.Now));
+````
+
 ### Making a field mandatory
 {: .mt}
 
