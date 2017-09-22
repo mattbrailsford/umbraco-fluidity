@@ -387,7 +387,7 @@ footer {
 }
 
 /* Icons */
-.icons-list ul,
+.icons-list,
 .icons-list li 
 {
     list-style: none;
@@ -395,9 +395,15 @@ footer {
     padding: 0;
 }
 
+.icons-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .icons-list li 
 {
-    display: inline-block;
+    display: flex;
     width: 25%;
 }
 
