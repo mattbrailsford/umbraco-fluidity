@@ -1,7 +1,7 @@
 ---
 layout: default
 section: Reference
-title: Umbraco Iocns
+title: Umbraco Icons
 permalink: /reference/umbraco-icons/index.html
 ---
 

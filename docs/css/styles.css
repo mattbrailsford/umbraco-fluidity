@@ -395,13 +395,13 @@ footer {
     -webkit-font-smoothing: antialiased;
     font-style: normal;
     font-weight: normal;
-    text-decoration: inherit
+    text-decoration: inherit;
 }
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
     display: inline-block;
     text-decoration: inherit;
-    speak: none
+    speak: none;
 }
 
 .icon-zoom-out:before {
