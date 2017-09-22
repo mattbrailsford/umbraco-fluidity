@@ -429,7 +429,8 @@ footer {
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
-    font-size: 32px;
+    font-size: 32px;    
+    line-height: 32px;
 }
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -2286,4 +2287,29 @@ footer {
 }
 .icon-chevron-down:before {
     content: "\e0c9";
+}
+
+.color-black,
+.color-black i {
+    color: #000!important
+}
+.color-red,
+.color-red i {
+    color: #f02e28!important
+}
+.color-blue,
+.color-blue i {
+    color: #00aea2!important
+}
+.color-orange,
+.color-orange i {
+    color: #d9631e!important
+}
+.color-green,
+.color-green i {
+    color: #1fb572!important
+}
+.color-yellow,
+.color-yellow i {
+    color: #ffc011!important
 }
