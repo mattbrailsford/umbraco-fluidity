@@ -45,7 +45,8 @@
                         label-key="buttons_returnToList">
                     </umb-button>
 
-                    <umb-button type="submit"
+                    <umb-button ng-if="!content.collectionIsReadOnly"
+                        type="submit"
                         button-style="success"
                         state="page.saveButtonState"
                         shortcut="ctrl+s"
