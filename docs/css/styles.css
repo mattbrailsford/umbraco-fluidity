@@ -387,6 +387,19 @@ footer {
 }
 
 /* Icons */
+.icons-list ul,
+.icons-list li 
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.icons-list li 
+{
+    display: inline-block;
+    width: 25%;
+}
 
 [class^="icon-"],
 [class*=" icon-"] {
@@ -396,12 +409,20 @@ footer {
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
+    font-size: 32px;
 }
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
     display: inline-block;
     text-decoration: inherit;
     speak: none;
+}
+
+[class^="icon-"]:after,
+[class*=" icon-"]:after {
+    content: " "attr(class)" ";
+    font-family: Montserrat, sans-serif;
+    display: inline-block;
 }
 
 .icon-zoom-out:before {

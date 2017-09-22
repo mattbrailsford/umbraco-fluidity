@@ -12,7 +12,7 @@ The following is a list of icons and icon colors supported by Umbraco that can b
 ### Icons
 {: .mt}
 
-<ul class="icon-list">
+<ul class="icons-list">
     <li><i class="icon-zoom-out"></i></li>
     <li><i class="icon-truck"></i></li>
     <li><i class="icon-zoom-in"></i></li>
