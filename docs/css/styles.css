@@ -442,7 +442,7 @@ footer {
 
 [class^="icon-"]:after,
 [class*=" icon-"]:after {
-    content: " "attr(class)" ";
+    content: " "attr(rel)" ";
     font-family: Montserrat, sans-serif;
     font-size: 16px;
     margin-left: 10px;

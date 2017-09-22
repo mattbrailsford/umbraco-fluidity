@@ -10,624 +10,624 @@ The following is a list of icons and icon colors supported by Umbraco that can b
 ### Icon colours
 
 <ul class="icons-list">
-    <li><i class="icon-home color-black"></i></li>
-    <li><i class="icon-home color-red"></i></li>
-    <li><i class="icon-home color-orange"></i></li>
-    <li><i class="icon-home color-yellow"></i></li>
-    <li><i class="icon-home color-green"></i></li>
-    <li><i class="icon-home color-blue"></i></li>
+    <li><i class="icon-home color-black" rel="color-black"></i></li>
+    <li><i class="icon-home color-red" rel="color-red"></i></li>
+    <li><i class="icon-home color-orange" rel="color-orange"></i></li>
+    <li><i class="icon-home color-yellow" rel="color-yellow"></i></li>
+    <li><i class="icon-home color-green" rel="color-green"></i></li>
+    <li><i class="icon-home color-blue" rel="color-blue"></i></li>
 </ul>
 
 ### Icons
 {: .mt}
 
 <ul class="icons-list">
-    <li><i class="icon-zoom-out"></i></li>
-    <li><i class="icon-truck"></i></li>
-    <li><i class="icon-zoom-in"></i></li>
-    <li><i class="icon-zip"></i></li>
-    <li><i class="icon-axis-rotation"></i></li>
-    <li><i class="icon-yen-bag"></i></li>
-    <li><i class="icon-axis-rotation-2"></i></li>
-    <li><i class="icon-axis-rotation-3"></i></li>
-    <li><i class="icon-wrench"></i></li>
-    <li><i class="icon-wine-glass"></i></li>
-    <li><i class="icon-wrong"></i></li>
-    <li><i class="icon-windows"></i></li>
-    <li><i class="icon-window-sizes"></i></li>
-    <li><i class="icon-window-popin"></i></li>
-    <li><i class="icon-wifi"></i></li>
-    <li><i class="icon-width"></i></li>
-    <li><i class="icon-weight"></i></li>
-    <li><i class="icon-war"></i></li>
-    <li><i class="icon-wand"></i></li>
-    <li><i class="icon-wallet"></i></li>
-    <li><i class="icon-wall-plug"></i></li>
-    <li><i class="icon-voice"></i></li>
-    <li><i class="icon-video"></i></li>
-    <li><i class="icon-vcard"></i></li>
-    <li><i class="icon-utilities"></i></li>
-    <li><i class="icon-users"></i></li>
-    <li><i class="icon-users-alt"></i></li>
-    <li><i class="icon-user"></i></li>
-    <li><i class="icon-user-glasses"></i></li>
-    <li><i class="icon-user-females"></i></li>
-    <li><i class="icon-user-females-alt"></i></li>
-    <li><i class="icon-user-female"></i></li>
-    <li><i class="icon-usb"></i></li>
-    <li><i class="icon-usb-connector"></i></li>
-    <li><i class="icon-unlocked"></i></li>
-    <li><i class="icon-universal"></i></li>
-    <li><i class="icon-undo"></i></li>
-    <li><i class="icon-umbrella"></i></li>
-    <li><i class="icon-umb-deploy"></i></li>
-    <li><i class="icon-umb-contour"></i></li>
-    <li><i class="icon-umb-settings"></i></li>
-    <li><i class="icon-umb-users"></i></li>
-    <li><i class="icon-umb-media"></i></li>
-    <li><i class="icon-umb-content"></i></li>
-    <li><i class="icon-umb-developer"></i></li>
-    <li><i class="icon-umb-members"></i></li>
-    <li><i class="icon-umb-translation"></i></li>
-    <li><i class="icon-tv"></i></li>
-    <li><i class="icon-tv-old"></i></li>
-    <li><i class="icon-trophy"></i></li>
-    <li><i class="icon-tree"></i></li>
-    <li><i class="icon-trash"></i></li>
-    <li><i class="icon-trash-alt"></i></li>
-    <li><i class="icon-trash-alt-2"></i></li>
-    <li><i class="icon-train"></i></li>
-    <li><i class="icon-trafic"></i></li>
-    <li><i class="icon-traffic-alt"></i></li>
-    <li><i class="icon-top"></i></li>
-    <li><i class="icon-tools"></i></li>
-    <li><i class="icon-timer"></i></li>
-    <li><i class="icon-time"></i></li>
-    <li><i class="icon-t-shirt"></i></li>
-    <li><i class="icon-tab-key"></i></li>
-    <li><i class="icon-tab"></i></li>
-    <li><i class="icon-tactics"></i></li>
-    <li><i class="icon-tag"></i></li>
-    <li><i class="icon-tags"></i></li>
-    <li><i class="icon-takeaway-cup"></i></li>
-    <li><i class="icon-target"></i></li>
-    <li><i class="icon-temperatrure-alt"></i></li>
-    <li><i class="icon-temperature"></i></li>
-    <li><i class="icon-terminal"></i></li>
-    <li><i class="icon-theater"></i></li>
-    <li><i class="icon-theif"></i></li>
-    <li><i class="icon-thought-bubble"></i></li>
-    <li><i class="icon-thumb-down"></i></li>
-    <li><i class="icon-thumb-up"></i></li>
-    <li><i class="icon-thumbnail-list"></i></li>
-    <li><i class="icon-thumbnails-small"></i></li>
-    <li><i class="icon-thumbnails"></i></li>
-    <li><i class="icon-ticket"></i></li>
-    <li><i class="icon-sync"></i></li>
-    <li><i class="icon-sweatshirt"></i></li>
-    <li><i class="icon-sunny"></i></li>
-    <li><i class="icon-stream"></i></li>
-    <li><i class="icon-store"></i></li>
-    <li><i class="icon-stop"></i></li>
-    <li><i class="icon-stop-hand"></i></li>
-    <li><i class="icon-stop-alt"></i></li>
-    <li><i class="icon-stamp"></i></li>
-    <li><i class="icon-stacked-disks"></i></li>
-    <li><i class="icon-ssd"></i></li>
-    <li><i class="icon-squiggly-line"></i></li>
-    <li><i class="icon-sprout"></i></li>
-    <li><i class="icon-split"></i></li>
-    <li><i class="icon-split-alt"></i></li>
-    <li><i class="icon-speed-gauge"></i></li>
-    <li><i class="icon-speaker"></i></li>
-    <li><i class="icon-sound"></i></li>
-    <li><i class="icon-spades"></i></li>
-    <li><i class="icon-sound-waves"></i></li>
-    <li><i class="icon-shipping-box"></i></li>
-    <li><i class="icon-shipping"></i></li>
-    <li><i class="icon-shoe"></i></li>
-    <li><i class="icon-shopping-basket-alt-2"></i></li>
-    <li><i class="icon-shopping-basket"></i></li>
-    <li><i class="icon-shopping-basket-alt"></i></li>
-    <li><i class="icon-shorts"></i></li>
-    <li><i class="icon-shuffle"></i></li>
-    <li><i class="icon-sience"></i></li>
-    <li><i class="icon-simcard"></i></li>
-    <li><i class="icon-single-note"></i></li>
-    <li><i class="icon-sitemap"></i></li>
-    <li><i class="icon-sleep"></i></li>
-    <li><i class="icon-slideshow"></i></li>
-    <li><i class="icon-smiley-inverted"></i></li>
-    <li><i class="icon-smiley"></i></li>
-    <li><i class="icon-snow"></i></li>
-    <li><i class="icon-sound-low"></i></li>
-    <li><i class="icon-sound-medium"></i></li>
-    <li><i class="icon-sound-off"></i></li>
-    <li><i class="icon-shift"></i></li>
-    <li><i class="icon-shield"></i></li>
-    <li><i class="icon-sharing-iphone"></i></li>
-    <li><i class="icon-share"></i></li>
-    <li><i class="icon-share-alt"></i></li>
-    <li><i class="icon-share-alt-2"></i></li>
-    <li><i class="icon-settings"></i></li>
-    <li><i class="icon-settings-alt"></i></li>
-    <li><i class="icon-settings-alt-2"></i></li>
-    <li><i class="icon-server"></i></li>
-    <li><i class="icon-server-alt"></i></li>
-    <li><i class="icon-sensor"></i></li>
-    <li><i class="icon-security-camera"></i></li>
-    <li><i class="icon-search"></i></li>
-    <li><i class="icon-scull"></i></li>
-    <li><i class="icon-script"></i></li>
-    <li><i class="icon-script-alt"></i></li>
-    <li><i class="icon-screensharing"></i></li>
-    <li><i class="icon-school"></i></li>
-    <li><i class="icon-scan"></i></li>
-    <li><i class="icon-refresh"></i></li>
-    <li><i class="icon-remote"></i></li>
-    <li><i class="icon-remove"></i></li>
-    <li><i class="icon-repeat-one"></i></li>
-    <li><i class="icon-repeat"></i></li>
-    <li><i class="icon-resize"></i></li>
-    <li><i class="icon-reply-arrow"></i></li>
-    <li><i class="icon-return-to-top"></i></li>
-    <li><i class="icon-right-double-arrow"></i></li>
-    <li><i class="icon-road"></i></li>
-    <li><i class="icon-roadsign"></i></li>
-    <li><i class="icon-rocket"></i></li>
-    <li><i class="icon-rss"></i></li>
-    <li><i class="icon-ruler-alt"></i></li>
-    <li><i class="icon-ruler"></i></li>
-    <li><i class="icon-sandbox-toys"></i></li>
-    <li><i class="icon-satellite-dish"></i></li>
-    <li><i class="icon-save"></i></li>
-    <li><i class="icon-safedial"></i></li>
-    <li><i class="icon-safe"></i></li>
-    <li><i class="icon-redo"></i></li>
-    <li><i class="icon-printer-alt"></i></li>
-    <li><i class="icon-planet"></i></li>
-    <li><i class="icon-paste-in"></i></li>
-    <li><i class="icon-os-x"></i></li>
-    <li><i class="icon-navigation-left"></i></li>
-    <li><i class="icon-message"></i></li>
-    <li><i class="icon-lock"></i></li>
-    <li><i class="icon-layers-alt"></i></li>
-    <li><i class="icon-record"></i></li>
-    <li><i class="icon-print"></i></li>
-    <li><i class="icon-plane"></i></li>
-    <li><i class="icon-partly-cloudy"></i></li>
-    <li><i class="icon-ordered-list"></i></li>
-    <li><i class="icon-navigation-last"></i></li>
-    <li><i class="icon-message-unopened"></i></li>
-    <li><i class="icon-location-nearby"></i></li>
-    <li><i class="icon-laptop"></i></li>
-    <li><i class="icon-reception"></i></li>
-    <li><i class="icon-price-yen"></i></li>
-    <li><i class="icon-piracy"></i></li>
-    <li><i class="icon-parental-control"></i></li>
-    <li><i class="icon-operator"></i></li>
-    <li><i class="icon-navigation-horizontal"></i></li>
-    <li><i class="icon-message-open"></i></li>
-    <li><i class="icon-lab"></i></li>
-    <li><i class="icon-location-near-me"></i></li>
-    <li><i class="icon-receipt-yen"></i></li>
-    <li><i class="icon-price-pound"></i></li>
-    <li><i class="icon-pin-location"></i></li>
-    <li><i class="icon-parachute-drop"></i></li>
-    <li><i class="icon-old-phone"></i></li>
-    <li><i class="icon-merge"></i></li>
-    <li><i class="icon-navigation-first"></i></li>
-    <li><i class="icon-locate"></i></li>
-    <li><i class="icon-keyhole"></i></li>
-    <li><i class="icon-receipt-pound"></i></li>
-    <li><i class="icon-price-euro"></i></li>
-    <li><i class="icon-piggy-bank"></i></li>
-    <li><i class="icon-paper-plane"></i></li>
-    <li><i class="icon-old-key"></i></li>
-    <li><i class="icon-navigation-down"></i></li>
-    <li><i class="icon-megaphone"></i></li>
-    <li><i class="icon-loading"></i></li>
-    <li><i class="icon-keychain"></i></li>
-    <li><i class="icon-receipt-euro"></i></li>
-    <li><i class="icon-price-dollar"></i></li>
-    <li><i class="icon-pie-chart"></i></li>
-    <li><i class="icon-paper-plane-alt"></i></li>
-    <li><i class="icon-notepad"></i></li>
-    <li><i class="icon-navigation-bottom"></i></li>
-    <li><i class="icon-meeting"></i></li>
-    <li><i class="icon-keyboard"></i></li>
-    <li><i class="icon-load"></i></li>
-    <li><i class="icon-receipt-dollar"></i></li>
-    <li><i class="icon-previous"></i></li>
-    <li><i class="icon-pictures"></i></li>
-    <li><i class="icon-notepad-alt"></i></li>
-    <li><i class="icon-paper-bag"></i></li>
-    <li><i class="icon-name-badge"></i></li>
-    <li><i class="icon-medicine"></i></li>
-    <li><i class="icon-list"></i></li>
-    <li><i class="icon-key"></i></li>
-    <li><i class="icon-receipt-alt"></i></li>
-    <li><i class="icon-previous-media"></i></li>
-    <li><i class="icon-pictures-alt"></i></li>
-    <li><i class="icon-pants"></i></li>
-    <li><i class="icon-nodes"></i></li>
-    <li><i class="icon-music"></i></li>
-    <li><i class="icon-readonly"></i></li>
-    <li><i class="icon-presentation"></i></li>
-    <li><i class="icon-pictures-alt-2"></i></li>
-    <li><i class="icon-pannel-close"></i></li>
-    <li><i class="icon-next"></i></li>
-    <li><i class="icon-multiple-windows"></i></li>
-    <li><i class="icon-medical-emergency"></i></li>
-    <li><i class="icon-medal"></i></li>
-    <li><i class="icon-link"></i></li>
-    <li><i class="icon-linux-tux"></i></li>
-    <li><i class="icon-junk"></i></li>
-    <li><i class="icon-item-arrangement"></i></li>
-    <li><i class="icon-iphone"></i></li>
-    <li><i class="icon-lightning"></i></li>
-    <li><i class="icon-map"></i></li>
-    <li><i class="icon-multiple-credit-cards"></i></li>
-    <li><i class="icon-next-media"></i></li>
-    <li><i class="icon-panel-show"></i></li>
-    <li><i class="icon-picture"></i></li>
-    <li><i class="icon-power"></i></li>
-    <li><i class="icon-re-post"></i></li>
-    <li><i class="icon-rate"></i></li>
-    <li><i class="icon-rain"></i></li>
-    <li><i class="icon-radio"></i></li>
-    <li><i class="icon-radio-receiver"></i></li>
-    <li><i class="icon-radio-alt"></i></li>
-    <li><i class="icon-quote"></i></li>
-    <li><i class="icon-qr-code"></i></li>
-    <li><i class="icon-pushpin"></i></li>
-    <li><i class="icon-pulse"></i></li>
-    <li><i class="icon-projector"></i></li>
-    <li><i class="icon-play"></i></li>
-    <li><i class="icon-playing-cards"></i></li>
-    <li><i class="icon-playlist"></i></li>
-    <li><i class="icon-plugin"></i></li>
-    <li><i class="icon-podcast"></i></li>
-    <li><i class="icon-poker-chip"></i></li>
-    <li><i class="icon-poll"></i></li>
-    <li><i class="icon-post-it"></i></li>
-    <li><i class="icon-pound-bag"></i></li>
-    <li><i class="icon-power-outlet"></i></li>
-    <li><i class="icon-photo-album"></i></li>
-    <li><i class="icon-phone"></i></li>
-    <li><i class="icon-phone-ring"></i></li>
-    <li><i class="icon-people"></i></li>
-    <li><i class="icon-people-female"></i></li>
-    <li><i class="icon-people-alt"></i></li>
-    <li><i class="icon-people-alt-2"></i></li>
-    <li><i class="icon-pc"></i></li>
-    <li><i class="icon-pause"></i></li>
-    <li><i class="icon-path"></i></li>
-    <li><i class="icon-out"></i></li>
-    <li><i class="icon-outbox"></i></li>
-    <li><i class="icon-outdent"></i></li>
-    <li><i class="icon-page-add"></i></li>
-    <li><i class="icon-page-down"></i></li>
-    <li><i class="icon-page-remove"></i></li>
-    <li><i class="icon-page-restricted"></i></li>
-    <li><i class="icon-page-up"></i></li>
-    <li><i class="icon-paint-roller"></i></li>
-    <li><i class="icon-palette"></i></li>
-    <li><i class="icon-newspaper"></i></li>
-    <li><i class="icon-newspaper-alt"></i></li>
-    <li><i class="icon-network-alt"></i></li>
-    <li><i class="icon-navigational-arrow"></i></li>
-    <li><i class="icon-navigation"></i></li>
-    <li><i class="icon-navigation-vertical"></i></li>
-    <li><i class="icon-navigation-up"></i></li>
-    <li><i class="icon-navigation-top"></i></li>
-    <li><i class="icon-navigation-road"></i></li>
-    <li><i class="icon-navigation-right"></i></li>
-    <li><i class="icon-microscope"></i></li>
-    <li><i class="icon-mindmap"></i></li>
-    <li><i class="icon-molecular-network"></i></li>
-    <li><i class="icon-molecular"></i></li>
-    <li><i class="icon-mountain"></i></li>
-    <li><i class="icon-mouse-cursor"></i></li>
-    <li><i class="icon-mouse"></i></li>
-    <li><i class="icon-movie-alt"></i></li>
-    <li><i class="icon-map-marker"></i></li>
-    <li><i class="icon-movie"></i></li>
-    <li><i class="icon-map-location"></i></li>
-    <li><i class="icon-map-alt"></i></li>
-    <li><i class="icon-male-symbol"></i></li>
-    <li><i class="icon-male-and-female"></i></li>
-    <li><i class="icon-mailbox"></i></li>
-    <li><i class="icon-magnet"></i></li>
-    <li><i class="icon-loupe"></i></li>
-    <li><i class="icon-mobile"></i></li>
-    <li><i class="icon-logout"></i></li>
-    <li><i class="icon-log-out"></i></li>
-    <li><i class="icon-layers"></i></li>
-    <li><i class="icon-left-double-arrow"></i></li>
-    <li><i class="icon-layout"></i></li>
-    <li><i class="icon-legal"></i></li>
-    <li><i class="icon-lense"></i></li>
-    <li><i class="icon-library"></i></li>
-    <li><i class="icon-light-down"></i></li>
-    <li><i class="icon-light-up"></i></li>
-    <li><i class="icon-lightbulb-active"></i></li>
-    <li><i class="icon-lightbulb"></i></li>
-    <li><i class="icon-ipad"></i></li>
-    <li><i class="icon-invoice"></i></li>
-    <li><i class="icon-info"></i></li>
-    <li><i class="icon-infinity"></i></li>
-    <li><i class="icon-indent"></i></li>
-    <li><i class="icon-inbox"></i></li>
-    <li><i class="icon-inbox-full"></i></li>
-    <li><i class="icon-inactive-line"></i></li>
-    <li><i class="icon-imac"></i></li>
-    <li><i class="icon-hourglass"></i></li>
-    <li><i class="icon-home"></i></li>
-    <li><i class="icon-grid"></i></li>
-    <li><i class="icon-food"></i></li>
-    <li><i class="icon-favorite"></i></li>
-    <li><i class="icon-door-open-alt"></i></li>
-    <li><i class="icon-diagnostics"></i></li>
-    <li><i class="icon-contrast"></i></li>
-    <li><i class="icon-coins-dollar-alt"></i></li>
-    <li><i class="icon-circle-dotted-active"></i></li>
-    <li><i class="icon-cinema"></i></li>
-    <li><i class="icon-chip"></i></li>
-    <li><i class="icon-chip-alt"></i></li>
-    <li><i class="icon-chess"></i></li>
-    <li><i class="icon-checkbox"></i></li>
-    <li><i class="icon-checkbox-empty"></i></li>
-    <li><i class="icon-checkbox-dotted"></i></li>
-    <li><i class="icon-checkbox-dotted-active"></i></li>
-    <li><i class="icon-check"></i></li>
-    <li><i class="icon-chat"></i></li>
-    <li><i class="icon-chat-active"></i></li>
-    <li><i class="icon-chart"></i></li>
-    <li><i class="icon-chart-curve"></i></li>
-    <li><i class="icon-certificate"></i></li>
-    <li><i class="icon-categories"></i></li>
-    <li><i class="icon-cash-register"></i></li>
-    <li><i class="icon-car"></i></li>
-    <li><i class="icon-caps-lock"></i></li>
-    <li><i class="icon-candy"></i></li>
-    <li><i class="icon-circle-dotted"></i></li>
-    <li><i class="icon-circuits"></i></li>
-    <li><i class="icon-circus"></i></li>
-    <li><i class="icon-client"></i></li>
-    <li><i class="icon-clothes-hanger"></i></li>
-    <li><i class="icon-cloud-drive"></i></li>
-    <li><i class="icon-cloud-upload"></i></li>
-    <li><i class="icon-cloud"></i></li>
-    <li><i class="icon-cloudy"></i></li>
-    <li><i class="icon-clubs"></i></li>
-    <li><i class="icon-cocktail"></i></li>
-    <li><i class="icon-code"></i></li>
-    <li><i class="icon-coffee"></i></li>
-    <li><i class="icon-coin-dollar"></i></li>
-    <li><i class="icon-coin-pound"></i></li>
-    <li><i class="icon-coin-yen"></i></li>
-    <li><i class="icon-coin"></i></li>
-    <li><i class="icon-coins-alt"></i></li>
-    <li><i class="icon-console"></i></li>
-    <li><i class="icon-connection"></i></li>
-    <li><i class="icon-compress"></i></li>
-    <li><i class="icon-company"></i></li>
-    <li><i class="icon-command"></i></li>
-    <li><i class="icon-coin-euro"></i></li>
-    <li><i class="icon-combination-lock"></i></li>
-    <li><i class="icon-combination-lock-open"></i></li>
-    <li><i class="icon-comb"></i></li>
-    <li><i class="icon-columns"></i></li>
-    <li><i class="icon-colorpicker"></i></li>
-    <li><i class="icon-color-bucket"></i></li>
-    <li><i class="icon-coins"></i></li>
-    <li><i class="icon-coins-yen"></i></li>
-    <li><i class="icon-coins-yen-alt"></i></li>
-    <li><i class="icon-coins-pound"></i></li>
-    <li><i class="icon-coins-pound-alt"></i></li>
-    <li><i class="icon-coins-euro"></i></li>
-    <li><i class="icon-coins-euro-alt"></i></li>
-    <li><i class="icon-coins-dollar"></i></li>
-    <li><i class="icon-conversation-alt"></i></li>
-    <li><i class="icon-conversation"></i></li>
-    <li><i class="icon-coverflow"></i></li>
-    <li><i class="icon-credit-card-alt"></i></li>
-    <li><i class="icon-credit-card"></i></li>
-    <li><i class="icon-crop"></i></li>
-    <li><i class="icon-crosshair"></i></li>
-    <li><i class="icon-crown-alt"></i></li>
-    <li><i class="icon-crown"></i></li>
-    <li><i class="icon-cupcake"></i></li>
-    <li><i class="icon-curve"></i></li>
-    <li><i class="icon-cut"></i></li>
-    <li><i class="icon-dashboard"></i></li>
-    <li><i class="icon-defrag"></i></li>
-    <li><i class="icon-delete"></i></li>
-    <li><i class="icon-delete-key"></i></li>
-    <li><i class="icon-departure"></i></li>
-    <li><i class="icon-desk"></i></li>
-    <li><i class="icon-desktop"></i></li>
-    <li><i class="icon-donate"></i></li>
-    <li><i class="icon-dollar-bag"></i></li>
-    <li><i class="icon-documents"></i></li>
-    <li><i class="icon-document"></i></li>
-    <li><i class="icon-document-dashed-line"></i></li>
-    <li><i class="icon-dock-connector"></i></li>
-    <li><i class="icon-dna"></i></li>
-    <li><i class="icon-display"></i></li>
-    <li><i class="icon-disk-image"></i></li>
-    <li><i class="icon-disc"></i></li>
-    <li><i class="icon-directions"></i></li>
-    <li><i class="icon-directions-alt"></i></li>
-    <li><i class="icon-diploma"></i></li>
-    <li><i class="icon-diploma-alt"></i></li>
-    <li><i class="icon-dice"></i></li>
-    <li><i class="icon-diamonds"></i></li>
-    <li><i class="icon-diamond"></i></li>
-    <li><i class="icon-diagonal-arrow"></i></li>
-    <li><i class="icon-diagonal-arrow-alt"></i></li>
-    <li><i class="icon-door-open"></i></li>
-    <li><i class="icon-download-alt"></i></li>
-    <li><i class="icon-download"></i></li>
-    <li><i class="icon-drop"></i></li>
-    <li><i class="icon-eco"></i></li>
-    <li><i class="icon-economy"></i></li>
-    <li><i class="icon-edit"></i></li>
-    <li><i class="icon-eject"></i></li>
-    <li><i class="icon-employee"></i></li>
-    <li><i class="icon-energy-saving-bulb"></i></li>
-    <li><i class="icon-enter"></i></li>
-    <li><i class="icon-equalizer"></i></li>
-    <li><i class="icon-escape"></i></li>
-    <li><i class="icon-ethernet"></i></li>
-    <li><i class="icon-euro-bag"></i></li>
-    <li><i class="icon-exit-fullscreen"></i></li>
-    <li><i class="icon-eye"></i></li>
-    <li><i class="icon-facebook-like"></i></li>
-    <li><i class="icon-factory"></i></li>
-    <li><i class="icon-font"></i></li>
-    <li><i class="icon-folders"></i></li>
-    <li><i class="icon-folder"></i></li>
-    <li><i class="icon-folder-outline"></i></li>
-    <li><i class="icon-folder-open"></i></li>
-    <li><i class="icon-flowerpot"></i></li>
-    <li><i class="icon-flashlight"></i></li>
-    <li><i class="icon-flash"></i></li>
-    <li><i class="icon-flag"></i></li>
-    <li><i class="icon-flag-alt"></i></li>
-    <li><i class="icon-firewire"></i></li>
-    <li><i class="icon-firewall"></i></li>
-    <li><i class="icon-fire"></i></li>
-    <li><i class="icon-fingerprint"></i></li>
-    <li><i class="icon-filter"></i></li>
-    <li><i class="icon-filter-arrows"></i></li>
-    <li><i class="icon-files"></i></li>
-    <li><i class="icon-file-cabinet"></i></li>
-    <li><i class="icon-female-symbol"></i></li>
-    <li><i class="icon-footprints"></i></li>
-    <li><i class="icon-hammer"></i></li>
-    <li><i class="icon-hand-active-alt"></i></li>
-    <li><i class="icon-forking"></i></li>
-    <li><i class="icon-hand-active"></i></li>
-    <li><i class="icon-hand-pointer-alt"></i></li>
-    <li><i class="icon-hand-pointer"></i></li>
-    <li><i class="icon-handprint"></i></li>
-    <li><i class="icon-handshake"></i></li>
-    <li><i class="icon-handtool"></i></li>
-    <li><i class="icon-hard-drive"></i></li>
-    <li><i class="icon-help"></i></li>
-    <li><i class="icon-graduate"></i></li>
-    <li><i class="icon-gps"></i></li>
-    <li><i class="icon-help-alt"></i></li>
-    <li><i class="icon-height"></i></li>
-    <li><i class="icon-globe"></i></li>
-    <li><i class="icon-hearts"></i></li>
-    <li><i class="icon-globe-inverted-europe-africa"></i></li>
-    <li><i class="icon-headset"></i></li>
-    <li><i class="icon-globe-inverted-asia"></i></li>
-    <li><i class="icon-headphones"></i></li>
-    <li><i class="icon-globe-inverted-america"></i></li>
-    <li><i class="icon-hd"></i></li>
-    <li><i class="icon-globe-europe-africa"></i></li>
-    <li><i class="icon-hat"></i></li>
-    <li><i class="icon-globe-asia"></i></li>
-    <li><i class="icon-globe-alt"></i></li>
-    <li><i class="icon-hard-drive-alt"></i></li>
-    <li><i class="icon-glasses"></i></li>
-    <li><i class="icon-gift"></i></li>
-    <li><i class="icon-handtool-alt"></i></li>
-    <li><i class="icon-geometry"></i></li>
-    <li><i class="icon-game"></i></li>
-    <li><i class="icon-fullscreen"></i></li>
-    <li><i class="icon-fullscreen-alt"></i></li>
-    <li><i class="icon-frame"></i></li>
-    <li><i class="icon-frame-alt"></i></li>
-    <li><i class="icon-camera-roll"></i></li>
-    <li><i class="icon-bookmark"></i></li>
-    <li><i class="icon-bill"></i></li>
-    <li><i class="icon-baby-stroller"></i></li>
-    <li><i class="icon-alarm-clock"></i></li>
-    <li><i class="icon-adressbook"></i></li>
-    <li><i class="icon-add"></i></li>
-    <li><i class="icon-activity"></i></li>
-    <li><i class="icon-untitled"></i></li>
-    <li><i class="icon-camcorder"></i></li>
-    <li><i class="icon-calendar"></i></li>
-    <li><i class="icon-calendar-alt"></i></li>
-    <li><i class="icon-calculator"></i></li>
-    <li><i class="icon-bus"></i></li>
-    <li><i class="icon-burn"></i></li>
-    <li><i class="icon-bulleted-list"></i></li>
-    <li><i class="icon-bug"></i></li>
-    <li><i class="icon-brush"></i></li>
-    <li><i class="icon-brush-alt"></i></li>
-    <li><i class="icon-brush-alt-2"></i></li>
-    <li><i class="icon-browser-window"></i></li>
-    <li><i class="icon-briefcase"></i></li>
-    <li><i class="icon-brick"></i></li>
-    <li><i class="icon-brackets"></i></li>
-    <li><i class="icon-box"></i></li>
-    <li><i class="icon-box-open"></i></li>
-    <li><i class="icon-box-alt"></i></li>
-    <li><i class="icon-books"></i></li>
-    <li><i class="icon-billboard"></i></li>
-    <li><i class="icon-bills-dollar"></i></li>
-    <li><i class="icon-bills-euro"></i></li>
-    <li><i class="icon-bills-pound"></i></li>
-    <li><i class="icon-bills-yen"></i></li>
-    <li><i class="icon-bills"></i></li>
-    <li><i class="icon-binarycode"></i></li>
-    <li><i class="icon-binoculars"></i></li>
-    <li><i class="icon-bird"></i></li>
-    <li><i class="icon-birthday-cake"></i></li>
-    <li><i class="icon-blueprint"></i></li>
-    <li><i class="icon-block"></i></li>
-    <li><i class="icon-bluetooth"></i></li>
-    <li><i class="icon-boat-shipping"></i></li>
-    <li><i class="icon-bomb"></i></li>
-    <li><i class="icon-book-alt-2"></i></li>
-    <li><i class="icon-bones"></i></li>
-    <li><i class="icon-book-alt"></i></li>
-    <li><i class="icon-book"></i></li>
-    <li><i class="icon-bill-yen"></i></li>
-    <li><i class="icon-award"></i></li>
-    <li><i class="icon-bill-pound"></i></li>
-    <li><i class="icon-autofill"></i></li>
-    <li><i class="icon-bill-euro"></i></li>
-    <li><i class="icon-auction-hammer"></i></li>
-    <li><i class="icon-bill-dollar"></i></li>
-    <li><i class="icon-attachment"></i></li>
-    <li><i class="icon-bell"></i></li>
-    <li><i class="icon-article"></i></li>
-    <li><i class="icon-bell-off"></i></li>
-    <li><i class="icon-art-easel"></i></li>
-    <li><i class="icon-beer-glass"></i></li>
-    <li><i class="icon-arrow-up"></i></li>
-    <li><i class="icon-battery-low"></i></li>
-    <li><i class="icon-arrow-right"></i></li>
-    <li><i class="icon-battery-full"></i></li>
-    <li><i class="icon-arrow-left"></i></li>
-    <li><i class="icon-bars"></i></li>
-    <li><i class="icon-arrow-down"></i></li>
-    <li><i class="icon-barcode"></i></li>
-    <li><i class="icon-arrivals"></i></li>
-    <li><i class="icon-bar-chart"></i></li>
-    <li><i class="icon-application-window"></i></li>
-    <li><i class="icon-band-aid"></i></li>
-    <li><i class="icon-application-window-alt"></i></li>
-    <li><i class="icon-ball"></i></li>
-    <li><i class="icon-application-error"></i></li>
-    <li><i class="icon-badge-restricted"></i></li>
-    <li><i class="icon-app"></i></li>
-    <li><i class="icon-badge-remove"></i></li>
-    <li><i class="icon-anchor"></i></li>
-    <li><i class="icon-badge-count"></i></li>
-    <li><i class="icon-alt"></i></li>
-    <li><i class="icon-badge-add"></i></li>
-    <li><i class="icon-alert"></i></li>
-    <li><i class="icon-backspace"></i></li>
-    <li><i class="icon-alert-alt"></i></li>
-    <li><i class="icon-chevron-up"></i></li>
-    <li><i class="icon-chevron-down"></i></li>
+    <li><i class="icon-zoom-out" rel="icon-zoom-out"></i></li>
+    <li><i class="icon-truck" rel="icon-truck"></i></li>
+    <li><i class="icon-zoom-in" rel="icon-zoom-in"></i></li>
+    <li><i class="icon-zip" rel="icon-zip"></i></li>
+    <li><i class="icon-axis-rotation" rel="icon-axis-rotation"></i></li>
+    <li><i class="icon-yen-bag" rel="icon-yen-bag"></i></li>
+    <li><i class="icon-axis-rotation-2" rel="icon-axis-rotation-2"></i></li>
+    <li><i class="icon-axis-rotation-3" rel="icon-axis-rotation-3"></i></li>
+    <li><i class="icon-wrench" rel="icon-wrench"></i></li>
+    <li><i class="icon-wine-glass" rel="icon-wine-glass"></i></li>
+    <li><i class="icon-wrong" rel="icon-wrong"></i></li>
+    <li><i class="icon-windows" rel="icon-windows"></i></li>
+    <li><i class="icon-window-sizes" rel="icon-window-sizes"></i></li>
+    <li><i class="icon-window-popin" rel="icon-window-popin"></i></li>
+    <li><i class="icon-wifi" rel="icon-wifi"></i></li>
+    <li><i class="icon-width" rel="icon-width"></i></li>
+    <li><i class="icon-weight" rel="icon-weight"></i></li>
+    <li><i class="icon-war" rel="icon-war"></i></li>
+    <li><i class="icon-wand" rel="icon-wand"></i></li>
+    <li><i class="icon-wallet" rel="icon-wallet"></i></li>
+    <li><i class="icon-wall-plug" rel="icon-wall-plug"></i></li>
+    <li><i class="icon-voice" rel="icon-voice"></i></li>
+    <li><i class="icon-video" rel="icon-video"></i></li>
+    <li><i class="icon-vcard" rel="icon-vcard"></i></li>
+    <li><i class="icon-utilities" rel="icon-utilities"></i></li>
+    <li><i class="icon-users" rel="icon-users"></i></li>
+    <li><i class="icon-users-alt" rel="icon-users-alt"></i></li>
+    <li><i class="icon-user" rel="icon-user"></i></li>
+    <li><i class="icon-user-glasses" rel="icon-user-glasses"></i></li>
+    <li><i class="icon-user-females" rel="icon-user-females"></i></li>
+    <li><i class="icon-user-females-alt" rel="icon-user-females-alt"></i></li>
+    <li><i class="icon-user-female" rel="icon-user-female"></i></li>
+    <li><i class="icon-usb" rel="icon-usb"></i></li>
+    <li><i class="icon-usb-connector" rel="icon-usb-connector"></i></li>
+    <li><i class="icon-unlocked" rel="icon-unlocked"></i></li>
+    <li><i class="icon-universal" rel="icon-universal"></i></li>
+    <li><i class="icon-undo" rel="icon-undo"></i></li>
+    <li><i class="icon-umbrella" rel="icon-umbrella"></i></li>
+    <li><i class="icon-umb-deploy" rel="icon-umb-deploy"></i></li>
+    <li><i class="icon-umb-contour" rel="icon-umb-contour"></i></li>
+    <li><i class="icon-umb-settings" rel="icon-umb-settings"></i></li>
+    <li><i class="icon-umb-users" rel="icon-umb-users"></i></li>
+    <li><i class="icon-umb-media" rel="icon-umb-media"></i></li>
+    <li><i class="icon-umb-content" rel="icon-umb-content"></i></li>
+    <li><i class="icon-umb-developer" rel="icon-umb-developer"></i></li>
+    <li><i class="icon-umb-members" rel="icon-umb-members"></i></li>
+    <li><i class="icon-umb-translation" rel="icon-umb-translation"></i></li>
+    <li><i class="icon-tv" rel="icon-tv"></i></li>
+    <li><i class="icon-tv-old" rel="icon-tv-old"></i></li>
+    <li><i class="icon-trophy" rel="icon-trophy"></i></li>
+    <li><i class="icon-tree" rel="icon-tree"></i></li>
+    <li><i class="icon-trash" rel="icon-trash"></i></li>
+    <li><i class="icon-trash-alt" rel="icon-trash-alt"></i></li>
+    <li><i class="icon-trash-alt-2" rel="icon-trash-alt-2"></i></li>
+    <li><i class="icon-train" rel="icon-train"></i></li>
+    <li><i class="icon-trafic" rel="icon-trafic"></i></li>
+    <li><i class="icon-traffic-alt" rel="icon-traffic-alt"></i></li>
+    <li><i class="icon-top" rel="icon-top"></i></li>
+    <li><i class="icon-tools" rel="icon-tools"></i></li>
+    <li><i class="icon-timer" rel="icon-timer"></i></li>
+    <li><i class="icon-time" rel="icon-time"></i></li>
+    <li><i class="icon-t-shirt" rel="icon-t-shirt"></i></li>
+    <li><i class="icon-tab-key" rel="icon-tab-key"></i></li>
+    <li><i class="icon-tab" rel="icon-tab"></i></li>
+    <li><i class="icon-tactics" rel="icon-tactics"></i></li>
+    <li><i class="icon-tag" rel="icon-tag"></i></li>
+    <li><i class="icon-tags" rel="icon-tags"></i></li>
+    <li><i class="icon-takeaway-cup" rel="icon-takeaway-cup"></i></li>
+    <li><i class="icon-target" rel="icon-target"></i></li>
+    <li><i class="icon-temperatrure-alt" rel="icon-temperatrure-alt"></i></li>
+    <li><i class="icon-temperature" rel="icon-temperature"></i></li>
+    <li><i class="icon-terminal" rel="icon-terminal"></i></li>
+    <li><i class="icon-theater" rel="icon-theater"></i></li>
+    <li><i class="icon-theif" rel="icon-theif"></i></li>
+    <li><i class="icon-thought-bubble" rel="icon-thought-bubble"></i></li>
+    <li><i class="icon-thumb-down" rel="icon-thumb-down"></i></li>
+    <li><i class="icon-thumb-up" rel="icon-thumb-up"></i></li>
+    <li><i class="icon-thumbnail-list" rel="icon-thumbnail-list"></i></li>
+    <li><i class="icon-thumbnails-small" rel="icon-thumbnails-small"></i></li>
+    <li><i class="icon-thumbnails" rel="icon-thumbnails"></i></li>
+    <li><i class="icon-ticket" rel="icon-ticket"></i></li>
+    <li><i class="icon-sync" rel="icon-sync"></i></li>
+    <li><i class="icon-sweatshirt" rel="icon-sweatshirt"></i></li>
+    <li><i class="icon-sunny" rel="icon-sunny"></i></li>
+    <li><i class="icon-stream" rel="icon-stream"></i></li>
+    <li><i class="icon-store" rel="icon-store"></i></li>
+    <li><i class="icon-stop" rel="icon-stop"></i></li>
+    <li><i class="icon-stop-hand" rel="icon-stop-hand"></i></li>
+    <li><i class="icon-stop-alt" rel="icon-stop-alt"></i></li>
+    <li><i class="icon-stamp" rel="icon-stamp"></i></li>
+    <li><i class="icon-stacked-disks" rel="icon-stacked-disks"></i></li>
+    <li><i class="icon-ssd" rel="icon-ssd"></i></li>
+    <li><i class="icon-squiggly-line" rel="icon-squiggly-line"></i></li>
+    <li><i class="icon-sprout" rel="icon-sprout"></i></li>
+    <li><i class="icon-split" rel="icon-split"></i></li>
+    <li><i class="icon-split-alt" rel="icon-split-alt"></i></li>
+    <li><i class="icon-speed-gauge" rel="icon-speed-gauge"></i></li>
+    <li><i class="icon-speaker" rel="icon-speaker"></i></li>
+    <li><i class="icon-sound" rel="icon-sound"></i></li>
+    <li><i class="icon-spades" rel="icon-spades"></i></li>
+    <li><i class="icon-sound-waves" rel="icon-sound-waves"></i></li>
+    <li><i class="icon-shipping-box" rel="icon-shipping-box"></i></li>
+    <li><i class="icon-shipping" rel="icon-shipping"></i></li>
+    <li><i class="icon-shoe" rel="icon-shoe"></i></li>
+    <li><i class="icon-shopping-basket-alt-2" rel="icon-shopping-basket-alt-2"></i></li>
+    <li><i class="icon-shopping-basket" rel="icon-shopping-basket"></i></li>
+    <li><i class="icon-shopping-basket-alt" rel="icon-shopping-basket-alt"></i></li>
+    <li><i class="icon-shorts" rel="icon-shorts"></i></li>
+    <li><i class="icon-shuffle" rel="icon-shuffle"></i></li>
+    <li><i class="icon-sience" rel="icon-sience"></i></li>
+    <li><i class="icon-simcard" rel="icon-simcard"></i></li>
+    <li><i class="icon-single-note" rel="icon-single-note"></i></li>
+    <li><i class="icon-sitemap" rel="icon-sitemap"></i></li>
+    <li><i class="icon-sleep" rel="icon-sleep"></i></li>
+    <li><i class="icon-slideshow" rel="icon-slideshow"></i></li>
+    <li><i class="icon-smiley-inverted" rel="icon-smiley-inverted"></i></li>
+    <li><i class="icon-smiley" rel="icon-smiley"></i></li>
+    <li><i class="icon-snow" rel="icon-snow"></i></li>
+    <li><i class="icon-sound-low" rel="icon-sound-low"></i></li>
+    <li><i class="icon-sound-medium" rel="icon-sound-medium"></i></li>
+    <li><i class="icon-sound-off" rel="icon-sound-off"></i></li>
+    <li><i class="icon-shift" rel="icon-shift"></i></li>
+    <li><i class="icon-shield" rel="icon-shield"></i></li>
+    <li><i class="icon-sharing-iphone" rel="icon-sharing-iphone"></i></li>
+    <li><i class="icon-share" rel="icon-share"></i></li>
+    <li><i class="icon-share-alt" rel="icon-share-alt"></i></li>
+    <li><i class="icon-share-alt-2" rel="icon-share-alt-2"></i></li>
+    <li><i class="icon-settings" rel="icon-settings"></i></li>
+    <li><i class="icon-settings-alt" rel="icon-settings-alt"></i></li>
+    <li><i class="icon-settings-alt-2" rel="icon-settings-alt-2"></i></li>
+    <li><i class="icon-server" rel="icon-server"></i></li>
+    <li><i class="icon-server-alt" rel="icon-server-alt"></i></li>
+    <li><i class="icon-sensor" rel="icon-sensor"></i></li>
+    <li><i class="icon-security-camera" rel="icon-security-camera"></i></li>
+    <li><i class="icon-search" rel="icon-search"></i></li>
+    <li><i class="icon-scull" rel="icon-scull"></i></li>
+    <li><i class="icon-script" rel="icon-script"></i></li>
+    <li><i class="icon-script-alt" rel="icon-script-alt"></i></li>
+    <li><i class="icon-screensharing" rel="icon-screensharing"></i></li>
+    <li><i class="icon-school" rel="icon-school"></i></li>
+    <li><i class="icon-scan" rel="icon-scan"></i></li>
+    <li><i class="icon-refresh" rel="icon-refresh"></i></li>
+    <li><i class="icon-remote" rel="icon-remote"></i></li>
+    <li><i class="icon-remove" rel="icon-remove"></i></li>
+    <li><i class="icon-repeat-one" rel="icon-repeat-one"></i></li>
+    <li><i class="icon-repeat" rel="icon-repeat"></i></li>
+    <li><i class="icon-resize" rel="icon-resize"></i></li>
+    <li><i class="icon-reply-arrow" rel="icon-reply-arrow"></i></li>
+    <li><i class="icon-return-to-top" rel="icon-return-to-top"></i></li>
+    <li><i class="icon-right-double-arrow" rel="icon-right-double-arrow"></i></li>
+    <li><i class="icon-road" rel="icon-road"></i></li>
+    <li><i class="icon-roadsign" rel="icon-roadsign"></i></li>
+    <li><i class="icon-rocket" rel="icon-rocket"></i></li>
+    <li><i class="icon-rss" rel="icon-rss"></i></li>
+    <li><i class="icon-ruler-alt" rel="icon-ruler-alt"></i></li>
+    <li><i class="icon-ruler" rel="icon-ruler"></i></li>
+    <li><i class="icon-sandbox-toys" rel="icon-sandbox-toys"></i></li>
+    <li><i class="icon-satellite-dish" rel="icon-satellite-dish"></i></li>
+    <li><i class="icon-save" rel="icon-save"></i></li>
+    <li><i class="icon-safedial" rel="icon-safedial"></i></li>
+    <li><i class="icon-safe" rel="icon-safe"></i></li>
+    <li><i class="icon-redo" rel="icon-redo"></i></li>
+    <li><i class="icon-printer-alt" rel="icon-printer-alt"></i></li>
+    <li><i class="icon-planet" rel="icon-planet"></i></li>
+    <li><i class="icon-paste-in" rel="icon-paste-in"></i></li>
+    <li><i class="icon-os-x" rel="icon-os-x"></i></li>
+    <li><i class="icon-navigation-left" rel="icon-navigation-left"></i></li>
+    <li><i class="icon-message" rel="icon-message"></i></li>
+    <li><i class="icon-lock" rel="icon-lock"></i></li>
+    <li><i class="icon-layers-alt" rel="icon-layers-alt"></i></li>
+    <li><i class="icon-record" rel="icon-record"></i></li>
+    <li><i class="icon-print" rel="icon-print"></i></li>
+    <li><i class="icon-plane" rel="icon-plane"></i></li>
+    <li><i class="icon-partly-cloudy" rel="icon-partly-cloudy"></i></li>
+    <li><i class="icon-ordered-list" rel="icon-ordered-list"></i></li>
+    <li><i class="icon-navigation-last" rel="icon-navigation-last"></i></li>
+    <li><i class="icon-message-unopened" rel="icon-message-unopened"></i></li>
+    <li><i class="icon-location-nearby" rel="icon-location-nearby"></i></li>
+    <li><i class="icon-laptop" rel="icon-laptop"></i></li>
+    <li><i class="icon-reception" rel="icon-reception"></i></li>
+    <li><i class="icon-price-yen" rel="icon-price-yen"></i></li>
+    <li><i class="icon-piracy" rel="icon-piracy"></i></li>
+    <li><i class="icon-parental-control" rel="icon-parental-control"></i></li>
+    <li><i class="icon-operator" rel="icon-operator"></i></li>
+    <li><i class="icon-navigation-horizontal" rel="icon-navigation-horizontal"></i></li>
+    <li><i class="icon-message-open" rel="icon-message-open"></i></li>
+    <li><i class="icon-lab" rel="icon-lab"></i></li>
+    <li><i class="icon-location-near-me" rel="icon-location-near-me"></i></li>
+    <li><i class="icon-receipt-yen" rel="icon-receipt-yen"></i></li>
+    <li><i class="icon-price-pound" rel="icon-price-pound"></i></li>
+    <li><i class="icon-pin-location" rel="icon-pin-location"></i></li>
+    <li><i class="icon-parachute-drop" rel="icon-parachute-drop"></i></li>
+    <li><i class="icon-old-phone" rel="icon-old-phone"></i></li>
+    <li><i class="icon-merge" rel="icon-merge"></i></li>
+    <li><i class="icon-navigation-first" rel="icon-navigation-first"></i></li>
+    <li><i class="icon-locate" rel="icon-locate"></i></li>
+    <li><i class="icon-keyhole" rel="icon-keyhole"></i></li>
+    <li><i class="icon-receipt-pound" rel="icon-receipt-pound"></i></li>
+    <li><i class="icon-price-euro" rel="icon-price-euro"></i></li>
+    <li><i class="icon-piggy-bank" rel="icon-piggy-bank"></i></li>
+    <li><i class="icon-paper-plane" rel="icon-paper-plane"></i></li>
+    <li><i class="icon-old-key" rel="icon-old-key"></i></li>
+    <li><i class="icon-navigation-down" rel="icon-navigation-down"></i></li>
+    <li><i class="icon-megaphone" rel="icon-megaphone"></i></li>
+    <li><i class="icon-loading" rel="icon-loading"></i></li>
+    <li><i class="icon-keychain" rel="icon-keychain"></i></li>
+    <li><i class="icon-receipt-euro" rel="icon-receipt-euro"></i></li>
+    <li><i class="icon-price-dollar" rel="icon-price-dollar"></i></li>
+    <li><i class="icon-pie-chart" rel="icon-pie-chart"></i></li>
+    <li><i class="icon-paper-plane-alt" rel="icon-paper-plane-alt"></i></li>
+    <li><i class="icon-notepad" rel="icon-notepad"></i></li>
+    <li><i class="icon-navigation-bottom" rel="icon-navigation-bottom"></i></li>
+    <li><i class="icon-meeting" rel="icon-meeting"></i></li>
+    <li><i class="icon-keyboard" rel="icon-keyboard"></i></li>
+    <li><i class="icon-load" rel="icon-load"></i></li>
+    <li><i class="icon-receipt-dollar" rel="icon-receipt-dollar"></i></li>
+    <li><i class="icon-previous" rel="icon-previous"></i></li>
+    <li><i class="icon-pictures" rel="icon-pictures"></i></li>
+    <li><i class="icon-notepad-alt" rel="icon-notepad-alt"></i></li>
+    <li><i class="icon-paper-bag" rel="icon-paper-bag"></i></li>
+    <li><i class="icon-name-badge" rel="icon-name-badge"></i></li>
+    <li><i class="icon-medicine" rel="icon-medicine"></i></li>
+    <li><i class="icon-list" rel="icon-list"></i></li>
+    <li><i class="icon-key" rel="icon-key"></i></li>
+    <li><i class="icon-receipt-alt" rel="icon-receipt-alt"></i></li>
+    <li><i class="icon-previous-media" rel="icon-previous-media"></i></li>
+    <li><i class="icon-pictures-alt" rel="icon-pictures-alt"></i></li>
+    <li><i class="icon-pants" rel="icon-pants"></i></li>
+    <li><i class="icon-nodes" rel="icon-nodes"></i></li>
+    <li><i class="icon-music" rel="icon-music"></i></li>
+    <li><i class="icon-readonly" rel="icon-readonly"></i></li>
+    <li><i class="icon-presentation" rel="icon-presentation"></i></li>
+    <li><i class="icon-pictures-alt-2" rel="icon-pictures-alt-2"></i></li>
+    <li><i class="icon-pannel-close" rel="icon-pannel-close"></i></li>
+    <li><i class="icon-next" rel="icon-next"></i></li>
+    <li><i class="icon-multiple-windows" rel="icon-multiple-windows"></i></li>
+    <li><i class="icon-medical-emergency" rel="icon-medical-emergency"></i></li>
+    <li><i class="icon-medal" rel="icon-medal"></i></li>
+    <li><i class="icon-link" rel="icon-link"></i></li>
+    <li><i class="icon-linux-tux" rel="icon-linux-tux"></i></li>
+    <li><i class="icon-junk" rel="icon-junk"></i></li>
+    <li><i class="icon-item-arrangement" rel="icon-item-arrangement"></i></li>
+    <li><i class="icon-iphone" rel="icon-iphone"></i></li>
+    <li><i class="icon-lightning" rel="icon-lightning"></i></li>
+    <li><i class="icon-map" rel="icon-map"></i></li>
+    <li><i class="icon-multiple-credit-cards" rel="icon-multiple-credit-cards"></i></li>
+    <li><i class="icon-next-media" rel="icon-next-media"></i></li>
+    <li><i class="icon-panel-show" rel="icon-panel-show"></i></li>
+    <li><i class="icon-picture" rel="icon-picture"></i></li>
+    <li><i class="icon-power" rel="icon-power"></i></li>
+    <li><i class="icon-re-post" rel="icon-re-post"></i></li>
+    <li><i class="icon-rate" rel="icon-rate"></i></li>
+    <li><i class="icon-rain" rel="icon-rain"></i></li>
+    <li><i class="icon-radio" rel="icon-radio"></i></li>
+    <li><i class="icon-radio-receiver" rel="icon-radio-receiver"></i></li>
+    <li><i class="icon-radio-alt" rel="icon-radio-alt"></i></li>
+    <li><i class="icon-quote" rel="icon-quote"></i></li>
+    <li><i class="icon-qr-code" rel="icon-qr-code"></i></li>
+    <li><i class="icon-pushpin" rel="icon-pushpin"></i></li>
+    <li><i class="icon-pulse" rel="icon-pulse"></i></li>
+    <li><i class="icon-projector" rel="icon-projector"></i></li>
+    <li><i class="icon-play" rel="icon-play"></i></li>
+    <li><i class="icon-playing-cards" rel="icon-playing-cards"></i></li>
+    <li><i class="icon-playlist" rel="icon-playlist"></i></li>
+    <li><i class="icon-plugin" rel="icon-plugin"></i></li>
+    <li><i class="icon-podcast" rel="icon-podcast"></i></li>
+    <li><i class="icon-poker-chip" rel="icon-poker-chip"></i></li>
+    <li><i class="icon-poll" rel="icon-poll"></i></li>
+    <li><i class="icon-post-it" rel="icon-post-it"></i></li>
+    <li><i class="icon-pound-bag" rel="icon-pound-bag"></i></li>
+    <li><i class="icon-power-outlet" rel="icon-power-outlet"></i></li>
+    <li><i class="icon-photo-album" rel="icon-photo-album"></i></li>
+    <li><i class="icon-phone" rel="icon-phone"></i></li>
+    <li><i class="icon-phone-ring" rel="icon-phone-ring"></i></li>
+    <li><i class="icon-people" rel="icon-people"></i></li>
+    <li><i class="icon-people-female" rel="icon-people-female"></i></li>
+    <li><i class="icon-people-alt" rel="icon-people-alt"></i></li>
+    <li><i class="icon-people-alt-2" rel="icon-people-alt-2"></i></li>
+    <li><i class="icon-pc" rel="icon-pc"></i></li>
+    <li><i class="icon-pause" rel="icon-pause"></i></li>
+    <li><i class="icon-path" rel="icon-path"></i></li>
+    <li><i class="icon-out" rel="icon-out"></i></li>
+    <li><i class="icon-outbox" rel="icon-outbox"></i></li>
+    <li><i class="icon-outdent" rel="icon-outdent"></i></li>
+    <li><i class="icon-page-add" rel="icon-page-add"></i></li>
+    <li><i class="icon-page-down" rel="icon-page-down"></i></li>
+    <li><i class="icon-page-remove" rel="icon-page-remove"></i></li>
+    <li><i class="icon-page-restricted" rel="icon-page-restricted"></i></li>
+    <li><i class="icon-page-up" rel="icon-page-up"></i></li>
+    <li><i class="icon-paint-roller" rel="icon-paint-roller"></i></li>
+    <li><i class="icon-palette" rel="icon-palette"></i></li>
+    <li><i class="icon-newspaper" rel="icon-newspaper"></i></li>
+    <li><i class="icon-newspaper-alt" rel="icon-newspaper-alt"></i></li>
+    <li><i class="icon-network-alt" rel="icon-network-alt"></i></li>
+    <li><i class="icon-navigational-arrow" rel="icon-navigational-arrow"></i></li>
+    <li><i class="icon-navigation" rel="icon-navigation"></i></li>
+    <li><i class="icon-navigation-vertical" rel="icon-navigation-vertical"></i></li>
+    <li><i class="icon-navigation-up" rel="icon-navigation-up"></i></li>
+    <li><i class="icon-navigation-top" rel="icon-navigation-top"></i></li>
+    <li><i class="icon-navigation-road" rel="icon-navigation-road"></i></li>
+    <li><i class="icon-navigation-right" rel="icon-navigation-right"></i></li>
+    <li><i class="icon-microscope" rel="icon-microscope"></i></li>
+    <li><i class="icon-mindmap" rel="icon-mindmap"></i></li>
+    <li><i class="icon-molecular-network" rel="icon-molecular-network"></i></li>
+    <li><i class="icon-molecular" rel="icon-molecular"></i></li>
+    <li><i class="icon-mountain" rel="icon-mountain"></i></li>
+    <li><i class="icon-mouse-cursor" rel="icon-mouse-cursor"></i></li>
+    <li><i class="icon-mouse" rel="icon-mouse"></i></li>
+    <li><i class="icon-movie-alt" rel="icon-movie-alt"></i></li>
+    <li><i class="icon-map-marker" rel="icon-map-marker"></i></li>
+    <li><i class="icon-movie" rel="icon-movie"></i></li>
+    <li><i class="icon-map-location" rel="icon-map-location"></i></li>
+    <li><i class="icon-map-alt" rel="icon-map-alt"></i></li>
+    <li><i class="icon-male-symbol" rel="icon-male-symbol"></i></li>
+    <li><i class="icon-male-and-female" rel="icon-male-and-female"></i></li>
+    <li><i class="icon-mailbox" rel="icon-mailbox"></i></li>
+    <li><i class="icon-magnet" rel="icon-magnet"></i></li>
+    <li><i class="icon-loupe" rel="icon-loupe"></i></li>
+    <li><i class="icon-mobile" rel="icon-mobile"></i></li>
+    <li><i class="icon-logout" rel="icon-logout"></i></li>
+    <li><i class="icon-log-out" rel="icon-log-out"></i></li>
+    <li><i class="icon-layers" rel="icon-layers"></i></li>
+    <li><i class="icon-left-double-arrow" rel="icon-left-double-arrow"></i></li>
+    <li><i class="icon-layout" rel="icon-layout"></i></li>
+    <li><i class="icon-legal" rel="icon-legal"></i></li>
+    <li><i class="icon-lense" rel="icon-lense"></i></li>
+    <li><i class="icon-library" rel="icon-library"></i></li>
+    <li><i class="icon-light-down" rel="icon-light-down"></i></li>
+    <li><i class="icon-light-up" rel="icon-light-up"></i></li>
+    <li><i class="icon-lightbulb-active" rel="icon-lightbulb-active"></i></li>
+    <li><i class="icon-lightbulb" rel="icon-lightbulb"></i></li>
+    <li><i class="icon-ipad" rel="icon-ipad"></i></li>
+    <li><i class="icon-invoice" rel="icon-invoice"></i></li>
+    <li><i class="icon-info" rel="icon-info"></i></li>
+    <li><i class="icon-infinity" rel="icon-infinity"></i></li>
+    <li><i class="icon-indent" rel="icon-indent"></i></li>
+    <li><i class="icon-inbox" rel="icon-inbox"></i></li>
+    <li><i class="icon-inbox-full" rel="icon-inbox-full"></i></li>
+    <li><i class="icon-inactive-line" rel="icon-inactive-line"></i></li>
+    <li><i class="icon-imac" rel="icon-imac"></i></li>
+    <li><i class="icon-hourglass" rel="icon-hourglass"></i></li>
+    <li><i class="icon-home" rel="icon-home"></i></li>
+    <li><i class="icon-grid" rel="icon-grid"></i></li>
+    <li><i class="icon-food" rel="icon-food"></i></li>
+    <li><i class="icon-favorite" rel="icon-favorite"></i></li>
+    <li><i class="icon-door-open-alt" rel="icon-door-open-alt"></i></li>
+    <li><i class="icon-diagnostics" rel="icon-diagnostics"></i></li>
+    <li><i class="icon-contrast" rel="icon-contrast"></i></li>
+    <li><i class="icon-coins-dollar-alt" rel="icon-coins-dollar-alt"></i></li>
+    <li><i class="icon-circle-dotted-active" rel="icon-circle-dotted-active"></i></li>
+    <li><i class="icon-cinema" rel="icon-cinema"></i></li>
+    <li><i class="icon-chip" rel="icon-chip"></i></li>
+    <li><i class="icon-chip-alt" rel="icon-chip-alt"></i></li>
+    <li><i class="icon-chess" rel="icon-chess"></i></li>
+    <li><i class="icon-checkbox" rel="icon-checkbox"></i></li>
+    <li><i class="icon-checkbox-empty" rel="icon-checkbox-empty"></i></li>
+    <li><i class="icon-checkbox-dotted" rel="icon-checkbox-dotted"></i></li>
+    <li><i class="icon-checkbox-dotted-active" rel="icon-checkbox-dotted-active"></i></li>
+    <li><i class="icon-check" rel="icon-check"></i></li>
+    <li><i class="icon-chat" rel="icon-chat"></i></li>
+    <li><i class="icon-chat-active" rel="icon-chat-active"></i></li>
+    <li><i class="icon-chart" rel="icon-chart"></i></li>
+    <li><i class="icon-chart-curve" rel="icon-chart-curve"></i></li>
+    <li><i class="icon-certificate" rel="icon-certificate"></i></li>
+    <li><i class="icon-categories" rel="icon-categories"></i></li>
+    <li><i class="icon-cash-register" rel="icon-cash-register"></i></li>
+    <li><i class="icon-car" rel="icon-car"></i></li>
+    <li><i class="icon-caps-lock" rel="icon-caps-lock"></i></li>
+    <li><i class="icon-candy" rel="icon-candy"></i></li>
+    <li><i class="icon-circle-dotted" rel="icon-circle-dotted"></i></li>
+    <li><i class="icon-circuits" rel="icon-circuits"></i></li>
+    <li><i class="icon-circus" rel="icon-circus"></i></li>
+    <li><i class="icon-client" rel="icon-client"></i></li>
+    <li><i class="icon-clothes-hanger" rel="icon-clothes-hanger"></i></li>
+    <li><i class="icon-cloud-drive" rel="icon-cloud-drive"></i></li>
+    <li><i class="icon-cloud-upload" rel="icon-cloud-upload"></i></li>
+    <li><i class="icon-cloud" rel="icon-cloud"></i></li>
+    <li><i class="icon-cloudy" rel="icon-cloudy"></i></li>
+    <li><i class="icon-clubs" rel="icon-clubs"></i></li>
+    <li><i class="icon-cocktail" rel="icon-cocktail"></i></li>
+    <li><i class="icon-code" rel="icon-code"></i></li>
+    <li><i class="icon-coffee" rel="icon-coffee"></i></li>
+    <li><i class="icon-coin-dollar" rel="icon-coin-dollar"></i></li>
+    <li><i class="icon-coin-pound" rel="icon-coin-pound"></i></li>
+    <li><i class="icon-coin-yen" rel="icon-coin-yen"></i></li>
+    <li><i class="icon-coin" rel="icon-coin"></i></li>
+    <li><i class="icon-coins-alt" rel="icon-coins-alt"></i></li>
+    <li><i class="icon-console" rel="icon-console"></i></li>
+    <li><i class="icon-connection" rel="icon-connection"></i></li>
+    <li><i class="icon-compress" rel="icon-compress"></i></li>
+    <li><i class="icon-company" rel="icon-company"></i></li>
+    <li><i class="icon-command" rel="icon-command"></i></li>
+    <li><i class="icon-coin-euro" rel="icon-coin-euro"></i></li>
+    <li><i class="icon-combination-lock" rel="icon-combination-lock"></i></li>
+    <li><i class="icon-combination-lock-open" rel="icon-combination-lock-open"></i></li>
+    <li><i class="icon-comb" rel="icon-comb"></i></li>
+    <li><i class="icon-columns" rel="icon-columns"></i></li>
+    <li><i class="icon-colorpicker" rel="icon-colorpicker"></i></li>
+    <li><i class="icon-color-bucket" rel="icon-color-bucket"></i></li>
+    <li><i class="icon-coins" rel="icon-coins"></i></li>
+    <li><i class="icon-coins-yen" rel="icon-coins-yen"></i></li>
+    <li><i class="icon-coins-yen-alt" rel="icon-coins-yen-alt"></i></li>
+    <li><i class="icon-coins-pound" rel="icon-coins-pound"></i></li>
+    <li><i class="icon-coins-pound-alt" rel="icon-coins-pound-alt"></i></li>
+    <li><i class="icon-coins-euro" rel="icon-coins-euro"></i></li>
+    <li><i class="icon-coins-euro-alt" rel="icon-coins-euro-alt"></i></li>
+    <li><i class="icon-coins-dollar" rel="icon-coins-dollar"></i></li>
+    <li><i class="icon-conversation-alt" rel="icon-conversation-alt"></i></li>
+    <li><i class="icon-conversation" rel="icon-conversation"></i></li>
+    <li><i class="icon-coverflow" rel="icon-coverflow"></i></li>
+    <li><i class="icon-credit-card-alt" rel="icon-credit-card-alt"></i></li>
+    <li><i class="icon-credit-card" rel="icon-credit-card"></i></li>
+    <li><i class="icon-crop" rel="icon-crop"></i></li>
+    <li><i class="icon-crosshair" rel="icon-crosshair"></i></li>
+    <li><i class="icon-crown-alt" rel="icon-crown-alt"></i></li>
+    <li><i class="icon-crown" rel="icon-crown"></i></li>
+    <li><i class="icon-cupcake" rel="icon-cupcake"></i></li>
+    <li><i class="icon-curve" rel="icon-curve"></i></li>
+    <li><i class="icon-cut" rel="icon-cut"></i></li>
+    <li><i class="icon-dashboard" rel="icon-dashboard"></i></li>
+    <li><i class="icon-defrag" rel="icon-defrag"></i></li>
+    <li><i class="icon-delete" rel="icon-delete"></i></li>
+    <li><i class="icon-delete-key" rel="icon-delete-key"></i></li>
+    <li><i class="icon-departure" rel="icon-departure"></i></li>
+    <li><i class="icon-desk" rel="icon-desk"></i></li>
+    <li><i class="icon-desktop" rel="icon-desktop"></i></li>
+    <li><i class="icon-donate" rel="icon-donate"></i></li>
+    <li><i class="icon-dollar-bag" rel="icon-dollar-bag"></i></li>
+    <li><i class="icon-documents" rel="icon-documents"></i></li>
+    <li><i class="icon-document" rel="icon-document"></i></li>
+    <li><i class="icon-document-dashed-line" rel="icon-document-dashed-line"></i></li>
+    <li><i class="icon-dock-connector" rel="icon-dock-connector"></i></li>
+    <li><i class="icon-dna" rel="icon-dna"></i></li>
+    <li><i class="icon-display" rel="icon-display"></i></li>
+    <li><i class="icon-disk-image" rel="icon-disk-image"></i></li>
+    <li><i class="icon-disc" rel="icon-disc"></i></li>
+    <li><i class="icon-directions" rel="icon-directions"></i></li>
+    <li><i class="icon-directions-alt" rel="icon-directions-alt"></i></li>
+    <li><i class="icon-diploma" rel="icon-diploma"></i></li>
+    <li><i class="icon-diploma-alt" rel="icon-diploma-alt"></i></li>
+    <li><i class="icon-dice" rel="icon-dice"></i></li>
+    <li><i class="icon-diamonds" rel="icon-diamonds"></i></li>
+    <li><i class="icon-diamond" rel="icon-diamond"></i></li>
+    <li><i class="icon-diagonal-arrow" rel="icon-diagonal-arrow"></i></li>
+    <li><i class="icon-diagonal-arrow-alt" rel="icon-diagonal-arrow-alt"></i></li>
+    <li><i class="icon-door-open" rel="icon-door-open"></i></li>
+    <li><i class="icon-download-alt" rel="icon-download-alt"></i></li>
+    <li><i class="icon-download" rel="icon-download"></i></li>
+    <li><i class="icon-drop" rel="icon-drop"></i></li>
+    <li><i class="icon-eco" rel="icon-eco"></i></li>
+    <li><i class="icon-economy" rel="icon-economy"></i></li>
+    <li><i class="icon-edit" rel="icon-edit"></i></li>
+    <li><i class="icon-eject" rel="icon-eject"></i></li>
+    <li><i class="icon-employee" rel="icon-employee"></i></li>
+    <li><i class="icon-energy-saving-bulb" rel="icon-energy-saving-bulb"></i></li>
+    <li><i class="icon-enter" rel="icon-enter"></i></li>
+    <li><i class="icon-equalizer" rel="icon-equalizer"></i></li>
+    <li><i class="icon-escape" rel="icon-escape"></i></li>
+    <li><i class="icon-ethernet" rel="icon-ethernet"></i></li>
+    <li><i class="icon-euro-bag" rel="icon-euro-bag"></i></li>
+    <li><i class="icon-exit-fullscreen" rel="icon-exit-fullscreen"></i></li>
+    <li><i class="icon-eye" rel="icon-eye"></i></li>
+    <li><i class="icon-facebook-like" rel="icon-facebook-like"></i></li>
+    <li><i class="icon-factory" rel="icon-factory"></i></li>
+    <li><i class="icon-font" rel="icon-font"></i></li>
+    <li><i class="icon-folders" rel="icon-folders"></i></li>
+    <li><i class="icon-folder" rel="icon-folder"></i></li>
+    <li><i class="icon-folder-outline" rel="icon-folder-outline"></i></li>
+    <li><i class="icon-folder-open" rel="icon-folder-open"></i></li>
+    <li><i class="icon-flowerpot" rel="icon-flowerpot"></i></li>
+    <li><i class="icon-flashlight" rel="icon-flashlight"></i></li>
+    <li><i class="icon-flash" rel="icon-flash"></i></li>
+    <li><i class="icon-flag" rel="icon-flag"></i></li>
+    <li><i class="icon-flag-alt" rel="icon-flag-alt"></i></li>
+    <li><i class="icon-firewire" rel="icon-firewire"></i></li>
+    <li><i class="icon-firewall" rel="icon-firewall"></i></li>
+    <li><i class="icon-fire" rel="icon-fire"></i></li>
+    <li><i class="icon-fingerprint" rel="icon-fingerprint"></i></li>
+    <li><i class="icon-filter" rel="icon-filter"></i></li>
+    <li><i class="icon-filter-arrows" rel="icon-filter-arrows"></i></li>
+    <li><i class="icon-files" rel="icon-files"></i></li>
+    <li><i class="icon-file-cabinet" rel="icon-file-cabinet"></i></li>
+    <li><i class="icon-female-symbol" rel="icon-female-symbol"></i></li>
+    <li><i class="icon-footprints" rel="icon-footprints"></i></li>
+    <li><i class="icon-hammer" rel="icon-hammer"></i></li>
+    <li><i class="icon-hand-active-alt" rel="icon-hand-active-alt"></i></li>
+    <li><i class="icon-forking" rel="icon-forking"></i></li>
+    <li><i class="icon-hand-active" rel="icon-hand-active"></i></li>
+    <li><i class="icon-hand-pointer-alt" rel="icon-hand-pointer-alt"></i></li>
+    <li><i class="icon-hand-pointer" rel="icon-hand-pointer"></i></li>
+    <li><i class="icon-handprint" rel="icon-handprint"></i></li>
+    <li><i class="icon-handshake" rel="icon-handshake"></i></li>
+    <li><i class="icon-handtool" rel="icon-handtool"></i></li>
+    <li><i class="icon-hard-drive" rel="icon-hard-drive"></i></li>
+    <li><i class="icon-help" rel="icon-help"></i></li>
+    <li><i class="icon-graduate" rel="icon-graduate"></i></li>
+    <li><i class="icon-gps" rel="icon-gps"></i></li>
+    <li><i class="icon-help-alt" rel="icon-help-alt"></i></li>
+    <li><i class="icon-height" rel="icon-height"></i></li>
+    <li><i class="icon-globe" rel="icon-globe"></i></li>
+    <li><i class="icon-hearts" rel="icon-hearts"></i></li>
+    <li><i class="icon-globe-inverted-europe-africa" rel="icon-globe-inverted-europe-africa"></i></li>
+    <li><i class="icon-headset" rel="icon-headset"></i></li>
+    <li><i class="icon-globe-inverted-asia" rel="icon-globe-inverted-asia"></i></li>
+    <li><i class="icon-headphones" rel="icon-headphones"></i></li>
+    <li><i class="icon-globe-inverted-america" rel="icon-globe-inverted-america"></i></li>
+    <li><i class="icon-hd" rel="icon-hd"></i></li>
+    <li><i class="icon-globe-europe-africa" rel="icon-globe-europe-africa"></i></li>
+    <li><i class="icon-hat" rel="icon-hat"></i></li>
+    <li><i class="icon-globe-asia" rel="icon-globe-asia"></i></li>
+    <li><i class="icon-globe-alt" rel="icon-globe-alt"></i></li>
+    <li><i class="icon-hard-drive-alt" rel="icon-hard-drive-alt"></i></li>
+    <li><i class="icon-glasses" rel="icon-glasses"></i></li>
+    <li><i class="icon-gift" rel="icon-gift"></i></li>
+    <li><i class="icon-handtool-alt" rel="icon-handtool-alt"></i></li>
+    <li><i class="icon-geometry" rel="icon-geometry"></i></li>
+    <li><i class="icon-game" rel="icon-game"></i></li>
+    <li><i class="icon-fullscreen" rel="icon-fullscreen"></i></li>
+    <li><i class="icon-fullscreen-alt" rel="icon-fullscreen-alt"></i></li>
+    <li><i class="icon-frame" rel="icon-frame"></i></li>
+    <li><i class="icon-frame-alt" rel="icon-frame-alt"></i></li>
+    <li><i class="icon-camera-roll" rel="icon-camera-roll"></i></li>
+    <li><i class="icon-bookmark" rel="icon-bookmark"></i></li>
+    <li><i class="icon-bill" rel="icon-bill"></i></li>
+    <li><i class="icon-baby-stroller" rel="icon-baby-stroller"></i></li>
+    <li><i class="icon-alarm-clock" rel="icon-alarm-clock"></i></li>
+    <li><i class="icon-adressbook" rel="icon-adressbook"></i></li>
+    <li><i class="icon-add" rel="icon-add"></i></li>
+    <li><i class="icon-activity" rel="icon-activity"></i></li>
+    <li><i class="icon-untitled" rel="icon-untitled"></i></li>
+    <li><i class="icon-camcorder" rel="icon-camcorder"></i></li>
+    <li><i class="icon-calendar" rel="icon-calendar"></i></li>
+    <li><i class="icon-calendar-alt" rel="icon-calendar-alt"></i></li>
+    <li><i class="icon-calculator" rel="icon-calculator"></i></li>
+    <li><i class="icon-bus" rel="icon-bus"></i></li>
+    <li><i class="icon-burn" rel="icon-burn"></i></li>
+    <li><i class="icon-bulleted-list" rel="icon-bulleted-list"></i></li>
+    <li><i class="icon-bug" rel="icon-bug"></i></li>
+    <li><i class="icon-brush" rel="icon-brush"></i></li>
+    <li><i class="icon-brush-alt" rel="icon-brush-alt"></i></li>
+    <li><i class="icon-brush-alt-2" rel="icon-brush-alt-2"></i></li>
+    <li><i class="icon-browser-window" rel="icon-browser-window"></i></li>
+    <li><i class="icon-briefcase" rel="icon-briefcase"></i></li>
+    <li><i class="icon-brick" rel="icon-brick"></i></li>
+    <li><i class="icon-brackets" rel="icon-brackets"></i></li>
+    <li><i class="icon-box" rel="icon-box"></i></li>
+    <li><i class="icon-box-open" rel="icon-box-open"></i></li>
+    <li><i class="icon-box-alt" rel="icon-box-alt"></i></li>
+    <li><i class="icon-books" rel="icon-books"></i></li>
+    <li><i class="icon-billboard" rel="icon-billboard"></i></li>
+    <li><i class="icon-bills-dollar" rel="icon-bills-dollar"></i></li>
+    <li><i class="icon-bills-euro" rel="icon-bills-euro"></i></li>
+    <li><i class="icon-bills-pound" rel="icon-bills-pound"></i></li>
+    <li><i class="icon-bills-yen" rel="icon-bills-yen"></i></li>
+    <li><i class="icon-bills" rel="icon-bills"></i></li>
+    <li><i class="icon-binarycode" rel="icon-binarycode"></i></li>
+    <li><i class="icon-binoculars" rel="icon-binoculars"></i></li>
+    <li><i class="icon-bird" rel="icon-bird"></i></li>
+    <li><i class="icon-birthday-cake" rel="icon-birthday-cake"></i></li>
+    <li><i class="icon-blueprint" rel="icon-blueprint"></i></li>
+    <li><i class="icon-block" rel="icon-block"></i></li>
+    <li><i class="icon-bluetooth" rel="icon-bluetooth"></i></li>
+    <li><i class="icon-boat-shipping" rel="icon-boat-shipping"></i></li>
+    <li><i class="icon-bomb" rel="icon-bomb"></i></li>
+    <li><i class="icon-book-alt-2" rel="icon-book-alt-2"></i></li>
+    <li><i class="icon-bones" rel="icon-bones"></i></li>
+    <li><i class="icon-book-alt" rel="icon-book-alt"></i></li>
+    <li><i class="icon-book" rel="icon-book"></i></li>
+    <li><i class="icon-bill-yen" rel="icon-bill-yen"></i></li>
+    <li><i class="icon-award" rel="icon-award"></i></li>
+    <li><i class="icon-bill-pound" rel="icon-bill-pound"></i></li>
+    <li><i class="icon-autofill" rel="icon-autofill"></i></li>
+    <li><i class="icon-bill-euro" rel="icon-bill-euro"></i></li>
+    <li><i class="icon-auction-hammer" rel="icon-auction-hammer"></i></li>
+    <li><i class="icon-bill-dollar" rel="icon-bill-dollar"></i></li>
+    <li><i class="icon-attachment" rel="icon-attachment"></i></li>
+    <li><i class="icon-bell" rel="icon-bell"></i></li>
+    <li><i class="icon-article" rel="icon-article"></i></li>
+    <li><i class="icon-bell-off" rel="icon-bell-off"></i></li>
+    <li><i class="icon-art-easel" rel="icon-art-easel"></i></li>
+    <li><i class="icon-beer-glass" rel="icon-beer-glass"></i></li>
+    <li><i class="icon-arrow-up" rel="icon-arrow-up"></i></li>
+    <li><i class="icon-battery-low" rel="icon-battery-low"></i></li>
+    <li><i class="icon-arrow-right" rel="icon-arrow-right"></i></li>
+    <li><i class="icon-battery-full" rel="icon-battery-full"></i></li>
+    <li><i class="icon-arrow-left" rel="icon-arrow-left"></i></li>
+    <li><i class="icon-bars" rel="icon-bars"></i></li>
+    <li><i class="icon-arrow-down" rel="icon-arrow-down"></i></li>
+    <li><i class="icon-barcode" rel="icon-barcode"></i></li>
+    <li><i class="icon-arrivals" rel="icon-arrivals"></i></li>
+    <li><i class="icon-bar-chart" rel="icon-bar-chart"></i></li>
+    <li><i class="icon-application-window" rel="icon-application-window"></i></li>
+    <li><i class="icon-band-aid" rel="icon-band-aid"></i></li>
+    <li><i class="icon-application-window-alt" rel="icon-application-window-alt"></i></li>
+    <li><i class="icon-ball" rel="icon-ball"></i></li>
+    <li><i class="icon-application-error" rel="icon-application-error"></i></li>
+    <li><i class="icon-badge-restricted" rel="icon-badge-restricted"></i></li>
+    <li><i class="icon-app" rel="icon-app"></i></li>
+    <li><i class="icon-badge-remove" rel="icon-badge-remove"></i></li>
+    <li><i class="icon-anchor" rel="icon-anchor"></i></li>
+    <li><i class="icon-badge-count" rel="icon-badge-count"></i></li>
+    <li><i class="icon-alt" rel="icon-alt"></i></li>
+    <li><i class="icon-badge-add" rel="icon-badge-add"></i></li>
+    <li><i class="icon-alert" rel="icon-alert"></i></li>
+    <li><i class="icon-backspace" rel="icon-backspace"></i></li>
+    <li><i class="icon-alert-alt" rel="icon-alert-alt"></i></li>
+    <li><i class="icon-chevron-up" rel="icon-chevron-up"></i></li>
+    <li><i class="icon-chevron-down" rel="icon-chevron-down"></i></li>
 </ul>
