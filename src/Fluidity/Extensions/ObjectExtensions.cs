@@ -39,9 +39,9 @@ namespace Fluidity.Extensions
         public static Guid EncodeAsGuid(this object obj)
         {
             Guid result;
-            using (var md5 = MD5.Create())
+            using (var sha1 = SHA1.Create())
             {
-                var hash = md5.ComputeHash(Encoding.Default.GetBytes(obj.ToString()));
+                var hash = sha1.ComputeHash(Encoding.Default.GetBytes(obj.ToString()));
                 result = new Guid(hash);
             }
             return result;
