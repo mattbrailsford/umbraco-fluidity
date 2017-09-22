@@ -127,7 +127,7 @@ namespace Fluidity.Web.Api
 
             // Validate the property values (review ContentItemValidationHelper)
             var validator = new FluidityEntityPostValidator();
-            validator.Validate(ModelState, postModel, collectionConfig);
+            validator.Validate(ModelState, postModel, entity, collectionConfig);
 
             // Check to see if model is valid
             if (!ModelState.IsValid)

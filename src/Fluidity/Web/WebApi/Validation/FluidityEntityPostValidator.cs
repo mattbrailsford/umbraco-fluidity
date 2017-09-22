@@ -16,6 +16,8 @@ using Fluidity.Helpers;
 using Fluidity.Web.Extensions;
 using Fluidity.Web.Models;
 using Umbraco.Core;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Fluidity.Web.WebApi.Validation
 {
@@ -32,17 +34,18 @@ namespace Fluidity.Web.WebApi.Validation
             : this(new UmbracoDataTypeHelper())
         { }
 
-        public void Validate(ModelStateDictionary modelState, FluidityEntityPostModel entity, FluidityCollectionConfig config)
+        public void Validate(ModelStateDictionary modelState, FluidityEntityPostModel postModel, object entity, FluidityCollectionConfig config)
         {
             var configProps = config.Editor?.Tabs.SelectMany(x => x.Fields).ToArray() ?? new FluidityEditorFieldConfig[0];
 
-            if (ValidateProperties(modelState, entity, configProps) == false) return;
-            if (ValidatePropertyData(modelState, entity, configProps) == false) return;
+            if (ValidateProperties(modelState, postModel, configProps) == false) return;
+            if (ValidatePropertyData(modelState, postModel, configProps) == false) return;
+            if (ValidateDataAnnotations(modelState, entity) == false) return;
         }
 
-        protected virtual bool ValidateProperties(ModelStateDictionary modelState, FluidityEntityPostModel entity, FluidityEditorFieldConfig[] configProps)
+        protected virtual bool ValidateProperties(ModelStateDictionary modelState, FluidityEntityPostModel postModel, FluidityEditorFieldConfig[] configProps)
         {
-            foreach (var p in entity.Properties)
+            foreach (var p in postModel.Properties)
             {
                 if (configProps.Any(property => property.Property.Name == p.Alias) == false)
                 {
@@ -53,12 +56,12 @@ namespace Fluidity.Web.WebApi.Validation
             return true;
         }
 
-        protected virtual bool ValidatePropertyData(ModelStateDictionary modelState, FluidityEntityPostModel entity, FluidityEditorFieldConfig[] configProps)
+        protected virtual bool ValidatePropertyData(ModelStateDictionary modelState, FluidityEntityPostModel postModel, FluidityEditorFieldConfig[] configProps)
         {
             foreach (var p in configProps)
             {
                 var dataTypeInfo = _dataTypeHelper.ResolveDataType(p);
-                var postedValue = entity.Properties.Single(x => x.Alias == p.Property.Name).Value;
+                var postedValue = postModel.Properties.Single(x => x.Alias == p.Property.Name).Value;
 
                 // Validate against the prop editor validators
                 foreach (var result in dataTypeInfo.PropertyEditor.ValueEditor.Validators
@@ -99,6 +102,24 @@ namespace Fluidity.Web.WebApi.Validation
                             modelState.AddPropertyError(result, p.Property.Name);
                         }
                     }
+                }
+            }
+
+            return modelState.IsValid;
+        }
+
+        protected virtual bool ValidateDataAnnotations(ModelStateDictionary modelState, object entity)
+        {
+            var validationContext = new ValidationContext(entity, null, null);
+            var results = new List<ValidationResult>();
+
+            Validator.TryValidateObject(entity, validationContext, results, true);
+
+            foreach (var result in results)
+            {
+                foreach (var field in result.MemberNames)
+                {
+                    modelState.AddModelError($"_Properties.{field}", result.ErrorMessage);
                 }
             }
 
