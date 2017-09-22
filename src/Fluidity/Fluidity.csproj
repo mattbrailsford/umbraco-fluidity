@@ -284,6 +284,7 @@
     <Compile Include="Extensions\FluidityEditorFieldConfigExtensions.cs" />
     <Compile Include="ListViewLayouts\FluidityGridListViewLayout.cs" />
     <Compile Include="ListViewLayouts\FluidityTableListViewLayout.cs" />
+    <Compile Include="Mappers\ReadOnlyValueMapper.cs" />
     <Compile Include="Models\DataTypeInfo.cs" />
     <Compile Include="Helpers\UmbracoDataTypeHelper.cs" />
     <Compile Include="Helpers\UmbracoUiHelper.cs" />
