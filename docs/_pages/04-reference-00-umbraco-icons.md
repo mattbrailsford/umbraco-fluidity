@@ -5,7 +5,7 @@ title: Umbraco Icons
 permalink: /reference/umbraco-icons/index.html
 ---
 
-The following is a list of icons and icon colors supported by Umbraco that can be used for section, tree and collections in Fluidity.
+The following is a list of icons and icon colors supported by Umbraco that can be used for section, tree and collections defined via the Fluidity API.
 
 ### Icon colours
 

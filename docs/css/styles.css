@@ -416,13 +416,17 @@ footer {
     display: inline-block;
     text-decoration: inherit;
     speak: none;
+    vertical-align: middle;
 }
 
 [class^="icon-"]:after,
 [class*=" icon-"]:after {
     content: " "attr(class)" ";
     font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    margin-left: 10px;
     display: inline-block;
+    vertical-align: middle;
 }
 
 .icon-zoom-out:before {
