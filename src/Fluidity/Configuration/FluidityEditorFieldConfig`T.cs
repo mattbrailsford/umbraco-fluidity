@@ -79,7 +79,7 @@ namespace Fluidity.Configuration
         /// Sets this field as required.
         /// </summary>
         /// <returns>The editor field configuration.</returns>
-        public new FluidityEditorFieldConfig<TEntityType, TValueType> IsRequired()
+        public FluidityEditorFieldConfig<TEntityType, TValueType> MakeRequired()
         {
             _isRequired = true;
             return this;
