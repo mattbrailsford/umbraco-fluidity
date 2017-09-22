@@ -59,7 +59,7 @@ public class FluidityBootstrap : FluidityConfigModule
 {
     public override void Configure (FluidityConfig  config) 
     {
-        config.AddSection("Database", sectionConfig => {
+        config.AddSection("Database", "icon-server-alt", sectionConfig => {
             
             sectionConfig.SetTree("Database", treeConfig => {
                 
@@ -83,7 +83,7 @@ public class FluidityBootstrap : FluidityConfigModule
                         });
 
                         editorConfig.AddTab("Media", tabConfig => {
-                            tabConfig.AddField(p => p.JobTitle).SetDataType("Upload");
+                            tabConfig.AddField(p => p.Avatar).SetDataType("Upload");
                         });
                         
                     });
