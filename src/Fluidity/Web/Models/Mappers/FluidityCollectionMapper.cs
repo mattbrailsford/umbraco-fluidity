@@ -6,6 +6,8 @@
 using System.Linq;
 using Fluidity.Configuration;
 using Umbraco.Core;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace Fluidity.Web.Models.Mappers
 {
@@ -34,12 +36,31 @@ namespace Fluidity.Web.Models.Mappers
                 m.ListView = new FluidityListViewDisplayModel
                 {
                     PageSize = collection.ListView.PageSize,
-                    Properties = collection.ListView.Fields.Select(x => new FluidityListViewPropertyDisplayModel // We don't include Name, as it's always automatically included
+                    Properties = collection.ListView.Fields.Select(x =>
                     {
-                        Alias = x.Property.Name,
-                        Header = x.Heading ?? x.Property.Name.SplitPascalCasing(),
-                        AllowSorting = true,
-                        IsSystem = false
+                        // Calculate heading
+                        var heading = x.Heading;
+                        if (heading.IsNullOrWhiteSpace())
+                        {
+                            var attr = x.Property.PropertyInfo.GetCustomAttribute<DisplayNameAttribute>(true);
+                            if (attr != null)
+                            {
+                                heading = attr.DisplayName;
+                            }
+                            else
+                            {
+                                heading = x.Property.Name.SplitPascalCasing();
+                            }
+                        }
+
+                        // Build property
+                        return new FluidityListViewPropertyDisplayModel // We don't include Name, as it's always automatically included
+                        {
+                            Alias = x.Property.Name,
+                            Header = heading,
+                            AllowSorting = true,
+                            IsSystem = false
+                        };
                     }),
                     Layouts = collection.ListView.Layouts.Select((x, idx) => new FluidityListViewLayoutDisplayModel
                     {

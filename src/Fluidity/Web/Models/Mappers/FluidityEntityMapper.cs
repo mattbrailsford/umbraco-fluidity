@@ -15,6 +15,8 @@ using Umbraco.Core.Models.Editors;
 using Umbraco.Core.Services;
 using Umbraco.Web.Models.ContentEditing;
 using ObjectExtensions = Fluidity.Extensions.ObjectExtensions;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace Fluidity.Web.Models.Mappers
 {
@@ -152,6 +154,7 @@ namespace Fluidity.Web.Models.Mappers
                             var propEditorConfig = dataTypeInfo.PropertyEditor.PreValueEditor.ConvertDbToEditor(dataTypeInfo.PropertyEditor.DefaultPreValues,
                                 dataTypeInfo.PreValues);
 
+                            // Calculate value
                             object value = !isNew
                                 ? entity?.GetPropertyValue(field.Property)
                                 : field.DefaultValueFunc != null ? field.DefaultValueFunc() : field.Property.Type.GetDefaultValue();
@@ -164,12 +167,38 @@ namespace Fluidity.Web.Models.Mappers
                             var dummyProp = new Property(new PropertyType(dataTypeInfo.DataTypeDefinition), value);
                             value = dataTypeInfo.PropertyEditor.ValueEditor.ConvertDbToEditor(dummyProp, dummyProp.PropertyType, _dataTypeService);
 
+                            // Calculate label
+                            var label = field.Label;
+                            if (label.IsNullOrWhiteSpace())
+                            {
+                                var attr = field.Property.PropertyInfo.GetCustomAttribute<DisplayNameAttribute>(true);
+                                if (attr != null)
+                                {
+                                    label = attr.DisplayName;
+                                }
+                                else
+                                {
+                                    label = field.Property.Name.SplitPascalCasing();
+                                }
+                            }
+
+                            // Calculate description
+                            var description = field.Description;
+                            if (description.IsNullOrWhiteSpace())
+                            {
+                                var attr = field.Property.PropertyInfo.GetCustomAttribute<DescriptionAttribute>(true);
+                                if (attr != null)
+                                {
+                                    description = attr.Description;
+                                }
+                            }
+
                             var propertyScaffold = new ContentPropertyDisplay
                             {
                                 Id = properties.Count,
                                 Alias = field.Property.Name,
-                                Label = field.Label ?? field.Property.Name.SplitPascalCasing(),
-                                Description = field.Description,
+                                Label = label,
+                                Description = description,
                                 Editor = dataTypeInfo.PropertyEditor.Alias,
                                 View = dataTypeInfo.PropertyEditor.ValueEditor.View,
                                 Config = propEditorConfig,
