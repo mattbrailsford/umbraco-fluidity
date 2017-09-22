@@ -109,26 +109,26 @@ fieldConfig.SetDefaultValue(() => DateTime.Now));
 ### Making a field read only
 {: .mt}
 
-#### IsReadOnly() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+#### MakeReadOnly() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
-Set the ReadOnly flag for the current field. Disables editing for the field in the UI. A ReadOnly property cannot have a custom DataType, ValueMapper or ValidationRegExp.
+Makes the current field read only disabling editing in the UI. A ReadOnly property cannot have a custom DataType, ValueMapper or ValidationRegExp.
 
 ````csharp
 // Example
-fieldConfig.IsReadOnly();
+fieldConfig.MakeReadOnly();
 ````
 
 ---
 
-#### IsReadOnly(Func&lt;TValueType, string&gt; format) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+#### MakeReadOnly(Func&lt;TValueType, string&gt; format) *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
-Set the ReadOnly flag for the current field. Disables editing for the field in the UI. A ReadOnly property cannot have a custom DataType, ValueMapper or ValidationRegExp. Provides a custom formatting expression to use when rendering the value as a string.
+Makes the current field read only disabling editing in the UI. A ReadOnly property cannot have a custom DataType, ValueMapper or ValidationRegExp. Provides a custom formatting expression to use when rendering the value as a string.
 
 ````csharp
 // Example
-fieldConfig.IsReadOnly(myEntityDistanceProperty => $"{myEntityDistanceProperty:## 'km'}");
+fieldConfig.MakeReadOnly(distanceProp => $"{distanceProp:## 'km'}");
 ````
 
 ### Making a field mandatory
