@@ -18,7 +18,7 @@ namespace Fluidity.Configuration
     /// <seealso cref="Fluidity.Configuration.FluidityEditorFieldConfig" />
     public class FluidityEditorFieldConfig<TEntityType, TValueType> : FluidityEditorFieldConfig
     {
-            private bool _isReadonly = false;
+        private bool _isReadonly;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig{TEntityType, TValueType}"/> class.
