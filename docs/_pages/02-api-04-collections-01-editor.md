@@ -134,14 +134,14 @@ fieldConfig.MakeReadOnly(distanceProp => $"{distanceProp:## 'km'}");
 ### Making a field mandatory
 {: .mt}
 
-#### IsRequired() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
+#### MakeRequired() *: FluidityEditorFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
 Makes the given field mandatory.
 
 ````csharp
 // Example
-fieldConfig.IsRequired();
+fieldConfig.MakeRequired();
 ````
 
 ### Validating a field
