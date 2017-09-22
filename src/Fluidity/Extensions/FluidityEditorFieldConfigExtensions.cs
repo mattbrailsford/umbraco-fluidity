@@ -12,7 +12,7 @@ namespace Fluidity.Extensions
     {
         internal static int GetOrCalculateDefinititionId(this FluidityEditorFieldConfig fieldConfig)
         {
-            if (fieldConfig.DataTypeId > 0)
+            if (fieldConfig.DataTypeId != 0)
                 return fieldConfig.DataTypeId;
 
             var dtdId = -88; // Text string (default)
