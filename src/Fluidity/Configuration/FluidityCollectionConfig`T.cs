@@ -4,11 +4,9 @@
 // </copyright>
 
 using System;
-using System.Linq;
 using System.Linq.Expressions;
 using Fluidity.Data;
 using Umbraco.Core;
-using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Web.Models.Trees;
 
 namespace Fluidity.Configuration
@@ -168,7 +166,7 @@ namespace Fluidity.Configuration
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> SetSortProperty(Expression<Func<TEntityType, object>> sortPropertyExpression)
         {
-            return SetSortProperty(sortPropertyExpression, Direction.Ascending);
+            return SetSortProperty(sortPropertyExpression, SortDirection.Ascending);
         }
 
         /// <summary>
@@ -177,7 +175,7 @@ namespace Fluidity.Configuration
         /// <param name="sortPropertyExpression">The sort property expression.</param>
         /// <param name="sortDirection">The sort direction.</param>
         /// <returns>The collection configuration.</returns>
-        public FluidityCollectionConfig<TEntityType> SetSortProperty(Expression<Func<TEntityType, object>> sortPropertyExpression, Direction sortDirection)
+        public FluidityCollectionConfig<TEntityType> SetSortProperty(Expression<Func<TEntityType, object>> sortPropertyExpression, SortDirection sortDirection)
         {
 
             _sortProperty = sortPropertyExpression;

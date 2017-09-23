@@ -23,6 +23,8 @@ namespace Fluidity.Data
     /// <seealso cref="Fluidity.Data.IFluidityRepository" />
     public abstract class FluidityRepository<TEntity, TId> : IFluidityRepository
     {
+        public Type EntityType => typeof(TEntity);
+
         private TId GetId(TEntity entity)
         {
             return GetIdImpl(entity);
@@ -65,11 +67,11 @@ namespace Fluidity.Data
         /// <param name="whereClause">The where clause.</param>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         /// <returns>A collection of entities.</returns>
-        public PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, object>> orderBy = null, Direction orderDirection = Direction.Ascending, Expression<Func<TEntity, bool>> whereClause = null, bool fireEvents = true)
+        public PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, object>> orderBy = null, SortDirection orderDirection = SortDirection.Ascending, Expression<Func<TEntity, bool>> whereClause = null, bool fireEvents = true)
         {
             return GetPagedImpl(pageNumber, pageSize, orderBy, orderDirection, whereClause);
         }
-        protected abstract PagedResult<TEntity> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<TEntity, object>> orderBy, Direction orderDirection, Expression<Func<TEntity, bool>> whereClause);
+        protected abstract PagedResult<TEntity> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<TEntity, object>> orderBy, SortDirection orderDirection, Expression<Func<TEntity, bool>> whereClause);
 
         /// <summary>
         /// Saves the specified entity.
@@ -168,7 +170,7 @@ namespace Fluidity.Data
             return GetAll(true).Select(x => (object)x);
         }
 
-        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, Direction orderDirection, LambdaExpression whereClause)
+        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, SortDirection orderDirection, LambdaExpression whereClause)
         {
             var result = GetPaged(pageNumber, pageSize, (Expression<Func<TEntity, object>>)orderBy, orderDirection, (Expression<Func<TEntity, bool>>)whereClause, true);
 

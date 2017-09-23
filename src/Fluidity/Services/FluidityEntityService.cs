@@ -15,7 +15,6 @@ using Fluidity.Web.Models;
 using Fluidity.Web.Models.Mappers;
 using Umbraco.Core;
 using Umbraco.Core.Models;
-using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Core.Services;
 
 namespace Fluidity.Services
@@ -124,7 +123,7 @@ namespace Fluidity.Services
             }
 
             var orderDir = !orderDirection.IsNullOrWhiteSpace()
-                ? orderDirection.InvariantEquals("asc") ? Direction.Ascending : Direction.Descending
+                ? orderDirection.InvariantEquals("asc") ? SortDirection.Ascending : SortDirection.Descending
                 : collection.SortDirection;
 
             // Perform the query
@@ -181,7 +180,7 @@ namespace Fluidity.Services
             }
 
             // Perform the query
-            var result = repo?.GetPaged(1, ids.Length, null, Direction.Ascending, whereClauseExp);
+            var result = repo?.GetPaged(1, ids.Length, null, SortDirection.Ascending, whereClauseExp);
 
             // Return the results
             return result?.Items;

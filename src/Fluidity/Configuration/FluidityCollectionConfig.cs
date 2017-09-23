@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Umbraco.Core;
-using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Web.Models.Trees;
 
 namespace Fluidity.Configuration
@@ -63,8 +62,8 @@ namespace Fluidity.Configuration
         protected FluidityViewMode _viewMode;
         internal FluidityViewMode ViewMode => _viewMode;
 
-        protected Direction _sortDirection;
-        internal Direction SortDirection => _sortDirection;
+        protected SortDirection _sortDirection;
+        internal SortDirection SortDirection => _sortDirection;
 
         protected FluidityPropertyConfig _sortProperty;
         internal FluidityPropertyConfig SortProperty => _sortProperty;

@@ -14,6 +14,7 @@ using Umbraco.Core.Models;
 using Umbraco.Core.Persistence;
 using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Core.Persistence.SqlSyntax;
+using System;
 
 namespace Fluidity.Data
 {
@@ -32,6 +33,8 @@ namespace Fluidity.Data
             _collection = collection;
         }
 
+        public Type EntityType => _collection.EntityType;
+
         public object Get(object id)
         {
             return Db.SingleOrDefault(_collection.EntityType, id);
@@ -48,7 +51,7 @@ namespace Fluidity.Data
 
             if (_collection.SortProperty != null)
             {
-                if (_collection.SortDirection == Direction.Ascending)
+                if (_collection.SortDirection == SortDirection.Ascending)
                 {
                     SqlExtensions.OrderBy(query, _collection.EntityType, _collection.SortProperty, SyntaxProvider);
                 }
@@ -62,7 +65,7 @@ namespace Fluidity.Data
             return Db.Fetch(_collection.EntityType, query);
         }
 
-        public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, Direction orderDirection, LambdaExpression whereClause)
+        public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, SortDirection orderDirection, LambdaExpression whereClause)
         {
             var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
 
@@ -85,7 +88,7 @@ namespace Fluidity.Data
             LambdaExpression orderByExp = orderBy ?? _collection.SortProperty;
             if (orderByExp != null)
             {
-                if (orderDirection == Direction.Ascending)
+                if (orderDirection == SortDirection.Ascending)
                 {
                     SqlExtensions.OrderBy(query, _collection.EntityType, orderByExp, SyntaxProvider);
                 }
