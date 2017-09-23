@@ -4,7 +4,10 @@
 // </copyright>
 
 using System;
+using System.Linq;
 using Fluidity.Events;
+using Fluidity.Data;
+using Fluidity.Configuration;
 
 namespace Fluidity
 {
@@ -34,6 +37,29 @@ namespace Fluidity
         public static void OnDeletedEntity(DeletedEntityEventArgs args)
         {
             DeletedEntity?.Invoke(null, args);
+        }
+
+        public static FluidityRepositoryProxy<TEntity, object> GetRepository<TEntity>(string sectionAlias = null)
+        {
+            return GetRepository<TEntity, object>(sectionAlias);
+        }
+        public static FluidityRepositoryProxy<TEntity, TId> GetRepository<TEntity, TId>(string sectionAlias = null)
+        {
+            FluidityCollectionConfig collectionConfig;
+            if (sectionAlias != null)
+            {
+                collectionConfig = FluidityContext.Current.Config.Sections[sectionAlias].Tree.FlattenedTreeItems.Values.OfType<FluidityCollectionConfig>().FirstOrDefault(x => x != null && x.EntityType == typeof(TEntity));
+            }
+            else
+            {
+                collectionConfig = FluidityContext.Current.Config.Sections.Values.SelectMany(x => x.Tree.FlattenedTreeItems.Values.OfType<FluidityCollectionConfig>()).FirstOrDefault(x => x != null && x.EntityType == typeof(TEntity));
+            }
+
+            if (collectionConfig == null)
+                throw new ApplicationException($"No collection found for type {typeof(TEntity)}");
+
+            var repo = FluidityContext.Current.Data.RepositoryFactory.GetRepository(collectionConfig);
+            return new FluidityRepositoryProxy<TEntity, TId>(repo);
         }
     }
 }
