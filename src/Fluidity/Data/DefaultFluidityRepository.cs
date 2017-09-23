@@ -12,7 +12,6 @@ using Fluidity.Models;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Persistence;
-using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 using Umbraco.Core.Persistence.SqlSyntax;
 using System;
 
@@ -34,6 +33,7 @@ namespace Fluidity.Data
         }
 
         public Type EntityType => _collection.EntityType;
+        public Type IdType => _collection.IdProperty.Type;
 
         public object Get(object id)
         {
@@ -65,7 +65,7 @@ namespace Fluidity.Data
             return Db.Fetch(_collection.EntityType, query);
         }
 
-        public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, SortDirection orderDirection, LambdaExpression whereClause)
+        public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection)
         {
             var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
 

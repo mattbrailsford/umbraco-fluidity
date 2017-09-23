@@ -30,10 +30,12 @@ namespace Fluidity
             config.PostProcess();
 
             // Configure the fluidity context
-            var repoFactory = new FluidityRepositoryFactory();
             FluidityContext.EnsureContext(config,
+                new FluidityDataContext(
+                    new FluidityRepositoryFactory()
+                ),
                 new FluidityServiceContext(
-                    new FluidityEntityService(repoFactory)
+                    new FluidityEntityService()
                 )
             );
 

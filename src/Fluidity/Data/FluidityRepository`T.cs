@@ -24,6 +24,7 @@ namespace Fluidity.Data
     public abstract class FluidityRepository<TEntity, TId> : IFluidityRepository
     {
         public Type EntityType => typeof(TEntity);
+        public Type IdType => typeof(TId);
 
         private TId GetId(TEntity entity)
         {
@@ -56,22 +57,22 @@ namespace Fluidity.Data
         }
         protected abstract IEnumerable<TEntity> GetAllImpl();
 
-        
+
         /// <summary>
         /// Gets a paged collection of entities.
         /// </summary>
         /// <param name="pageNumber">The page number.</param>
         /// <param name="pageSize">Size of the page.</param>
+        /// <param name="whereClause">The where clause.</param>
         /// <param name="orderBy">The order by.</param>
         /// <param name="orderDirection">The order direction.</param>
-        /// <param name="whereClause">The where clause.</param>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         /// <returns>A collection of entities.</returns>
-        public PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, object>> orderBy = null, SortDirection orderDirection = SortDirection.Ascending, Expression<Func<TEntity, bool>> whereClause = null, bool fireEvents = true)
+        public PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, bool>> whereClause = null, Expression<Func<TEntity, object>> orderBy = null, SortDirection orderDirection = SortDirection.Ascending, bool fireEvents = true)
         {
-            return GetPagedImpl(pageNumber, pageSize, orderBy, orderDirection, whereClause);
+            return GetPagedImpl(pageNumber, pageSize, whereClause, orderBy, orderDirection);
         }
-        protected abstract PagedResult<TEntity> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<TEntity, object>> orderBy, SortDirection orderDirection, Expression<Func<TEntity, bool>> whereClause);
+        protected abstract PagedResult<TEntity> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> whereClause, Expression<Func<TEntity, object>> orderBy, SortDirection orderDirection);
 
         /// <summary>
         /// Saves the specified entity.
@@ -167,16 +168,16 @@ namespace Fluidity.Data
 
         IEnumerable<object> IFluidityRepository.GetAll()
         {
-            return GetAll(true).Select(x => (object)x);
+            return GetAll(true).Select(x => (object)x).ToList();
         }
 
-        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, SortDirection orderDirection, LambdaExpression whereClause)
+        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection)
         {
-            var result = GetPaged(pageNumber, pageSize, (Expression<Func<TEntity, object>>)orderBy, orderDirection, (Expression<Func<TEntity, bool>>)whereClause, true);
+            var result = GetPaged(pageNumber, pageSize, (Expression<Func<TEntity, bool>>)whereClause, (Expression<Func<TEntity, object>>)orderBy, orderDirection, true);
 
             return new PagedResult<object>(result.TotalItems, result.PageNumber, result.PageSize)
             {
-                Items = result.Items.Select(x => (object)x)
+                Items = result.Items.Select(x => (object)x).ToList()
             };
         }
 

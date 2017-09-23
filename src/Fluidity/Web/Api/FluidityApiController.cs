@@ -93,11 +93,11 @@ namespace Fluidity.Web.Api
         }
 
         [HttpGet]
-        public object GetEntities(string section, string collectionAlias, int pageNumber = 1, int pageSize = 10, string orderBy = "", string orderDirection = "", string query = "", string dataView = "")
+        public object GetEntities(string section, string collectionAlias, int pageNumber = 1, int pageSize = 10, string query = "", string orderBy = "", string orderDirection = "", string dataView = "")
         {
             var sectionConfig = Context.Config.Sections[section];
             var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[collectionAlias] as FluidityCollectionConfig;
-            return Context.Services.EntityService.GetEntityDisplayModels(sectionConfig, collectionConfig, pageNumber, pageSize, orderBy, orderDirection, query, dataView);
+            return Context.Services.EntityService.GetEntityDisplayModels(sectionConfig, collectionConfig, pageNumber, pageSize, query, orderBy, orderDirection, dataView);
         }
 
         [HttpGet]

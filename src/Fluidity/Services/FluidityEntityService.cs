@@ -21,14 +21,9 @@ namespace Fluidity.Services
 {
     internal class FluidityEntityService
     {
-        protected FluidityRepositoryFactory _repoFactory;
+        protected FluidityRepositoryFactory RepositoryFactory => FluidityContext.Current.Data.RepositoryFactory;
 
         public ServiceContext Services => ApplicationContext.Current.Services;
-
-        public FluidityEntityService(FluidityRepositoryFactory repositoryFactory)
-        {
-            _repoFactory = repositoryFactory;
-        }
 
         public FluiditySectionDisplayModel GetSectionDisplayModel(FluiditySectionConfig section)
         {
@@ -52,9 +47,9 @@ namespace Fluidity.Services
             return collectionMapper.ToDisplayModel(section, collection, includeListView);
         }
 
-        public PagedResult<FluidityEntityDisplayModel> GetEntityDisplayModels(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string orderBy = null, string orderDirection = null, string query = null, string dataView = null)
+        public PagedResult<FluidityEntityDisplayModel> GetEntityDisplayModels(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string query = null, string orderBy = null, string orderDirection = null, string dataView = null)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
             
             // Construct where clause
             LambdaExpression whereClauseExp = null;
@@ -127,7 +122,7 @@ namespace Fluidity.Services
                 : collection.SortDirection;
 
             // Perform the query
-            var result = repo?.GetPaged(pageNumber, pageSize, orderByExp, orderDir, whereClauseExp); 
+            var result = repo?.GetPaged(pageNumber, pageSize, whereClauseExp, orderByExp, orderDir); 
 
             // If we've got no results, return an empty result set
             if (result == null)
@@ -155,7 +150,7 @@ namespace Fluidity.Services
 
         public IEnumerable<object> GetEntitiesByIds(FluiditySectionConfig section, FluidityCollectionConfig collection, object[] ids)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
 
             // Construct where clause
             LambdaExpression whereClauseExp = null;
@@ -180,7 +175,7 @@ namespace Fluidity.Services
             }
 
             // Perform the query
-            var result = repo?.GetPaged(1, ids.Length, null, SortDirection.Ascending, whereClauseExp);
+            var result = repo?.GetPaged(1, ids.Length, whereClauseExp, null, SortDirection.Ascending);
 
             // Return the results
             return result?.Items;
@@ -188,7 +183,7 @@ namespace Fluidity.Services
 
         public FluidityEntityEditModel GetEntityEditModel(FluiditySectionConfig section, FluidityCollectionConfig collection, object entityOrId = null)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
              
             object entity = null;
             if (entityOrId != null)
@@ -209,21 +204,21 @@ namespace Fluidity.Services
 
         public object GetEntity(FluidityCollectionConfig collection, object id)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
 
             return repo?.Get(id);
         }
 
         public IEnumerable<object> GetAllEntities(FluidityCollectionConfig collection)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
 
             return repo?.GetAll();
         }
 
         public object SaveEntity(FluidityCollectionConfig collection, object entity)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
             var isNew = entity.GetPropertyValue(collection.IdProperty) == collection.IdProperty.Type.GetDefaultValue();
 
             if (isNew && collection.DateCreatedProperty != null)
@@ -243,13 +238,13 @@ namespace Fluidity.Services
 
         public void DeleteEntity(FluidityCollectionConfig collection, object id)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
             repo?.Delete(id);
         }
 
         public long GetsEntityTotalRecordCount(FluidityCollectionConfig collection)
         {
-            var repo = _repoFactory.GetRepository(collection);
+            var repo = RepositoryFactory.GetRepository(collection);
             return repo?.GetTotalRecordCount() ?? 0;
         }
     }

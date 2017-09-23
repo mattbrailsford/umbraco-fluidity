@@ -15,11 +15,13 @@ namespace Fluidity.Data
     {
         Type EntityType { get; }
 
+        Type IdType { get; }
+
         object Get(object id);
 
         IEnumerable<object> GetAll();
 
-        PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression orderBy, SortDirection orderDirection, LambdaExpression whereClause);
+        PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection);
 
         object Save(object entity);
 
