@@ -188,14 +188,14 @@ collectionConfig.SetSortProperty(p => p.FirstName);
 
 ---
 
-#### SetSortProperty(Lambda sortPropertyExpression, Direction sortDirection) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+#### SetSortProperty(Lambda sortPropertyExpression, SortDirection sortDirection) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
 Sets which property of our entity to sort against in the provided sort direction.
 
 ````csharp
 // Example
-collectionConfig.SetSortProperty(p => p.FirstName, Direction.Descending);
+collectionConfig.SetSortProperty(p => p.FirstName, SortDirection.Descending);
 ````
 
 ### Defining searchable properties
