@@ -17,16 +17,16 @@ namespace Fluidity.Data
 
         Type IdType { get; }
 
-        object Get(object id);
+        object Get(object id, bool fireEvents = true);
 
-        IEnumerable<object> GetAll();
+        IEnumerable<object> GetAll(bool fireEvents = true);
 
-        PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection);
+        PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection, bool fireEvents = true);
 
-        object Save(object entity);
+        object Save(object entity, bool fireEvents = true);
 
-        void Delete(object id);
+        void Delete(object id, bool fireEvents = true);
 
-        long GetTotalRecordCount();
+        long GetTotalRecordCount(bool fireEvents = true);
     }
 }

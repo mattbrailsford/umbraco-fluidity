@@ -23,8 +23,8 @@ namespace Fluidity.Data
 
         protected ISqlSyntaxProvider SyntaxProvider => ApplicationContext.Current.DatabaseContext.SqlSyntax;
 
-        protected Database Db => !_collection.ConnectionString.IsNullOrWhiteSpace() 
-            ? new Database(_collection.ConnectionString) 
+        protected Database Db => !_collection.ConnectionString.IsNullOrWhiteSpace()
+            ? new Database(_collection.ConnectionString)
             : ApplicationContext.Current.DatabaseContext.Database;
 
         public DefaultFluidityRepository(FluidityCollectionConfig collection)
@@ -33,14 +33,15 @@ namespace Fluidity.Data
         }
 
         public Type EntityType => _collection.EntityType;
+
         public Type IdType => _collection.IdProperty.Type;
 
-        public object Get(object id)
+        public object Get(object id, bool fireEvents = true)
         {
             return Db.SingleOrDefault(_collection.EntityType, id);
         }
 
-        public IEnumerable<object> GetAll()
+        public IEnumerable<object> GetAll(bool fireEvents = true)
         {
             var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
 
@@ -65,7 +66,7 @@ namespace Fluidity.Data
             return Db.Fetch(_collection.EntityType, query);
         }
 
-        public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection)
+        public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection, bool fireEvents = true)
         {
             var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
 
@@ -101,48 +102,66 @@ namespace Fluidity.Data
 
             var result = Db.Page(_collection.EntityType, pageNumber, pageSize, query);
 
-            return  new PagedResult<object>(result.TotalItems, pageNumber, pageSize)
+            return new PagedResult<object>(result.TotalItems, pageNumber, pageSize)
             {
                 Items = result.Items
             };
         }
 
-        public object Save(object entity)
+        public object Save(object entity, bool fireEvents = true)
         {
-            var existing = Get(entity.GetPropertyValue(_collection.IdProperty));
-            var args = new SavingEntityEventArgs
+            SavingEntityEventArgs args = null;
+
+            if (fireEvents)
             {
-                Entity = new BeforeAndAfter<object>
+                var existing = Get(entity.GetPropertyValue(_collection.IdProperty));
+                args = new SavingEntityEventArgs
                 {
-                    Before = existing,
-                    After = entity
-                }
-            };
+                    Entity = new BeforeAndAfter<object>
+                    {
+                        Before = existing,
+                        After = entity
+                    }
+                };
 
-            Fluidity.OnSavingEntity(args);
+                Fluidity.OnSavingEntity(args);
 
-            if (args.Cancel)
-                return args.Entity.After;
+                if (args.Cancel)
+                    return args.Entity.After;
+
+                entity = args.Entity.After;
+            }
 
             Db.Save(args.Entity.After);
 
-            Fluidity.OnSavedEntity(args);
+            if (fireEvents)
+            {
+                Fluidity.OnSavedEntity(args);
 
-            return args.Entity.After;
+                entity = args.Entity.After;
+            }
+
+            return entity;
         }
 
-        public void Delete(object id)
+        public void Delete(object id, bool fireEvents = true)
         {
-            var existing = Get(id);
-            var args = new DeletingEntityEventArgs
+            DeletingEntityEventArgs args = null;
+
+            if (fireEvents)
             {
-                Entity = existing
-            };
+                var existing = Get(id);
+                args = new DeletingEntityEventArgs
+                {
+                    Entity = existing
+                };
 
-            Fluidity.OnDeletingEntity(args);
+                Fluidity.OnDeletingEntity(args);
 
-            if (args.Cancel)
-                return;
+                if (args.Cancel)
+                    return;
+
+            }
 
             var query = new Sql(_collection.DeletedProperty != null
                 ? $"UPDATE {_collection.EntityType.GetTableName()} SET {_collection.DeletedProperty.GetColumnName()} = 1 WHERE {_collection.IdProperty.GetColumnName()} = @0"
@@ -151,10 +170,11 @@ namespace Fluidity.Data
 
             Db.Execute(query);
 
-            Fluidity.OnDeletedEntity(args);
+            if (fireEvents)
+                Fluidity.OnDeletedEntity(args);
         }
 
-        public long GetTotalRecordCount()
+        public long GetTotalRecordCount(bool fireEvents = true)
         {
             var sql = $"SELECT COUNT(1) FROM {_collection.EntityType.GetTableName()}";
 

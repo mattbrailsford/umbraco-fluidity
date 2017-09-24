@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using Umbraco.Core;
 using Fluidity.Events;
 using Fluidity.Data;
 using Fluidity.Configuration;
@@ -39,27 +40,44 @@ namespace Fluidity
             DeletedEntity?.Invoke(null, args);
         }
 
-        public static FluidityRepositoryProxy<TEntity, object> GetRepository<TEntity>(string sectionAlias = null)
+        public static FluidityRepository<TEntity, TId> GetRepository<TEntity, TId>()
         {
-            return GetRepository<TEntity, object>(sectionAlias);
+            return GetRepository<TEntity, TId>(null, null);
         }
-        public static FluidityRepositoryProxy<TEntity, TId> GetRepository<TEntity, TId>(string sectionAlias = null)
+
+        public static FluidityRepository<TEntity, TId> GetRepository<TEntity, TId>(string sectionAlias)
         {
-            FluidityCollectionConfig collectionConfig;
-            if (sectionAlias != null)
-            {
-                collectionConfig = FluidityContext.Current.Config.Sections[sectionAlias].Tree.FlattenedTreeItems.Values.OfType<FluidityCollectionConfig>().FirstOrDefault(x => x != null && x.EntityType == typeof(TEntity));
-            }
-            else
-            {
-                collectionConfig = FluidityContext.Current.Config.Sections.Values.SelectMany(x => x.Tree.FlattenedTreeItems.Values.OfType<FluidityCollectionConfig>()).FirstOrDefault(x => x != null && x.EntityType == typeof(TEntity));
-            }
+            return GetRepository<TEntity, TId>(sectionAlias, null);
+        }
+
+        public static FluidityRepository<TEntity, TId> GetRepository<TEntity, TId>(string sectionAlias, string collectionAlias)
+        {
+            // Get the relevant collection config
+            var config = FluidityContext.Current.Config;
+            var collections = !sectionAlias.IsNullOrWhiteSpace()
+                ? config.Sections[sectionAlias].Tree.FlattenedTreeItems.Values.OfType<FluidityCollectionConfig>()
+                : config.Sections.Values.SelectMany(x => x.Tree.FlattenedTreeItems.Values.OfType<FluidityCollectionConfig>());
+
+            var collectionConfig = collections.FirstOrDefault(x => (collectionAlias.IsNullOrWhiteSpace() || x.Alias == collectionAlias) && x.EntityType == typeof(TEntity));
 
             if (collectionConfig == null)
                 throw new ApplicationException($"No collection found for type {typeof(TEntity)}");
 
+            // Get the registred repository for collection
             var repo = FluidityContext.Current.Data.RepositoryFactory.GetRepository(collectionConfig);
-            return new FluidityRepositoryProxy<TEntity, TId>(repo);
+
+            // See if someone already registered a custom repo of this type
+            var typedRepo = repo as FluidityRepository<TEntity, TId>;
+            if (typedRepo != null)
+                return typedRepo;
+
+            // See if it's a default repo implementation and if so proxy it
+            var defaultRepo = repo as DefaultFluidityRepository;
+            if (defaultRepo != null)
+                return new DefaultFluidityRepositoryProxy<TEntity, TId>(defaultRepo);
+
+            // Unknown repository type
+            throw new ApplicationException($"Unknown repository type. Cannot convert repository of type {repo.GetType()} to {typeof(FluidityRepository<TEntity, TId>)}");
         }
     }
 }

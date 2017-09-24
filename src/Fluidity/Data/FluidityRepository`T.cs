@@ -11,7 +11,6 @@ using System.Linq.Expressions;
 using Fluidity.Events;
 using Fluidity.Models;
 using Umbraco.Core.Models;
-using Umbraco.Core.Persistence.DatabaseModelDefinitions;
 
 namespace Fluidity.Data
 {
@@ -23,8 +22,8 @@ namespace Fluidity.Data
     /// <seealso cref="Fluidity.Data.IFluidityRepository" />
     public abstract class FluidityRepository<TEntity, TId> : IFluidityRepository
     {
-        public Type EntityType => typeof(TEntity);
-        public Type IdType => typeof(TId);
+        public virtual Type EntityType => typeof(TEntity);
+        public virtual Type IdType => typeof(TId);
 
         private TId GetId(TEntity entity)
         {
@@ -39,7 +38,7 @@ namespace Fluidity.Data
         /// <param name="id">The identifier.</param>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         /// <returns>The entity.</returns>
-        public TEntity Get(TId id, bool fireEvents = true)
+        public virtual TEntity Get(TId id, bool fireEvents = true)
         {
             return GetImpl(id);
         }
@@ -51,7 +50,7 @@ namespace Fluidity.Data
         /// </summary>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         /// <returns>A collection of entities.</returns>
-        public IEnumerable<TEntity> GetAll(bool fireEvents = true)
+        public virtual IEnumerable<TEntity> GetAll(bool fireEvents = true)
         {
             return GetAllImpl();
         }
@@ -68,7 +67,7 @@ namespace Fluidity.Data
         /// <param name="orderDirection">The order direction.</param>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         /// <returns>A collection of entities.</returns>
-        public PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, bool>> whereClause = null, Expression<Func<TEntity, object>> orderBy = null, SortDirection orderDirection = SortDirection.Ascending, bool fireEvents = true)
+        public virtual PagedResult<TEntity> GetPaged(int pageNumber = 1, int pageSize = 10, Expression<Func<TEntity, bool>> whereClause = null, Expression<Func<TEntity, object>> orderBy = null, SortDirection orderDirection = SortDirection.Ascending, bool fireEvents = true)
         {
             return GetPagedImpl(pageNumber, pageSize, whereClause, orderBy, orderDirection);
         }
@@ -80,7 +79,7 @@ namespace Fluidity.Data
         /// <param name="entity">The entity.</param>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         /// <returns>The entity.</returns>
-        public TEntity Save(TEntity entity, bool fireEvents = true)
+        public virtual TEntity Save(TEntity entity, bool fireEvents = true)
         {
             SavingEntityEventArgs args = null;
 
@@ -123,7 +122,7 @@ namespace Fluidity.Data
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
-        public void Delete(TId id, bool fireEvents = true)
+        public virtual void Delete(TId id, bool fireEvents = true)
         {
             DeletingEntityEventArgs args = null;
 
@@ -153,7 +152,7 @@ namespace Fluidity.Data
         /// </summary>
         /// <param name="fireEvents">if set to <c>true</c> fire events.</param>
         /// <returns>The total number of records.</returns>
-        public long GetTotalRecordCount(bool fireEvents = true)
+        public virtual long GetTotalRecordCount(bool fireEvents = true)
         {
             return GetTotalRecordCountImpl();
         }
@@ -161,19 +160,19 @@ namespace Fluidity.Data
 
         #region IFluidityRepository
 
-        object IFluidityRepository.Get(object id)
+        object IFluidityRepository.Get(object id, bool fireEvents)
         {
-            return Get((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id), true);
+            return Get((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id), fireEvents);
         }
 
-        IEnumerable<object> IFluidityRepository.GetAll()
+        IEnumerable<object> IFluidityRepository.GetAll(bool fireEvents)
         {
-            return GetAll(true).Select(x => (object)x).ToList();
+            return GetAll(fireEvents).Select(x => (object)x).ToList();
         }
 
-        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection)
+        PagedResult<object> IFluidityRepository.GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection, bool fireEvents)
         {
-            var result = GetPaged(pageNumber, pageSize, (Expression<Func<TEntity, bool>>)whereClause, (Expression<Func<TEntity, object>>)orderBy, orderDirection, true);
+            var result = GetPaged(pageNumber, pageSize, (Expression<Func<TEntity, bool>>)whereClause, (Expression<Func<TEntity, object>>)orderBy, orderDirection, fireEvents);
 
             return new PagedResult<object>(result.TotalItems, result.PageNumber, result.PageSize)
             {
@@ -181,19 +180,19 @@ namespace Fluidity.Data
             };
         }
 
-        object IFluidityRepository.Save(object entity)
+        object IFluidityRepository.Save(object entity, bool fireEvents)
         {
-            return Save((TEntity)entity, true);
+            return Save((TEntity)entity, fireEvents);
         }
 
-        void IFluidityRepository.Delete(object id)
+        void IFluidityRepository.Delete(object id, bool fireEvents)
         {
-            Delete((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id), true);
+            Delete((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id), fireEvents);
         }
 
-        long IFluidityRepository.GetTotalRecordCount()
+        long IFluidityRepository.GetTotalRecordCount(bool fireEvents)
         {
-            return GetTotalRecordCount(true);
+            return GetTotalRecordCount(fireEvents);
         }
 
         #endregion
