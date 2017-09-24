@@ -6,7 +6,7 @@ using Umbraco.Core.Models;
 
 namespace Fluidity.Data
 {
-    public class DefaultFluidityRepositoryProxy<TEntity, TId> : FluidityRepository<TEntity, TId>
+    internal class DefaultFluidityRepositoryProxy<TEntity, TId> : FluidityRepository<TEntity, TId>
     {
         protected DefaultFluidityRepository _repository;
 
@@ -14,6 +14,10 @@ namespace Fluidity.Data
         {
             if (repository.EntityType != typeof(TEntity))
                 throw new ArgumentException($"The repository passed in to the proxy is not for the same entity type as that defined in the procies generic params. Proxies entity type is {typeof(TEntity)}, where as the passed in repositories entity type is {repository.EntityType}", nameof(repository));
+
+            if (repository.IdType != typeof(TId))
+                throw new ArgumentException($"The repository passed in to the proxy is not for the same entity type as that defined in the procies generic params. Proxies entity type is {typeof(TEntity)}, where as the passed in repositories entity type is {repository.EntityType}", nameof(repository));
+
 
             _repository = repository;
         }
