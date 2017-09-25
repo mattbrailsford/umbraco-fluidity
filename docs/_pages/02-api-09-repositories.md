@@ -51,3 +51,33 @@ public class PersonRepository : FluidityRepository<Person, int> {
 {: .mt}
 
 A reposoitory is assigned to a collection as part of the collection configuration. See [Collection API Documentation]({{ site.baseurl }}/api/collections/#changing-a-collection-repository-implementation) for more info.
+
+### Accessing a repository in code
+{: .mt}
+
+If you have created your own repository implementation, then accessing the repository can be as simple as instanttiating a new instance of the repository class, however if you are using the built in repository, unfortunately a new instance can't be created in this way.
+
+To help with accessing a repository (default or custom) Fluidity has a couple of factory methods to create the repository instances for you.
+
+#### Fluidity.GetRepository&lt;TEntity, TId&gt;() *: FluidityRepository&lt;TEntity, TId&gt;*
+{: .signature}
+
+Creates a repository for the given entity type. Fluidity will search the configuration for the first section / collection with a configuration for the given entity type and use that as repository configuration.
+
+````csharp
+// Example
+var repo = Fluidity.GetRepository<Person, int>();
+````
+
+---
+
+#### Fluidity.GetRepository&lt;TEntity, TId&gt;(string sectionAlias, string collectionAlias) *: FluidityRepository&lt;TEntity, TId&gt;*
+{: .signature}
+
+Creates a repository for the given entity type from the given section / collection configuration.
+
+````csharp
+// Example
+var repo = Fluidity.GetRepository<Person, int>("database", "person");
+````
+
