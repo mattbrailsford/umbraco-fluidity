@@ -274,6 +274,7 @@
     <Compile Include="Configuration\FluidityPropertyConfig.cs" />
     <Compile Include="Converters\FluidityEntityPickerValueConverter.cs" />
     <Compile Include="DataViews\FluidityDataView.cs" />
+    <Compile Include="Data\DefaultFluidityRepositoryProxy%27T.cs" />
     <Compile Include="Events\DeleteEntityEventArgs.cs" />
     <Compile Include="Events\SaveEntityEventArgs.cs" />
     <Compile Include="Extensions\FluidityPropertyConfigExtensions.cs" />
