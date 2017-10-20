@@ -203,7 +203,7 @@
 			Prefix="nu"
 			Namespace="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd"
 			XmlFileName="$(BuildNuGetDir)\package.nuspec"
-			XPath="/nu:package/nu:metadata/nu:dependencies/nu:dependency[@id='$(PackageId).Core']/@version"
+			XPath="/nu:package/nu:metadata/nu:dependencies/nu:dependency[@id='$(NugetPackageId).Core']/@version"
 			Value="$(ProductVersion)" />
 	</Target>
 
