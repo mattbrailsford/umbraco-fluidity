@@ -20,7 +20,7 @@
 
 Documentation
 =============
-For complete documentation on Fluidity head on over to:
+For documentation on Fluidity head on over to:
 
 https://mattbrailsford.github.io/umbraco-fluidity/
 
