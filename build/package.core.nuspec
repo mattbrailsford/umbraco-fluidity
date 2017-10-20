@@ -16,7 +16,6 @@
     <language></language>
     <tags></tags>
     <dependencies>
-      <dependency id="UmbracoCms.Core" version="7.6.0" />
     </dependencies>
   </metadata>
   <files />
