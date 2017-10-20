@@ -27,6 +27,8 @@ namespace Fluidity.Configuration
         protected string _path;
         internal string Path => _path;
 
+        internal int Ordinal { get; set; }
+
         /// <summary>
         /// Used in post processing to work out tree item paths once config is complete.
         /// </summary>

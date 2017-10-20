@@ -71,6 +71,7 @@ namespace Fluidity.Configuration
         public virtual FluidityFolderConfig AddFolder(FluidityFolderConfig folderConfig)
         {
             var folder = folderConfig;
+            folder.Ordinal = _treeItems.Count + 1;
             _treeItems.AddOrUpdate(folder.Alias, folder, (s, config) => { throw new ApplicationException($"A tree item with the alias '{config.Alias}' has already been added"); });
             return folder;
         }
@@ -116,6 +117,7 @@ namespace Fluidity.Configuration
         public virtual FluidityCollectionConfig<TEntityType> AddCollection<TEntityType>(FluidityCollectionConfig<TEntityType> collectionConfig)
         {
             var collection = collectionConfig;
+            collection.Ordinal = _treeItems.Count + 1;
             _treeItems.AddOrUpdate(collection.Alias, collection, (s, config) => { throw new ApplicationException($"A tree item with the alias '{config.Alias}' has already been added"); });
             return collection;
         }
