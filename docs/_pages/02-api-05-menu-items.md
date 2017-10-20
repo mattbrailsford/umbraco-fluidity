@@ -20,7 +20,7 @@ public class ExportMenuItem : MenuItem
         // Configure menu item
         Name = "Export";
         Alias = "export";
-        Icon = "icon-download";
+        Icon = "download"; // Exclude the "icon-" prefix
 
         // Set action behaviour
         NavigateToRoute("/my/angular/route");
