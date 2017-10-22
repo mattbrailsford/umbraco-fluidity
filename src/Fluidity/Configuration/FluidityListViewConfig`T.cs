@@ -6,6 +6,7 @@
 using System;
 using System.Linq.Expressions;
 using Fluidity.Actions;
+using Fluidity.DataViewBuilders;
 using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
@@ -94,6 +95,21 @@ namespace Fluidity.Configuration
         public FluidityListViewConfig<TEntityType> AddDataView(string name, Expression<Func<TEntityType, bool>> whereClause)
         {
             _dataViews.Add(new FluidityDataViewConfig(name, whereClause));
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the data view builder for the list view.
+        /// </summary>
+        /// <remarks>
+        /// By setting a data view builder this will override any data views configured using the AddDataView method.
+        /// </remarks>
+        /// <typeparam name="TDataViewBuilderType">The type of the data view builder.</typeparam>
+        /// <returns>The list view configuration.</returns>
+        public FluidityListViewConfig<TEntityType> SetDataViewBuilder<TDataViewBuilderType>()
+            where TDataViewBuilderType : FluidityDataViewBuilder, new()
+        {
+            _dataViewBuilder = new TDataViewBuilderType();
             return this;
         }
     }

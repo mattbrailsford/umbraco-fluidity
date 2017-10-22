@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Fluidity.Models;
 
 namespace Fluidity.Web.Models
 {
@@ -24,6 +25,6 @@ namespace Fluidity.Web.Models
         public IEnumerable<FluidityListViewLayoutDisplayModel> Layouts { get; set; }
 
         [DataMember(Name = "dataViews")]
-        public IEnumerable<FluidityListViewDataViewDisplayModel> DataViews { get; set; }
+        public IEnumerable<FluidityDataViewSummary> DataViews { get; set; }
     }
 }

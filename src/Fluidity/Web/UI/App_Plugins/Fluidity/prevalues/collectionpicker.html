@@ -10,7 +10,7 @@
         </select>
     </umb-property>
     <umb-property property="properties[2]" ng-if="properties[1].value && properties[1].value.dataViews">
-        <select ng-model="properties[2].value" ng-options="dataView.name for dataView in properties[1].value.dataViews">
+        <select ng-model="properties[2].value" ng-options="dataView.name group by dataView.group for dataView in properties[1].value.dataViews">
             <option value="">--- Please select ---</option>
         </select>
     </umb-property>

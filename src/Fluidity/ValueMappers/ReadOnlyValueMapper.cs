@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fluidity.Mappers
+namespace Fluidity.ValueMappers
 {
     internal class ReadOnlyValueMapper : FluidityValueMapper
     {

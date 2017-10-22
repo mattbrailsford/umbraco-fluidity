@@ -70,11 +70,7 @@ namespace Fluidity.Web.Models.Mappers
                         IsSystem = x.IsSystem,
                         Selected = true
                     }),
-                    DataViews = collection.ListView.DataViews.Select(x => new FluidityListViewDataViewDisplayModel
-                    {
-                        Alias = x.Alias,
-                        Name = x.Name
-                    }),
+                    DataViews = collection.ListView.DataViewBuilder.GetDataViews(),
                     BulkActions = collection.ListView.BulkActions.Select(x => new FluidityListViewBulkActionDisplayModel
                     {
                         Icon = x.Icon,

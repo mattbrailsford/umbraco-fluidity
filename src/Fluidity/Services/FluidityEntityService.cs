@@ -57,13 +57,13 @@ namespace Fluidity.Services
             // Determine the data view where clause
             if (!dataView.IsNullOrWhiteSpace())
             {
-                var hasDataViews = collection.ListView != null && collection.ListView.DataViews.Any();
+                var hasDataViews = collection.ListView?.DataViewBuilder != null && collection.ListView.DataViewBuilder.HasDataViews;
                 if (hasDataViews)
                 {
-                    var dv = collection.ListView.DataViews.FirstOrDefault(x => x.Alias.InvariantEquals(dataView));
-                    if (dv != null)
+                    var wc = collection.ListView.DataViewBuilder.GetDataViewWhereClause(dataView);
+                    if (wc != null)
                     {
-                        whereClauseExp = dv.WhereClauseExpression;
+                        whereClauseExp = wc;
                     }
                 }
             }

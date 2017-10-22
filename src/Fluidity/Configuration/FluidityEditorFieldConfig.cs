@@ -4,8 +4,8 @@
 // </copyright>
 
 using System.Linq.Expressions;
-using Fluidity.Mappers;
 using System;
+using Fluidity.ValueMappers;
 
 namespace Fluidity.Configuration
 {

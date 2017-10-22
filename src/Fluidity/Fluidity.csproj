@@ -273,7 +273,8 @@
     <Compile Include="Configuration\FluidityDataViewConfig.cs" />
     <Compile Include="Configuration\FluidityPropertyConfig.cs" />
     <Compile Include="Converters\FluidityEntityPickerValueConverter.cs" />
-    <Compile Include="DataViews\FluidityDataView.cs" />
+    <Compile Include="DataViewBuilders\DefaultFluidityDataViewBuilder.cs" />
+    <Compile Include="DataViewBuilders\FluidityDataViewBuilder.cs" />
     <Compile Include="Data\DefaultFluidityRepositoryProxy%27T.cs" />
     <Compile Include="Events\DeleteEntityEventArgs.cs" />
     <Compile Include="Events\SaveEntityEventArgs.cs" />
@@ -285,7 +286,8 @@
     <Compile Include="Extensions\FluidityEditorFieldConfigExtensions.cs" />
     <Compile Include="ListViewLayouts\FluidityGridListViewLayout.cs" />
     <Compile Include="ListViewLayouts\FluidityTableListViewLayout.cs" />
-    <Compile Include="Mappers\ReadOnlyValueMapper.cs" />
+    <Compile Include="Models\FluidityDataViewSummary.cs" />
+    <Compile Include="ValueMappers\ReadOnlyValueMapper.cs" />
     <Compile Include="Models\DataTypeInfo.cs" />
     <Compile Include="Helpers\UmbracoDataTypeHelper.cs" />
     <Compile Include="Helpers\UmbracoUiHelper.cs" />
@@ -307,7 +309,7 @@
     <Compile Include="Configuration\FluiditySectionConfig.cs" />
     <Compile Include="Configuration\FluidityTabConfig`T.cs" />
     <Compile Include="Configuration\FluidityTabConfig.cs" />
-    <Compile Include="Mappers\FluidityValueMapper.cs" />
+    <Compile Include="ValueMappers\FluidityValueMapper.cs" />
     <Compile Include="Data\DefaultFluidityRepository.cs" />
     <Compile Include="Data\FluidityRepository`T.cs" />
     <Compile Include="Data\FluidityRepositoryFactory.cs" />
@@ -342,7 +344,6 @@
     <Compile Include="Web\Models\FluidityEntityPostModel.cs" />
     <Compile Include="Web\Models\FluidityListViewDisplayModel.cs" />
     <Compile Include="Web\Models\FluidityListViewLayoutDisplayModel.cs" />
-    <Compile Include="Web\Models\FluidityListViewDataViewDisplayModel.cs" />
     <Compile Include="Web\Models\FluidityListViewPropertyDisplayModel.cs" />
     <Compile Include="Web\Models\FluiditySectionDisplayModel.cs" />
     <Compile Include="Web\Models\Mappers\FluiditySectionMapper.cs" />

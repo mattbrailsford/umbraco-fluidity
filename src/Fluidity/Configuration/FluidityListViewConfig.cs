@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Fluidity.Actions;
+using Fluidity.DataViewBuilders;
 using Fluidity.ListViewLayouts;
 
 namespace Fluidity.Configuration
@@ -23,7 +24,10 @@ namespace Fluidity.Configuration
         internal IEnumerable<FluidityBulkAction> BulkActions => _bulkActions.Concat(_defaultBulkActions);
 
         protected List<FluidityDataViewConfig> _dataViews;
-        internal IEnumerable<FluidityDataViewConfig> DataViews => _dataViews; 
+        internal IEnumerable<FluidityDataViewConfig> DataViews => _dataViews;
+
+        protected FluidityDataViewBuilder _dataViewBuilder;
+        internal FluidityDataViewBuilder DataViewBuilder => _dataViewBuilder;
 
         protected List<FluidityListViewFieldConfig> _fields;
         internal IEnumerable<FluidityListViewFieldConfig> Fields => _fields;
@@ -41,6 +45,7 @@ namespace Fluidity.Configuration
             _defaultBulkActions = new List<FluidityBulkAction>(new [] { new FluidityDeleteBulkAction() });
             _bulkActions = new List<FluidityBulkAction>();
             _dataViews = new List<FluidityDataViewConfig>();
+            _dataViewBuilder = new DefaultFluidityDataViewBuilder(this);
             _fields = new List<FluidityListViewFieldConfig>();
             _defaultLayouts = new List<FluidityListViewLayout>(new FluidityListViewLayout [] { new FluidityTableListViewLayout(), new FluidityGridListViewLayout() } );
             _layouts = new List<FluidityListViewLayout>();
