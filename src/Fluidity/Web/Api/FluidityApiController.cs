@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
 using Fluidity.Configuration;
+using Fluidity.Models;
 using Fluidity.Web.Extensions;
 using Fluidity.Web.Models;
 using Fluidity.Web.Models.Mappers;
@@ -67,7 +68,7 @@ namespace Fluidity.Web.Api
                         .Select(c => new {
                             alias = c.Alias,
                             name = c.NamePlural,
-                            dataViews = c.ListView?.DataViewBuilder.GetDataViews()
+                            dataViews = c.ListView?.DataViewsBuilder.HasDataViews ?? false ? c.ListView?.DataViewsBuilder.GetDataViews() : new FluidityDataViewSummary[0]
                         })
                 });
         }

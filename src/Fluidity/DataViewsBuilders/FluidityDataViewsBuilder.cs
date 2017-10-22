@@ -3,16 +3,17 @@
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Fluidity.Models;
 
-namespace Fluidity.DataViewBuilders
+namespace Fluidity.DataViewsBuilders
 {
     /// <summary>
     /// Fluidity Data View Builder
     /// </summary>
-    public abstract class FluidityDataViewBuilder
+    public abstract class FluidityDataViewsBuilder<TEntityType> : IFluidityDataViewsBuilder
     {
         /// <summary>
         /// Gets a value indicating whether this instance has any data views.
@@ -33,6 +34,16 @@ namespace Fluidity.DataViewBuilders
         /// </summary>
         /// <param name="dataViewAlias">The data view alias.</param>
         /// <returns>A boolean lambda expression where clause.</returns>
-        public abstract LambdaExpression GetDataViewWhereClause(string dataViewAlias);
+        public abstract Expression<Func<TEntityType, bool>> GetDataViewWhereClause(string dataViewAlias);
+
+        /// <summary>
+        /// Gets the where clause for the given data view.
+        /// </summary>
+        /// <param name="dataViewAlias">The data view alias.</param>
+        /// <returns>A boolean lambda expression where clause.</returns>
+        LambdaExpression IFluidityDataViewsBuilder.GetDataViewWhereClause(string dataViewAlias)
+        {
+            return GetDataViewWhereClause(dataViewAlias);
+        }
     }
 }

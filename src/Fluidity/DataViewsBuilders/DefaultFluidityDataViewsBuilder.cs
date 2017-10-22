@@ -10,20 +10,20 @@ using Fluidity.Configuration;
 using Fluidity.Models;
 using Umbraco.Core;
 
-namespace Fluidity.DataViewBuilders
+namespace Fluidity.DataViewsBuilders
 {
-    internal class DefaultFluidityDataViewBuilder : FluidityDataViewBuilder
+    internal class DefaultFluidityDataViewsBuilder : IFluidityDataViewsBuilder
     {
         protected FluidityListViewConfig Config { get; }
 
-        internal DefaultFluidityDataViewBuilder(FluidityListViewConfig cfg)
+        internal DefaultFluidityDataViewsBuilder(FluidityListViewConfig cfg)
         {
             Config = cfg;
         }
 
-        public override bool HasDataViews => Config.DataViews.Any();
+        public bool HasDataViews => Config.DataViews.Any();
 
-        public override IEnumerable<FluidityDataViewSummary> GetDataViews()
+        public IEnumerable<FluidityDataViewSummary> GetDataViews()
         {
             return Config.DataViews.Select(x => new FluidityDataViewSummary
             {
@@ -32,7 +32,7 @@ namespace Fluidity.DataViewBuilders
             });
         }
 
-        public override LambdaExpression GetDataViewWhereClause(string dataViewAlias)
+        public LambdaExpression GetDataViewWhereClause(string dataViewAlias)
         {
             var dv = Config.DataViews.FirstOrDefault(x => x.Alias.InvariantEquals(dataViewAlias));
             return dv?.WhereClauseExpression;

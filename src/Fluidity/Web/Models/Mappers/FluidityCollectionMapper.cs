@@ -8,6 +8,7 @@ using Fluidity.Configuration;
 using Umbraco.Core;
 using System.ComponentModel;
 using System.Reflection;
+using Fluidity.Models;
 
 namespace Fluidity.Web.Models.Mappers
 {
@@ -70,7 +71,7 @@ namespace Fluidity.Web.Models.Mappers
                         IsSystem = x.IsSystem,
                         Selected = true
                     }),
-                    DataViews = collection.ListView.DataViewBuilder.GetDataViews(),
+                    DataViews = collection.ListView.DataViewsBuilder.HasDataViews ? collection.ListView.DataViewsBuilder.GetDataViews() : new FluidityDataViewSummary[0],
                     BulkActions = collection.ListView.BulkActions.Select(x => new FluidityListViewBulkActionDisplayModel
                     {
                         Icon = x.Icon,
