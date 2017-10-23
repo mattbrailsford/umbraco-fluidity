@@ -36,7 +36,7 @@ Sets the number of items to display per page for the given list view.
 listViewConfig.SetPageSize(20);
 ````
 
-### Adding a data view
+### Defining data views
 {: .mt}
 
 Data views allow you to define multiple, pre-filtered views of the same data source which can be toggled between via the list view UI. This can be useful when entities exist in different states and you want a way to toggle between them.
@@ -49,6 +49,16 @@ Adds a data view with the given name and where clause filter expression. Express
 ````csharp
 // Example
 listViewConfig.AddDataView("Active", p => p.IsActive);
+````
+
+#### SetDataViewsBuilder&lt;TDataViewsBuilder&gt;() *: FluidityListViewConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the list views data views builder which allows you to define the data views dynamically at run time. See [Data Views Builders API documentation]({{ site.baseurl }}/api/data-views-builders/) for more info.
+
+````csharp
+// Example
+listViewConfig.SetDataViewsBuilder<PersonDataViewsBuilder>();
 ````
 
 ### Adding a bulk action

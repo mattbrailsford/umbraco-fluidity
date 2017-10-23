@@ -28,6 +28,8 @@
       url: /api/menu-items/
     - title: Bulk Actions
       url: /api/bulk-actions/
+    - title: Data Views Builders
+      url: /api/data-views-builders/
     - title: List View Layouts
       url: /api/list-view-layouts/
     - title: Value Mappers
