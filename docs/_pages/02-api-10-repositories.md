@@ -50,7 +50,7 @@ public class PersonRepository : FluidityRepository<Person, int> {
 ### Changing the repository implementation of a collection
 {: .mt}
 
-A reposoitory is assigned to a collection as part of the collection configuration. See [Collection API Documentation]({{ site.baseurl }}/api/collections/#changing-a-collection-repository-implementation) for more info.
+A repository is assigned to a collection as part of the collection configuration. See [Collection API Documentation]({{ site.baseurl }}/api/collections/#changing-a-collection-repository-implementation) for more info.
 
 ### Accessing a repository in code
 {: .mt}
