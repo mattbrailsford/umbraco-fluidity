@@ -23,7 +23,7 @@
                         var baseClickItem = ctrl.clickItem;
                         ctrl.clickItem = function (item) {
                             if (item.editPath) {
-                                $location.path(item.editPath);
+                                $location.url(item.editPath);
                             } else {
                                 baseClickItem(item);
                             }
@@ -35,7 +35,7 @@
                         var baseGoToItem = ctrl.goToItem;
                         ctrl.goToItem = function(item) {
                             if (item.editPath) {
-                                $location.path(item.editPath);
+                                $location.url(item.editPath);
                             } else {
                                 baseGoToItem(item);
                             }
