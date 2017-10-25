@@ -68,7 +68,7 @@ namespace Fluidity.Web.Api
                         .Select(c => new {
                             alias = c.Alias,
                             name = c.NamePlural,
-                            dataViews = c.ListView?.DataViewsBuilder.HasDataViews ?? false ? c.ListView?.DataViewsBuilder.GetDataViews() : new FluidityDataViewSummary[0]
+                            dataViews = c.ListView?.DataViewsBuilder?.GetDataViews() ?? new FluidityDataViewSummary[0]
                         })
                 });
         }

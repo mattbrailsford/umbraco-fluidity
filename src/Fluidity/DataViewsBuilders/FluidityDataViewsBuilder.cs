@@ -16,14 +16,6 @@ namespace Fluidity.DataViewsBuilders
     public abstract class FluidityDataViewsBuilder<TEntityType> : IFluidityDataViewsBuilder
     {
         /// <summary>
-        /// Gets a value indicating whether this instance has any data views.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance has data views; otherwise, <c>false</c>.
-        /// </value>
-        public abstract bool HasDataViews { get; }
-
-        /// <summary>
         /// Gets the list of data views.
         /// </summary>
         /// <returns>A list of data views.</returns>

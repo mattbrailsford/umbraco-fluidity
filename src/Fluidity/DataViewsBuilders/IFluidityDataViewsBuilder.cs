@@ -8,8 +8,6 @@ namespace Fluidity.DataViewsBuilders
     [Obsolete("Use the abstract class FluidityDataViewsBuilder<TEntityType> instead")]
     public interface IFluidityDataViewsBuilder
     {
-        bool HasDataViews { get; }
-
         IEnumerable<FluidityDataViewSummary> GetDataViews();
 
         LambdaExpression GetDataViewWhereClause(string dataViewAlias);

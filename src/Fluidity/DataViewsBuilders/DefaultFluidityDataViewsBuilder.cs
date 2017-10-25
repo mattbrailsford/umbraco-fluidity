@@ -21,8 +21,6 @@ namespace Fluidity.DataViewsBuilders
             Config = cfg;
         }
 
-        public bool HasDataViews => Config.DataViews.Any();
-
         public IEnumerable<FluidityDataViewSummary> GetDataViews()
         {
             return Config.DataViews.Select(x => new FluidityDataViewSummary

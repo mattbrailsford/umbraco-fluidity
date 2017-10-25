@@ -11,6 +11,7 @@ using System.Linq.Expressions;
 using Fluidity.Configuration;
 using Fluidity.Data;
 using Fluidity.Extensions;
+using Fluidity.Models;
 using Fluidity.Web.Models;
 using Fluidity.Web.Models.Mappers;
 using Umbraco.Core;
@@ -57,14 +58,10 @@ namespace Fluidity.Services
             // Determine the data view where clause
             if (!dataView.IsNullOrWhiteSpace())
             {
-                var hasDataViews = collection.ListView?.DataViewsBuilder != null && collection.ListView.DataViewsBuilder.HasDataViews;
-                if (hasDataViews)
+                var wc = collection.ListView?.DataViewsBuilder?.GetDataViewWhereClause(dataView);
+                if (wc != null)
                 {
-                    var wc = collection.ListView.DataViewsBuilder.GetDataViewWhereClause(dataView);
-                    if (wc != null)
-                    {
-                        whereClauseExp = wc;
-                    }
+                    whereClauseExp = wc;
                 }
             }
 

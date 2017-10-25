@@ -71,7 +71,7 @@ namespace Fluidity.Web.Models.Mappers
                         IsSystem = x.IsSystem,
                         Selected = true
                     }),
-                    DataViews = collection.ListView.DataViewsBuilder.HasDataViews ? collection.ListView.DataViewsBuilder.GetDataViews() : new FluidityDataViewSummary[0],
+                    DataViews = collection.ListView.DataViewsBuilder?.GetDataViews() ?? new FluidityDataViewSummary[0],
                     BulkActions = collection.ListView.BulkActions.Select(x => new FluidityListViewBulkActionDisplayModel
                     {
                         Icon = x.Icon,
