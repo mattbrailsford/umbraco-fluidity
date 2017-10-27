@@ -271,7 +271,16 @@ namespace Fluidity.Web.Models.Mappers
                         }
 
                         var propVal = dataTypeInfo.PropertyEditor.ValueEditor.ConvertEditorToDb(data, currentValue);
-                        if (propConfig.ValueMapper != null) {
+                        var supportTagsAttribute = TagExtractor.GetAttribute(dataTypeInfo.PropertyEditor);
+                        if (supportTagsAttribute != null)
+                        {
+                            var dummyProp = new Property(new PropertyType(dataTypeInfo.DataTypeDefinition), propVal);
+                            TagExtractor.SetPropertyTags(dummyProp, data, propVal, supportTagsAttribute);
+                            propVal = dummyProp.Value;
+                        }
+
+                        if (propConfig.ValueMapper != null)
+                        {
                             propVal = propConfig.ValueMapper.EditorToModel(propVal);
                         }
 
@@ -282,13 +291,7 @@ namespace Fluidity.Web.Models.Mappers
                             }
                         }
 
-                        var supportTagsAttribute = TagExtractor.GetAttribute(dataTypeInfo.PropertyEditor);
-                        if (supportTagsAttribute != null) {
-                            var dummyProp = new Property(new PropertyType(dataTypeInfo.DataTypeDefinition), propVal);
-                            TagExtractor.SetPropertyTags(dummyProp, data, propVal, supportTagsAttribute);
-                        } else {
-                            entity.SetPropertyValue(propConfig.Property, propVal);
-                        }
+                        entity.SetPropertyValue(propConfig.Property, propVal);
                     }
                 }
             }
