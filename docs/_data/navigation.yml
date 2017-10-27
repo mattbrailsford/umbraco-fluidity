@@ -48,3 +48,5 @@
   subnav: 
     - title: Umbraco Icons
       url: /reference/umbraco-icons/
+    - title: Known Issues
+      url: /reference/known-issues/
