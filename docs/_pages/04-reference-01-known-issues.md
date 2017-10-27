@@ -11,5 +11,5 @@ Fluidity tries it's best to mimc the content pipeline as closely as possible whi
 
 #### Tags  
 
-Whilst we have support for persisting the tags value, we don't currently have the ability to write these tags to the `cmsTags` DB table. Unfortunately this is all handled internall via a `tagsRepository` which is internal and so we currently can't save to it like core does.
+Whilst we have support for persisting the tags value, we don't currently have the ability to write these tags to the `cmsTags` DB table. Unfortunately this is all handled internally via a `tagsRepository` which is internal and so we currently can't save to it like core does.
 
