@@ -15,6 +15,7 @@ using Fluidity.Web.Models.Mappers;
 using Fluidity.Web.WebApi.Binders;
 using Fluidity.Web.WebApi.Filters;
 using Fluidity.Web.WebApi.Validation;
+using Umbraco.Core;
 using Umbraco.Web.Editors;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
@@ -114,7 +115,21 @@ namespace Fluidity.Web.Api
             var sectionConfig = Context.Config.Sections[postModel.Section];
             var collectionConfig = sectionConfig.Tree.FlattenedTreeItems[postModel.Collection] as FluidityCollectionConfig;
 
-            var entity = postModel.Id != null
+            // Convert ID type for type checking
+            var idProp = collectionConfig.IdProperty;
+            var defaultId = idProp.Type.GetDefaultValue();
+
+            if (postModel.Id != null && postModel.Id.GetType() != idProp.Type)
+            {
+                var convert = postModel.Id.TryConvertTo(idProp.Type);
+                if (convert.Success)
+                {
+                    postModel.Id = convert.Result;
+                }
+            }
+
+            // Get or create entity
+            var entity = postModel.Id != null && !postModel.Id.Equals(defaultId)
                 ? Context.Services.EntityService.GetEntity(collectionConfig, postModel.Id)
                 : Context.Services.EntityService.NewEntity(collectionConfig);
 
