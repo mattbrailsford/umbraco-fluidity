@@ -110,7 +110,7 @@ namespace Fluidity.Web.Models.Mappers
 
             var display = new FluidityEntityEditModel
             {
-                Id = entity?.GetPropertyValue(collection.IdProperty),
+                Id = entity?.GetPropertyValue(collection.IdProperty) ?? collection.IdProperty.Type.GetDefaultValue(),
                 Name = collection?.NameProperty != null ? entity?.GetPropertyValue(collection.NameProperty).ToString() : collection.NameSingular,
                 HasNameProperty = collection.NameProperty != null,
                 Section = section.Alias,
