@@ -5,7 +5,7 @@ title: Known Issues
 permalink: /reference/known-issues/index.html
 ---
 
-Fluidity tries it's best to mimc the content pipeline as closely as possible whilst sticking to public and supported APIs. Unfortunately there are some features in the Umbraco Core that are locked away in internal methods and so does mean some features may not be supported. Bellow are a list of known issues to date.
+Fluidity tries it's best to mimc the content pipeline as closely as possible whilst sticking to public and supported APIs. This is in order to be able to use the full data type suite for editing properties. Unfortunately there are some features in the Umbraco Core that are locked away in internal methods and so does mean some features may not be fully supported. Bellow are a list of known issues to date.
 
 ### Property Editors
 
