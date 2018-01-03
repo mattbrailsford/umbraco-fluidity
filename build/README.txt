@@ -22,13 +22,13 @@ Documentation
 =============
 For documentation on Fluidity head on over to:
 
-https://mattbrailsford.github.io/umbraco-fluidity/
+https://umco.github.io/umbraco-fluidity/
 
 Source
 ======
 Complete source code for Fluidity can be found on GitHub at:
 
-https://github.com/mattbrailsford/umbraco-fluidity
+https://github.com/umco/umbraco-fluidity
 
 License
 =======
