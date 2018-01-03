@@ -1,0 +1,17 @@
+﻿<div class="fluidity__collection-picker" ng-controller="Fluidity.Controllers.CollectionPickerController">
+    <umb-property property="properties[0]">
+        <select ng-model="properties[0].value" ng-options="section.name for section in data" ng-change="clearCollection()">
+            <option value="">--- Please select ---</option>
+        </select>
+    </umb-property>
+    <umb-property property="properties[1]" ng-if="properties[0].value">
+        <select ng-model="properties[1].value" ng-options="collection.name for collection in properties[0].value.collections" ng-change="clearDataView()">
+            <option value="">--- Please select ---</option>
+        </select>
+    </umb-property>
+    <umb-property property="properties[2]" ng-if="properties[1].value && properties[1].value.dataViews">
+        <select ng-model="properties[2].value" ng-options="dataView.name group by dataView.group for dataView in properties[1].value.dataViews">
+            <option value="">--- Please select ---</option>
+        </select>
+    </umb-property>
+</div>

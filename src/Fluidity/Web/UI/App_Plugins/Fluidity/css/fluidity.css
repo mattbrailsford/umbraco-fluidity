@@ -1,0 +1,87 @@
+﻿/* Force the grid view name field to be 100% wide */
+.umb-content-grid__item-name {
+    min-width: 100%;
+}
+
+/* Prevent double top border on tables without a header */
+.umb-table > .umb-table-body:first-child > .umb-table-row:first-child {
+    border-top: 0;
+}
+
+/* Remove extra space in nested prevalues */
+.fluidity__collection-picker {
+    margin-bottom: -36px;
+}
+
+/* Dashboard */
+.fluidity__dashboard__item .inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e9e9eb;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: border-color 100ms ease;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.fluidity__dashboard__item .inner .umb-package-description {
+    white-space: normal;
+}
+
+.fluidity__dashboard__item-overlay { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 174, 162, .9);
+    background-color: rgba(65, 54, 89, .9);
+    border-radius: 3px;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    transition: opacity 100ms ease;
+    opacity: 0;
+    z-index: 5;
+}
+
+.fluidity__dashboard__item .inner:hover .fluidity__dashboard__item-overlay,
+.fluidity__dashboard__item .inner:focus .fluidity__dashboard__item-overlay {
+    opacity: 1;
+}
+
+.fluidity__dashboard__item-overlay:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+.fluidity__dashboard__item-overlay a {
+    display: inline-block;
+    background-color: white;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    margin: 0 5px;
+    text-decoration: none !important;
+    transition: background-color 100ms ease, color 100ms ease;
+}
+
+.fluidity__dashboard__item-overlay a:hover,
+.fluidity__dashboard__item-overlay a:focus {
+    background-color: #00aea2;
+    color: white;
+}
+

@@ -1,0 +1,123 @@
+﻿<div class="umb-editor umb-listview fluidity__list-view">
+
+    <umb-editor-sub-header>
+
+        <umb-editor-sub-header-content-left>
+
+            <!-- Create Button -->
+            <umb-editor-sub-header-section ng-if="collection && !collection.isReadOnly && !isAnythingSelected()">
+                <div class="btn-group">
+                    <a class="btn" href="#/{{collection.section}}/fluidity/edit/{{collection.alias}}">
+                        <i class="{{collection.iconSingular}}"></i>
+                        <localize key="actions_create">Create</localize> {{ collection.nameSingular }}
+                    </a>
+                </div>
+            </umb-editor-sub-header-section>
+
+            <!-- Data Views Dropdwn -->
+            <umb-editor-sub-header-section ng-if="options.dataViews && options.dataViews.length > 0 && !isAnythingSelected()">
+                <select ng-model="options.dataView" ng-options="dv.alias as dv.name group by dv.group for dv in options.dataViews" ng-change="changeDataView()" no-dirty-check></select>
+            </umb-editor-sub-header-section>
+
+            <!-- Clear Selection Button -->
+            <umb-editor-sub-header-section ng-if="isAnythingSelected()">
+                <div class="btn-group">
+                    <umb-button type="button"
+                        label="Clear selection"
+                        label-key="buttons_clearSelection"
+                        action="clearSelection()"
+                        disabled="actionInProgress">
+                    </umb-button>
+                </div>
+            </umb-editor-sub-header-section>
+
+            <!-- Selection Info -->
+            <umb-editor-sub-header-section ng-if="isAnythingSelected()">
+                <strong ng-show="!actionInProgress">{{ selection.length }} <localize key="general_of">of</localize> {{ listViewResultSet.items.length }} <localize key="general_selected">selected</localize></strong>
+                <strong ng-show="actionInProgress" ng-bind="bulkStatus"></strong>
+                <div class="umb-loader-wrapper -bottom" ng-show="actionInProgress">
+                    <div class="umb-loader"></div>
+                </div>
+            </umb-editor-sub-header-section>
+
+        </umb-editor-sub-header-content-left>
+
+
+        <umb-editor-sub-header-content-right>
+
+            <!-- View Toggle -->
+            <umb-editor-sub-header-section ng-if="!isAnythingSelected()">
+
+                <umb-layout-selector ng-if="options.layout.layouts"
+                    layouts="options.layout.layouts"
+                    active-layout="options.layout.activeLayout"
+                    on-layout-select="selectLayout">
+                </umb-layout-selector>
+
+            </umb-editor-sub-header-section>
+
+            <!-- Search -->
+            <umb-editor-sub-header-section ng-if="!isAnythingSelected() && options.isSearchable">
+                <form class="form-search -no-margin-bottom pull-right" novalidate>
+                    <div class="inner-addon left-addon">
+                        <i class="icon icon-search" ng-click="enterSearch($event)"></i>
+                        <input class="form-control search-input"
+                                type="text"
+                                localize="placeholder"
+                                placeholder="@general_typeToSearch"
+                                ng-model="options.filter"
+                                ng-change="enterSearch()"
+                                ng-keydown="forceSearch($event)"
+                                prevent-enter-submit
+                                no-dirty-check>
+                    </div>
+                </form>
+            </umb-editor-sub-header-section>
+
+            <!-- Bulk Actions -->
+            <umb-editor-sub-header-section ng-if="!collection.isReadOnly && isAnythingSelected()">
+
+                <umb-button ng-repeat="bulkAction in options.bulkActions"
+                    type="button"
+                    button-style="link"
+                    label="{{ bulkAction.name }}"
+                    icon="{{ bulkAction.icon }}"
+                    action="performBulkAction(bulkAction)"
+                    disabled="actionInProgress">
+                </umb-button>
+
+            </umb-editor-sub-header-section>
+
+        </umb-editor-sub-header-content-right>
+
+    </umb-editor-sub-header>
+
+    <!-- Layout -->
+    <umb-list-view-layout ng-if="viewLoaded"
+        items="listViewResultSet.items"
+        content-id="entityId"
+        selection="selection"
+        options="options"
+        entity-type="fluidity"
+        on-get-content="getContent">
+    </umb-list-view-layout>
+
+    <umb-load-indicator ng-show="!viewLoaded"></umb-load-indicator>
+
+    <!-- Pagination -->
+    <umb-pagination ng-if="listViewResultSet.totalPages"
+        page-number="options.pageNumber"
+        total-pages="listViewResultSet.totalPages"
+        on-next="nextPage"
+        on-prev="prevPage"
+        on-go-to-page="goToPage">
+    </umb-pagination>
+
+    <!-- Overlays -->
+    <umb-overlay ng-if="ysodOverlay.show"
+        model="ysodOverlay"
+        position="right"
+        view="ysodOverlay.view">
+    </umb-overlay>
+
+</div>

@@ -1,0 +1,32 @@
+﻿<div ng-controller="Fluidity.Controllers.DashboardController" class="umb-packages-section fluidity__dashboard">
+
+    <div class="umb-packages clearfix">
+
+        <div class="umb-package fluidity__dashboard__item" ng-repeat="collection in collections">
+            <div class="inner">
+
+                <div class="fluidity__dashboard__item-overlay">
+                    <a ng-if="!collection.isReadOnly" href="#/{{ collection.section }}/fluidity/edit/{{collection.alias}}"><i class="icon-add"></i></a>
+                    <a  ng-if="collection.hasListView" href="#/{{ collection.section }}/fluidity/list/{{collection.alias}}"><i class="icon-link"></i></a>
+                </div>
+
+                <div class="umb-package-icon">
+                    <i class="umb-content-grid__icon {{ collection.iconPlural }}"></i>
+                </div>
+
+                <div class="umb-package-info">
+                    <div class="umb-package-name">{{ collection.namePlural }}</div>
+                    <div class="umb-package-description">{{ collection.description }}</div>
+
+                    <div class="umb-package-numbers">
+                        <small class="umb-package-downloads">
+                            <i class="icon-server-alt"></i> <strong>{{ collection.recordCount }}</strong>
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

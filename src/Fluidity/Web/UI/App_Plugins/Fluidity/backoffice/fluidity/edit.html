@@ -1,0 +1,66 @@
+﻿<div ng-controller="Fluidity.Controllers.EditController">
+
+    <umb-load-indicator ng-if="page.loading"></umb-load-indicator>
+
+    <form name="fluidityForm"
+          ng-submit="save()"
+          novalidate
+          val-form-manager>
+
+        <umb-editor-view ng-if="!page.loading" umb-tabs>
+
+            <umb-editor-header menu="page.menu"
+                name="content.name"
+                name-locked="!content.hasNameProperty"
+                tabs="content.tabs"
+                hide-icon="true"
+                hide-description="true"
+                hide-alias="true">
+            </umb-editor-header>
+
+
+            <umb-editor-container>
+
+                <umb-tabs-content class="form-horizontal" view="true">
+                    <umb-tab id="tab{{tab.id}}" ng-repeat="tab in content.tabs" rel="{{tab.id}}">
+
+                        <umb-property ng-repeat="property in tab.properties" property="property">
+                            <umb-editor model="property"></umb-editor>
+                        </umb-property>
+
+                    </umb-tab>
+                </umb-tabs-content>
+
+            </umb-editor-container>
+
+
+            <umb-editor-footer>
+
+                <umb-editor-footer-content-right>
+
+                    <umb-button ng-if="page.listViewPath"
+                        type="link"
+                        href="#{{page.listViewPath}}"
+                        label="Return to list"
+                        label-key="buttons_returnToList">
+                    </umb-button>
+
+                    <umb-button ng-if="!content.collectionIsReadOnly"
+                        type="submit"
+                        button-style="success"
+                        state="page.saveButtonState"
+                        shortcut="ctrl+s"
+                        label="Save"
+                        label-key="buttons_save">
+                    </umb-button>
+
+
+                </umb-editor-footer-content-right>
+
+            </umb-editor-footer>
+
+        </umb-editor-view>
+
+    </form>
+
+</div>

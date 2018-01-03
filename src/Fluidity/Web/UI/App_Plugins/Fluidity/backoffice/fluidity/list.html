@@ -1,0 +1,33 @@
+﻿<div ng-controller="Fluidity.Controllers.ListViewController">
+
+    <umb-load-indicator ng-if="page.loading"></umb-load-indicator>
+
+    <form name="fluidityForm" novalidate val-form-manager>
+
+        <umb-editor-view ng-if="!page.loading" umb-tabs>
+
+            <umb-editor-header menu="page.menu"
+                name="page.name"
+                name-locked="true"
+                hide-icon="true"
+                hide-description="true"
+                hide-alias="true">
+            </umb-editor-header>
+
+            <umb-editor-container>
+
+                <div class="form-horizontal">
+                    <fluidity-list-view
+                        collection="collection"
+                        options="listView.options"
+                        on-get-items="listView.getItems">
+                    </fluidity-list-view>
+                </div>
+
+            </umb-editor-container>
+
+        </umb-editor-view>
+
+    </form>
+
+</div>
