@@ -22,12 +22,12 @@
 		<Description>A fluent CRUD user interface generator for Umbraco</Description>
 		<Owners>Matt Brailsford and contributors</Owners>
 		<Authors>Matt Brailsford and contributors</Authors>
-		<AuthorUrl>https://github.com/mattbrailsford/umbraco-fluidity</AuthorUrl>
+		<AuthorUrl>https://github.com/umco/umbraco-fluidity</AuthorUrl>
 		<PackageLicenseName>Apache 2.0 license</PackageLicenseName>
 		<PackageLicenseUrl>https://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
-		<ProjectUrl>https://github.com/mattbrailsford/umbraco-fluidity</ProjectUrl>
+		<ProjectUrl>https://github.com/umco/umbraco-fluidity</ProjectUrl>
 		<Copyright>Matt Brailsford and contributors</Copyright>
-		<IconUrl>https://raw.githubusercontent.com/mattbrailsford/umbraco-fluidity/master/docs/img/badge_mint.png</IconUrl>
+		<IconUrl>https://raw.githubusercontent.com/umco/umbraco-fluidity/master/docs/img/badge_mint.png</IconUrl>
 		<RequireLicenseAcceptance>false</RequireLicenseAcceptance>
 		<Language>en-GB</Language>
 		<Tags>umbraco</Tags>
