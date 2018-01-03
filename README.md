@@ -1,5 +1,9 @@
 # Fluidity
 
+[![Build status](https://img.shields.io/appveyor/ci/UMCO/umbraco-fluidity.svg)](https://ci.appveyor.com/project/UMCO/umbraco-fluidity)
+[![NuGet release](https://img.shields.io/nuget/v/Our.Umbraco.Fluidity.svg)](https://www.nuget.org/packages/Our.Umbraco.Fluidity)
+[![Our Umbraco project page](https://img.shields.io/badge/our-umbraco-orange.svg)](https://our.umbraco.org/projects/backoffice-extensions/fluidity/)
+
 Fluidity is a rapid Umbraco user interface builder for custom data structures configured via a fluent API. 
 
 If you have a custom data store that you’d like to be able to content manage from within Umbraco then Fluidity will allow you quickly configure a custom management user interface, reusing many core components and with a consistent look and feel, in just a few lines of code. 

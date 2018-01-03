@@ -1,4 +1,4 @@
-umbraco: https://our.umbraco.org/projects/developer-tools/fluidity/
-nuget: https://github.com/mattbrailsford/umbraco-fluidity/
-github: https://github.com/mattbrailsford/umbraco-fluidity/
-issues: https://github.com/mattbrailsford/umbraco-fluidity/issues
+umbraco: https://our.umbraco.org/projects/backoffice-extensions/fluidity/
+nuget: https://www.nuget.org/packages/Our.Umbraco.Fluidity/
+github: https://github.com/umco/umbraco-fluidity/
+issues: https://github.com/umco/umbraco-fluidity/issues
