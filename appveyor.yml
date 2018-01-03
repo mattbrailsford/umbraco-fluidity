@@ -24,10 +24,10 @@ artifacts:
 deploy:
     # MyGet Deployment for builds & releases
   - provider: NuGet
-    server: https://www.myget.org/F/umbraco-fluidity/api/v2/package
-    symbol_server: https://www.myget.org/F/umbraco-fluidity/symbols/api/v2/package
+    server: https://www.myget.org/F/umbraco-packages/
+    symbol_server: https://nuget.symbolsource.org/MyGet/umbraco-packages
     api_key:
-      secure: gHDTL46KZcLzj6J8m//TJgaCOJCl9ixR//rXjO18HRlCsfPYYz7dU81u2D5zd+ZN
+      secure: 36/Ax5O+e6wENlhoTwgvoEBZV3FG4XjF429SNTej2qsGTAL+cdfA1kT/tm1St8vx
     artifact: /.*\.nupkg/
     on:
       branch: develop
