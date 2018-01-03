@@ -28,6 +28,7 @@ Anyone and everyone is welcome to contribute. Please take a moment to review the
 ## The Team
 
 * [Matt Brailsford](https://github.com/mattbrailsford)
+* [Lee Kelleher](https://github.com/leekelleher)
 
 ### Special thanks
 
