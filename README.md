@@ -32,7 +32,7 @@ Anyone and everyone is welcome to contribute. Please take a moment to review the
 
 ### Special thanks
 
-* Fluidity is inspired by my learnings from contributing to the [UI-O-Matic](https://github.com/TimGeyssens/UIOMatic) package by [Tim Geyssens](https://github.com/darrenferguson) so a special thanks goes to Tim for the inspiration.
+* Fluidity is inspired by my learnings from contributing to the [UI-O-Matic](https://github.com/TimGeyssens/UIOMatic) package by [Tim Geyssens](https://github.com/TimGeyssens) so a special thanks goes to Tim for the inspiration.
 
 ## License
 
