@@ -63,7 +63,7 @@ public class FluidityBootstrap : FluidityConfigModule
             
             sectionConfig.SetTree("Database", treeConfig => {
                 
-                treeConfig.AddCollection<Person>(p => p.Id, "Person", "People", "icon-umb-users", "icon-umb-users", collectionConfig => {
+                treeConfig.AddCollection<Person>(p => p.Id, "Person", "People", "A collection of people", "icon-umb-users", "icon-umb-users", collectionConfig => {
 
                     collectionConfig.SetNameProperty(p => p.Name);
                     collectionConfig.SetViewMode(FluidityViewMode.List);
@@ -76,8 +76,8 @@ public class FluidityBootstrap : FluidityConfigModule
                     collectionConfig.Editor(editorConfig => {
 
                         editorConfig.AddTab("General", tabConfig => {
-                            tabConfig.AddField(p => p.JobTitle).IsRequired();
-                            tabConfig.AddField(p => p.Email).SetValidationRegex("[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}");
+                            tabConfig.AddField(p => p.JobTitle).MakeRequired();
+                            tabConfig.AddField(p => p.Email).SetValidationRegex("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+");
                             tabConfig.AddField(p => p.Telephone).SetDescription("inc area code");
                             tabConfig.AddField(p => p.Age);
                         });
