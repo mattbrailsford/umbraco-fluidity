@@ -162,7 +162,17 @@ namespace Fluidity.Data
 
         object IFluidityRepository.Get(object id, bool fireEvents)
         {
-            return Get((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id), fireEvents);
+            // Check if the specified Identifier type is the same type as the "id" arguement.
+            // If it is, then we don't need to convert this value.
+            // Otherwise, we will need to convert the "id" to the specified type.
+            if(typeof(TId) == id.GetType())
+            {
+                return Get((TId)id, fireEvents);
+            }
+            else
+            {
+                return Get((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id), fireEvents);
+            }
         }
 
         IEnumerable<object> IFluidityRepository.GetAll(bool fireEvents)
