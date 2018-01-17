@@ -171,7 +171,7 @@ namespace Fluidity.Data
             }
             else
             {
-                return Get((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id), fireEvents);
+                return Get((TId)TypeDescriptor.GetConverter(typeof(TId)).ConvertFrom(id.ToString()), fireEvents);
             }
         }
 
