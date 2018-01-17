@@ -397,11 +397,11 @@
 REM # Copy files
 REM #################################################
 
-IF %25ComputerName%25 == MBP13-PC-BC (
+IF %25ComputerName%25 == DESKTOP-ESFKU58 (
 IF NOT "$(SolutionDir)" == "*Undefined*" (
-REM xcopy /s /y "$(TargetPath)" "$(SolutionDir)Fluidity.TestHarness\bin"
-REM xcopy /s /y "$(TargetDir)Fluidity.pdb" "$(SolutionDir)Fluidity.TestHarness\bin"
-xcopy /s /y "$(ProjectDir)Web\UI\*" "$(SolutionDir)Fluidity.TestHarness"
+xcopy /s /y "$(TargetPath)" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo\bin"
+xcopy /s /y "$(TargetDir)Fluidity.pdb" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo\bin"
+xcopy /s /y "$(ProjectDir)Web\UI\*" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo"
 )
 )</PostBuildEvent>
   </PropertyGroup>

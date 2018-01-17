@@ -4,6 +4,7 @@
 // </copyright>
 
 using System.Runtime.Serialization;
+using Fluidity.Extensions;
 
 namespace Fluidity.Web.Models
 {
@@ -12,6 +13,9 @@ namespace Fluidity.Web.Models
     {
         [DataMember(Name = "id", IsRequired = true)]
         public object Id { get; set; }
+
+        [DataMember(Name = "key")]
+        public object Key => Id?.EncodeAsGuid();
 
         // Currently hard coding parent id as nuPickers requires passing
         // a parent id into it's functions even though it may not be used.
