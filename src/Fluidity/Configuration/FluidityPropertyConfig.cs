@@ -44,7 +44,7 @@ namespace Fluidity.Configuration
         /// </returns>
         public static implicit operator PropertyInfo(FluidityPropertyConfig propertyConfig)
         {
-            return propertyConfig.PropertyInfo;
+            return propertyConfig?.PropertyInfo;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Fluidity.Configuration
         /// </returns>
         public static implicit operator LambdaExpression(FluidityPropertyConfig propertyConfig)
         {
-            return propertyConfig.PropertyExpression;
+            return propertyConfig?.PropertyExpression;
         }
 
         /// <summary>
