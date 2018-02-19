@@ -97,7 +97,7 @@ public class FluidityBootstrap : FluidityConfigModule
 }
 ````
 
-Which in turn will generate a fully working user interface like this
+Which in turn will generate a fully working user interface like this *
 
 ![List View]({{ site.baseurl }}/img/list-view.png) 
 
@@ -106,3 +106,5 @@ Which in turn will generate a fully working user interface like this
 As you can see, with very little code you can start to create very powerful interfaces for your custom models. 
 
 To see all the possible configuration options for each of the UI components, be sure to read through the [API documentation]({{ site.baseurl }}/api/conventions/).
+
+*\* If following this as an example, and you don't see your section being displayed, be sure to read the [AddSection]({{ site.baseurl }}/api/sections/#defining-a-section) documentation regarding giving your active user the relevant permissions*
