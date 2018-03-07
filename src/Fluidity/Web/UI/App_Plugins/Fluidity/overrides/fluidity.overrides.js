@@ -90,7 +90,7 @@
             // intercept the call and just set it to the root id.
             var oldGetByQuery = $delegate.getByQuery;
             $delegate.getByQuery = function () {
-                if (arguments.length >= 2 && arguments[1].indexOf('!') >= 0) { // '!' signifies a fluidity composite id
+                if (arguments.length >= 2 && arguments[1].toString().indexOf('!') >= 0) { // '!' signifies a fluidity composite id
                     arguments[1] = -1;
                 }
                 return oldGetByQuery.apply($delegate, arguments);
