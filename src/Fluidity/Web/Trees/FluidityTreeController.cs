@@ -253,11 +253,14 @@ namespace Fluidity.Web.Trees
             var itemId = entity.GetPropertyValue(collection.IdProperty);
             var compositeId = collection.Alias + "!" + itemId;
 
+            var entityName = collection.NameProperty != null ? entity.GetPropertyValue(collection.NameProperty).ToString()
+                                : collection.NameFormat != null ? collection.NameFormat(entity) : entity.ToString();
+
             var node = CreateTreeNode(
                 compositeId,
                 collection.Alias,
                 queryStrings,
-                collection.NameFormat != null ? collection.NameFormat(entity) : entity.ToString(),
+                entityName,
                 collection.IconSingular,
                 false,
                 SectionAlias + "/fluidity/edit/" + compositeId);
