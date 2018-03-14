@@ -43,7 +43,7 @@ namespace Fluidity.Data
 
         public IEnumerable<object> GetAll(bool fireEvents = true)
         {
-            var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
+            var query = new Sql($"SELECT * FROM [{_collection.EntityType.GetTableName()}]");
 
             if (_collection.DeletedProperty != null)
             {
@@ -68,7 +68,7 @@ namespace Fluidity.Data
 
         public PagedResult<object> GetPaged(int pageNumber, int pageSize, LambdaExpression whereClause, LambdaExpression orderBy, SortDirection orderDirection, bool fireEvents = true)
         {
-            var query = new Sql($"SELECT * FROM {_collection.EntityType.GetTableName()}");
+            var query = new Sql($"SELECT * FROM [{_collection.EntityType.GetTableName()}]");
 
             // Where
             if (whereClause != null)
@@ -77,17 +77,17 @@ namespace Fluidity.Data
             }
             else
             {
-                query.Where(" 1 = 1");
+                query.Where("1 = 1");
             }
 
             if (_collection.DeletedProperty != null)
             {
-                query.Append($" AND {_collection.DeletedProperty.GetColumnName()} = 0");
+                query.Append($" AND ({_collection.DeletedProperty.GetColumnName()} = 0)");
             }
 
             // Order by
             LambdaExpression orderByExp = orderBy ?? _collection.SortProperty;
-            if (orderByExp != null)
+            if (orderByExp != null) 
             {
                 if (orderDirection == SortDirection.Ascending)
                 {
@@ -96,8 +96,14 @@ namespace Fluidity.Data
                 else
                 {
                     SqlExtensions.OrderByDescending(query, _collection.EntityType, orderByExp, SyntaxProvider);
-
                 }
+            }
+            else
+            {
+                // There is a bug in the Db.Page code that effectively requires there
+                // to be an order by clause no matter what, so if one isn't provided
+                // we'lld just order by 1
+                query.Append(" ORDER BY 1 ");
             }
 
             var result = Db.Page(_collection.EntityType, pageNumber, pageSize, query);
@@ -164,8 +170,8 @@ namespace Fluidity.Data
             }
 
             var query = new Sql(_collection.DeletedProperty != null
-                ? $"UPDATE {_collection.EntityType.GetTableName()} SET {_collection.DeletedProperty.GetColumnName()} = 1 WHERE {_collection.IdProperty.GetColumnName()} = @0"
-                : $"DELETE FROM {_collection.EntityType.GetTableName()} WHERE {_collection.IdProperty.GetColumnName()} = @0",
+                ? $"UPDATE [{_collection.EntityType.GetTableName()}] SET {_collection.DeletedProperty.GetColumnName()} = 1 WHERE {_collection.IdProperty.GetColumnName()} = @0"
+                : $"DELETE FROM [{_collection.EntityType.GetTableName()}] WHERE {_collection.IdProperty.GetColumnName()} = @0",
                 id);
 
             Db.Execute(query);
@@ -176,7 +182,7 @@ namespace Fluidity.Data
 
         public long GetTotalRecordCount(bool fireEvents = true)
         {
-            var sql = $"SELECT COUNT(1) FROM {_collection.EntityType.GetTableName()}";
+            var sql = $"SELECT COUNT(1) FROM [{_collection.EntityType.GetTableName()}]";
 
             if (_collection.DeletedProperty != null)
             {

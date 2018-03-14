@@ -69,29 +69,27 @@ namespace Fluidity.Web.Models.Mappers
                 EditPath = $"{section.Alias}/fluidity/edit/{entityCompositeId}",
             };
 
-            if (collection.Editor?.Tabs != null)
+            if (collection.ListView != null)
             {
                 var properties = new List<ContentPropertyBasic>();
-                if (collection.ListView != null)
+
+                foreach (var field in collection.ListView.Fields)
                 {
-                    foreach (var field in collection.ListView.Fields)
+                    var value = entity?.GetPropertyValue(field.Property);
+
+                    if (field.Format != null)
                     {
-                        var value = entity?.GetPropertyValue(field.Property);
-
-                        if (field.Format != null)
-                        {
-                            value = field.Format(value, entity);
-                        }
-
-                        var propertyScaffold = new ContentPropertyBasic
-                        {
-                            Id = properties.Count,
-                            Alias = field.Property.Name,
-                            Value = value?.ToString()
-                        };
-
-                        properties.Add(propertyScaffold);
+                        value = field.Format(value, entity);
                     }
+
+                    var propertyScaffold = new ContentPropertyBasic
+                    {
+                        Id = properties.Count,
+                        Alias = field.Property.Name,
+                        Value = value?.ToString()
+                    };
+
+                    properties.Add(propertyScaffold);
                 }
 
                 display.Properties = properties;

@@ -15,6 +15,12 @@ namespace Fluidity.Web.Models
         [DataMember(Name = "pageSize")]
         public int PageSize { get; set; }
 
+        [DataMember(Name = "defaultOrderBy")]
+        public string DefaultOrderBy { get; set; }
+
+        [DataMember(Name = "defaultOrderDirection")]
+        public string DefaultOrderDirection { get; set; }
+
         [DataMember(Name = "bulkActions")]
         public IEnumerable<FluidityListViewBulkActionDisplayModel> BulkActions { get; set; }
 
