@@ -78,4 +78,30 @@
 
     angular.module("umbraco.services").config(['$provide', fluidityUmbracoServicesOverrides]);
 
+    // Umbraco resource overrides
+    function fluidityUmbracoResourceOverrides($provide) {
+
+        $provide.decorator('entityResource', function ($delegate) {
+
+            // When using MNTP with an xpath filter with fluidity
+            // a call to getByQuery is made using the $routeParams.id
+            // as context. Unfortunately it expects that variable to
+            // be an int, which in fluidity's case is not, so we 
+            // intercept the call and just set it to the root id.
+            var oldGetByQuery = $delegate.getByQuery;
+            $delegate.getByQuery = function () {
+                if (arguments.length >= 2 && arguments[1].toString().indexOf('!') >= 0) { // '!' signifies a fluidity composite id
+                    arguments[1] = -1;
+                }
+                return oldGetByQuery.apply($delegate, arguments);
+            };
+
+            return $delegate;
+
+        });
+
+    }
+
+    angular.module("umbraco.resources").config(['$provide', fluidityUmbracoResourceOverrides]);
+
 })();

@@ -22,6 +22,8 @@
             options: {
                 isSearchable: true,
                 pageSize: 10,
+                defaultOrderBy: "Name",
+                defaultOrderDirection: "desc",
                 bulkActions: [],
                 dataViews: [],
                 layouts: [],
@@ -34,12 +36,14 @@
 
         function init(collection) {
             $scope.page.name = collection.namePlural;
-            $scope.listView.options.isSearchable = collection.isSearchable;
-            $scope.listView.options.pageSize     = collection.listView.pageSize;
-            $scope.listView.options.bulkActions  = collection.listView.bulkActions;
-            $scope.listView.options.dataViews    = collection.listView.dataViews;
-            $scope.listView.options.layouts      = collection.listView.layouts;
-            $scope.listView.options.properties   = collection.listView.properties;
+            $scope.listView.options.isSearchable          = collection.isSearchable;
+            $scope.listView.options.pageSize              = collection.listView.pageSize;
+            $scope.listView.options.defaultOrderBy        = collection.listView.defaultOrderBy;
+            $scope.listView.options.defaultOrderDirection = collection.listView.defaultOrderDirection;
+            $scope.listView.options.bulkActions           = collection.listView.bulkActions;
+            $scope.listView.options.dataViews             = collection.listView.dataViews;
+            $scope.listView.options.layouts               = collection.listView.layouts;
+            $scope.listView.options.properties            = collection.listView.properties;
         }
 
         function syncTree(entity, path, initialLoad) {
