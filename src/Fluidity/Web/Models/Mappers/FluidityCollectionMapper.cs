@@ -32,7 +32,7 @@ namespace Fluidity.Web.Models.Mappers
                 Path = collection.Path
             };
 
-            if (includeListView)
+            if (includeListView && m.HasListView)
             {
                 m.ListView = new FluidityListViewDisplayModel
                 {
