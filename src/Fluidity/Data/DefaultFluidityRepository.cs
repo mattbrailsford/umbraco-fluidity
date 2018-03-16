@@ -138,7 +138,7 @@ namespace Fluidity.Data
                 entity = args.Entity.After;
             }
 
-            Db.Save(args.Entity.After);
+            Db.Save(entity);
 
             if (fireEvents)
             {
