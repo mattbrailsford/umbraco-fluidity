@@ -32,11 +32,13 @@ namespace Fluidity.Web.Models.Mappers
                 Path = collection.Path
             };
 
-            if (includeListView)
+            if (includeListView && m.HasListView)
             {
                 m.ListView = new FluidityListViewDisplayModel
                 {
                     PageSize = collection.ListView.PageSize,
+                    DefaultOrderBy = collection.SortProperty?.Name ?? "Name",
+                    DefaultOrderDirection = collection.SortDirection == SortDirection.Ascending ? "asc" : "desc",
                     Properties = collection.ListView.Fields.Select(x =>
                     {
                         // Calculate heading
