@@ -272,6 +272,11 @@ namespace Fluidity.Web.Trees
 
             node.Path = collection.Path + FluidityConstants.PATH_SEPERATOR + compositeId;
             node.AdditionalData.AddOrUpdate("entityId", itemId);
+            node.AdditionalData.AddOrUpdate("collectionAlias", collection.Alias);
+            node.AdditionalData.AddOrUpdate("sectionAlias", SectionAlias);
+            node.AdditionalData.AddOrUpdate("dashboardRoute", collection.ViewMode == FluidityViewMode.Tree
+                ? SectionAlias // Tree mode so just show the default dashboard
+                : SectionAlias + "/fluidity/list/" + collection.Alias); // List view so show the list
 
             return node;
         }
