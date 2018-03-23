@@ -41,8 +41,8 @@ namespace Fluidity.Configuration
         protected string _description;
         internal string Description => _description;
 
-        protected string _connectionStringg;
-        internal string ConnectionString => _connectionStringg;
+        protected string _connectionString;
+        internal string ConnectionString => _connectionString;
 
         protected Type _entityType;
         internal Type EntityType => _entityType;

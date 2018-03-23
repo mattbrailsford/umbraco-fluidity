@@ -107,7 +107,7 @@ namespace Fluidity.Configuration
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> SetConnectionString(string connectionStringName)
         {
-            _connectionStringg = connectionStringName;
+            _connectionString = connectionStringName;
             return this;
         }
 
