@@ -180,13 +180,13 @@ namespace Fluidity.Configuration
 
         #region Obsoletes
 
-        [Obsolete("Inconsistent casing, using MakeReadOnly instead")]
+        [Obsolete("Inconsistent casing, use MakeReadOnly instead")]
         public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadonly()
         {
             return MakeReadOnly();
         }
 
-        [Obsolete("Inconsistent casing, using MakeReadOnly instead")]
+        [Obsolete("Inconsistent casing, use MakeReadOnly instead")]
         public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadonly(Func<TValueType, string> format)
         {
             return MakeReadOnly(format);
