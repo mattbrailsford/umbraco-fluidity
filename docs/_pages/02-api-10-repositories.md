@@ -27,7 +27,7 @@ public class PersonRepository : FluidityRepository<Person, int> {
         ...
     }
 
-    protected override PagedResult<Person> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<Person, bool>> whereClause, Expression<Func<Person, object>> orderBy, SortDirection orderDirection);
+    protected override PagedResult<Person> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<Person, bool>> whereClause, Expression<Func<Person, object>> orderBy, SortDirection orderDirection) {
         ...
     }
 
