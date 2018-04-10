@@ -27,7 +27,7 @@ public class PersonRepository : FluidityRepository<Person, int> {
         ...
     }
 
-    protected override PagedResult<Person> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<Person, bool>> whereClause, Expression<Func<Person, object>> orderBy, SortDirection orderDirection);
+    protected override PagedResult<Person> GetPagedImpl(int pageNumber, int pageSize, Expression<Func<Person, bool>> whereClause, Expression<Func<Person, object>> orderBy, SortDirection orderDirection) {
         ...
     }
 
@@ -55,7 +55,7 @@ A repository is assigned to a collection as part of the collection configuration
 ### Accessing a repository in code
 {: .mt}
 
-If you have created your own repository implementation, then accessing the repository can be as simple as instanttiating a new instance of the repository class, however if you are using the built in repository, unfortunately a new instance can't be created in this way.
+If you have created your own repository implementation, then accessing the repository can be as simple as instantiating a new instance of the repository class, however if you are using the built in repository, unfortunately a new instance can't be created in this way.
 
 To help with accessing a repository (default or custom) Fluidity has a couple of factory methods to create the repository instances for you.
 

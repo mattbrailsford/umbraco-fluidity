@@ -50,4 +50,4 @@ foreach(var p in Model.Content.People.Cast<Person>()){
 }
 ````
 
-**Note:** Due to the fact that the property editor can link to any entity type, the returned value type from the value converter will be `IEnumrable<object>` and so will require the entities to be cast to the desired concrete type.
+**Note:** Due to the fact that the property editor can link to any entity type, the returned value type from the value converter will be `IEnumerable<object>` and so will require the entities to be cast to the desired concrete type.
