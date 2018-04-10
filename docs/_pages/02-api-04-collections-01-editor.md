@@ -103,7 +103,7 @@ Sets the default value via a function that gets evaluated at time of entity crea
 
 ````csharp
 // Example
-fieldConfig.SetDefaultValue(() => DateTime.Now));
+fieldConfig.SetDefaultValue(() => DateTime.Now);
 ````
 
 ### Making a field read only
