@@ -177,5 +177,21 @@ namespace Fluidity.Configuration
 	        _isReadOnly = true;
             return this;
         }
+
+        #region Obsoletes
+
+        [Obsolete("Inconsistent casing, using MakeReadOnly instead")]
+        public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadonly()
+        {
+            return MakeReadOnly();
+        }
+
+        [Obsolete("Inconsistent casing, using MakeReadOnly instead")]
+        public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadonly(Func<TValueType, string> format)
+        {
+            return MakeReadOnly(format);
+        }
+
+        #endregion
     }
 }
