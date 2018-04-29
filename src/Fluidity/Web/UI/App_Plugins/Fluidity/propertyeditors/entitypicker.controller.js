@@ -84,6 +84,11 @@
             angularHelper.getCurrentForm($scope).$setDirty();
         };
 
+        $scope.open = function (section, collection, id) {
+            var openHref = "/umbraco/#/" + section + "/fluidity/edit/" + collection + "!" + id;
+            window.location.href = openHref;
+        };
+
         $scope.clear = function () {
             $scope.renderModel = [];
         };

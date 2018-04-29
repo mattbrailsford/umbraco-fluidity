@@ -9,6 +9,8 @@
                 published="true"
                 description="'/' + node.section + '/' + node.collection + '/' + node.id"
                 sortable="!sortableOptions.disabled"
+                allow-open="true"
+                on-open="open(node.section, node.collection, node.id)"
                 allow-remove="true"
                 on-remove="remove($index)">
             </umb-node-preview>
