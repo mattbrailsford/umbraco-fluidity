@@ -7,7 +7,7 @@
 
     'use strict';
 
-    function entityPickerController($scope, editorState, angularHelper, fluidityResource) {
+    function entityPickerController($scope, editorState, angularHelper, fluidityResource, $location) {
 
         var aliases = $scope.model.config.collection.split(',');
         var sectionAlias = aliases.length >= 1 ? aliases[0] : "";
@@ -85,8 +85,7 @@
         };
 
         $scope.open = function (section, collection, id) {
-            var openHref = "/umbraco/#/" + section + "/fluidity/edit/" + collection + "!" + id;
-            window.location.href = openHref;
+            $location.path("/" + section + "/fluidity/edit/" + collection + "!" + id);
         };
 
         $scope.clear = function () {
