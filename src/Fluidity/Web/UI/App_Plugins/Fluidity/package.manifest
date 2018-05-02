@@ -25,6 +25,12 @@
 						description: "Enter the maximum number of items that can be selected",
 						key: "maxItems",
 						view: "number"
+					},
+					{
+						label: "Show open button",
+						description: "Show a button to redirect the back office to the editor page of the select node",
+						key: "showOpen",
+						view: "boolean"
 					}
 				]
 			}
