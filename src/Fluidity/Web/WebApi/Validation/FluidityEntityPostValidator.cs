@@ -39,7 +39,7 @@ namespace Fluidity.Web.WebApi.Validation
             var configProps = config.Editor?.Tabs.SelectMany(x => x.Fields).ToArray() ?? new FluidityEditorFieldConfig[0];
 
             if (ValidateProperties(modelState, postModel, configProps) == false) return;
-            if (ValidatePropertyData(modelState, postModel, configProps) == false) return;
+            if (ValidatePropertyData(modelState, postModel, configProps, config.IsReadOnly) == false) return;
             if (ValidateDataAnnotations(modelState, entity) == false) return;
         }
 
@@ -56,11 +56,11 @@ namespace Fluidity.Web.WebApi.Validation
             return true;
         }
 
-        protected virtual bool ValidatePropertyData(ModelStateDictionary modelState, FluidityEntityPostModel postModel, FluidityEditorFieldConfig[] configProps)
+        protected virtual bool ValidatePropertyData(ModelStateDictionary modelState, FluidityEntityPostModel postModel, FluidityEditorFieldConfig[] configProps, bool isReadOnly)
         {
             foreach (var p in configProps)
             {
-                var dataTypeInfo = _dataTypeHelper.ResolveDataType(p);
+                var dataTypeInfo = _dataTypeHelper.ResolveDataType(p, isReadOnly);
                 var postedValue = postModel.Properties.Single(x => x.Alias == p.Property.Name).Value;
 
                 // Validate against the prop editor validators

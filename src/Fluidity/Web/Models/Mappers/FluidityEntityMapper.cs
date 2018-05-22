@@ -145,7 +145,7 @@ namespace Fluidity.Web.Models.Mappers
                     {
                         foreach (var field in tab.Fields)
                         {
-                            var dataTypeInfo = _dataTypeHelper.ResolveDataType(field);
+                            var dataTypeInfo = _dataTypeHelper.ResolveDataType(field, collection.IsReadOnly);
 
                             dataTypeInfo.PropertyEditor.ValueEditor.ConfigureForDisplay(dataTypeInfo.PreValues);
 
@@ -259,7 +259,7 @@ namespace Fluidity.Web.Models.Mappers
                     additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
                     additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));
 
-                    var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig);
+                    var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig, collection.IsReadOnly);
                     var data = new ContentPropertyData(prop.Value, dataTypeInfo.PreValues, additionalData);
 
                     if (!dataTypeInfo.PropertyEditor.ValueEditor.IsReadOnly) {
