@@ -184,6 +184,17 @@ namespace Fluidity.Configuration
         }
 
         /// <summary>
+        /// Sets a filter for the collection.
+        /// </summary>
+        /// <param name="filterExpression">The filter where clause expression.</param>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> SetFilter(Expression<Func<TEntityType, bool>> whereClause)
+        {
+            _filterExpression = whereClause;
+            return this;
+        }
+
+        /// <summary>
         /// Shows the collection on the section dashboard.
         /// </summary>
         /// <returns>The collection configuration.</returns>

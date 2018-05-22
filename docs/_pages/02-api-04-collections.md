@@ -211,6 +211,21 @@ Adds the given property to the searchable properties collection. Property must b
 collectionConfig.AddSearchableProperty(p => p.FirstName);
 ````
 
+### Applying a global filter
+{: .mt}
+
+Sometimes you may only want to work with a sub-set of data within a given table so this is where the `SetFilter` method comes in handy, allowing you to define a global filter to apply to all queries for the given collection.
+
+#### SetFilter(Lambda whereClauseExression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Sets the filter where clause expression. Expression must be a `boolean` expression.
+
+````csharp
+// Example
+collectionConfig.SetFilter(p => p.Current);
+````
+
 ### Defining menu items
 {: .mt}
 See [Menu Items API documentation]({{ site.baseurl }}/api/menu-items/) for more info.

@@ -403,6 +403,14 @@ xcopy /s /y "$(TargetPath)" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\
 xcopy /s /y "$(TargetDir)Fluidity.pdb" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo\bin"
 xcopy /s /y "$(ProjectDir)Web\UI\*" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo"
 )
+)
+
+IF %25ComputerName%25 == MBP13-PC-BC (
+IF NOT "$(SolutionDir)" == "*Undefined*" (
+xcopy /s /y "$(TargetPath)" "C:\Users\Matt\Work\Umbraco\FluidityDemo\FluidityDemo\bin"
+xcopy /s /y "$(TargetDir)Fluidity.pdb" "C:\Users\Matt\Work\Umbraco\FluidityDemo\FluidityDemo\bin"
+xcopy /s /y "$(ProjectDir)Web\UI\*" "C:\Users\Matt\Work\Umbraco\FluidityDemo\FluidityDemo"
+)
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

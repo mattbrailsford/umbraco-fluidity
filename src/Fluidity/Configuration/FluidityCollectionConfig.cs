@@ -92,6 +92,9 @@ namespace Fluidity.Configuration
         protected List<FluidityPropertyConfig> _searchableProperties;
         internal IEnumerable<FluidityPropertyConfig> SearchableProperties => _searchableProperties;
 
+        protected LambdaExpression _filterExpression;
+        internal LambdaExpression FilterExpression => _filterExpression;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityCollectionConfig"/> class.
         /// </summary>
