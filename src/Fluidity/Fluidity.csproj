@@ -271,7 +271,6 @@
     <Compile Include="Actions\FluidityBulkAction.cs" />
     <Compile Include="Actions\FluidityDeleteBulkAction.cs" />
     <Compile Include="Configuration\FluidityDataViewConfig.cs" />
-    <Compile Include="Configuration\FluidityEncryptedPropertyConfig.cs" />
     <Compile Include="Configuration\FluidityPropertyConfig.cs" />
     <Compile Include="Converters\FluidityEntityPickerValueConverter.cs" />
     <Compile Include="DataViewsBuilders\DefaultFluidityDataViewsBuilder.cs" />
@@ -283,7 +282,6 @@
     <Compile Include="Extensions\FluidityPropertyConfigExtensions.cs" />
     <Compile Include="Extensions\SqlExtensions.cs" />
     <Compile Include="Events\FluidityStartingEventArgs.cs" />
-    <Compile Include="Helpers\SecurityHelper.cs" />
     <Compile Include="Helpers\UmbracoPublishedPropertyTypeHelper.cs" />
     <Compile Include="ListViewLayouts\FluidityListViewLayout.cs" />
     <Compile Include="Extensions\FluidityEditorFieldConfigExtensions.cs" />
