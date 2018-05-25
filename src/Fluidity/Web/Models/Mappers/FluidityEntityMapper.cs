@@ -157,6 +157,12 @@ namespace Fluidity.Web.Models.Mappers
                                 ? entity?.GetPropertyValue(field.Property)
                                 : field.DefaultValueFunc != null ? field.DefaultValueFunc() : field.Property.Type.GetDefaultValue();
 
+                            var encryptedProp = collection.EncryptedProperties?.FirstOrDefault(x => x.Name == field.Property.Name);
+                            if (encryptedProp != null)
+                            {
+                                value = SecurityHelper.Decrypt(value.ToString());
+                            }
+
                             if (field.ValueMapper != null)
                             {
                                 value = field.ValueMapper.ModelToEditor(value);
@@ -264,6 +270,13 @@ namespace Fluidity.Web.Models.Mappers
 
                     if (!dataTypeInfo.PropertyEditor.ValueEditor.IsReadOnly) {
                         var currentValue = entity.GetPropertyValue(propConfig.Property);
+
+                        var encryptedProp = collection.EncryptedProperties?.FirstOrDefault(x => x.Name == propConfig.Property.Name);
+                        if (encryptedProp != null)
+                        {
+                            currentValue = SecurityHelper.Decrypt(currentValue.ToString());
+                        }
+
                         if (propConfig.ValueMapper != null) {
                             currentValue = propConfig.ValueMapper.ModelToEditor(currentValue);
                         }
@@ -280,6 +293,11 @@ namespace Fluidity.Web.Models.Mappers
                         if (propConfig.ValueMapper != null)
                         {
                             propVal = propConfig.ValueMapper.EditorToModel(propVal);
+                        }
+
+                        if (encryptedProp != null)
+                        {
+                            propVal = SecurityHelper.Encrypt(propVal.ToString());
                         }
 
                         if (propVal != null && propVal.GetType() != propConfig.Property.Type) {

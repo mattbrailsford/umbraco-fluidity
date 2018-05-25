@@ -211,6 +211,19 @@ Adds the given property to the searchable properties collection. Property must b
 collectionConfig.AddSearchableProperty(p => p.FirstName);
 ````
 
+### Defining encrypted properties
+{: .mt}
+
+#### AddEncryptedProperty(Lambda encryptedPropertyExpression) *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Adds the given property to the encrypted properties collection. Property must be of type `String`. When set, the property will be encrypted/decrypted on write/read respectively.
+
+````csharp
+// Example
+collectionConfig.AddEncryptedProperty(p => p.Email);
+````
+
 ### Applying a global filter
 {: .mt}
 
