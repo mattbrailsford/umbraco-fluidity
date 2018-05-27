@@ -271,7 +271,6 @@
     <Compile Include="Actions\FluidityBulkAction.cs" />
     <Compile Include="Actions\FluidityDeleteBulkAction.cs" />
     <Compile Include="Configuration\FluidityDataViewConfig.cs" />
-    <Compile Include="Configuration\FluidityEncryptedPropertyConfig.cs" />
     <Compile Include="Configuration\FluidityPropertyConfig.cs" />
     <Compile Include="Converters\FluidityEntityPickerValueConverter.cs" />
     <Compile Include="DataViewsBuilders\DefaultFluidityDataViewsBuilder.cs" />

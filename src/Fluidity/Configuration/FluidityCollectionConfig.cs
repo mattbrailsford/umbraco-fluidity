@@ -92,8 +92,8 @@ namespace Fluidity.Configuration
         protected List<FluidityPropertyConfig> _searchableProperties;
         internal IEnumerable<FluidityPropertyConfig> SearchableProperties => _searchableProperties;
 
-        protected List<FluidityEncryptedPropertyConfig> _encryptedProperties;
-        internal IEnumerable<FluidityEncryptedPropertyConfig> EncryptedProperties => _encryptedProperties;
+        protected List<FluidityPropertyConfig> _encryptedProperties;
+        internal IEnumerable<FluidityPropertyConfig> EncryptedProperties => _encryptedProperties;
 
         protected LambdaExpression _filterExpression;
         internal LambdaExpression FilterExpression => _filterExpression;

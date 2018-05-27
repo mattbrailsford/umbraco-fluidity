@@ -299,7 +299,7 @@ namespace Fluidity.Configuration
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> AddEncryptedProperty(Expression<Func<TEntityType, string>> encryptedPropertyExpression)
         {
-            _encryptedProperties.Add(new FluidityEncryptedPropertyConfig(encryptedPropertyExpression));
+            _encryptedProperties.Add(encryptedPropertyExpression);
             return this;
         }
 
