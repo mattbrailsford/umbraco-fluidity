@@ -77,6 +77,12 @@ namespace Fluidity.Web.Models.Mappers
                 {
                     var value = entity?.GetPropertyValue(field.Property);
 
+                    var encryptedProp = collection.EncryptedProperties?.FirstOrDefault(x => x.Name == field.Property.Name);
+                    if (encryptedProp != null)
+                    {
+                        value = SecurityHelper.Decrypt(value.ToString());
+                    }
+
                     if (field.Format != null)
                     {
                         value = field.Format(value, entity);

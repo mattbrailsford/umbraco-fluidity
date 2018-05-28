@@ -123,6 +123,7 @@ namespace Fluidity.Configuration
             _containerMenuItems = new List<MenuItem>();
             _entityMenuItems = new List<MenuItem>();
             _searchableProperties = new List<FluidityPropertyConfig>();
+            _encryptedProperties = new List<FluidityPropertyConfig>();
         }
     }
 }

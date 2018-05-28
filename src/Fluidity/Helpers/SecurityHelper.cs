@@ -3,6 +3,7 @@
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
 
+using System;
 using Umbraco.Core;
 
 namespace Fluidity.Helpers
@@ -16,7 +17,17 @@ namespace Fluidity.Helpers
 
         internal static string Decrypt(string input)
         {
-            return input.DecryptWithMachineKey();
+            try
+            {
+                return input.DecryptWithMachineKey();
+            }
+            catch (ArgumentException ex)
+            {
+                if (!ex.Message.Contains("encryptedTicket"))
+                    throw ex;
+
+                return input;
+            }
         }
     }
 }
