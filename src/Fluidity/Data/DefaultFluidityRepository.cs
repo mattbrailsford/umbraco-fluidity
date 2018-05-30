@@ -217,5 +217,10 @@ namespace Fluidity.Data
 
             return Db.ExecuteScalar<long>(query);
         }
+
+        public void Dispose()
+        {
+            //No disposable resources
+        }
     }
 }

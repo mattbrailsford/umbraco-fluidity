@@ -20,7 +20,7 @@ namespace Fluidity.Data
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
     /// <typeparam name="TId">The type of the identifier.</typeparam>
     /// <seealso cref="Fluidity.Data.IFluidityRepository" />
-    public abstract class FluidityRepository<TEntity, TId> : IFluidityRepository
+    public abstract class FluidityRepository<TEntity, TId> : IFluidityRepository, IDisposable
     {
         public virtual Type EntityType => typeof(TEntity);
         public virtual Type IdType => typeof(TId);
@@ -206,5 +206,10 @@ namespace Fluidity.Data
         }
 
         #endregion
+
+        public virtual void Dispose()
+        {
+            //No resources to dispose of by default
+        }
     }
 }
