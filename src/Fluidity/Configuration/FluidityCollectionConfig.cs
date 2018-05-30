@@ -92,6 +92,9 @@ namespace Fluidity.Configuration
         protected List<FluidityPropertyConfig> _searchableProperties;
         internal IEnumerable<FluidityPropertyConfig> SearchableProperties => _searchableProperties;
 
+        protected List<FluidityPropertyConfig> _encryptedProperties;
+        internal IEnumerable<FluidityPropertyConfig> EncryptedProperties => _encryptedProperties;
+
         protected LambdaExpression _filterExpression;
         internal LambdaExpression FilterExpression => _filterExpression;
 
@@ -120,6 +123,7 @@ namespace Fluidity.Configuration
             _containerMenuItems = new List<MenuItem>();
             _entityMenuItems = new List<MenuItem>();
             _searchableProperties = new List<FluidityPropertyConfig>();
+            _encryptedProperties = new List<FluidityPropertyConfig>();
         }
     }
 }

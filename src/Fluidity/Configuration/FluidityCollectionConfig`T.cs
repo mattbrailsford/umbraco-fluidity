@@ -293,6 +293,17 @@ namespace Fluidity.Configuration
         }
 
         /// <summary>
+        /// Adds a property that will be encrypted / decrypted when retrived from the repository.
+        /// </summary>
+        /// <param name="encryptedPropertyExpression">The encrypted property expression.</param>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> AddEncryptedProperty(Expression<Func<TEntityType, string>> encryptedPropertyExpression)
+        {
+            _encryptedProperties.Add(encryptedPropertyExpression);
+            return this;
+        }
+
+        /// <summary>
         /// Sets which property to use as the Date Created property.
         /// </summary>
         /// <param name="dateCreatedPropertyExpression">The date created property expression.</param>

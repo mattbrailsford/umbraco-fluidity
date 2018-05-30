@@ -282,6 +282,7 @@
     <Compile Include="Extensions\FluidityPropertyConfigExtensions.cs" />
     <Compile Include="Extensions\SqlExtensions.cs" />
     <Compile Include="Events\FluidityStartingEventArgs.cs" />
+    <Compile Include="Helpers\SecurityHelper.cs" />
     <Compile Include="Helpers\UmbracoPublishedPropertyTypeHelper.cs" />
     <Compile Include="ListViewLayouts\FluidityListViewLayout.cs" />
     <Compile Include="Extensions\FluidityEditorFieldConfigExtensions.cs" />
