@@ -206,5 +206,10 @@ namespace Fluidity.Data
         }
 
         #endregion
+
+        public virtual void Dispose()
+        {
+            //No resources to dispose of by default
+        }
     }
 }
