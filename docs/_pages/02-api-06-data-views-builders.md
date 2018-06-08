@@ -22,7 +22,7 @@ public class PersonDataViewsBuilder : FluidityDataViewsBuilder<Person>
 
     public override Expression<Func<Person, bool>> GetDataViewWhereClause(string dataViewAlias)
     {
-        // Return a where clause expression for the suplied data view alias
+        // Return a where clause expression for the supplied data view alias
     }
 }
 ````
