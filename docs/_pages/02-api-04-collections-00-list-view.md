@@ -131,7 +131,7 @@ listViewConfig.AddField(p => p.FirstName, fieldConfig => {
 ### Changing the heading of a field
 {: .mt}
 
-#### SetHeadng(string heading) *: FluidityListViewFieldConfig&lt;TEntityType, TValueType&gt;*
+#### SetHeading(string heading) *: FluidityListViewFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
 Sets the heading for the list view field.
