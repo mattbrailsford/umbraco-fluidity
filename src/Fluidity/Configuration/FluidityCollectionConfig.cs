@@ -41,8 +41,8 @@ namespace Fluidity.Configuration
         protected string _description;
         internal string Description => _description;
 
-        protected string _connectionStringg;
-        internal string ConnectionString => _connectionStringg;
+        protected string _connectionString;
+        internal string ConnectionString => _connectionString;
 
         protected Type _entityType;
         internal Type EntityType => _entityType;
@@ -92,6 +92,12 @@ namespace Fluidity.Configuration
         protected List<FluidityPropertyConfig> _searchableProperties;
         internal IEnumerable<FluidityPropertyConfig> SearchableProperties => _searchableProperties;
 
+        protected List<FluidityPropertyConfig> _encryptedProperties;
+        internal IEnumerable<FluidityPropertyConfig> EncryptedProperties => _encryptedProperties;
+
+        protected LambdaExpression _filterExpression;
+        internal LambdaExpression FilterExpression => _filterExpression;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityCollectionConfig"/> class.
         /// </summary>
@@ -117,6 +123,7 @@ namespace Fluidity.Configuration
             _containerMenuItems = new List<MenuItem>();
             _entityMenuItems = new List<MenuItem>();
             _searchableProperties = new List<FluidityPropertyConfig>();
+            _encryptedProperties = new List<FluidityPropertyConfig>();
         }
     }
 }

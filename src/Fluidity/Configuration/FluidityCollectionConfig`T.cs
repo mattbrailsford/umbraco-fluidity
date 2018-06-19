@@ -107,7 +107,7 @@ namespace Fluidity.Configuration
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> SetConnectionString(string connectionStringName)
         {
-            _connectionStringg = connectionStringName;
+            _connectionString = connectionStringName;
             return this;
         }
 
@@ -180,6 +180,17 @@ namespace Fluidity.Configuration
 
             _sortProperty = sortPropertyExpression;
             _sortDirection = sortDirection;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets a filter for the collection.
+        /// </summary>
+        /// <param name="filterExpression">The filter where clause expression.</param>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> SetFilter(Expression<Func<TEntityType, bool>> whereClause)
+        {
+            _filterExpression = whereClause;
             return this;
         }
 
@@ -278,6 +289,17 @@ namespace Fluidity.Configuration
         public FluidityCollectionConfig<TEntityType> AddSearchableProperty(Expression<Func<TEntityType, string>> searchablePropertyExpression)
         {
             _searchableProperties.Add(searchablePropertyExpression);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a property that will be encrypted / decrypted when retrived from the repository.
+        /// </summary>
+        /// <param name="encryptedPropertyExpression">The encrypted property expression.</param>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> AddEncryptedProperty(Expression<Func<TEntityType, string>> encryptedPropertyExpression)
+        {
+            _encryptedProperties.Add(encryptedPropertyExpression);
             return this;
         }
 

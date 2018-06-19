@@ -7,7 +7,7 @@
 
     'use strict';
 
-    function entityPickerController($scope, editorState, angularHelper, fluidityResource) {
+    function entityPickerController($scope, editorState, angularHelper, fluidityResource, $location) {
 
         var aliases = $scope.model.config.collection.split(',');
         var sectionAlias = aliases.length >= 1 ? aliases[0] : "";
@@ -82,6 +82,10 @@
         $scope.remove = function (index) {
             $scope.renderModel.splice(index, 1);
             angularHelper.getCurrentForm($scope).$setDirty();
+        };
+
+        $scope.open = function (section, collection, id) {
+            $location.path("/" + section + "/fluidity/edit/" + collection + "!" + id);
         };
 
         $scope.clear = function () {

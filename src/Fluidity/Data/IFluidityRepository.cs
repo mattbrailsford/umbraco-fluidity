@@ -11,7 +11,7 @@ using Umbraco.Core.Models;
 namespace Fluidity.Data
 {
     [Obsolete("Use the abstract class FluidityRepository<TEntity, TId> instead")]
-    public interface IFluidityRepository
+    public interface IFluidityRepository : IDisposable
     {
         Type EntityType { get; }
 

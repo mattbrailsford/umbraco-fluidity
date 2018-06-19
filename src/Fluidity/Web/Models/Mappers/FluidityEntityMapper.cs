@@ -77,6 +77,12 @@ namespace Fluidity.Web.Models.Mappers
                 {
                     var value = entity?.GetPropertyValue(field.Property);
 
+                    var encryptedProp = collection.EncryptedProperties?.FirstOrDefault(x => x.Name == field.Property.Name);
+                    if (encryptedProp != null)
+                    {
+                        value = SecurityHelper.Decrypt(value.ToString());
+                    }
+
                     if (field.Format != null)
                     {
                         value = field.Format(value, entity);
@@ -145,7 +151,7 @@ namespace Fluidity.Web.Models.Mappers
                     {
                         foreach (var field in tab.Fields)
                         {
-                            var dataTypeInfo = _dataTypeHelper.ResolveDataType(field);
+                            var dataTypeInfo = _dataTypeHelper.ResolveDataType(field, collection.IsReadOnly);
 
                             dataTypeInfo.PropertyEditor.ValueEditor.ConfigureForDisplay(dataTypeInfo.PreValues);
 
@@ -156,6 +162,12 @@ namespace Fluidity.Web.Models.Mappers
                             object value = !isNew
                                 ? entity?.GetPropertyValue(field.Property)
                                 : field.DefaultValueFunc != null ? field.DefaultValueFunc() : field.Property.Type.GetDefaultValue();
+
+                            var encryptedProp = collection.EncryptedProperties?.FirstOrDefault(x => x.Name == field.Property.Name);
+                            if (encryptedProp != null)
+                            {
+                                value = SecurityHelper.Decrypt(value.ToString());
+                            }
 
                             if (field.ValueMapper != null)
                             {
@@ -259,11 +271,18 @@ namespace Fluidity.Web.Models.Mappers
                     additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
                     additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));
 
-                    var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig);
+                    var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig, collection.IsReadOnly);
                     var data = new ContentPropertyData(prop.Value, dataTypeInfo.PreValues, additionalData);
 
                     if (!dataTypeInfo.PropertyEditor.ValueEditor.IsReadOnly) {
                         var currentValue = entity.GetPropertyValue(propConfig.Property);
+
+                        var encryptedProp = collection.EncryptedProperties?.FirstOrDefault(x => x.Name == propConfig.Property.Name);
+                        if (encryptedProp != null)
+                        {
+                            currentValue = SecurityHelper.Decrypt(currentValue.ToString());
+                        }
+
                         if (propConfig.ValueMapper != null) {
                             currentValue = propConfig.ValueMapper.ModelToEditor(currentValue);
                         }
@@ -280,6 +299,11 @@ namespace Fluidity.Web.Models.Mappers
                         if (propConfig.ValueMapper != null)
                         {
                             propVal = propConfig.ValueMapper.EditorToModel(propVal);
+                        }
+
+                        if (encryptedProp != null)
+                        {
+                            propVal = SecurityHelper.Encrypt(propVal.ToString());
                         }
 
                         if (propVal != null && propVal.GetType() != propConfig.Property.Type) {

@@ -24,8 +24,8 @@
             $scope.options = angular.extend({}, {
                 pageNumber: 1,
                 pageSize: 10,
-                orderBy: "name",
-                orderDirection: "desc",
+				orderBy: $scope.opts.defaultOrderBy || "name",
+				orderDirection: $scope.opts.defaultOrderDirection || "desc",
                 filter: '', // Variable has to be named "filter" to work with list view properly
                 dataView: $scope.opts.dataView,
                 isSearchable: $scope.opts.isSearchable

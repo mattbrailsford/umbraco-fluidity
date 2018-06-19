@@ -27,6 +27,7 @@ Then, create the associated poco model:
 
 ````csharp
 [TableName("Person")]
+[PrimaryKey("Id")]
 public class Person
 {
     [PrimaryKeyColumn]

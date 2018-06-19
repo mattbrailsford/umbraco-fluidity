@@ -282,6 +282,7 @@
     <Compile Include="Extensions\FluidityPropertyConfigExtensions.cs" />
     <Compile Include="Extensions\SqlExtensions.cs" />
     <Compile Include="Events\FluidityStartingEventArgs.cs" />
+    <Compile Include="Helpers\SecurityHelper.cs" />
     <Compile Include="Helpers\UmbracoPublishedPropertyTypeHelper.cs" />
     <Compile Include="ListViewLayouts\FluidityListViewLayout.cs" />
     <Compile Include="Extensions\FluidityEditorFieldConfigExtensions.cs" />
@@ -402,6 +403,14 @@ IF NOT "$(SolutionDir)" == "*Undefined*" (
 xcopy /s /y "$(TargetPath)" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo\bin"
 xcopy /s /y "$(TargetDir)Fluidity.pdb" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo\bin"
 xcopy /s /y "$(ProjectDir)Web\UI\*" "C:\Users\Matt\Storage\Sandbox\Umbraco\FluidityDemo\FluidityDemo"
+)
+)
+
+IF %25ComputerName%25 == MBP13-PC-BC (
+IF NOT "$(SolutionDir)" == "*Undefined*" (
+xcopy /s /y "$(TargetPath)" "C:\Users\Matt\Work\Umbraco\FluidityDemo\FluidityDemo\bin"
+xcopy /s /y "$(TargetDir)Fluidity.pdb" "C:\Users\Matt\Work\Umbraco\FluidityDemo\FluidityDemo\bin"
+xcopy /s /y "$(ProjectDir)Web\UI\*" "C:\Users\Matt\Work\Umbraco\FluidityDemo\FluidityDemo"
 )
 )</PostBuildEvent>
   </PropertyGroup>

@@ -34,11 +34,12 @@ namespace Fluidity.Helpers
                   ApplicationContext.Current.ApplicationCache.RequestCache)
         { }
 
-        internal DataTypeInfo ResolveDataType(FluidityEditorFieldConfig fieldConfig)
+        internal DataTypeInfo ResolveDataType(FluidityEditorFieldConfig fieldConfig, bool isReadOnly = false)
         {
             var dtdKey = !fieldConfig.DataTypeName.IsNullOrWhiteSpace()
                 ? fieldConfig.DataTypeName
                 : fieldConfig.GetOrCalculateDefinititionId().ToString();
+            dtdKey += $"_{isReadOnly}";
 
             return _cacheProvider.GetCacheItem<DataTypeInfo>($"fluidity_datatypeinfo_{dtdKey}", () =>
             {
@@ -51,7 +52,9 @@ namespace Fluidity.Helpers
 
                 if (dataTypeDefinition == null)
                 {
-                    var dataTypeId = fieldConfig.GetOrCalculateDefinititionId();
+                    var dataTypeId = fieldConfig.DataTypeId == 0 && isReadOnly
+                        ? -92 // If readonly and no explicit datatype defined, default to label
+                        : fieldConfig.GetOrCalculateDefinititionId();
                     dataTypeDefinition = _dataTypeService.GetDataTypeDefinitionById(dataTypeId);
                 }
 

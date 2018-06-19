@@ -89,7 +89,7 @@ listViewConfig.AddBulkAction(new ExportBulkAction());
 ### Changing the list view layout
 {: .mt}
 
-By default the list view will use the built in Umbraco table and grid list view layouts however you can provide your own custom layouts. If you provide a layout, then it will replace the defaults, so if you still want the defaults as options, you'll need to add these again explicitly.
+By default the list view will use the built in Umbraco table and grid list view layouts however you can provide your own custom layouts. If you provide a layout, then it will replace the defaults, so if you still want the defaults as options, you'll need to add these again explicitly. To do this, you'll need to call `AddLayout&lt;TListViewLayoutType&gt;` for each one you want to add with a `TListViewLayoutType` parameter of `FluidityTableListViewLayout` or `FluidityGridListViewLayout`.
 
 #### AddLayout&lt;TListViewLayoutType&gt;() *: FluidityListViewConfig&lt;TEntityType&gt;*
 {: .signature}
@@ -131,7 +131,7 @@ listViewConfig.AddField(p => p.FirstName, fieldConfig => {
 ### Changing the heading of a field
 {: .mt}
 
-#### SetHeadng(string heading) *: FluidityListViewFieldConfig&lt;TEntityType, TValueType&gt;*
+#### SetHeading(string heading) *: FluidityListViewFieldConfig&lt;TEntityType, TValueType&gt;*
 {: .signature}
 
 Sets the heading for the list view field.

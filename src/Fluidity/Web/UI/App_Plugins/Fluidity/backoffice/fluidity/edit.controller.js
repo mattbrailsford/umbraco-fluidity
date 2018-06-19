@@ -53,6 +53,22 @@
             }
         }
 
+        function postLoadContent(data) {
+            $scope.content = data;
+            editorState.set($scope.content);
+
+            if (!isNew) {
+                syncTree($scope.content, $scope.content.path, true);
+            }
+
+            if ($scope.content.isChildOfListView) {
+                $scope.page.listViewPath = ($routeParams.page)
+                    ? "/" + $scope.currentSection + "/fluidity/list/" + $scope.content.collection + "?page=" + $routeParams.page
+                    : "/" + $scope.currentSection + "/fluidity/list/" + $scope.content.collection;
+            }
+
+        }
+
         // Load the editor configuration
         if (isNew) {
 
@@ -60,8 +76,7 @@
 
             // Create an empty item
             fluidityResource.getEntityScaffold($scope.currentSection, collectionAlias).then(function(data) {
-                $scope.content = data;
-                editorState.set($scope.content);
+                postLoadContent(data);
                 $scope.page.loading = false;
             });
 
@@ -71,14 +86,7 @@
 
             // Create an empty item
             fluidityResource.getEntityById($scope.currentSection, collectionAlias, id).then(function (data) {
-                $scope.content = data;
-                if (data.isChildOfListView) {
-                    $scope.page.listViewPath = ($routeParams.page)
-                        ? "/" + $scope.currentSection + "/fluidity/list/" + $scope.content.collection + "?page=" + $routeParams.page
-                        : "/" + $scope.currentSection + "/fluidity/list/" + $scope.content.collection;
-                }
-                editorState.set($scope.content);
-                syncTree($scope.content, $scope.content.path, true);
+                postLoadContent(data);
                 $scope.page.loading = false;
             });
 

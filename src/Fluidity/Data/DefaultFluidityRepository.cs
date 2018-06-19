@@ -45,9 +45,17 @@ namespace Fluidity.Data
         {
             var query = new Sql($"SELECT * FROM [{_collection.EntityType.GetTableName()}]");
 
+            bool hasWhere = false;
+            if (_collection.FilterExpression != null)
+            {
+                query.Where(_collection.EntityType, _collection.FilterExpression, SyntaxProvider);
+                hasWhere = true;
+            }
+
             if (_collection.DeletedProperty != null)
             {
-                query.Append($"WHERE {_collection.DeletedProperty.GetColumnName()} = 0");
+                var prefix = !hasWhere ? "WHERE" : "AND";
+                query.Append($" {prefix} {_collection.DeletedProperty.GetColumnName()} = 0 ");
             }
 
             if (_collection.SortProperty != null)
@@ -71,6 +79,16 @@ namespace Fluidity.Data
             var query = new Sql($"SELECT * FROM [{_collection.EntityType.GetTableName()}]");
 
             // Where
+            if (_collection.FilterExpression != null && whereClause != null)
+            {
+                var body = Expression.AndAlso(whereClause.Body, _collection.FilterExpression.Body);
+                whereClause = Expression.Lambda(body, whereClause.Parameters[0]);
+            }
+            else if (_collection.FilterExpression != null)
+            {
+                whereClause = _collection.FilterExpression;
+            }
+
             if (whereClause != null)
             {
                 query.Where(_collection.EntityType, whereClause, SyntaxProvider);
@@ -182,14 +200,27 @@ namespace Fluidity.Data
 
         public long GetTotalRecordCount(bool fireEvents = true)
         {
-            var sql = $"SELECT COUNT(1) FROM [{_collection.EntityType.GetTableName()}]";
+            var query = new Sql($"SELECT COUNT(1) FROM [{_collection.EntityType.GetTableName()}]");
+
+            bool hasWhere = false;
+            if (_collection.FilterExpression != null)
+            {
+                query.Where(_collection.EntityType, _collection.FilterExpression, SyntaxProvider);
+                hasWhere = true;
+            }
 
             if (_collection.DeletedProperty != null)
             {
-                sql += $" WHERE {_collection.DeletedProperty.GetColumnName()} = 0";
+                var prefix = !hasWhere ? "WHERE" : "AND";
+                query.Append($" {prefix} {_collection.DeletedProperty.GetColumnName()} = 0 ");
             }
 
-            return Db.ExecuteScalar<long>(sql);
+            return Db.ExecuteScalar<long>(query);
+        }
+
+        public void Dispose()
+        {
+            //No disposable resources
         }
     }
 }

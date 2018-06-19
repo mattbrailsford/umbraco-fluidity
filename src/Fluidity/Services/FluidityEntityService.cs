@@ -49,9 +49,7 @@ namespace Fluidity.Services
         }
 
         public PagedResult<FluidityEntityDisplayModel> GetEntityDisplayModels(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string query = null, string orderBy = null, string orderDirection = null, string dataView = null)
-        {
-            var repo = RepositoryFactory.GetRepository(collection);
-            
+        {            
             // Construct where clause
             LambdaExpression whereClauseExp = null;
 
@@ -118,8 +116,12 @@ namespace Fluidity.Services
                 ? orderDirection.InvariantEquals("asc") ? SortDirection.Ascending : SortDirection.Descending
                 : collection.SortDirection;
 
-            // Perform the query
-            var result = repo?.GetPaged(pageNumber, pageSize, whereClauseExp, orderByExp, orderDir); 
+            PagedResult<object> result;
+            using (var repo = RepositoryFactory.GetRepository(collection))
+            {
+                // Perform the query
+                result = repo?.GetPaged(pageNumber, pageSize, whereClauseExp, orderByExp, orderDir);
+            }
 
             // If we've got no results, return an empty result set
             if (result == null)
@@ -147,8 +149,6 @@ namespace Fluidity.Services
 
         public IEnumerable<object> GetEntitiesByIds(FluiditySectionConfig section, FluidityCollectionConfig collection, object[] ids)
         {
-            var repo = RepositoryFactory.GetRepository(collection);
-
             // Construct where clause
             LambdaExpression whereClauseExp = null;
 
@@ -172,20 +172,25 @@ namespace Fluidity.Services
             }
 
             // Perform the query
-            var result = repo?.GetPaged(1, ids.Length, whereClauseExp, null, SortDirection.Ascending);
+            PagedResult<object> result;
+            using (var repo = RepositoryFactory.GetRepository(collection))
+            {
+                result = repo?.GetPaged(1, ids.Length, whereClauseExp, null, SortDirection.Ascending);
+            }
 
             // Return the results
             return result?.Items;
         }
 
         public FluidityEntityEditModel GetEntityEditModel(FluiditySectionConfig section, FluidityCollectionConfig collection, object entityOrId = null)
-        {
-            var repo = RepositoryFactory.GetRepository(collection);
-             
+        {             
             object entity = null;
             if (entityOrId != null)
             {
-                entity = (entityOrId.GetType() == collection.EntityType ? entityOrId : null) ?? repo.Get(entityOrId);
+                using (var repo = RepositoryFactory.GetRepository(collection))
+                {
+                    entity = (entityOrId.GetType() == collection.EntityType ? entityOrId : null) ?? repo.Get(entityOrId);
+                }
             }
 
             var mapper = new FluidityEntityMapper();
@@ -201,21 +206,22 @@ namespace Fluidity.Services
 
         public object GetEntity(FluidityCollectionConfig collection, object id)
         {
-            var repo = RepositoryFactory.GetRepository(collection);
-
-            return repo?.Get(id);
+            using (var repo = RepositoryFactory.GetRepository(collection))
+            {
+                return repo?.Get(id);
+            }
         }
 
         public IEnumerable<object> GetAllEntities(FluidityCollectionConfig collection)
         {
-            var repo = RepositoryFactory.GetRepository(collection);
-
-            return repo?.GetAll();
+            using (var repo = RepositoryFactory.GetRepository(collection))
+            {
+                return repo?.GetAll();
+            }
         }
 
         public object SaveEntity(FluidityCollectionConfig collection, object entity)
         {
-            var repo = RepositoryFactory.GetRepository(collection);
             var isNew = entity.GetPropertyValue(collection.IdProperty).Equals(collection.IdProperty.Type.GetDefaultValue());
 
             if (isNew && collection.DateCreatedProperty != null)
@@ -228,21 +234,28 @@ namespace Fluidity.Services
                 entity.SetPropertyValue(collection.DateModifiedProperty, DateTime.Now);
             }
 
-            repo?.Save(entity);
+            using (var repo = RepositoryFactory.GetRepository(collection))
+            {
+                repo?.Save(entity);
+            }
 
             return entity;
         }
 
         public void DeleteEntity(FluidityCollectionConfig collection, object id)
         {
-            var repo = RepositoryFactory.GetRepository(collection);
-            repo?.Delete(id);
+            using (var repo = RepositoryFactory.GetRepository(collection))
+            {
+                repo?.Delete(id);
+            }
         }
 
         public long GetsEntityTotalRecordCount(FluidityCollectionConfig collection)
         {
-            var repo = RepositoryFactory.GetRepository(collection);
-            return repo?.GetTotalRecordCount() ?? 0;
+            using (var repo = RepositoryFactory.GetRepository(collection))
+            {
+                return repo?.GetTotalRecordCount() ?? 0;
+            }
         }
     }
 }
