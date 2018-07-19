@@ -11,7 +11,7 @@
                 sortable="!sortableOptions.disabled"
                 allow-open="model.config.showOpen"
                 on-open="open(node.section, node.collection, node.id)"
-                allow-remove="true"
+                allow-remove="!model.config.disableRemove"
                 on-remove="remove($index)">
             </umb-node-preview>
         </div>

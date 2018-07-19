@@ -31,6 +31,12 @@
 						description: "Show a button to redirect the back office to the editor page of the select node",
 						key: "showOpen",
 						view: "boolean"
+					},
+					{
+						label: "Disable remove button",
+						description: "Disable the remove button so that editors cannot delete an existing relationship",
+						key: "disableRemove",
+						view: "boolean"
 					}
 				]
 			}
