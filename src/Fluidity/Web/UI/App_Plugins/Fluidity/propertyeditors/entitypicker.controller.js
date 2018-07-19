@@ -15,8 +15,7 @@
         var dataView = aliases.length >= 3 ? aliases[2] : "";
 
         $scope.renderModel = [];
-        $scope.dialogEditor = editorState && editorState.current && editorState.current.isDialogEditor;
-        $scope.isReadOnly = editorState && editorState.current && editorState.current.collectionIsReadOnly;
+        $scope.dialogEditor = editorState && editorState.current && editorState.current.isDialogEditor;        
 
         // Sortable options
         $scope.sortableOptions = {
