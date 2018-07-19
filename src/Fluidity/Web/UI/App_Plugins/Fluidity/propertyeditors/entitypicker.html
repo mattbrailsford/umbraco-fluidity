@@ -9,9 +9,9 @@
                 published="true"
                 description="'/' + node.section + '/' + node.collection + '/' + node.id"
                 sortable="!sortableOptions.disabled"
-                allow-open="model.config.showOpen"
+                allow-open="configOptions.showOpen"
                 on-open="open(node.section, node.collection, node.id)"
-                allow-remove="!model.config.disableRemove"
+                allow-remove="!isReadOnly && configOptions.showRemove"
                 on-remove="remove($index)">
             </umb-node-preview>
         </div>

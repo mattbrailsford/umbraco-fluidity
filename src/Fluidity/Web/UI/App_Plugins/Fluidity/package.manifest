@@ -1,10 +1,10 @@
-﻿{
+{
 	propertyEditors: [
 		{
 			alias: "Fluidity.EntityPicker",
 			name: "Fluidity Entity Picker",
 			editor: {
-			view: "~/app_plugins/fluidity/propertyeditors/entitypicker.html"
+				view: "~/app_plugins/fluidity/propertyeditors/entitypicker.html"
 			},
 			prevalues: {
 				fields: [
@@ -28,14 +28,14 @@
 					},
 					{
 						label: "Show open button",
-						description: "Show a button to redirect the back office to the editor page of the select node",
+						description: "Show a button to redirect the back office to the editor page of the selected item",
 						key: "showOpen",
 						view: "boolean"
 					},
 					{
-						label: "Disable remove button",
-						description: "Disable the remove button so that editors cannot delete an existing relationship",
-						key: "disableRemove",
+						label: "Show remove button",
+						description: "Show a button to remove the linked item",
+						key: "showRemove",
 						view: "boolean"
 					}
 				]
