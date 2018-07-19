@@ -90,4 +90,4 @@ You'll need to ensure your angular service as well as any resources needed by yo
 ### Adding a bulk action to a list view
 {: .mt}
 
-Bulk actions are added to a list view as part of the list view configuration. See [List View API documentation]({{ site.baseurl }}/api/collections/#adding-a-bulk-action) for more info.
+Bulk actions are added to a list view as part of the list view configuration. See [List View API documentation]({{ site.baseurl }}/api/collections/list-view/#adding-a-bulk-action) for more info.
