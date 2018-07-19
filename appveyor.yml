@@ -26,6 +26,7 @@ deploy:
   - provider: NuGet
     server: https://www.myget.org/F/umbraco-packages/
     # symbol_server: https://nuget.symbolsource.org/MyGet/umbraco-packages
+    skip_symbols: true
     api_key:
       secure: 36/Ax5O+e6wENlhoTwgvoEBZV3FG4XjF429SNTej2qsGTAL+cdfA1kT/tm1St8vx
     artifact: /.*\.nupkg/
