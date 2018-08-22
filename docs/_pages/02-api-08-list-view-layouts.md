@@ -28,7 +28,7 @@ public class MyCustomListViewLayout : FluidityListViewLayout
 The required configuration options are:
 
 * **Name:** The name of the layout.
-* **Alias:** A unique alias for the bulk action.
+* **Alias:** A unique alias for the layout.
 * **Icon:** An icon to display in the list view layouts dropdown.
 * **View:** The path of the angular view to load by the list view.
 
