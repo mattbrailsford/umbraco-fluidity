@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq.Expressions;
+using Fluidity.Actions;
 using Fluidity.Data;
 using Umbraco.Core;
 using Umbraco.Web.Models.Trees;
@@ -225,6 +226,36 @@ namespace Fluidity.Configuration
         }
 
         /// <summary>
+        /// Allow for creating entities in collection.
+        /// </summary>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> DisableCreate()
+        {
+            _canCreate = false;
+            return this;
+        }
+
+        /// <summary>
+        /// Allow for updating entities in collection.
+        /// </summary>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> DisableUpdate()
+        {
+            _canUpdate = false;
+            return this;
+        }
+
+        /// <summary>
+        /// Allow for deleting entities in collection.
+        /// </summary>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> DisableDelete()
+        {
+            _canDelete = false;
+            return this;
+        }
+
+        /// <summary>
         /// Sets the view mode of the collection. Can be either 'Tree' or 'List'.
         /// </summary>
         /// <param name="viewMode">The view mode.</param>
@@ -342,7 +373,12 @@ namespace Fluidity.Configuration
         /// <returns>The list view configuration.</returns>
         public new FluidityListViewConfig<TEntityType> ListView(FluidityListViewConfig<TEntityType> listViewConfig)
         {
-            _listView = listViewConfig;
+            if (_canDelete)
+            {
+                listViewConfig.AddBulkAction<FluidityDeleteBulkAction>();
+            }
+
+            _listView = listViewConfig;                       
             return listViewConfig;
         }
 

@@ -40,6 +40,15 @@ namespace Fluidity.Web.Models
         [DataMember(Name = "isSearchable")]
         public bool IsSearchable { get; set; }
 
+        [DataMember(Name = "canCreate")]
+        public bool CanCreate { get; set; }
+
+        [DataMember(Name = "canUpdate")]
+        public bool CanUpdate { get; set; }
+
+        [DataMember(Name = "canDelete")]
+        public bool CanDelete { get; set; }
+
         [DataMember(Name = "hasListView")]
         public bool HasListView { get; set; }
 

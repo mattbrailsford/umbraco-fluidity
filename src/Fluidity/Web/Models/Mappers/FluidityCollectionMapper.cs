@@ -28,6 +28,9 @@ namespace Fluidity.Web.Models.Mappers
                 Description = collection.Description,
                 IsReadOnly = collection.IsReadOnly,
                 IsSearchable = collection.SearchableProperties.Any(),
+                CanCreate = collection.IsReadOnly ? false : collection.CanCreate,
+                CanUpdate = collection.IsReadOnly ? false : collection.CanUpdate,
+                CanDelete = collection.IsReadOnly ? false : collection.CanDelete,
                 HasListView = collection.ViewMode == FluidityViewMode.List,
                 Path = collection.Path
             };

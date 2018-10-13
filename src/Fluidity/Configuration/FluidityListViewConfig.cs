@@ -19,9 +19,8 @@ namespace Fluidity.Configuration
         protected int _pageSize;
         internal int PageSize => _pageSize;
 
-        protected List<FluidityBulkAction> _defaultBulkActions;
         protected List<FluidityBulkAction> _bulkActions;
-        internal IEnumerable<FluidityBulkAction> BulkActions => _bulkActions.Concat(_defaultBulkActions);
+        internal IEnumerable<FluidityBulkAction> BulkActions => _bulkActions;
 
         protected List<FluidityDataViewConfig> _dataViews;
         internal IEnumerable<FluidityDataViewConfig> DataViews => _dataViews;
@@ -42,7 +41,6 @@ namespace Fluidity.Configuration
         protected FluidityListViewConfig()
         {
             _pageSize = 20;
-            _defaultBulkActions = new List<FluidityBulkAction>(new [] { new FluidityDeleteBulkAction() });
             _bulkActions = new List<FluidityBulkAction>();
             _dataViews = new List<FluidityDataViewConfig>();
             _dataViewsBuilder = new DefaultFluidityDataViewsBuilder(this);
