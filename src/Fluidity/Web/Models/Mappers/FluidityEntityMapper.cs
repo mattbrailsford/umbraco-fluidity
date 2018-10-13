@@ -119,7 +119,7 @@ namespace Fluidity.Web.Models.Mappers
                 HasNameProperty = collection.NameProperty != null,
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
-                CollectionIsReadOnly = collection.IsReadOnly,
+                CollectionIsReadOnly = collection.IsReadOnly || !collection.CanUpdate,
                 Collection = collection.Alias,
                 CollectionNameSingular = collection.NameSingular,
                 CollectionNamePlural = collection.NamePlural,
