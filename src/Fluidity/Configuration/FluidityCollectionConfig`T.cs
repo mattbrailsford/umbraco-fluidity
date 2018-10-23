@@ -373,7 +373,7 @@ namespace Fluidity.Configuration
         /// <returns>The list view configuration.</returns>
         public new FluidityListViewConfig<TEntityType> ListView(FluidityListViewConfig<TEntityType> listViewConfig)
         {
-            if (_canDelete)
+            if (!_isReadOnly && _canDelete)
             {
                 listViewConfig.AddBulkAction<FluidityDeleteBulkAction>();
             }
