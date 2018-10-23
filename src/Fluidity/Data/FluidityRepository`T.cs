@@ -99,8 +99,6 @@ namespace Fluidity.Data
 
                 if (args.Cancel)
                     return (TEntity)args.Entity.After;
-
-                entity = (TEntity)args.Entity.After;
             }
 
             entity = SaveImpl(entity);
@@ -108,8 +106,6 @@ namespace Fluidity.Data
             if (fireEvents)
             {
                 Fluidity.OnSavedEntity(args);
-
-                entity = (TEntity)args.Entity.After;
             }
 
             return entity;
