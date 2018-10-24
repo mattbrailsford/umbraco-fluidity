@@ -99,13 +99,19 @@ namespace Fluidity.Data
 
                 if (args.Cancel)
                     return (TEntity)args.Entity.After;
+
+                entity = (TEntity)args.Entity.After;
             }
 
             entity = SaveImpl(entity);
 
             if (fireEvents)
             {
+                args.Entity.After = entity;
+
                 Fluidity.OnSavedEntity(args);
+
+                entity = (TEntity)args.Entity.After;
             }
 
             return entity;
