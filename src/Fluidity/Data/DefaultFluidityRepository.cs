@@ -218,6 +218,30 @@ namespace Fluidity.Data
             return Db.ExecuteScalar<long>(query);
         }
 
+        public LambdaExpression CreateQueryExpression(FluidityCollectionConfig collection, ParameterExpression parameter, string query)
+        {
+            LambdaExpression queryExpression = null;
+
+            // Create shared expressions
+            var queryConstantExpression = Expression.Constant(query, typeof(string));
+
+            // Loop through searchable fields
+            foreach (var searchProp in collection.SearchableProperties)
+            {
+                // Create field starts with expression
+                var property = Expression.Property(parameter, searchProp.PropertyInfo);
+                var startsWithCall = Expression.Call(property, "StartsWith", null, queryConstantExpression);
+                var lambda = Expression.Lambda(startsWithCall, parameter);
+
+                // Combine query
+                queryExpression = queryExpression == null
+                    ? lambda
+                    : Expression.Lambda(Expression.OrElse(queryExpression.Body, lambda.Body), parameter);
+            }
+
+            return queryExpression;
+        }
+
         public void Dispose()
         {
             //No disposable resources

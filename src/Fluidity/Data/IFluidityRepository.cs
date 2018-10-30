@@ -1,8 +1,9 @@
-// <copyright file="IFluidityRepository.cs" company="Matt Brailsford">
+﻿// <copyright file="IFluidityRepository.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
 
+using Fluidity.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -28,5 +29,7 @@ namespace Fluidity.Data
         void Delete(object id, bool fireEvents = true);
 
         long GetTotalRecordCount(bool fireEvents = true);
+
+        LambdaExpression CreateQueryExpression(FluidityCollectionConfig collection, ParameterExpression parameter, string query);
     }
 }

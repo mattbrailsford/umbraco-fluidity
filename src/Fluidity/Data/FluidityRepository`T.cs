@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using Fluidity.Configuration;
 using Fluidity.Events;
 using Fluidity.Models;
 using Umbraco.Core.Models;
@@ -206,6 +208,41 @@ namespace Fluidity.Data
         }
 
         #endregion
+
+        public virtual LambdaExpression CreateQueryExpression(FluidityCollectionConfig collection, ParameterExpression parameter, string query)
+        {
+            LambdaExpression queryExpression = null;
+
+            // Create shared expressions
+            ConstantExpression queryConstantExpression = CreateQueryConstantExpression(query);
+
+            // Loop through searchable fields
+            foreach (FluidityPropertyConfig searchProp in collection.SearchableProperties)
+            {
+                // Create field starts with expression
+                LambdaExpression lambda = CreateQueryLambdaExpression(parameter, queryConstantExpression, searchProp.PropertyInfo);
+
+                // Combine query
+                queryExpression = queryExpression == null
+                    ? lambda
+                    : Expression.Lambda(Expression.OrElse(queryExpression.Body, lambda.Body), parameter);
+            }
+
+            return queryExpression;
+        }
+
+        protected virtual ConstantExpression CreateQueryConstantExpression(string query)
+        {
+            return Expression.Constant(query, typeof(string));
+        }
+
+        protected virtual LambdaExpression CreateQueryLambdaExpression(ParameterExpression parameter, ConstantExpression queryConstantExpression, PropertyInfo searchPropPropertyInfo)
+        {
+            MemberExpression property = Expression.Property(parameter, searchPropPropertyInfo);
+            MethodCallExpression startsWithCall = Expression.Call(property, "StartsWith", null, queryConstantExpression);
+
+            return Expression.Lambda(startsWithCall, parameter);
+        }
 
         public virtual void Dispose()
         {

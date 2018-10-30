@@ -49,7 +49,7 @@ namespace Fluidity.Services
         }
 
         public PagedResult<FluidityEntityDisplayModel> GetEntityDisplayModels(FluiditySectionConfig section, FluidityCollectionConfig collection, int pageNumber = 1, int pageSize = 10, string query = null, string orderBy = null, string orderDirection = null, string dataView = null)
-        {            
+        {
             // Construct where clause
             LambdaExpression whereClauseExp = null;
 
@@ -63,62 +63,47 @@ namespace Fluidity.Services
                 }
             }
 
-            // Construct a query where clause (and combind with the data view where clause if one exists)
-            if (!query.IsNullOrWhiteSpace() && collection.ListView != null && collection.SearchableProperties.Any())
-            {
-                LambdaExpression queryExpression = null;
-
-                // Create shared expressions
-                var parameter = whereClauseExp != null 
-                    ? whereClauseExp.Parameters.First() 
-                    : Expression.Parameter(collection.EntityType);
-                var queryConstantExpression = Expression.Constant(query, typeof(string));
-
-                // Loop through searchable fields
-                foreach (var searchProp in collection.SearchableProperties)
-                {
-                    // Create field starts with expression
-                    var property = Expression.Property(parameter, searchProp.PropertyInfo);
-                    var startsWithCall = Expression.Call(property, "StartsWith", null, queryConstantExpression);
-                    var lambda = Expression.Lambda(startsWithCall, parameter);
-
-                    // Combine query
-                    queryExpression = queryExpression == null
-                        ? lambda
-                        : Expression.Lambda(Expression.OrElse(queryExpression.Body, lambda.Body), parameter);
-                }
-
-                // Combine query with any existing where clause
-                if (queryExpression != null)
-                {
-                    whereClauseExp = whereClauseExp == null 
-                        ? queryExpression 
-                        : Expression.Lambda(Expression.AndAlso(whereClauseExp.Body, queryExpression.Body), parameter);
-                }
-            }
-
-            // Parse the order by
-            LambdaExpression orderByExp = null;
-            if (!orderBy.IsNullOrWhiteSpace())
-            {
-                // Convert string into an Expression<Func<TEntityType, object>>
-                var prop = collection.EntityType.GetProperty(orderBy);
-                if (prop != null)
-                {
-                    var parameter = Expression.Parameter(collection.EntityType);
-                    var property = Expression.Property(parameter, prop);
-                    var castToObject = Expression.Convert(property, typeof(object));
-                    orderByExp = Expression.Lambda(castToObject, parameter);
-                }
-            }
-
-            var orderDir = !orderDirection.IsNullOrWhiteSpace()
-                ? orderDirection.InvariantEquals("asc") ? SortDirection.Ascending : SortDirection.Descending
-                : collection.SortDirection;
-
             PagedResult<object> result;
             using (var repo = RepositoryFactory.GetRepository(collection))
             {
+                // Construct a query where clause (and combine with the data view where clause if one exists)
+                if (!query.IsNullOrWhiteSpace() && collection.ListView != null && collection.SearchableProperties.Any())
+                {
+                    // Create shared expressions
+                    var parameter = whereClauseExp != null
+                        ? whereClauseExp.Parameters.First()
+                        : Expression.Parameter(collection.EntityType);
+
+                    var queryExpression = repo.CreateQueryExpression(collection, parameter, query);
+
+                    // Combine query with any existing where clause
+                    if (queryExpression != null)
+                    {
+                        whereClauseExp = whereClauseExp == null
+                            ? queryExpression
+                            : Expression.Lambda(Expression.AndAlso(whereClauseExp.Body, queryExpression.Body), parameter);
+                    }
+                }
+
+                // Parse the order by
+                LambdaExpression orderByExp = null;
+                if (!orderBy.IsNullOrWhiteSpace())
+                {
+                    // Convert string into an Expression<Func<TEntityType, object>>
+                    var prop = collection.EntityType.GetProperty(orderBy);
+                    if (prop != null)
+                    {
+                        var parameter = Expression.Parameter(collection.EntityType);
+                        var property = Expression.Property(parameter, prop);
+                        var castToObject = Expression.Convert(property, typeof(object));
+                        orderByExp = Expression.Lambda(castToObject, parameter);
+                    }
+                }
+
+                var orderDir = !orderDirection.IsNullOrWhiteSpace()
+                ? orderDirection.InvariantEquals("asc") ? SortDirection.Ascending : SortDirection.Descending
+                : collection.SortDirection;
+
                 // Perform the query
                 result = repo?.GetPaged(pageNumber, pageSize, whereClauseExp, orderByExp, orderDir);
             }
