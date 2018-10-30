@@ -99,7 +99,7 @@ namespace Fluidity.Services
 
             // Parse the order by
             LambdaExpression orderByExp = null;
-            if (!orderBy.IsNullOrWhiteSpace() && !orderBy.InvariantEquals("name"))
+            if (!orderBy.IsNullOrWhiteSpace())
             {
                 // Convert string into an Expression<Func<TEntityType, object>>
                 var prop = collection.EntityType.GetProperty(orderBy);
