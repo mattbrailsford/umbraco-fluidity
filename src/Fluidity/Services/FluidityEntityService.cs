@@ -236,10 +236,10 @@ namespace Fluidity.Services
 
             using (var repo = RepositoryFactory.GetRepository(collection))
             {
-                repo?.Save(entity);
-            }
+                var savedEntity = repo?.Save(entity);
 
-            return entity;
+                return savedEntity;
+            }
         }
 
         public void DeleteEntity(FluidityCollectionConfig collection, object id)

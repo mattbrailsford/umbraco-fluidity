@@ -107,6 +107,8 @@ namespace Fluidity.Data
 
             if (fireEvents)
             {
+                args.Entity.After = entity;
+
                 Fluidity.OnSavedEntity(args);
 
                 entity = (TEntity)args.Entity.After;
