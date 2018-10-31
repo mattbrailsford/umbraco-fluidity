@@ -16,3 +16,7 @@ Whilst we have support for persisting the tags value, we don't currently have th
 ### Multi Node Tree Picker
 
 When using a Multi Node Tree Picker with an XPath filter, only filters starting with the `$root` placeholder will be valid as all other placeholders expect the property editor to be placed on a content node, with that node being used as context.
+
+### RTE Macros
+
+When using Macros in a Rich Text Editor, Macro previews won't work and so should be disabled in the Macro config.
