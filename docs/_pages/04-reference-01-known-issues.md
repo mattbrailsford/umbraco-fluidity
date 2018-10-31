@@ -19,4 +19,4 @@ When using a Multi Node Tree Picker with an XPath filter, only filters starting 
 
 ### RTE Macros
 
-When using Macros in a Rich Text Editor, Macro previews won't work and so should be disabled in the Macro config.
+Macros in Rich Text Editors don't appear to work properly due to the preview mechanism. They will save and may run on the front end, but you'll get an error notification in the back office as it tries to render a preview.
