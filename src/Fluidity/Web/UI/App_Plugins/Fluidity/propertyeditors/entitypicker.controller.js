@@ -15,7 +15,7 @@
         var dataView = aliases.length >= 3 ? aliases[2] : "";
 
         $scope.renderModel = [];
-        $scope.dialogEditor = editorState && editorState.current && editorState.current.isDialogEditor;
+        $scope.dialogEditor = editorState && editorState.current && editorState.current.isDialogEditor;        
 
         // Sortable options
         $scope.sortableOptions = {
@@ -23,6 +23,12 @@
             tolerance: "pointer",
             scroll: true,
             zIndex: 6000
+        };
+
+        // Config options
+        $scope.configOptions = {
+            showOpen: $scope.model.config.showOpen.length ? $scope.model.config.showOpen : "0",
+            showRemove: $scope.model.config.showRemove.length ? $scope.model.config.showRemove : "1"
         };
 
         // Dialog options
