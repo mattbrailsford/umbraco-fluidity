@@ -67,7 +67,7 @@ namespace Fluidity.Web.Models
         public string Path { get; set; }
 
         [DataMember(Name = "properties")]
-        public string Properties { get; set; }
+        public object[] Properties { get; set; }
 
         /// <summary>
         /// This is used to add custom localized messages/strings to the response for the app to use for localized UI purposes.
