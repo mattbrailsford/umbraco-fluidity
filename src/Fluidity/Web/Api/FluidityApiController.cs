@@ -129,17 +129,19 @@ namespace Fluidity.Web.Api
             }
 
             // Get or create entity
-            var entity = postModel.Id != null && !postModel.Id.Equals(defaultId)
+            var isNew = postModel.Id == null || postModel.Id.Equals(defaultId);
+            var entity = !isNew
                 ? Context.Services.EntityService.GetEntity(collectionConfig, postModel.Id)
                 : Context.Services.EntityService.NewEntity(collectionConfig);
 
             // Map property values
+            var isEditable = isNew && collectionConfig.CanCreate || !isNew && collectionConfig.CanUpdate;
             var mapper = new FluidityEntityMapper();
-            entity = mapper.FromPostModel(sectionConfig, collectionConfig, postModel, entity);
+            entity = mapper.FromPostModel(sectionConfig, collectionConfig, postModel, entity, !isEditable);
 
             // Validate the property values (review ContentItemValidationHelper)
             var validator = new FluidityEntityPostValidator();
-            validator.Validate(ModelState, postModel, entity, collectionConfig);
+            validator.Validate(ModelState, postModel, entity, collectionConfig, !isEditable);
 
             // Check to see if model is valid
             if (!ModelState.IsValid)

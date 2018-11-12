@@ -56,8 +56,6 @@ namespace Fluidity.Configuration
         protected bool _isVisibleInTree;
         internal bool IsVisibleInTree => _isVisibleInTree;
 
-        internal bool IsReadOnly => !_canCreate && !_canUpdate && !_canDelete;
-
         protected bool _canCreate;
         internal bool CanCreate => _canCreate;
 
