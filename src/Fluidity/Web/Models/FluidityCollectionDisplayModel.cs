@@ -34,9 +34,6 @@ namespace Fluidity.Web.Models
         [DataMember(Name = "description")]
         public string Description { get; set; }
 
-        [DataMember(Name = "isReadOnly")]
-        public bool IsReadOnly { get; set; }
-
         [DataMember(Name = "isSearchable")]
         public bool IsSearchable { get; set; }
 

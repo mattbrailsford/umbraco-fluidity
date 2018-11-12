@@ -220,8 +220,10 @@ namespace Fluidity.Configuration
         /// </summary>
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> MakeReadOnly()
-        {
-            _isReadOnly = true;
+        {            
+            _canCreate = false;
+            _canUpdate = false;
+            _canDelete = false;
             return this;
         }
 
@@ -373,7 +375,7 @@ namespace Fluidity.Configuration
         /// <returns>The list view configuration.</returns>
         public new FluidityListViewConfig<TEntityType> ListView(FluidityListViewConfig<TEntityType> listViewConfig)
         {
-            if (!_isReadOnly && _canDelete)
+            if (_canDelete)
             {
                 listViewConfig.AddBulkAction<FluidityDeleteBulkAction>();
             }

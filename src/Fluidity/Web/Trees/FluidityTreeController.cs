@@ -199,7 +199,7 @@ namespace Fluidity.Web.Trees
                         hasMenuItems = true;
                     }
 
-                    if (!currentCollectionConfig.IsReadOnly && currentCollectionConfig.CanDelete)
+                    if (currentCollectionConfig.CanDelete)
                     {
                         // We create a custom item as we need to direct all fluidity delete commands to the
                         // same view, where as the in built delete dialog looks for seperate views per tree
@@ -213,7 +213,7 @@ namespace Fluidity.Web.Trees
                 {
                     var hasMenuItems = false;
 
-                    if (!currentCollectionConfig.IsReadOnly && currentCollectionConfig.CanCreate)
+                    if (currentCollectionConfig.CanCreate)
                     {
                         // We create a custom item as we need to direct all fluidity create commands to the
                         // same view, where as the in built create dialog looks for seperate views per tree

@@ -25,12 +25,11 @@ namespace Fluidity.Web.Models.Mappers
                 NamePlural = collection.NamePlural,
                 IconSingular = collection.IconSingular + (!collection.IconColor.IsNullOrWhiteSpace() ? " color-" + collection.IconColor : ""),
                 IconPlural = collection.IconPlural + (!collection.IconColor.IsNullOrWhiteSpace() ? " color-" + collection.IconColor : ""),
-                Description = collection.Description,
-                IsReadOnly = collection.IsReadOnly,
+                Description = collection.Description,                
                 IsSearchable = collection.SearchableProperties.Any(),
-                CanCreate = collection.IsReadOnly ? false : collection.CanCreate,
-                CanUpdate = collection.IsReadOnly ? false : collection.CanUpdate,
-                CanDelete = collection.IsReadOnly ? false : collection.CanDelete,
+                CanCreate = collection.CanCreate,
+                CanUpdate = collection.CanUpdate,
+                CanDelete = collection.CanDelete,
                 HasListView = collection.ViewMode == FluidityViewMode.List,
                 Path = collection.Path
             };
