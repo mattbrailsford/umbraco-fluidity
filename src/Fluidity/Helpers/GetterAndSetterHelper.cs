@@ -12,7 +12,9 @@ namespace Fluidity.Helpers
     {
         internal static GetterAndSetter<TEntityType, TValueType> Create<TEntityType, TValueType>(Expression<Func<TEntityType, TValueType>> propertyExpression)
         {
-            if (propertyExpression.Body is MemberExpression memberExpression)
+            var memberExpression = propertyExpression.Body as MemberExpression;
+
+            if (memberExpression != null)
             {
                 var name = "";
                 var propertyInfo = propertyExpression.GetPropertyInfo();
