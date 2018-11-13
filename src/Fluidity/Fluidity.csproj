@@ -282,6 +282,7 @@
     <Compile Include="Extensions\FluidityPropertyConfigExtensions.cs" />
     <Compile Include="Extensions\SqlExtensions.cs" />
     <Compile Include="Events\FluidityStartingEventArgs.cs" />
+    <Compile Include="Helpers\GetterAndSetterHelper.cs" />
     <Compile Include="Helpers\SecurityHelper.cs" />
     <Compile Include="Helpers\UmbracoPublishedPropertyTypeHelper.cs" />
     <Compile Include="ListViewLayouts\FluidityListViewLayout.cs" />
@@ -289,6 +290,7 @@
     <Compile Include="ListViewLayouts\FluidityGridListViewLayout.cs" />
     <Compile Include="ListViewLayouts\FluidityTableListViewLayout.cs" />
     <Compile Include="Models\FluidityDataViewSummary.cs" />
+    <Compile Include="Models\GetterAndSetter`T.cs" />
     <Compile Include="ValueMappers\ReadOnlyValueMapper.cs" />
     <Compile Include="Models\DataTypeInfo.cs" />
     <Compile Include="Helpers\UmbracoDataTypeHelper.cs" />

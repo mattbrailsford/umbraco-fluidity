@@ -4,17 +4,26 @@
 // </copyright>
 
 using System;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using Fluidity.Configuration;
 
 namespace Fluidity.Extensions
 {
     internal static class ObjectExtensions
     {
-        public static object GetPropertyValue(this object instance, PropertyInfo propertyInfo)
+        public static object GetPropertyValue(this object instance, FluidityPropertyConfig config)
         {
-            return GetPropertyValue(instance, propertyInfo.Name);
+            if (config.PropertyGetter != null)
+            {
+                return config.PropertyGetter.DynamicInvoke(instance);
+            }
+            else
+            {
+                return GetPropertyValue(instance, config.PropertyInfo.Name);
+            }
         }
 
         public static object GetPropertyValue(this object instance, string propertyName)
@@ -22,9 +31,16 @@ namespace Fluidity.Extensions
             return instance.GetType().GetPropertyValue(propertyName, instance);
         }
 
-        public static void SetPropertyValue(this object instance, PropertyInfo propertyInfo, object value)
+        public static void SetPropertyValue(this object instance, FluidityPropertyConfig config, object value)
         {
-            SetPropertyValue(instance, propertyInfo.Name, value);
+            if (config.PropertySetter != null)
+            {
+                config.PropertySetter.DynamicInvoke(instance, value);
+            }
+            else
+            {
+                SetPropertyValue(instance, config.PropertyInfo.Name, value);
+            }
         }
 
         public static void SetPropertyValue(this object instance, string propertyName, object value)

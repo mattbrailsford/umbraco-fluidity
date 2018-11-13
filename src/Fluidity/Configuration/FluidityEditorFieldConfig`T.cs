@@ -1,4 +1,4 @@
-// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
+﻿// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
@@ -6,6 +6,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
+using Fluidity.Helpers;
 using Fluidity.ValueMappers;
 
 namespace Fluidity.Configuration
@@ -17,6 +18,7 @@ namespace Fluidity.Configuration
     /// <typeparam name="TValueType">The type of the property value.</typeparam>
     /// <seealso cref="Fluidity.Configuration.FluidityEditorFieldConfig" />
     public class FluidityEditorFieldConfig<TEntityType, TValueType> : FluidityEditorFieldConfig
+        where TEntityType : class
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig{TEntityType, TValueType}"/> class.
@@ -24,11 +26,25 @@ namespace Fluidity.Configuration
         /// <param name="propertyExpression">The property expression.</param>
         /// <param name="config">A configuration delegate.</param>
         public FluidityEditorFieldConfig(Expression<Func<TEntityType, TValueType>> propertyExpression, Action<FluidityEditorFieldConfig<TEntityType, TValueType>> config = null)
-            : base(propertyExpression)
         {
+            var getterAndSetter = GetterAndSetterHelper.Create(propertyExpression);
+
+            if (getterAndSetter != null)
+            {
+                _property = new FluidityPropertyConfig(
+                    propertyExpression,
+                    getterAndSetter.ObjectGetter,
+                    getterAndSetter.ObjectSetter,
+                    getterAndSetter.PropertyName);
+            }
+            else
+            {
+                _property = new FluidityPropertyConfig(propertyExpression);
+            }
+
             config?.Invoke(this);
         }
-
+        
         /// <summary>
         /// Changes the label of the field.
         /// </summary>
@@ -174,7 +190,7 @@ namespace Fluidity.Configuration
         public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadOnly(Func<TValueType, string> format) {
             _valueMapper = new ReadOnlyValueMapper(value => format((TValueType)value));
             _dataTypeId = -92;
-	        _isReadOnly = true;
+            _isReadOnly = true;
             return this;
         }
 

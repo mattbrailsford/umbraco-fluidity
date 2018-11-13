@@ -21,7 +21,14 @@ namespace Fluidity.Configuration
         protected LambdaExpression _propertyExp;
         internal LambdaExpression PropertyExpression => _propertyExp;
 
-        internal string Name => _propertyInfo.Name;
+        protected Func<object, object> _propertyGetter;
+        internal Func<object, object> PropertyGetter => _propertyGetter;
+
+        protected Action<object, object> _propertySetter;
+        internal Action<object, object> PropertySetter => _propertySetter;
+
+        protected string _name;
+        internal string Name => _name;
 
         internal Type Type => _propertyInfo.PropertyType;
 
@@ -33,6 +40,24 @@ namespace Fluidity.Configuration
         {
             _propertyExp = propertyExp;
             _propertyInfo = propertyExp.GetPropertyInfo();
+            _name = _propertyInfo.Name;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FluidityPropertyConfig"/> class.
+        /// </summary>
+        /// <param name="propertyExp">The property exp.</param>
+        /// <param name="getter">The getter to read the property.</param>
+        /// <param name="setter">The getter to write the property.</param>
+        /// <param name="name">The full name in the property expression.</param>
+        public FluidityPropertyConfig(LambdaExpression propertyExp, Func<object, object> getter, Action<object, object> setter, string name)
+        {
+            _propertyExp = propertyExp;
+            _propertyInfo = propertyExp.GetPropertyInfo();
+
+            _propertyGetter = getter;
+            _propertySetter = setter;
+            _name = name;
         }
 
         /// <summary>

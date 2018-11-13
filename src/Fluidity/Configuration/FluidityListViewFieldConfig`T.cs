@@ -1,10 +1,11 @@
-// <copyright file="FluidityListViewFieldConfig`T.cs" company="Matt Brailsford">
+﻿// <copyright file="FluidityListViewFieldConfig`T.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
 
 using System;
 using System.Linq.Expressions;
+using Fluidity.Helpers;
 
 namespace Fluidity.Configuration
 {
@@ -22,8 +23,22 @@ namespace Fluidity.Configuration
         /// <param name="propertyExpression">The property expression.</param>
         /// <param name="config">The configuration.</param>
         public FluidityListViewFieldConfig(Expression<Func<TEntityType, TValueType>> propertyExpression, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> config = null)
-            : base (propertyExpression)
         {
+            var getterAndSetter = GetterAndSetterHelper.Create(propertyExpression);
+
+            if (getterAndSetter != null)
+            {
+                _property = new FluidityPropertyConfig(
+                    propertyExpression,
+                    getterAndSetter.ObjectGetter,
+                    getterAndSetter.ObjectSetter,
+                    getterAndSetter.PropertyName);
+            }
+            else
+            {
+                _property = new FluidityPropertyConfig(propertyExpression);
+            }
+
             config?.Invoke(this);
         }
 
