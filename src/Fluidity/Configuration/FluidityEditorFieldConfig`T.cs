@@ -18,7 +18,6 @@ namespace Fluidity.Configuration
     /// <typeparam name="TValueType">The type of the property value.</typeparam>
     /// <seealso cref="Fluidity.Configuration.FluidityEditorFieldConfig" />
     public class FluidityEditorFieldConfig<TEntityType, TValueType> : FluidityEditorFieldConfig
-        where TEntityType : class
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig{TEntityType, TValueType}"/> class.
