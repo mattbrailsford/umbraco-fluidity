@@ -30,8 +30,8 @@ namespace Fluidity.Configuration
             {
                 _property = new FluidityPropertyConfig(
                     propertyExpression,
-                    getterAndSetter.ObjectGetter,
-                    getterAndSetter.ObjectSetter,
+                    getterAndSetter.Getter,
+                    getterAndSetter.Setter,
                     getterAndSetter.PropertyName);
             }
             else

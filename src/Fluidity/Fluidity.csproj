@@ -290,7 +290,7 @@
     <Compile Include="ListViewLayouts\FluidityGridListViewLayout.cs" />
     <Compile Include="ListViewLayouts\FluidityTableListViewLayout.cs" />
     <Compile Include="Models\FluidityDataViewSummary.cs" />
-    <Compile Include="Models\GetterAndSetter`T.cs" />
+    <Compile Include="Models\GetterAndSetter.cs" />
     <Compile Include="ValueMappers\ReadOnlyValueMapper.cs" />
     <Compile Include="Models\DataTypeInfo.cs" />
     <Compile Include="Helpers\UmbracoDataTypeHelper.cs" />

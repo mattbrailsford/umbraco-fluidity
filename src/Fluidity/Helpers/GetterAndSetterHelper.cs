@@ -3,88 +3,117 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fluidity.Extensions;
 using Fluidity.Models;
 
 namespace Fluidity.Helpers
 {
     internal static class GetterAndSetterHelper
     {
-        internal static GetterAndSetter<TEntityType, TValueType> Create<TEntityType, TValueType>(Expression<Func<TEntityType, TValueType>> propertyExpression)
+        /// <summary>
+        /// Converts a given LambdaExpression containing MemberExpressions to getters and setters, and the name of each nested object plus the name of the property.
+        /// 
+        /// (Person x) => x.Company.Owner.Name becomes:
+        /// getter: (object x) => (object)(((Person) x).get_Company().get_Owner().get_Name())
+        /// setter: (object x, object y) => ((Person) x).get_Company().get_Owner().set_Name((string)y)
+        /// name: CompanyOwnerName
+        /// </summary>
+        /// <param name="lambdaExpression">The LambdaExpression to be converted</param>
+        /// <returns>GetterAndSetter object when successful, null when not.</returns>
+        internal static GetterAndSetter Create(LambdaExpression lambdaExpression)
         {
-            var memberExpression = propertyExpression.Body as MemberExpression;
-
-            if (memberExpression != null)
+            try
             {
-                var name = "";
-                var propertyInfo = propertyExpression.GetPropertyInfo();
-                var setMethod = propertyInfo.GetSetMethod();
+                var isAtTail = true;
 
-                var parameterT = Expression.Parameter(typeof(TEntityType), "x");
-                var parameterTProperty = Expression.Parameter(typeof(TValueType), "y");
-                Expression instanceExpression;
-                var declaringType = setMethod.DeclaringType;
+                var parameterT = Expression.Parameter(typeof(object), "x");
+                Type parameterTType = null;
+                var parameterTProperty = Expression.Parameter(typeof(object), "y");
+                Type parameterTPropertyType = null;
 
-                if (declaringType == typeof(TEntityType))
+                MethodInfo setValueMethod = null;
+                MethodInfo getValueMethod = null;
+                var names = new List<string>();
+                var getNestedObjectMethods = new List<MethodInfo>();
+
+                var x = lambdaExpression.Body;
+
+                do
                 {
-                    instanceExpression = parameterT;
-                    name = propertyInfo.Name;
-                }
-                else
-                {
-                    var objectGetters = new List<MethodInfo>();
-                    var objectNames = new List<string>
+                    var memberExpression = x as MemberExpression;
+                    var parameterExpression = x as ParameterExpression;
+
+                    if (memberExpression != null)
                     {
-                        propertyInfo.Name
-                    };
+                        var propertyInfo = memberExpression.Member as PropertyInfo;
+                        if (isAtTail)
+                        {
+                            setValueMethod = propertyInfo.GetSetMethod();
+                            getValueMethod = propertyInfo.GetGetMethod();
+                            names.Add(propertyInfo.Name);
 
-                    var getObjectExpression = memberExpression.Expression as MemberExpression;
+                            parameterTPropertyType = propertyInfo.PropertyType;
 
-                    // traverse the nested object towards the TEntityType
-                    while (declaringType != typeof(TEntityType))
-                    {
-                        var objectGetterPropertyInfo = getObjectExpression.Member as PropertyInfo;
-                        var objectGetMethod = objectGetterPropertyInfo.GetGetMethod();
+                            isAtTail = false;
 
-                        objectGetters.Add(objectGetMethod);
-                        objectNames.Add(objectGetterPropertyInfo.Name);
+                            x = memberExpression.Expression;
+                        }
+                        else
+                        {
+                            getNestedObjectMethods.Insert(0, propertyInfo.GetGetMethod());
+                            names.Insert(0, propertyInfo.Name);
 
-                        declaringType = objectGetMethod.DeclaringType;
-                        getObjectExpression = getObjectExpression.Expression as MemberExpression;
+                            x = memberExpression.Expression;
+                        }
                     }
+                    else if (parameterExpression != null)
+                    {
+                        parameterTType = x.Type;
 
-                    // if the property expression is x => x.A.B.C.Property
-                    // the objectGetters order we get is: get_C, get_B, get_A
-                    // so reversing it allows for building the set expression:
-                    // (x, y) => x.get_A.get_B.get_C.Property = y
-                    objectGetters.Reverse();
-                    objectNames.Reverse();
+                        // done, arrived at root
+                        break;
+                    }
+                    else
+                    {
+                        throw new Exception("Failed to interpret given LambdaExpression");
+                    }
+                }
+                while (true);
 
-                    var objectGetterExpression = objectGetters.Aggregate(
-                        parameterT as Expression,
+                var parameterTAsType = Expression.Convert(parameterT, parameterTType) as Expression;
+                var valueAsType = Expression.Convert(parameterTProperty, parameterTPropertyType) as Expression;
+
+                var instanceExpression = (getNestedObjectMethods.Count == 0)
+                    ? parameterTAsType
+                    : getNestedObjectMethods.Aggregate(
+                        parameterTAsType,
                         (parameter, method) => Expression.Call(parameter, method));
 
-                    instanceExpression = objectGetterExpression;
-
-                    name = string.Join("", objectNames);
-                }
 
                 var setExpression =
-                    Expression.Lambda<Action<TEntityType, TValueType>>(
-                        Expression.Call(instanceExpression, setMethod, parameterTProperty),
+                    Expression.Lambda<Action<object, object>>(
+                        Expression.Call(instanceExpression, setValueMethod, valueAsType),
                         parameterT,
                         parameterTProperty
                     );
 
-                return new GetterAndSetter<TEntityType, TValueType>
-                {
-                    PropertyName = name,
+                var getExpression =
+                    Expression.Lambda<Func<object, object>>(
+                        Expression.Call(instanceExpression, getValueMethod),
+                        parameterT
+                    );
 
-                    Getter = propertyExpression.Compile(),
-                    Setter = setExpression.Compile()
+                var name = string.Join("", names);
+                var setter = setExpression.Compile();
+                var getter = getExpression.Compile();
+
+                return new GetterAndSetter
+                {
+                    Getter = getter,
+                    Setter = setter,
+                    PropertyName = name
                 };
             }
-            else
+            catch (Exception)
             {
                 return null;
             }

@@ -1,4 +1,4 @@
-﻿// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
+// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
@@ -32,8 +32,8 @@ namespace Fluidity.Configuration
             {
                 _property = new FluidityPropertyConfig(
                     propertyExpression,
-                    getterAndSetter.ObjectGetter,
-                    getterAndSetter.ObjectSetter,
+                    getterAndSetter.Getter,
+                    getterAndSetter.Setter,
                     getterAndSetter.PropertyName);
             }
             else
