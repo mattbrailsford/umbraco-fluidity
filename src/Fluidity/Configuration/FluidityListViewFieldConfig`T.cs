@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq.Expressions;
-using Fluidity.Helpers;
 
 namespace Fluidity.Configuration
 {
@@ -24,20 +23,7 @@ namespace Fluidity.Configuration
         /// <param name="config">The configuration.</param>
         public FluidityListViewFieldConfig(Expression<Func<TEntityType, TValueType>> propertyExpression, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> config = null)
         {
-            var getterAndSetter = GetterAndSetterHelper.Create(propertyExpression);
-
-            if (getterAndSetter != null)
-            {
-                _property = new FluidityPropertyConfig(
-                    propertyExpression,
-                    getterAndSetter.Getter,
-                    getterAndSetter.Setter,
-                    getterAndSetter.PropertyName);
-            }
-            else
-            {
-                _property = new FluidityPropertyConfig(propertyExpression);
-            }
+            _property = new FluidityPropertyConfig(propertyExpression);
 
             config?.Invoke(this);
         }

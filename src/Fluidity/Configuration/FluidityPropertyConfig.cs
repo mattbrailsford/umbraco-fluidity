@@ -7,6 +7,7 @@ using System;
 using System.Linq.Expressions;
 using System.Reflection;
 using Fluidity.Extensions;
+using Fluidity.Helpers;
 
 namespace Fluidity.Configuration
 {
@@ -40,24 +41,18 @@ namespace Fluidity.Configuration
         {
             _propertyExp = propertyExp;
             _propertyInfo = propertyExp.GetPropertyInfo();
-            _name = _propertyInfo.Name;
-        }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FluidityPropertyConfig"/> class.
-        /// </summary>
-        /// <param name="propertyExp">The property exp.</param>
-        /// <param name="getter">The getter to read the property.</param>
-        /// <param name="setter">The getter to write the property.</param>
-        /// <param name="name">The full name in the property expression.</param>
-        public FluidityPropertyConfig(LambdaExpression propertyExp, Func<object, object> getter, Action<object, object> setter, string name)
-        {
-            _propertyExp = propertyExp;
-            _propertyInfo = propertyExp.GetPropertyInfo();
-
-            _propertyGetter = getter;
-            _propertySetter = setter;
-            _name = name;
+            var getterAndSetter = GetterAndSetterHelper.Create(propertyExp);
+            if (getterAndSetter != null)
+            {
+                _propertyGetter = getterAndSetter.Getter;
+                _propertySetter = getterAndSetter.Setter;
+                _name = getterAndSetter.PropertyName;
+            }
+            else
+            {
+                _name = _propertyInfo.Name;
+            }
         }
 
         /// <summary>

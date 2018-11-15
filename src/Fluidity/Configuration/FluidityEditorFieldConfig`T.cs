@@ -1,4 +1,4 @@
-// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
+﻿// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
@@ -6,7 +6,6 @@
 using System;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
-using Fluidity.Helpers;
 using Fluidity.ValueMappers;
 
 namespace Fluidity.Configuration
@@ -26,20 +25,7 @@ namespace Fluidity.Configuration
         /// <param name="config">A configuration delegate.</param>
         public FluidityEditorFieldConfig(Expression<Func<TEntityType, TValueType>> propertyExpression, Action<FluidityEditorFieldConfig<TEntityType, TValueType>> config = null)
         {
-            var getterAndSetter = GetterAndSetterHelper.Create(propertyExpression);
-
-            if (getterAndSetter != null)
-            {
-                _property = new FluidityPropertyConfig(
-                    propertyExpression,
-                    getterAndSetter.Getter,
-                    getterAndSetter.Setter,
-                    getterAndSetter.PropertyName);
-            }
-            else
-            {
-                _property = new FluidityPropertyConfig(propertyExpression);
-            }
+            _property = new FluidityPropertyConfig(propertyExpression);
 
             config?.Invoke(this);
         }
