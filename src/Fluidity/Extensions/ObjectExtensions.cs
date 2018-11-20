@@ -4,7 +4,6 @@
 // </copyright>
 
 using System;
-using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,7 +17,7 @@ namespace Fluidity.Extensions
         {
             if (config.PropertyGetter != null)
             {
-                return config.PropertyGetter.DynamicInvoke(instance);
+                return config.PropertyGetter.Invoke(instance);
             }
             else
             {
@@ -35,7 +34,7 @@ namespace Fluidity.Extensions
         {
             if (config.PropertySetter != null)
             {
-                config.PropertySetter.DynamicInvoke(instance, value);
+                config.PropertySetter.Invoke(instance, value);
             }
             else
             {
