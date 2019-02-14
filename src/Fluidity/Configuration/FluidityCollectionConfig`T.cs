@@ -228,7 +228,7 @@ namespace Fluidity.Configuration
         }
 
         /// <summary>
-        /// Allow for creating entities in collection.
+        /// Disable creating entities in collection.
         /// </summary>
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> DisableCreate()
@@ -238,7 +238,7 @@ namespace Fluidity.Configuration
         }
 
         /// <summary>
-        /// Allow for updating entities in collection.
+        /// Disable updating entities in collection.
         /// </summary>
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> DisableUpdate()
@@ -248,7 +248,7 @@ namespace Fluidity.Configuration
         }
 
         /// <summary>
-        /// Allow for deleting entities in collection.
+        /// Disable deleting entities in collection.
         /// </summary>
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> DisableDelete()
