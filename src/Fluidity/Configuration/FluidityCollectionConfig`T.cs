@@ -4,6 +4,8 @@
 // </copyright>
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using Fluidity.Actions;
 using Fluidity.Data;
@@ -220,10 +222,10 @@ namespace Fluidity.Configuration
         /// </summary>
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> MakeReadOnly()
-        {            
-            _canCreate = false;
-            _canUpdate = false;
-            _canDelete = false;
+        {                        
+            DisableCreate();
+            DisableUpdate();
+            DisableDelete();
             return this;
         }
 
@@ -253,7 +255,12 @@ namespace Fluidity.Configuration
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> DisableDelete()
         {
-            _canDelete = false;
+            _canDelete = false;        
+            if (_listView != null)
+            {
+                _listView.DefaultBulkActions.RemoveAll(x => x.GetType() == typeof(FluidityDeleteBulkAction));
+            }
+            
             return this;
         }
 
@@ -377,7 +384,7 @@ namespace Fluidity.Configuration
         {
             if (_canDelete)
             {
-                listViewConfig.AddBulkAction<FluidityDeleteBulkAction>();
+                listViewConfig.DefaultBulkActions.Add(new FluidityDeleteBulkAction());
             }
 
             _listView = listViewConfig;                       
