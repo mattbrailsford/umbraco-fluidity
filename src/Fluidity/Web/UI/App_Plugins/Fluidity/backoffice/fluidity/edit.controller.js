@@ -12,8 +12,8 @@
         // Parse the id route param
         var idParts = $routeParams.id.split("!");
         var collectionAlias = idParts[0];
-        var id = idParts.length > 1 ? idParts[1] : "0";
-        var isNew = id == "0";
+        var id = idParts.length > 1 ? idParts[1] : "isnew";
+        var isNew = id === "isnew";
 
         // Fake the create route param as some of the umbraco
         // helpers expect it to be there
