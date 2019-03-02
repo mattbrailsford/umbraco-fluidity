@@ -45,7 +45,8 @@ namespace Fluidity.Web.Models.Mappers
             var name = "";
             if (collection.NameProperty != null)
             {
-                name = entity.GetPropertyValue(collection.NameProperty).ToString();
+                var nameValue = entity.GetPropertyValue(collection.NameProperty);
+                name = nameValue == null ? null : nameValue.ToString();
             }
             else if (collection.NameFormat != null)
             {
