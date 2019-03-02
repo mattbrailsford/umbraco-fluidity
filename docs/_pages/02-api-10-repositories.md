@@ -15,7 +15,7 @@ To define a repository you create a class that inherits from the base class `Flu
 // Example
 public class PersonRepository : FluidityRepository<Person, int> {
 
-    protected override int GetIdImpl(Person entity) 
+    protected override int GetIdImpl(Person entity) {
         return entity.Id;
     }
 
@@ -35,7 +35,7 @@ public class PersonRepository : FluidityRepository<Person, int> {
         ...
     }
 
-    protected override void void DeleteImpl(int id) {
+    protected override void DeleteImpl(int id) {
         ...
     }
 
