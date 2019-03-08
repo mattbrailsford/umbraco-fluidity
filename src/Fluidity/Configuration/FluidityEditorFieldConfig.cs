@@ -50,7 +50,7 @@ namespace Fluidity.Configuration
 	/// <param name="propertyExpression">The property exp.</param>
 	protected FluidityEditorFieldConfig(LambdaExpression propertyExpression)
         {
-            _property = new FluidityPropertyConfig(propertyExpression);
+            _property = propertyExpression;
         }
     }
 }
