@@ -1,4 +1,4 @@
-// <copyright file="FluidityEditorFieldConfig.cs" company="Matt Brailsford">
+﻿// <copyright file="FluidityEditorFieldConfig.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
@@ -16,7 +16,7 @@ namespace Fluidity.Configuration
     {
         protected FluidityPropertyConfig _property;
         internal FluidityPropertyConfig Property => _property;
-
+        
         protected string _label;
         internal string Label => _label;
 
@@ -41,14 +41,14 @@ namespace Fluidity.Configuration
         protected Func<object> _defaultValueFunc;
         internal Func<object> DefaultValueFunc => _defaultValueFunc;
 
-	    protected bool _isReadOnly;
-	    internal bool IsReadOnly => _isReadOnly;
+	      protected bool _isReadOnly;
+	      internal bool IsReadOnly => _isReadOnly;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="FluidityEditorFieldConfig"/> class.
-		/// </summary>
-		/// <param name="propertyExpression">The property exp.</param>
-		protected FluidityEditorFieldConfig(LambdaExpression propertyExpression)
+		    /// <summary>
+		    /// Initializes a new instance of the <see cref="FluidityEditorFieldConfig"/> class.
+		    /// </summary>
+		    /// <param name="propertyExpression">The property exp.</param>
+		    protected FluidityEditorFieldConfig(LambdaExpression propertyExpression)
         {
             _property = propertyExpression;
         }

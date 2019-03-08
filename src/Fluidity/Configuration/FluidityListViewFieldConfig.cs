@@ -1,4 +1,4 @@
-// <copyright file="FluidityListViewFieldConfig.cs" company="Matt Brailsford">
+﻿// <copyright file="FluidityListViewFieldConfig.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
@@ -15,13 +15,13 @@ namespace Fluidity.Configuration
     {
         protected FluidityPropertyConfig _property;
         internal FluidityPropertyConfig Property => _property;
-
+        
         protected string _heading;
         internal string Heading => _heading;
 
         protected Func<object, object, object> _format;
         internal Func<object, object, object> Format => _format;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityListViewFieldConfig"/> class.
         /// </summary>

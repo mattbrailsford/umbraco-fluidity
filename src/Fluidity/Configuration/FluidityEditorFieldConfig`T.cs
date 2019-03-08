@@ -1,4 +1,4 @@
-// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
+﻿// <copyright file="FluidityEditorFieldConfig`T.cs" company="Matt Brailsford">
 // Copyright (c) 2017 Matt Brailsford and contributors.
 // Licensed under the Apache License, Version 2.0.
 // </copyright>
@@ -28,7 +28,7 @@ namespace Fluidity.Configuration
         {
             config?.Invoke(this);
         }
-
+        
         /// <summary>
         /// Changes the label of the field.
         /// </summary>
@@ -174,7 +174,7 @@ namespace Fluidity.Configuration
         public FluidityEditorFieldConfig<TEntityType, TValueType> MakeReadOnly(Func<TValueType, string> format) {
             _valueMapper = new ReadOnlyValueMapper(value => format((TValueType)value));
             _dataTypeId = -92;
-	        _isReadOnly = true;
+            _isReadOnly = true;
             return this;
         }
 

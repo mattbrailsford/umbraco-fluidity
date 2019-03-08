@@ -7,6 +7,7 @@ using System;
 using System.Linq.Expressions;
 using System.Reflection;
 using Fluidity.Extensions;
+using Fluidity.Helpers;
 
 namespace Fluidity.Configuration
 {
@@ -21,7 +22,14 @@ namespace Fluidity.Configuration
         protected LambdaExpression _propertyExp;
         internal LambdaExpression PropertyExpression => _propertyExp;
 
-        internal string Name => _propertyInfo.Name;
+        protected Func<object, object> _propertyGetter;
+        internal Func<object, object> PropertyGetter => _propertyGetter;
+
+        protected Action<object, object> _propertySetter;
+        internal Action<object, object> PropertySetter => _propertySetter;
+
+        protected string _name;
+        internal string Name => _name;
 
         internal Type Type => _propertyInfo.PropertyType;
 
@@ -33,6 +41,18 @@ namespace Fluidity.Configuration
         {
             _propertyExp = propertyExp;
             _propertyInfo = propertyExp.GetPropertyInfo();
+
+            var getterAndSetter = GetterAndSetterHelper.Create(propertyExp);
+            if (getterAndSetter != null)
+            {
+                _propertyGetter = getterAndSetter.Getter;
+                _propertySetter = getterAndSetter.Setter;
+                _name = getterAndSetter.PropertyName;
+            }
+            else
+            {
+                _name = _propertyInfo.Name;
+            }
         }
 
         /// <summary>
