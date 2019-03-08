@@ -28,7 +28,7 @@ namespace Fluidity.Configuration
         /// <param name="propertyExpression">The property expression.</param>
         protected FluidityListViewFieldConfig(LambdaExpression propertyExpression)
         {
-            _property = new FluidityPropertyConfig(propertyExpression);
+            _property = propertyExpression;
         }
     }
 }
