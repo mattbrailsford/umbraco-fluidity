@@ -4,7 +4,10 @@
 // </copyright>
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using Fluidity.Actions;
 using Fluidity.Data;
 using Umbraco.Core;
 using Umbraco.Web.Models.Trees;
@@ -219,8 +222,45 @@ namespace Fluidity.Configuration
         /// </summary>
         /// <returns>The collection configuration.</returns>
         public FluidityCollectionConfig<TEntityType> MakeReadOnly()
+        {                        
+            DisableCreate();
+            DisableUpdate();
+            DisableDelete();
+            return this;
+        }
+
+        /// <summary>
+        /// Disable creating entities in collection.
+        /// </summary>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> DisableCreate()
         {
-            _isReadOnly = true;
+            _canCreate = false;
+            return this;
+        }
+
+        /// <summary>
+        /// Disable updating entities in collection.
+        /// </summary>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> DisableUpdate()
+        {
+            _canUpdate = false;
+            return this;
+        }
+
+        /// <summary>
+        /// Disable deleting entities in collection.
+        /// </summary>
+        /// <returns>The collection configuration.</returns>
+        public FluidityCollectionConfig<TEntityType> DisableDelete()
+        {
+            _canDelete = false;        
+            if (_listView != null)
+            {
+                _listView.DefaultBulkActions.RemoveAll(x => x.GetType() == typeof(FluidityDeleteBulkAction));
+            }
+            
             return this;
         }
 
@@ -342,7 +382,12 @@ namespace Fluidity.Configuration
         /// <returns>The list view configuration.</returns>
         public new FluidityListViewConfig<TEntityType> ListView(FluidityListViewConfig<TEntityType> listViewConfig)
         {
-            _listView = listViewConfig;
+            if (_canDelete)
+            {
+                listViewConfig.DefaultBulkActions.Add(new FluidityDeleteBulkAction());
+            }
+
+            _listView = listViewConfig;                       
             return listViewConfig;
         }
 

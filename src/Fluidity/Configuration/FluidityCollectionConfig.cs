@@ -56,8 +56,14 @@ namespace Fluidity.Configuration
         protected bool _isVisibleInTree;
         internal bool IsVisibleInTree => _isVisibleInTree;
 
-        protected bool _isReadOnly;
-        internal bool IsReadOnly => _isReadOnly;
+        protected bool _canCreate;
+        internal bool CanCreate => _canCreate;
+
+        protected bool _canUpdate;
+        internal bool CanUpdate => _canUpdate;
+
+        protected bool _canDelete;
+        internal bool CanDelete => _canDelete;
 
         protected FluidityViewMode _viewMode;
         internal FluidityViewMode ViewMode => _viewMode;
@@ -119,6 +125,9 @@ namespace Fluidity.Configuration
             _iconSingular = iconSingular ?? "icon-folder";
             _iconPlural = iconPlural ?? "icon-folder";
             _isVisibleInTree = true;
+            _canCreate = true;
+            _canUpdate = true;
+            _canDelete = true;
 
             _containerMenuItems = new List<MenuItem>();
             _entityMenuItems = new List<MenuItem>();

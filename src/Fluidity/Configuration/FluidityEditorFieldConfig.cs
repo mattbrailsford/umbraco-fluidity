@@ -44,7 +44,6 @@ namespace Fluidity.Configuration
 	    protected bool _isReadOnly;
 	    internal bool IsReadOnly => _isReadOnly;
 
-
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FluidityEditorFieldConfig"/> class.
 		/// </summary>
