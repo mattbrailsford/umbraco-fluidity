@@ -45,7 +45,8 @@ namespace Fluidity.Web.Models.Mappers
             var name = "";
             if (collection.NameProperty != null)
             {
-                name = entity.GetPropertyValue(collection.NameProperty).ToString();
+                var nameValue = entity.GetPropertyValue(collection.NameProperty);
+                name = nameValue == null ? null : nameValue.ToString();
             }
             else if (collection.NameFormat != null)
             {
@@ -119,7 +120,7 @@ namespace Fluidity.Web.Models.Mappers
                 HasNameProperty = collection.NameProperty != null,
                 Section = section.Alias,
                 Tree = section.Tree.Alias,
-                CollectionIsReadOnly = collection.IsReadOnly,
+                CollectionIsEditable = isNew && collection.CanCreate || !isNew && collection.CanUpdate,
                 Collection = collection.Alias,
                 CollectionNameSingular = collection.NameSingular,
                 CollectionNamePlural = collection.NamePlural,
@@ -150,8 +151,8 @@ namespace Fluidity.Web.Models.Mappers
                     if (tab.Fields != null)
                     {
                         foreach (var field in tab.Fields)
-                        {
-                            var dataTypeInfo = _dataTypeHelper.ResolveDataType(field, collection.IsReadOnly);
+                        {                            
+                            var dataTypeInfo = _dataTypeHelper.ResolveDataType(field, !display.CollectionIsEditable);
 
                             dataTypeInfo.PropertyEditor.ValueEditor.ConfigureForDisplay(dataTypeInfo.PreValues);
 
@@ -231,7 +232,7 @@ namespace Fluidity.Web.Models.Mappers
             return display;
         }
 
-        public object FromPostModel(FluiditySectionConfig section, FluidityCollectionConfig collection, FluidityEntityPostModel postModel, object entity)
+        public object FromPostModel(FluiditySectionConfig section, FluidityCollectionConfig collection, FluidityEntityPostModel postModel, object entity, bool isReadOnly)
         {
             var editorProps = collection.Editor.Tabs.SelectMany(x => x.Fields).ToArray();
 
@@ -271,7 +272,7 @@ namespace Fluidity.Web.Models.Mappers
                     additionalData.Add("cuid", ObjectExtensions.EncodeAsGuid(cuid));
                     additionalData.Add("puid", ObjectExtensions.EncodeAsGuid(puid));
 
-                    var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig, collection.IsReadOnly);
+                    var dataTypeInfo = _dataTypeHelper.ResolveDataType(propConfig, isReadOnly);
                     var data = new ContentPropertyData(prop.Value, dataTypeInfo.PreValues, additionalData);
 
                     if (!dataTypeInfo.PropertyEditor.ValueEditor.IsReadOnly) {

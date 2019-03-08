@@ -317,13 +317,52 @@ Sets the collection as read only and disables any CRUD operations from being per
 collectionConfig.MakeReadOnly();
 ````
 
+### Disable the option to create
+{: .mt}
+
+#### DisableCreate() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Disables the option to create entities on the current collection. An entity could be created via code-behind and then only editing is allowed in the UI for example.
+
+````csharp
+// Example
+collectionConfig.DisableCreate();
+````
+
+### Disable the option to update
+{: .mt}
+
+#### DisableUpdate() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Disables the option to update entities on the current collection. An entity can be created, but further editing is not allowed. 
+
+````csharp
+// Example
+collectionConfig.DisableUpdate();
+````
+
+### Disable the option to delete
+{: .mt}
+
+#### DisableDelete() *: FluidityCollectionConfig&lt;TEntityType&gt;*
+{: .signature}
+
+Disables the option to delete entities on the current collection. Useful if the data needs to be retained and visible. See also [defining a deleted flag](#defining-a-deleted-flag).
+
+````csharp
+// Example
+collectionConfig.DisableDelete();
+````
+
 ### Setting a view mode
 {: .mt}
 
 #### SetViewMode(FluidityViewMode viewMode) *: FluidityCollectionConfig&lt;TEntityType&gt;*
 {: .signature}
 
-Sets the view mode of the current collection. Opions are `Tree` or `List`. When set to `Tree` then all entities will appear as nodes in the tree. When set as `List` then entities will be hidden from the tree and show in a [list view]({{ site.baseurl }}/api/collections/list-view/) in the right hand content area.
+Sets the view mode of the current collection. Options are `Tree` or `List`. When set to `Tree` then all entities will appear as nodes in the tree. When set as `List` then entities will be hidden from the tree and show in a [list view]({{ site.baseurl }}/api/collections/list-view/) in the right hand content area.
 
 ````csharp
 // Example

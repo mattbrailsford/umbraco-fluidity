@@ -5,7 +5,7 @@
         <umb-editor-sub-header-content-left>
 
             <!-- Create Button -->
-            <umb-editor-sub-header-section ng-if="collection && !collection.isReadOnly && !isAnythingSelected()">
+            <umb-editor-sub-header-section ng-if="collection && collection.canCreate && !isAnythingSelected()">
                 <div class="btn-group">
                     <a class="btn" href="#/{{collection.section}}/fluidity/edit/{{collection.alias}}">
                         <i class="{{collection.iconSingular}}"></i>
@@ -75,7 +75,7 @@
             </umb-editor-sub-header-section>
 
             <!-- Bulk Actions -->
-            <umb-editor-sub-header-section ng-if="!collection.isReadOnly && isAnythingSelected()">
+            <umb-editor-sub-header-section ng-if="isAnythingSelected()">
 
                 <umb-button ng-repeat="bulkAction in options.bulkActions"
                     type="button"

@@ -34,12 +34,12 @@ namespace Fluidity.Web.WebApi.Validation
             : this(new UmbracoDataTypeHelper())
         { }
 
-        public void Validate(ModelStateDictionary modelState, FluidityEntityPostModel postModel, object entity, FluidityCollectionConfig config)
+        public void Validate(ModelStateDictionary modelState, FluidityEntityPostModel postModel, object entity, FluidityCollectionConfig config, bool isReadOnly)
         {
             var configProps = config.Editor?.Tabs.SelectMany(x => x.Fields).ToArray() ?? new FluidityEditorFieldConfig[0];
 
             if (ValidateProperties(modelState, postModel, configProps) == false) return;
-            if (ValidatePropertyData(modelState, postModel, configProps, config.IsReadOnly) == false) return;
+            if (ValidatePropertyData(modelState, postModel, configProps, isReadOnly) == false) return;
             if (ValidateDataAnnotations(modelState, entity) == false) return;
         }
 
