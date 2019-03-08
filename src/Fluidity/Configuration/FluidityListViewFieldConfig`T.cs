@@ -22,9 +22,8 @@ namespace Fluidity.Configuration
         /// <param name="propertyExpression">The property expression.</param>
         /// <param name="config">The configuration.</param>
         public FluidityListViewFieldConfig(Expression<Func<TEntityType, TValueType>> propertyExpression, Action<FluidityListViewFieldConfig<TEntityType, TValueType>> config = null)
+            : base(propertyExpression)
         {
-            _property = new FluidityPropertyConfig(propertyExpression);
-
             config?.Invoke(this);
         }
 
