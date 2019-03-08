@@ -21,5 +21,14 @@ namespace Fluidity.Configuration
 
         protected Func<object, object, object> _format;
         internal Func<object, object, object> Format => _format;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FluidityListViewFieldConfig"/> class.
+        /// </summary>
+        /// <param name="propertyExpression">The property expression.</param>
+        protected FluidityListViewFieldConfig(LambdaExpression propertyExpression)
+        {
+            _property = new FluidityPropertyConfig(propertyExpression);
+        }
     }
 }
