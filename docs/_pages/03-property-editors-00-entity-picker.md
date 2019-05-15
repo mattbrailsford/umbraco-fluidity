@@ -13,7 +13,7 @@ To configure an entity picker you'll firstly want to create a data type in the U
 
 ![Pre Value]({{ site.baseurl }}/img/pre-value.png) 
 
-From their choose the 'Section' and then 'Collection' you'd like to pick entities from, as well as an optional list view 'Data View' if there are any configured.
+From there choose the 'Section' and then 'Collection' you'd like to pick entities from, as well as an optional list view 'Data View' if there are any configured.
 
 You can also set a minimum and maximum number of items to be able to pick if required.
 
@@ -24,9 +24,9 @@ With an entity picker data type defined, finish off the configuration by adding 
 ### Using an entity picker
 {: .mt}
 
-Using the entity picker should be pretty fimilar as it aims to mimic the content picker as closely as possible.
+Using the entity picker should be pretty familiar as it aims to mimic the content picker as closely as possible.
 
-To pick an entity click the 'Add' link to launch the picker dialog. The dialog should present a pagniated list of entities to pick from. If any searchable fields have been configured for the entity type, you can also perform a search by typing a search term in the search input field.
+To pick an entity click the 'Add' link to launch the picker dialog. The dialog should present a paginated list of entities to pick from. If any searchable fields have been configured for the entity type, you can also perform a search by typing a search term in the search input field.
 
 ![Picker Dialog]({{ site.baseurl }}/img/picker-dialog.png) 
 

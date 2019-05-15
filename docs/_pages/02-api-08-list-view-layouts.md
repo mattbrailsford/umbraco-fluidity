@@ -5,7 +5,7 @@ title: List View Layouts
 permalink: /api/list-view-layouts/index.html
 ---
 
-List view layouts allow you to provide custom angular views to be used by the list view UI. By default there are two build in layouts, `FluidityTableListViewLayout` which displays results in a tablular layout and `FluidityGridListViewLayout` which displays results in a tiled grid layout.
+List view layouts allow you to provide custom angular views to be used by the list view UI. By default there are two build in layouts, `FluidityTableListViewLayout` which displays results in a tabular layout and `FluidityGridListViewLayout` which displays results in a tiled grid layout.
 
 ### Defining a list view layout
 
