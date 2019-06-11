@@ -56,7 +56,7 @@ namespace Fluidity.Configuration
         /// </summary>
         /// <param name="whereClause"></param>
         /// <returns>The folder configuration.</returns>
-        public FluidityFolderConfig HideFromTree(Expression<Func<bool>> whereClause)
+        public FluidityFolderConfig HideFromTree(Func<bool> whereClause)
         {
             _isVisibleInTree = whereClause;
             return this;
