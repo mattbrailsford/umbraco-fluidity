@@ -26,6 +26,9 @@ namespace Fluidity.Configuration
         protected ConcurrentDictionary<string, FluidityTreeItemConfig> _treeItems;
         internal IReadOnlyDictionary<string, FluidityTreeItemConfig> TreeItems => _treeItems;
 
+        protected Func<bool> _isVisibleInTree;
+        internal Func<bool> IsVisibleInTree => _isVisibleInTree;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FluidityContainerTreeItemConfig"/> class.
         /// </summary>
@@ -36,8 +39,8 @@ namespace Fluidity.Configuration
             _alias = name.ToSafeAlias(true);
             _name = name;
             _icon = icon ?? "icon-folder";
-
             _treeItems = new ConcurrentDictionary<string, FluidityTreeItemConfig>();
+            _isVisibleInTree = () => true;
         }
 
         /// <summary>

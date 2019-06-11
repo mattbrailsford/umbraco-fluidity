@@ -88,7 +88,7 @@ namespace Fluidity.Web.Trees
             var currentItemConfig = alias == "-1" ? TreeConfig : TreeConfig.FlattenedTreeItems[alias];
 
             var currentFolderConfig = currentItemConfig as FluidityContainerTreeItemConfig;
-            if (currentFolderConfig != null)
+            if (currentFolderConfig != null && currentFolderConfig.IsVisibleInTree.Invoke())
             {
                 // Render the folder contents
                 foreach (var treeItem in currentFolderConfig.TreeItems.Values.OrderBy(x => x.Ordinal))
