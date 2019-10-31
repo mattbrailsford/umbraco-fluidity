@@ -14,7 +14,7 @@ With Fluidity, custom data user interfaces can now take a matter of minutes, rat
 
 ## Documentation 
 
-For detailed documentation, please visit: [https://umco.github.io/umbraco-fluidity/](https://umco.github.io/umbraco-fluidity/)
+For detailed documentation, please visit: [https://mattbrailsford.github.io/umbraco-fluidity/](https://mattbrailsford.github.io/umbraco-fluidity/)
 
 ## Contributing to this project
 
