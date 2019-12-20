@@ -45,7 +45,7 @@ public class PersonRepository : FluidityRepository<Person, int> {
 }
 ````
 
-**Note:** For all `Impl` methods there are public alternatives without the `Impl` suffix, however we have seperate inplementation methods in order to ensure all repositories fire the relevant Fluidity events whether triggered via the Fluidity UI or not.
+**Note:** For all `Impl` methods there are public alternatives without the `Impl` suffix, however we have separate implementation methods in order to ensure all repositories fire the relevant Fluidity events whether triggered via the Fluidity UI or not.
 
 ### Changing the repository implementation of a collection
 {: .mt}
