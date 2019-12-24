@@ -18,6 +18,7 @@ namespace Fluidity.Web.Models
         {
             Tabs = new List<Tab<ContentPropertyDisplay>>();
             Errors = new Dictionary<string, object>();
+            Properties = new object[0];
         }
 
         [DataMember(Name = "section", IsRequired = true)]
@@ -64,6 +65,9 @@ namespace Fluidity.Web.Models
 
         [DataMember(Name = "path")]
         public string Path { get; set; }
+
+        [DataMember(Name = "properties")]
+        public object[] Properties { get; set; }
 
         /// <summary>
         /// This is used to add custom localized messages/strings to the response for the app to use for localized UI purposes.
