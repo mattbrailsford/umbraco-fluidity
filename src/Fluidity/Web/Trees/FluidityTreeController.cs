@@ -94,7 +94,7 @@ namespace Fluidity.Web.Trees
                 foreach (var treeItem in currentFolderConfig.TreeItems.Values.OrderBy(x => x.Ordinal))
                 {
                     var folderTreeItem = treeItem as FluidityFolderConfig;
-                    if (folderTreeItem != null)
+                    if (folderTreeItem != null && folderTreeItem.IsVisibleInTree.Invoke())
                     {
                         // Render folder
                         var node = CreateTreeNode(

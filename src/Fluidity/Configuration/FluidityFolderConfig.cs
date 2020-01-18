@@ -4,6 +4,7 @@
 // </copyright>
 
 using System;
+using System.Linq.Expressions;
 
 namespace Fluidity.Configuration
 {
@@ -47,6 +48,17 @@ namespace Fluidity.Configuration
         public FluidityFolderConfig SetIconColor(string color)
         {
             _iconColor = color;
+            return this;
+        }
+
+        /// <summary>
+        /// Hides the folder from the section tree.
+        /// </summary>
+        /// <param name="whereClause"></param>
+        /// <returns>The folder configuration.</returns>
+        public FluidityFolderConfig HideFromTree(Func<bool> whereClause)
+        {
+            _isVisibleInTree = whereClause;
             return this;
         }
     }
