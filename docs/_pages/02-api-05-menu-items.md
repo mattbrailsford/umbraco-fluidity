@@ -41,7 +41,7 @@ In addition, there are three options for the type of action the menu item should
 * **LaunchDialogView(string view, string dialogTitle)** Opens an angular view in the left hand dialog modal, with the given title.
 * **LaunchDialogUrl(string url, string dialogTitle)** Opens a URL in an iframe in side the left hand dialog modal, with the given title.
 
-You can find more detailed information on `MenuItem` class over at the official [Umbraco Menu Item documentation](https://our.umbraco.org/apidocs/csharp/api/Umbraco.Web.Models.Trees.MenuItem.html)
+You can find more detailed information on `MenuItem` class over at the official [Umbraco Menu Item documentation](https://our.umbraco.org/apidocs/v8/csharp/api/Umbraco.Web.Models.Trees.MenuItem.html)
 
 As well as defining the menu item class, depending on the action type you configure, you will also need to implement the relevant angular view and controller. This is a little out of scope for the Fluidity documentation, however in summary you will want to:
 
